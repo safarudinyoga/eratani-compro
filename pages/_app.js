@@ -14,7 +14,7 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='true' />
       </Head>
       <Layout>
-        <Component {...pageProps} />
+        <Component { ...pageProps } />
       </Layout>
     </>
   ) 

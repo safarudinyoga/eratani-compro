@@ -36,8 +36,8 @@ export default function Footer () {
                     <div>{ footerSub('EMAIL', <p>info@eratani.co.id</p>) }</div>
                     <div>{ footerSub('TELEPON', <p>+62 811 952 2577</p>)}</div>
                 </div>
-                <div className='col-xs-2'>{ footerSub('PERUSAHAAN', companyNav.map((nav, idx) => <Link key={idx} href={ `/${ nav.link }` }>{ nav[lang] }</Link>) ) }</div>
-                <div className='col-xs-2'>{ footerSub('GABUNG', joinNav.map((nav, idx) => <Link key={idx} href={ `/${ nav.link }` }>{ nav[lang] }</Link>) )}</div>
+                <div className='col-xs-2'>{ footerSub('PERUSAHAAN', companyNav.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }>{ nav[lang] }</Link>) ) }</div>
+                <div className='col-xs-2'>{ footerSub('GABUNG', joinNav.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }>{ nav[lang] }</Link>) ) }</div>
                 <div className='col-xs-2'>{ footerSub('MEDIA SOSIAL', <div className={ `row middle-xs between-xs ${ styles.social }`  }>
                         <a href='#'><Instagram /></a>
                         <a href='#'><LinkedIn /></a>
