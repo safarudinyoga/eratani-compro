@@ -1,0 +1,32 @@
+@use '../../styles/Define'
+
+.header
+    @include Define.wrapper($position: fixed, $width: 100%, $zindex: 100)
+    background: white
+    padding-top: 29px
+    padding-bottom: 29px
+    box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+
+.sw_lang
+    margin-left: 62px
+    
+    > p
+        font-weight: 700
+        color: Define.$green_60
+
+        &, *
+            display: inline-block
+            vertical-align: middle
+
+        svg
+            margin-bottom: 4px
+
+.navigation
+    a
+        color: Define.$natural_50
+    
+    a:not(:last-child)
+        margin-right: 20px
+
+    a:not(:first-child)
+        margin-left: 20px
