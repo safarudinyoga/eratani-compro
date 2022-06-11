@@ -8,7 +8,7 @@ import AgendaImg from '../../assets/svgs/agenda.svg'
 // utils
 
 const CardAgenda = () => (
-  <div className={`col-xs-12 col-sm-12 col-lg-4`}>
+  <div className={`col-xs-12 col-md-6 col-lg-4`}>
     <div className={styles.card}>
       <img src='https://statik.tempo.co/data/2020/11/25/id_983211/983211_720.jpg' className={styles.img} alt='alt' />
       <div className={styles.card_desc}>
