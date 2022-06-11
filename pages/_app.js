@@ -1,6 +1,5 @@
 import Head from 'next/head'
-import '../styles/flexboxgrid.css'
-import '../styles/Base.sass'
+import '../styles/main.sass'
 import Layout from '../components/layout/Layout'
 
 export default function MyApp({ Component, pageProps }) {
@@ -17,5 +16,5 @@ export default function MyApp({ Component, pageProps }) {
         <Component { ...pageProps } />
       </Layout>
     </>
-  ) 
+  )
 }

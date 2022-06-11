@@ -1,5 +1,7 @@
 $natural_50: #707070
+$natural_60: #121212
 $green_60: #086C48
+$green_70: #055C46
 $green_80: #044D41
 $green_100: #013233
 
@@ -12,4 +14,12 @@ $green_100: #013233
     width: $width
     height: $height
     z-index: $zindex
-    
+
+@mixin flex($flexDirection: row, $justifyDirection: none, $alignDirection: none, $flexWrap: unset, $alignContent: none)
+    display: flex
+    flex-direction: $flexDirection
+    justify-content: $justifyDirection
+    align-items: $alignDirection
+    flex-wrap: $flexWrap
+    align-content: $alignContent
+
