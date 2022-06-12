@@ -2,7 +2,6 @@
 
 .pagescroll
     @include Define.wrapper($position: fixed, $top: 96px, $width: 100%, $bottom: 0)
+    @include Define.flex($flexDirection: column)
     overflow-y: auto
     overflow-x: hidden
-    display: flex
-    flex-direction: column

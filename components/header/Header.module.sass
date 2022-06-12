@@ -1,32 +1,26 @@
 @use '../../styles/Define'
 
-.header
+#Header
     @include Define.wrapper($position: fixed, $width: 100%, $zindex: 100)
-    background: white
-    padding-top: 29px
-    padding-bottom: 29px
+    @include Define.padding($top: 29px, $bottom: 29px)
     box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
 
-.sw_lang
-    margin-left: 62px
-    
-    > p
-        font-weight: 700
-        color: Define.$green_60
+    .sw_lang
+        @include Define.margin($left: 62px)
+        
+        > p
+            &, *
+                @include Define.inlineBlock($align: middle)
 
-        &, *
-            display: inline-block
-            vertical-align: middle
+            svg
+                @include Define.margin($bottom: 4px)
 
-        svg
-            margin-bottom: 4px
+    .navigation
+        a
+            @extend .text-natural-50
+        
+        a:not(:last-child)
+            @include Define.margin($right: 20px)
 
-.navigation
-    a
-        color: Define.$natural_50
-    
-    a:not(:last-child)
-        margin-right: 20px
-
-    a:not(:first-child)
-        margin-left: 20px
+        a:not(:first-child)
+            @include Define.margin($left: 20px)

@@ -1,15 +1,88 @@
-$natural_50: #707070
-$green_60: #086C48
-$green_80: #044D41
-$green_100: #013233
+$colors: ("white": white, "natural-10": #F6F6F6, "natural-50": #707070, "green-100": #013233, "green-10": #E9FFEF, "green-60": #086C48, "green-70": #055C46, "green-80": #044D41, "green-50": #32A671)
+$textAligns: ("left": left, "right": right, "center": center, "justify": justify)
+$fontWeights: ("thin": 100, "light": 300, "regular": 400, "medium": 500, "semibold": 600, "bold": 700, "extrabold": 800, "black": 900)
 
-@mixin wrapper($position: absolute, $top: auto, $left: auto, $width: auto, $height: auto, $bottom: auto, $right: auto, $zindex: inherit)
+
+@each $name, $color in $colors
+    .text-#{$name}
+        color: $color
+    .bg-#{$name}
+        background-color: $color
+
+@each $name, $align in $textAligns
+    .align-#{$align}
+        text-align: $align
+
+@each $name, $weight in $fontWeights
+    .font-#{$name}
+        font-weight: $weight
+
+
+@mixin wrapper($position: relative, $top: false, $left: false, $width: false, $height: false, $bottom: false, $right: false, $zindex: false)
     position: $position
-    top: $top
-    left: $left
-    bottom: $bottom
-    right: $right
-    width: $width
-    height: $height
-    z-index: $zindex
+    @if $top != false
+        top: $top
+    @if $left != false
+        left: $left
+    @if $bottom != false
+        bottom: $bottom
+    @if $right != false
+        right: $right
+    @if $width != false
+        width: $width
+    @if $height != false  
+        height: $height
+    @if $zindex != false
+        z-index: $zindex
     
+@mixin bgGradient($deg: 0deg, $start: 0%, $startColor, $end: 100%, $endColor)
+    background: linear-gradient($deg, $startColor $start, $endColor $end)
+
+@mixin flex($justifyContent: false, $alignItems: false, $flexDirection: false)
+    display: flex
+    @if $alignItems != false
+        align-items: $alignItems
+    @if $justifyContent != false
+        justify-content: $justifyContent
+    @if $flexDirection != false
+        flex-direction: $flexDirection
+
+@mixin inlineBlock($align: top)
+    display: inline-block
+    vertical-align: $align
+
+@mixin bgImage($url: none, $size: cover, $position: center center, $repeat: no-repeat)
+    background-image: $url
+    background-size: $size
+    background-position: $position
+    background-repeat: $repeat
+
+@mixin padding($top: false, $bottom: false, $left: false, $right: false) 
+    @if $left != false
+        padding-left: $left
+    @if $right != false
+        padding-right: $right
+    @if $top != false
+        padding-top: $top
+    @if $bottom != false
+        padding-bottom: $bottom
+
+@mixin margin($top: false, $bottom: false, $left: false, $right: false) 
+    @if $left != false
+        margin-left: $left
+    @if $right != false
+        margin-right: $right
+    @if $top != false
+        margin-top: $top
+    @if $bottom != false
+        margin-bottom: $bottom
+
+@mixin typograph($size: false, $weight: false, $lineHeight: false, $letterSpacing: false)
+    @if $size != false
+        font-size: $size
+    @if $weight != false
+        font-weight: map-get($fontWeights, $weight)
+    @if $lineHeight != false
+        line-height: $lineHeight
+    @if $letterSpacing != false
+        letter-spacing: $letterSpacing

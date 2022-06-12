@@ -17,7 +17,7 @@ export default function Header () {
         { id: 'Karir',               en: 'Career',                   link: 'career' } ]
 
     return (
-        <header className={ `${ styles.header } wrp-padding` }>
+        <header id={ styles.Header } className='container-padding'>
             <div className='row middle-xs between-xs'>
                 <div className='col-xs-2'><Logo /></div>
                 <div className='col-xs-10'>
@@ -26,7 +26,7 @@ export default function Header () {
                             <div className='row'>{ navs.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }>{ nav[lang] }</Link>) }</div>
                         </nav>
                         <div className={ styles.sw_lang }>
-                            <p><LangIco /> &nbsp;&nbsp;&nbsp;{ lang == 'id' ? 'ID' : 'EN' } &nbsp;<KarrowDown /></p>
+                            <p className='text-green-60 font-bold'><LangIco /> &nbsp;&nbsp;&nbsp;{ lang == 'id' ? 'ID' : 'EN' } &nbsp;<KarrowDown /></p>
                         </div>
                     </div>
                 </div>
