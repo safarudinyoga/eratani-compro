@@ -28,7 +28,7 @@ export default function Footer () {
     }
 
     return (
-        <footer className={ `${ styles.footer } wrp-padding` }>
+        <footer id={ styles.Footer } className='container-padding bg-green-80'>
             <div className={ `row ${ styles.main }` }>
                 <div className={`col-xs-6 ${ styles.left }`}>
                     <Logo />
@@ -48,7 +48,7 @@ export default function Footer () {
             </div>
             <div className='row'>
                 <div className='col-xs-12'>
-                    <p className={ styles.copyright }><small>Copyright © 2022 by PT Eratani Teknologi Nusantara</small></p>
+                    <p className={ `${ styles.copyright } align-center small` }>Copyright © 2022 by PT Eratani Teknologi Nusantara</p>
                 </div>
             </div>
         </footer>
