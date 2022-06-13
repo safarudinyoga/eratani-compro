@@ -18,8 +18,9 @@ $fontWeights: ("thin": 100, "light": 300, "regular": 400, "medium": 500, "semibo
         font-weight: $weight
 
 
-@mixin wrapper($position: relative, $top: false, $left: false, $width: false, $height: false, $bottom: false, $right: false, $zindex: false)
-    position: $position
+@mixin box($position: false, $top: false, $left: false, $width: false, $height: false, $bottom: false, $right: false, $zindex: false)
+    @if $position != false
+        position: $position
     @if $top != false
         top: $top
     @if $left != false

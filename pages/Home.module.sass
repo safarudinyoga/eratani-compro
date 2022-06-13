@@ -6,16 +6,16 @@
         @include Define.flex($alignItems: center)
 
         .background
-            @include Define.wrapper($position: absolute, $left: 0, $top: 0, $width: 100%, $height: 100%)
+            @include Define.box($position: absolute, $left: 0, $top: 0, $width: 100%, $height: 100%)
             @include Define.bgImage()
 
             &::before
                 content: ''
-                @include Define.wrapper($position: absolute, $left: 0, $top: 0, $width: 100%, $height: 100%)
+                @include Define.box($position: absolute, $left: 0, $top: 0, $width: 100%, $height: 100%)
                 @include Define.bgGradient($deg: 360deg, $start: 0%, $startColor: rgba(18, 18, 18, 0.6), $end: 100%, $endColor: rgba(18, 18, 18, 0.3))
 
         .content
-            @include Define.wrapper($zindex: 1)
+            @include Define.box($zindex: 1)
 
             p
                 @include Define.margin($top: 25px, $bottom: 59px)
@@ -31,7 +31,7 @@
         
         .slide
             @include Define.inlineBlock($align: bottom)
-            @include Define.wrapper($width: calc(29% - 6.5px))
+            @include Define.box($position: relative, $width: calc(29% - 6.5px))
             @include Define.padding($right: 17px)
             @include Define.margin($right: 15px)
             white-space: normal
@@ -43,29 +43,29 @@
                     @include Define.inlineBlock($align: top)
 
                     &:first-child
-                        width: 34px
+                        @include Define.box($width: 34px)
                 
                     &:last-child
-                        width: calc(100% - 34px)
+                        @include Define.box($width: calc(100% - 34px))
 
             .caption
-                @include Define.wrapper($width: 100%)
+                @include Define.box($position: relative, $width: 100%)
                 @include Define.margin($top: 13px)
                 @include Define.padding($right: 45px)
 
                 p
-                    height: 44px
+                    @include Define.box($height: 44px)
                     overflow: hidden
 
                     span
                         display: block
 
                 svg
-                    @include Define.wrapper($position: absolute, $bottom: 4px, $right: 2px)
+                    @include Define.box($position: absolute, $bottom: 4px, $right: 2px)
                     visibility: hidden
 
             &.slide_active
-                width: 42%
+                @include Define.box($width: 42%)
                 
                 h6
                     @include Define.typograph($size: 20px)
@@ -80,7 +80,7 @@
                         visibility: visible
 
             .line
-                @include Define.wrapper($position: absolute, $top: 0, $width: 2px, $height: 100%, $right: 0)
+                @include Define.box($position: absolute, $top: 0, $width: 2px, $height: 100%, $right: 0)
                 @extend .bg-green-50
     
 #Solution
