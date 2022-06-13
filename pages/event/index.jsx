@@ -1,4 +1,5 @@
 // import React from 'react'
+import Link from 'next/link'
 import PropTypes from 'prop-types'
 
 // components & styles
@@ -7,7 +8,7 @@ import AgendaImg from '../../assets/svgs/agenda.svg'
 
 // utils
 
-const CardAgenda = () => (
+const CardAgenda = ({ id }) => (
   <div className={`col-xs-12 col-md-6 col-lg-4`}>
     <div className={styles.card}>
       <img src='https://statik.tempo.co/data/2020/11/25/id_983211/983211_720.jpg' className={styles.img} alt='alt' />
@@ -21,7 +22,9 @@ const CardAgenda = () => (
           <h4 className={styles.place_title}>Kecamatan Cantigi</h4>
           <h4 className={styles.place_desc}>Indramayu, Jawa Barat</h4>
         </div>
-        <button>Lihat Detail</button>
+        <Link href={`/event/${id}`}>
+          <button className={styles.button_detail}>Lihat Detail</button>
+        </Link>
       </div>
     </div>
   </div>
@@ -34,7 +37,7 @@ const Agenda = props => {
       <h4 className={styles.sub_title}>Ayo ikuti kegiatan Eratani dengan mendaftar pada kegiatan-kegiatan dibawah ini.</h4>
       <div className={`row ${styles.wrapper_agenda}`}>
         {[1,2,3,4,5,6].map((res, i) =>
-          <CardAgenda key={i} />
+          <CardAgenda key={i} id={i} />
         )}
       </div>
       <button className={styles.button_more}>Lihat Lebih Banyak</button>
