@@ -1,5 +1,6 @@
 @use '../styles/Define'
 
+/* ------------------ Hero Banner ------------------ */
 #Hero
     .wrapper
         @include Define.padding($left: 104px, $right: 104px)
@@ -20,12 +21,22 @@
             p
                 @include Define.margin($top: 25px, $bottom: 59px)
                 max-width: 528px
+/* ------------------ End Hero Banner ------------------ */
 
+/* ------------------ Ecosystem ------------------ */
 #Ecosystem
     @include Define.padding($top: 96px, $bottom: 90px)
 
+    .eco_arrow
+        a
+            &:first-child
+                @include Define.margin($right: 42px)
+                
+                svg
+                    transform: scaleX(-1)
+
     .slider
-        @include Define.margin($top: 48px)
+        @include Define.margin($top: 21px)
         white-space: nowrap
         overflow: hidden
         
@@ -60,7 +71,7 @@
                     span
                         display: block
 
-                svg
+                a
                     @include Define.box($position: absolute, $bottom: 4px, $right: 2px)
                     visibility: hidden
 
@@ -82,9 +93,89 @@
             .line
                 @include Define.box($position: absolute, $top: 0, $width: 2px, $height: 100%, $right: 0)
                 @extend .bg-green-50
+/* ------------------ End Ecosystem ------------------ */
     
+/* ------------------ Solutions ------------------ */
+.solution_hover_transistion    
+    transition: all .8s cubic-bezier(.4, 1.35, .6, 1)
+
 #Solution
     @include Define.padding($top: 64px, $bottom: 80px)
 
+    > p
+        @include Define.margin($top: 16px, $bottom: 56px, $left: auto, $right: auto)
+        max-width: 900px
+
+    .row
+        @include Define.margin($left: -12px, $right: -12px)
+
+    .column
+        @include Define.padding($left: 12px, $right: 12px)
+
+    .wrapper
+        @include Define.box($position: relative)
+        overflow: hidden
+        
+        &::after
+            content: ''
+            @include Define.box($position: absolute, $left: 0, $top: 0, $width: 100%, $height: 100%)
+            @include Define.bgGradient($deg: 0deg, $start: 0%, $startColor: rgba(18, 18, 18, 0.8), $end: 100%, $endColor: rgba(18, 18, 18, 0.1))
+            opacity: 0.5
+            @extend .solution_hover_transistion
+
+        img
+            transform: scale(1.2)
+            @extend .solution_hover_transistion
+
+        h3
+            @include Define.box($position: absolute, $bottom: 40px, $left: 40px, $width: 100%, $zindex: 1)
+            @include Define.padding($right: 40px)
+            white-space: nowrap
+            transform-origin: left top
+            @extend .solution_hover_transistion
+            
+            span
+                @extend .solution_hover_transistion
+
+                &:last-child
+                    @include Define.box($position: absolute, $top: 0, $left: 0)
+                    opacity: 0
+            
+        .caption
+            @include Define.box($position: absolute, $left: 0, $width: 100%, $zindex: 1)
+            @include Define.padding($left: 40px, $right: 40px)
+            transform-origin: center bottom
+            transform: scale(0.5)
+            @extend .solution_hover_transistion
+            
+            p
+                @include Define.typograph($size: 16px, $lineHeight: 23px)
+            
+            a
+                @include Define.margin($top: 32px)
+
+        &:hover
+            img
+                transform: scale(1)
+
+            &::after
+                opacity: 1
+
+            h3
+                transform: scale(0.6)
+
+                span
+                    &:last-child
+                        opacity: 1
+
+                    &:first-child
+                        opacity: 0
+
+            .caption 
+                transform: scale(1)
+/* ------------------ End Solutions ------------------ */
+
+/* ------------------ Maps ------------------ */
 #Maps
     @include Define.padding($top: 48px, $bottom: 96px)
+/* ------------------ End Maps ------------------ */
