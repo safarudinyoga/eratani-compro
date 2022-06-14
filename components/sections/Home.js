@@ -342,13 +342,5 @@ const Join = () => {
 }
 /* ------------------ End Join ------------------ */
 
-// const SectionsFunc = {
-//     Hero: Hero,
-//     Ecosystem: Ecosystem,
-//     Solution: Solution,
-//     Maps: Maps,
-//     Join: Join
-// }
-
 const SectionsFunc = { Hero, Ecosystem, Solution, Maps, Join }
 export default SectionsFunc
