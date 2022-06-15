@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 // components & styles
 import styles from './event.module.sass'
-import AgendaImg from '../../assets/svgs/agenda.svg'
 
 // utils
 

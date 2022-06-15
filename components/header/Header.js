@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 
 const Header = () => {
     const router = useRouter()
-    const activePathname = router.pathname.slice(1)
+    const activePathname = router.asPath.slice(1).split('/')[0]
 
     let lang = 'id'
     const navs = [
@@ -31,7 +31,7 @@ const Header = () => {
                             <div className='row'>
                                 { navs.map((nav, idx) => (
                                     <Link key={ idx } href={ `/${ nav.link }` }>
-                                        <a className={activePathname === nav.link && 'nav_active'}>{ nav[lang] }</a>
+                                        <a className={activePathname === nav.link ? 'nav_active' : ''}>{ nav[lang] }</a>
                                     </Link>)
                                 )}
                             </div>
