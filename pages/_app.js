@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import '../styles/flexboxgrid.css'
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 import '../styles/Base.sass'
 import Layout from '../components/layout/Layout'
 

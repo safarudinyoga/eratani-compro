@@ -1,22 +1,17 @@
 export default function SetRatio ({ cssClass }) {
-    let objects = document.getElementsByClassName(cssClass)
 
-    const calculate = () => {
-        for (let i = 0; i < objects.length; i++) {
-            const element = objects[i];
-            const ratioData = element.dataset
+    let nodes = document.getElementsByClassName(cssClass)
+
+    const Calculate = () =>
+        Array.prototype.forEach.call(nodes, el => {
+            const ratioData = el.dataset
     
-            const elWidth = element.clientWidth
-            const elHeight = elWidth / parseFloat(ratioData.ratioW) * parseFloat(ratioData.ratioH)
-            elHeight = (elHeight <= parseFloat(ratioData.ratioMinH)) ? parseFloat(ratioData.ratioMinH) : elHeight
+            let height = el.clientWidth / parseFloat(ratioData.ratioW) * parseFloat(ratioData.ratioH)
+            height = (height <= parseFloat(ratioData.ratioMinH)) ? parseFloat(ratioData.ratioMinH) : height
 
-            objects[i].style.height = elHeight + 'px'
-            objects[i].style.position = 'relative'
-        }
-    }
+            el.style.height = height + 'px'
+            el.style.position = 'relative'
+        })
 
-    return {
-        Calculate: calculate
-    }
-
+    return { Calculate }
 }

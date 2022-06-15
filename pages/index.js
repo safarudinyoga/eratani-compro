@@ -15,6 +15,7 @@ export default function HomePage() {
         Sections.Ecosystem(),
         Sections.Solution(),
         Sections.Maps(),
+        Sections.Media(),
         Sections.Join()
     ]
 

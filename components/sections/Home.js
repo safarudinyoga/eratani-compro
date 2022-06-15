@@ -1,4 +1,6 @@
 import Parse from 'html-react-parser'
+import { useState } from 'react';
+import Slick from "react-slick";
 import gsap from 'gsap'
 
 import styles from './Home.module.sass'
@@ -104,26 +106,6 @@ const Ecosystem = () => {
 /* ------------------ Solutions ------------------ */
 const Solution = () => {
 
-    const scripts = () => {
-        const els = document.getElementsByClassName('__Solution__')
-
-        for (let i = 0; i < els.length; i++) {
-            const el = els[i];
-            const caption = el.getElementsByClassName('__SolutionCaption__')[0]
-            const title = el.getElementsByClassName('__SolutionTitle__')[0]
-            
-            caption.style.bottom = (caption.clientHeight / 2) * -1 + 'px'
-            el.onmouseenter = () => {
-                caption.style.bottom = '80px'
-                title.style.bottom = caption.clientHeight + 'px'
-            }
-            el.onmouseleave = () => {
-                caption.style.bottom = (caption.clientHeight / 2) * -1 + 'px'
-                title.style.bottom = '40px'
-            }
-        }
-    }
-
     const solutionData = [
         {
             title1: 'Bantuan<br />Permodalan dan<br />Pendampingan',
@@ -157,6 +139,25 @@ const Solution = () => {
         }
     ]
 
+    const scripts = () => {
+        const solutionNodes = document.getElementsByClassName('__Solution__')
+
+        Array.prototype.forEach.call(solutionNodes, el => {
+            const captionNode = el.getElementsByClassName('__SolutionCaption__')[0]
+            const titleNode = el.getElementsByClassName('__SolutionTitle__')[0]
+        
+            gsap.set(captionNode, { bottom: (captionNode.clientHeight / 2) * -1 })
+            el.onmouseenter = () => 
+                gsap.timeline()
+                    .set(captionNode, { bottom: 80 })
+                    .set(titleNode, { bottom: captionNode.clientHeight })
+            el.onmouseleave = () => 
+                gsap.timeline()
+                    .set(captionNode, { bottom: (captionNode.clientHeight / 2) * -1 })
+                    .set(titleNode, { bottom: 40 })
+        })
+    }
+
     return {
         Html: (key) => (
             <section id={ styles.Solution } key={ key } className='bg-natural-10 container-padding'>
@@ -188,28 +189,6 @@ const Solution = () => {
 
 /* ------------------ Maps ------------------ */
 const Maps = () => {
-
-    const scripts = () => { 
-        const tip = document.getElementsByClassName('__MapsTip__')[0]
-        const tipTitle = document.getElementsByClassName('__MapsTipTitle__')[0]
-        const points = document.getElementsByClassName('__MapsPoint__')
-
-        for (let i = 0; i < points.length; i++) {
-            const element = points[i];
-            const c = element.getElementsByTagName('circle')[0]
-
-            element.onmouseenter = () => {
-                tipTitle.innerHTML = element.dataset.title
-                gsap.timeline()
-                    .set(tip, { left: c.getAttribute('cx'), top: c.getAttribute('cy') })
-                    .to(tip, { autoAlpha: 1, duration: 0.4 })
-            }
-
-            element.onmouseleave = () => {
-                gsap.to(tip, { autoAlpha: 0, duration: 0.3 })
-            }
-        }
-    }
 
     const dataMaps = [
         {
@@ -244,6 +223,7 @@ const Maps = () => {
         },
         {
             prov: 'Sulawesi Selatan',
+            cities: [],
             pos: { x: 786, y: 282},
             comingSoon: true
         },
@@ -261,17 +241,33 @@ const Maps = () => {
         },
         {
             prov: 'Daerah Istimewa Yogyakarta',
-            cities: ['Bantul, Kulon Progo'],
+            cities: ['Bantul', 'Kulon', 'Progo'],
             pos: { x: 507, y: 436},
             comingSoon: false
         },
         {
             prov: 'Jawa Timur',
-            cities: ['Ngawi, Jombang'],
+            cities: ['Ngawi', 'Jombang'],
             pos: { x: 558, y: 422},
             comingSoon: false
         }
     ]
+
+    const [ mapIndexHover, setMapIndexHover ] = useState(0)
+
+    const scripts = () => { 
+        const tipNode = document.getElementsByClassName('__MapsTip__')[0]
+        const pointNodes = document.getElementsByClassName('__MapsPoint__')
+
+        Array.prototype.forEach.call(pointNodes, (el, index) => {
+            el.onmouseenter = () => {
+                setMapIndexHover(index)
+                const scaleFactor = window.innerWidth / 1440
+                gsap.fromTo(tipNode, { left: (dataMaps[index].pos.x * scaleFactor), top: (dataMaps[index].pos.y * scaleFactor), autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 })
+            }
+            el.onmouseleave = () => gsap.to(tipNode, { autoAlpha: 0, duration: 0.3 })
+        })
+    }
 
     return {
         Html: (key) => (
@@ -283,9 +279,9 @@ const Maps = () => {
                 <div className={ styles.indonesia }>
                     <Indonesia />
                     <div className={ styles.interactive }>
-                        <svg width="1440" height="521" viewBox="0 0 1440 521" fill="none">
+                        <svg viewBox="0 0 1440 521" fill="none" xmlns="http://www.w3.org/2000/svg">
                             { dataMaps.map((map, index) => 
-                                <g className={ `${ (map.comingSoon) ? styles.coming_soon : '' } ${ styles.dot_point } __MapsPoint__` } key={ index } data-title={ map.prov }>
+                                <g className={ `${ (map.comingSoon) ? styles.coming_soon : '' } ${ styles.dot_point } __MapsPoint__` } key={ index }>
                                     <circle cx={ map.pos.x } cy={ map.pos.y } r="8" className={ styles.shadow }/>
                                     <circle cx={ map.pos.x } cy={ map.pos.y } r="8" className={ styles.outline }/>
                                     <circle cx={ map.pos.x } cy={ map.pos.y } r="5" className={ styles.dot }/>
@@ -294,13 +290,11 @@ const Maps = () => {
                         </svg>
                         <div className={ `${ styles.tip } __MapsTip__` }>
                             <MapsHvr />
-                            <div className={ styles.content }>
-                                <h6 className='text-green-60 __MapsTipTitle__'>Jawa Tengah</h6>
-                                <p className='label text-white bg-green-60'>Cirebon</p>
-                                <p className='label text-white bg-green-60'>Indramayu</p>
-                                <p className='label text-white bg-green-60'>Karawang</p>
-                                <p className='label text-white bg-green-60'>Majalengka</p>
-                                <p className='label text-white bg-green-60'>Sumedang</p>
+                            <div className={ `${ styles.content } __MapsTipContent__` }>
+                                <h6 className='text-green-60'>{ dataMaps[mapIndexHover].prov }</h6>
+                                { dataMaps[mapIndexHover].cities.map((city, index) => 
+                                    <p className='label text-white bg-green-60' key={ index }>{ city }</p>
+                                ) }
                             </div>
                         </div>
                     </div>
@@ -311,6 +305,94 @@ const Maps = () => {
     } 
 }
 /* ------------------ End Maps ------------------ */
+
+/* ------------------ Media ------------------ */
+const Media = () => {
+
+    const dataMitras = [
+        {image: '1.png', alt: 'bulog'},
+        {image: '2.png', alt: 'bulog'},
+        {image: '3.png', alt: 'bulog'},
+        {image: '4.png', alt: 'bulog'},
+        {image: '5.png', alt: 'bulog'},
+        {image: '6.png', alt: 'bulog'},
+        {image: '7.png', alt: 'bulog'},
+        {image: '8.png', alt: 'bulog'},
+        {image: '9.png', alt: 'bulog'},
+        {image: '10.png', alt: 'bulog'},
+        {image: '11.png', alt: 'bulog'},
+        {image: '12.png', alt: 'bulog'},
+        {image: '13.png', alt: 'bulog'},
+        {image: '14.png', alt: 'bulog'},
+        {image: '15.png', alt: 'bulog'},
+        {image: '16.png', alt: 'bulog'},
+        {image: '17.png', alt: 'bulog'},
+        {image: '18.png', alt: 'bulog'},
+        {image: '19.png', alt: 'bulog'},
+        {image: '20.png', alt: 'bulog'},
+        {image: '21.png', alt: 'bulog'},
+        {image: '22.png', alt: 'bulog'},
+
+        {image: 0, alt: 'bulog'},
+        {image: 0, alt: 'bulog'},
+        {image: 0, alt: 'bulog'}
+    ]
+
+    const dataDiliputs = [
+        {image: '1.png', alt: 'bulog'},
+        {image: '2.png', alt: 'bulog'},
+        {image: '3.png', alt: 'bulog'},
+        {image: '4.png', alt: 'bulog'},
+        {image: '5.png', alt: 'bulog'},
+    ]
+
+    const slickSettings = {
+        dots: true,
+        infinite: true,
+        speed: 1800,
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        cssEase: 'ease-out'
+    }
+    
+    const scripts = () => { }
+
+    return {
+        Html: (key) => (
+            <section id={ styles.Media } key={ key } className='bg-natural-10 container-padding align-center'>
+                <div className={ styles.tab_title }>
+                    <h4 className={ `text-natural-40 ${ styles.active }` }>Mitra Kami</h4>
+                    <h4 className='text-natural-40'>Diliput oleh</h4>
+                </div>
+                <p>Kami bekerja sama dengan mitra dan media terkemuka untuk mewujudkan ekosistem pertanian yang kuat demi mendukung kesejahteraan petani Indonesia.</p>
+                <div className={ styles.content }>
+                    <Slick { ...slickSettings } className={ styles.mitra }>
+                        { dataMitras.map((mitra, index) => 
+                            <div key={ index }>
+                                <div className={ styles.slick_slide }>
+                                    { (!mitra.image) ? '' : <img src={ `/media/mitra/${ mitra.image }` } alt={ mitra.alt } /> }
+                                </div>
+                            </div>
+                        ) }
+                    </Slick>
+                    {/* <Slick { ...slickSettings } className={ styles.diliput }>
+                        { dataDiliputs.map((diliput, index) => 
+                            <div key={ index }>
+                                <div className={ styles.slick_slide }>
+                                    { (!diliput.image) ? '' : <img src={ `/media/diliput/${ diliput.image }` } alt={ diliput.alt } /> }
+                                </div>
+                            </div>
+                        ) }
+                    </Slick> */}
+                </div>
+            </section>
+        ),
+        Script: scripts
+    } 
+}
+/* ------------------ End Media ------------------ */
 
 /* ------------------ Join ------------------ */
 const Join = () => {
@@ -342,5 +424,5 @@ const Join = () => {
 }
 /* ------------------ End Join ------------------ */
 
-const SectionsFunc = { Hero, Ecosystem, Solution, Maps, Join }
+const SectionsFunc = { Hero, Ecosystem, Solution, Maps, Media, Join }
 export default SectionsFunc

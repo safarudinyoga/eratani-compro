@@ -226,7 +226,7 @@
         @include Define.box($position: relative)
         
         .interactive
-            @include Define.box($position: absolute, $top: 0, $left:0)
+            @include Define.box($position: absolute, $top: 0, $left:0, $width: 100%, $height: 100%)
 
             .dot_point
                 cursor: pointer
@@ -275,6 +275,48 @@
                     p
                         @include Define.margin($top: 4px, $bottom: 4px, $right: 8px )
 /* ------------------ End Maps ------------------ */
+
+/* ------------------ Media ------------------ */
+#Media
+    @include Define.padding($top: 40px, $bottom: 68px)
+
+    .tab_title
+        h4 
+            @include Define.box($position: relative)
+            @include Define.inlineBlock($align: top)
+            @include Define.margin($left: 31px, $right: 31px)
+            @include Define.typograph($size: 32px, $lineHeight: 45px)
+            @include Define.padding($left: 3px, $right: 3px)
+            cursor: pointer
+
+            &::after
+                content: ''
+                @include Define.box($position: absolute, $left: 0, $width: 0, $height: 2px, $bottom: -6px)
+                @extend .bg-green-60
+                transition: all 0.7s ease
+            
+            &.active
+                @extend .text-green-60
+
+                &::after
+                    @include Define.box($width: 100%)
+
+    > p
+        max-width: 705px
+        @include Define.margin($top: 35px, $bottom: 32px, $left: auto, $right: auto)
+            
+    .slick_slide
+        @include Define.box($height: 208px)
+        @include Define.flex($justifyContent: center, $alignItems: center)
+
+        img 
+            filter: grayscale(100%)
+            transition: all 0.3s linear
+            
+            &:hover
+                filter: grayscale(0)
+            
+/* ------------------ End Media ------------------ */
 
 /* ------------------ Join ------------------ */
 @keyframes join_ul 
