@@ -290,7 +290,7 @@ const Maps = () => {
                         </svg>
                         <div className={ `${ styles.tip } __MapsTip__` }>
                             <MapsHvr />
-                            <div className={ `${ styles.content } __MapsTipContent__` }>
+                            <div className={ styles.content }>
                                 <h6 className='text-green-60'>{ dataMaps[mapIndexHover].prov }</h6>
                                 { dataMaps[mapIndexHover].cities.map((city, index) => 
                                     <p className='label text-white bg-green-60' key={ index }>{ city }</p>
