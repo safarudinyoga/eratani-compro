@@ -3,7 +3,7 @@
 
 .container_eventdetail
   max-width: 1440px
-  padding: 72px 0
+  padding: 72px 50px
   margin: 0 auto 100px
 
   .eventdetail
@@ -59,6 +59,46 @@
 
         .icon
           margin-right: 20px
+
+@media only screen and (min-width: 768px) and (max-width: 976px)
+  .container_eventdetail
+    padding: 72px 50px
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  .container_eventdetail
+    padding: 135px 25px 0
+    margin: 0 auto 80px
+
+    .eventdetail
+      margin: 30px auto 0
+
+      .title
+        font-size: 24px
+        line-height: 32px
+        margin-bottom: 12px
+
+      .article_date
+        font-size: 12px
+        margin-bottom: 30px
+
+      .img
+        margin-bottom: 30px
+
+      .article
+        font-size: 14px
+        margin-bottom: 60px
+
+      .button_daftar_petani
+        padding: 12px 18px
+        font-size: 16px
+        margin: 0 auto 50px
+
+      .share
+        +flex(column, flex-start, flex-start)
+
+        .wrapper_icon
+          margin: 20px 0 0
+
 
 
 

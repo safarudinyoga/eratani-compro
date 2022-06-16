@@ -89,17 +89,38 @@
       border: 1px solid Define.$green_80
       box-shadow: 0px 1px 0px rgba(112, 112, 112, 0.15)
 
+@media only screen and (min-width: 1440px)
+  .agenda
+    max-width: 1440px
+
 @media only screen and (min-width: 768px) and (max-width: 976px)
   .agenda
     .wrapper_agenda
       .card
         max-width: 500px
 
-@media only screen and (min-width: 1440px)
+@media only screen and (min-device-width: 481px) and (max-device-width: 768px)
   .agenda
-    max-width: 1440px
+    padding: 135px 15px
 
-@media only screen and (min-device-width: 480px) and (max-device-width: 767px)
+    h3
+      font-size: 2em
+
+    .sub_title
+      width: 80%
+      font-size: 1em
+      margin: 0 auto 50px
+
+    .wrapper_agenda
+      .card
+        max-width: 350px
+        margin: 0 auto 30px
+
+    .button_more
+      padding: 6px 12px
+      font-size: 0.8em
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
   .agenda
     padding: 135px 15px
 
