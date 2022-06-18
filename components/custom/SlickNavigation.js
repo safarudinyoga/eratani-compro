@@ -31,6 +31,8 @@ export default function SlickCustom (className, settings) {
             },
             beforeChange: (current, next) => {
                 const nodes = document.querySelectorAll(`.${ className } .${ styles.slick_dots } a`)
+                if (nodes.length == 0) return
+                
                 nodes[current / slidePerShow].classList.remove(styles.slick_active)
                 nodes[next / slidePerShow].classList.add(styles.slick_active)
             }

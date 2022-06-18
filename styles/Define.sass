@@ -8,6 +8,10 @@ $fontWeights: ("thin": 100, "light": 300, "regular": 400, "medium": 500, "semibo
         color: $color
     .bg-#{$name}
         background-color: $color
+    .text-#{$name}-hover:hover
+        color: $color
+    .bg-#{$name}-hover:hover
+        background-color: $color
 
 @each $name, $align in $textAligns
     .align-#{$align}

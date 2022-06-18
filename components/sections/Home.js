@@ -4,6 +4,8 @@ import Slick from "react-slick";
 import gsap from 'gsap'
 
 import SlickNavigationCustom from '../custom/SlickNavigation'
+import SetRatio from '../custom/SetRatio'
+import Ellipsis from '../custom/Ellipsis'
 
 import styles from './Home.module.sass'
 import EyeViewVect from '../../assets/vector/eye-view.svg'
@@ -15,32 +17,23 @@ import FindPlaystorePng from '../../assets/static/find-playstore.png'
 
 /* ------------------ Hero Banner ------------------ */
 const Hero = () => {
-    
-    const scripts = () => { }
-
-    return {
-        Html: (key) => (
-            <section id={ styles.Hero } key={ key }>
-                <div className={ `${ styles.wrapper } __SetRatio__` } data-ratio-w='2.33' data-ratio-h='1' data-ratio-min-h='600'>
-                    <div className={ styles.background } style={ { backgroundImage: `url('/hero/IEP05860 1.jpg')` } }></div>
-                    <div className={ styles.content }>
-                        <h1 className='text-green-10'>Selalu Ada<br />Untuk Petani</h1>
-                        <p className='text-white align-justify'>Kemudahan bertani di dalam genggaman Anda. Semua kebutuhan petani dapat terpenuhi hanya dengan satu aplikasi. Ayo daftar sekarang dan rasakan manfaatnya!</p>
-                        <a href='#' className='btn' target='_blank'>Unduh Aplikasi Eratani</a>
-                    </div>
+    return ( 
+        <section id={ styles.Hero }>
+            <SetRatio ax='2.33' ay='1' min='600' className={ styles.wrapper }>
+                <div className={ styles.background } style={ { backgroundImage: `url('/hero/IEP05860 1.jpg')` } }></div>
+                <div className={ styles.content }>
+                    <h1 className='text-green-10'>Selalu Ada<br />Untuk Petani</h1>
+                    <p className='text-white align-justify'>Kemudahan bertani di dalam genggaman Anda. Semua kebutuhan petani dapat terpenuhi hanya dengan satu aplikasi. Ayo daftar sekarang dan rasakan manfaatnya!</p>
+                    <a href='#' className='btn' target='_blank'>Unduh Aplikasi Eratani</a>
                 </div>
-            </section>
-        ), 
-        Script: scripts
-    } 
+            </SetRatio>
+        </section>
+    )
 }
 /* ------------------ End Hero Banner ------------------ */
 
 /* ------------------ Ecosystem ------------------ */
 const Ecosystem = () => {
-
-    const scripts = () => { }
-
     const ecoSystemData = [
         {
             no: '01',
@@ -74,42 +67,42 @@ const Ecosystem = () => {
         }
     ]
 
-    return {
-        Html: (key) => (
-            <section id={ styles.Ecosystem } className='container-padding' key={ key }>
-                <h4 className='text-green-70'>Menuju Ekosistem yang<br />Lebih Kuat Bersama Eratani</h4>
-                <div className={ `${ styles.eco_arrow } align-right` }>
-                    <a href='#' id='eco-left'><EcoArrowVect /></a>
-                    <a href='#' id='eco-right'><EcoArrowVect /></a>
-                </div>
-                <div className={ styles.slider }>
-                    { ecoSystemData.map((eco, index) =>
-                        <div className={ `${ styles.slide } ${ (index == 0) ? styles.slide_active : '' }` } key={ index }>
-                            <div className={ styles.slide_content }>
-                                <h6>
-                                    <span className='text-green-50'>{ eco.no }</span>
-                                    <span>{ eco.title }</span>
-                                </h6>
-                                <img src={ `/ecosystem/${ eco.image }` } width='100%' className='__SetRatio__ image-cover' data-ratio-w='1.42' data-ratio-h='1' data-ratio-min-h='0' />
-                                <div className={ styles.caption }>
-                                    <p className='small __Elipsing__' data-text={ eco.caption }><span>{ eco.caption }</span></p>
-                                    <a href="#"><EyeViewVect /></a>
-                                </div>
+    return (
+        <section id={ styles.Ecosystem } className='container-padding'>
+            <h4 className='text-green-70'>Menuju Ekosistem yang<br />Lebih Kuat Bersama Eratani</h4>
+            <div className={ `${ styles.eco_arrow } align-right` }>
+                <a href='#' id='eco-left'><EcoArrowVect /></a>
+                <a href='#' id='eco-right'><EcoArrowVect /></a>
+            </div>
+            <div className={ styles.slider }>
+                { ecoSystemData.map((eco, index) =>
+                    <div className={ `${ styles.slide } ${ (index == 0) ? styles.slide_active : '' }` } key={ index }>
+                        <div className={ styles.slide_content }>
+                            <h6>
+                                <span className='text-green-50'>{ eco.no }</span>
+                                <span>{ eco.title }</span>
+                            </h6>
+                            <SetRatio ax='1.42' ay='1' min='0'>
+                                <img src={ `/ecosystem/${ eco.image }` } width='100%' className='image-cover' />
+                            </SetRatio>
+                            <div className={ styles.caption }>
+                                <Ellipsis className={ styles.text }>
+                                    { eco.caption }
+                                </Ellipsis>
+                                <a href="#"><EyeViewVect /></a>
                             </div>
-                            <div className={ styles.line }></div>
                         </div>
-                    ) }
-                </div>
-            </section>
-        ),
-        Script: scripts
-    } 
+                        <div className={ styles.line }></div>
+                    </div>
+                ) }
+            </div>
+        </section>
+    )
 }
 /* ------------------ End Ecosystem ------------------ */
 
 /* ------------------ Solutions ------------------ */
 const Solution = () => {
-
     const solutionData = [
         {
             title1: 'Bantuan<br />Permodalan dan<br />Pendampingan',
@@ -157,40 +150,34 @@ const Solution = () => {
             .set(titleNode, { bottom: 40 })
     }
 
-    const scripts = () => { }
-
-    return {
-        Html: (key) => (
-            <section id={ styles.Solution } key={ key } className='bg-natural-10 container-padding'>
-                <h4 className='text-green-70 align-center'>Solusi Untuk Lahan Pertanian Anda</h4>
-                <p className='align-center'>Kami bertekad untuk memenuhi segala kebutuhan pertanian demi meningkatkan kesejahteraan petani di seluruh Indonesia. Bergabung bersama kami dan dapatkan solusi dari setiap masalah pertanian Anda.</p>
-                <div className={ `row ${ styles.row }` }>
-                    { solutionData.map((solution, index) =>
-                        <div className={`col-xs-4 ${ styles.column }`} key={ index }>
-                            <div onMouseEnter={ onSolutionEnter } onMouseLeave={ onSolutionLeave } className={`__SetRatio__ ${ styles.wrapper }`} data-ratio-w='1' data-ratio-h='1.26' data-ratio-min-h='0'>
-                                <img src={ `/solution/${ solution.image }` } className='image-cover' />
-                                <h3 className='text-green-10 __SolutionNode__'>
-                                    <span>{ Parse(solution.title1) }</span>
-                                    <span>{ Parse(solution.title2) }</span>
-                                </h3> 
-                                <div className={ `${styles.caption} align-center __SolutionNode__` }>
-                                    <p className='text-green-10 align-justify'>{ solution.caption }</p>
-                                    <a href={ solution.link.href } className='btn' target='_blank'>{ solution.link.text }</a>
-                                </div>
+    return (
+        <section id={ styles.Solution } className='bg-natural-10 container-padding'>
+            <h4 className='text-green-70 align-center'>Solusi Untuk Lahan Pertanian Anda</h4>
+            <p className='align-center'>Kami bertekad untuk memenuhi segala kebutuhan pertanian demi meningkatkan kesejahteraan petani di seluruh Indonesia. Bergabung bersama kami dan dapatkan solusi dari setiap masalah pertanian Anda.</p>
+            <div className={ `row ${ styles.row }` }>
+                { solutionData.map((solution, index) =>
+                    <div className={`col-xs-4 ${ styles.column }`} key={ index }>
+                        <SetRatio ax='1' ay='1.26' min='0' className={ styles.wrapper } onMouseEnter={ onSolutionEnter } onMouseLeave={ onSolutionLeave }>
+                            <img src={ `/solution/${ solution.image }` } className='image-cover' />
+                            <h3 className='text-green-10 __SolutionNode__'>
+                                <span>{ Parse(solution.title1) }</span>
+                                <span>{ Parse(solution.title2) }</span>
+                            </h3> 
+                            <div className={ `${styles.caption} align-center __SolutionNode__` }>
+                                <p className='text-green-10 align-justify'>{ solution.caption }</p>
+                                <a href={ solution.link.href } className='btn' target='_blank'>{ solution.link.text }</a>
                             </div>
-                        </div>
-                    ) }
-                </div>
-            </section>
-        ),
-        Script: scripts
-    } 
+                        </SetRatio>
+                    </div>
+                ) }
+            </div>
+        </section>
+    )
 }
 /* ------------------ End Solutions ------------------ */
 
 /* ------------------ Maps ------------------ */
 const Maps = () => {
-
     const mapsData = [
         {
             prov: 'Aceh',
@@ -267,48 +254,42 @@ const Maps = () => {
 
     const onPointLeave = () => gsap.to(mapsTipRef.current, { autoAlpha: 0, duration: 0.3 })
 
-    const scripts = () => { }
-
-    return {
-        Html: (key) => (
-            <section id={ styles.Maps } key={ key }>
-                <div className='container-padding align-center'>
-                    <h4 className='text-green-70'>Kami Mendukung Pertumbuhan dan<br />Digitalisasi Pertanian Seluruh Indonesia</h4>
-                    <p>Program Eratani sudah tersebar di beberapa wilayah di Indonesia dan akan terus menjalar ke seluruh Indonesia.</p>
-                </div>
-                <div className={ styles.indonesia }>
-                    <IndonesiaVect />
-                    <div className={ styles.interactive }>
-                        <svg viewBox="0 0 1440 521" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            { mapsData.map((map, index) => 
-                                <g onMouseEnter={ onPointEnter } onMouseLeave={ onPointLeave } className={ `${ (map.comingSoon) ? styles.coming_soon : '' } ${ styles.dot_point }` } key={ index } data-id={ index }>
-                                    <circle cx={ map.pos.x } cy={ map.pos.y } r="8" className={ styles.shadow }/>
-                                    <circle cx={ map.pos.x } cy={ map.pos.y } r="8" className={ styles.outline }/>
-                                    <circle cx={ map.pos.x } cy={ map.pos.y } r="5" className={ styles.dot }/>
-                                </g>
-                            )}
-                        </svg>
-                        <div className={ styles.tip } ref={ mapsTipRef }>
-                            <MapsHvrVect />
-                            <div className={ styles.content }>
-                                <h6 className='text-green-60'>{ mapsData[mapIndexHover].prov }</h6>
-                                { mapsData[mapIndexHover].cities.map((city, index) => 
-                                    <p className='label text-white bg-green-60' key={ index }>{ city }</p>
-                                ) }
-                            </div>
+    return (
+        <section id={ styles.Maps }>
+            <div className='container-padding align-center'>
+                <h4 className='text-green-70'>Kami Mendukung Pertumbuhan dan<br />Digitalisasi Pertanian Seluruh Indonesia</h4>
+                <p>Program Eratani sudah tersebar di beberapa wilayah di Indonesia dan akan terus menjalar ke seluruh Indonesia.</p>
+            </div>
+            <div className={ styles.indonesia }>
+                <IndonesiaVect />
+                <div className={ styles.interactive }>
+                    <svg viewBox="0 0 1440 521" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        { mapsData.map((map, index) => 
+                            <g onMouseEnter={ onPointEnter } onMouseLeave={ onPointLeave } className={ `${ (map.comingSoon) ? styles.coming_soon : '' } ${ styles.dot_point }` } key={ index } data-id={ index }>
+                                <circle cx={ map.pos.x } cy={ map.pos.y } r="8" className={ styles.shadow }/>
+                                <circle cx={ map.pos.x } cy={ map.pos.y } r="8" className={ styles.outline }/>
+                                <circle cx={ map.pos.x } cy={ map.pos.y } r="5" className={ styles.dot }/>
+                            </g>
+                        )}
+                    </svg>
+                    <div className={ styles.tip } ref={ mapsTipRef }>
+                        <MapsHvrVect />
+                        <div className={ styles.content }>
+                            <h6 className='text-green-60'>{ mapsData[mapIndexHover].prov }</h6>
+                            { mapsData[mapIndexHover].cities.map((city, index) => 
+                                <p className='label text-white bg-green-60' key={ index }>{ city }</p>
+                            ) }
                         </div>
                     </div>
                 </div>
-            </section>
-        ),
-        Script: scripts
-    } 
+            </div>
+        </section>
+    )
 }
 /* ------------------ End Maps ------------------ */
 
 /* ------------------ Media ------------------ */
 const Media = () => {
-
     const mitraData = [
         {image: '1.png', alt: 'bulog'},
         {image: '2.png', alt: 'bulog'},
@@ -353,86 +334,76 @@ const Media = () => {
         slidesToScroll: 5,
         autoplay: true,
         autoplaySpeed: 3500,
-        cssEase: 'ease-out'
+        cssEase: 'ease-out',
+        arrows: false, 
+        dots: true
     }    
 
-    const mitaSlickSettings = SlickNavigationCustom('__SlickMitra__', { arrows: false, dots: true, ...slickSettings })
-    const diliputSlickSettings = SlickNavigationCustom('__SlickDiliput__', { arrows: false, dots: true, ...slickSettings })
+    const mitaSlickSettings = SlickNavigationCustom('__SlickMitra__', slickSettings)
+    const diliputSlickSettings = SlickNavigationCustom('__SlickDiliput__', slickSettings)
     
     const [ tab, setTab ] = useState(0)
 
-    const scripts = () => { }
-
-    return {
-        Html: (key) => (
-            <section id={ styles.Media } key={ key } className='bg-natural-10 container-padding align-center'>
-                <div className={ styles.tab_title }>
-                    <h4 className={ `text-natural-40 __MediaTabNav__ ${ (tab == 0) ? styles.active : '' }` } onClick={ () => setTab(0) }>Mitra Kami</h4>
-                    <h4 className={ `text-natural-40 __MediaTabNav__ ${ (tab == 1) ? styles.active : '' }` } onClick={ () => setTab(1) }>Diliput oleh</h4>
-                </div>
-                <p>Kami bekerja sama dengan mitra dan media terkemuka untuk mewujudkan ekosistem pertanian yang kuat demi mendukung kesejahteraan petani Indonesia.</p>
-                <div className={ styles.content }>
-                    { (tab == 0) && <Slick { ...mitaSlickSettings } className='__SlickMitra__'>
-                            { mitraData.map((mitra, index) => 
-                                <div key={ index }>
-                                    <div className={ styles.slick_slide }>
-                                        { (!mitra.image) ? '' : <img src={ `/media/mitra/${ mitra.image }` } alt={ mitra.alt } /> }
-                                    </div>
+    return (
+        <section id={ styles.Media } className='bg-natural-10 container-padding align-center'>
+            <div className={ styles.tab_title }>
+                <h4 className={ `text-natural-40 __MediaTabNav__ ${ (tab == 0) ? styles.active : '' }` } onClick={ () => setTab(0) }>Mitra Kami</h4>
+                <h4 className={ `text-natural-40 __MediaTabNav__ ${ (tab == 1) ? styles.active : '' }` } onClick={ () => setTab(1) }>Diliput oleh</h4>
+            </div>
+            <p>Kami bekerja sama dengan mitra dan media terkemuka untuk mewujudkan ekosistem pertanian yang kuat demi mendukung kesejahteraan petani Indonesia.</p>
+            <div className={ styles.content }>
+                { (tab == 0) && <Slick { ...mitaSlickSettings } className='__SlickMitra__'>
+                        { mitraData.map((mitra, index) => 
+                            <div key={ index }>
+                                <div className={ styles.slick_slide }>
+                                    { (!mitra.image) ? '' : <img src={ `/media/mitra/${ mitra.image }` } alt={ mitra.alt } /> }
                                 </div>
-                            ) }
-                        </Slick>
-                    }
-                    { (tab == 1) && <Slick { ...diliputSlickSettings } className='__SlickDiliput__'>
-                            { diliputData.map((diliput, index) => 
-                                <div key={ index }>
-                                    <div className={ styles.slick_slide }>
-                                        { (!diliput.image) ? '' : <img src={ `/media/diliput/${ diliput.image }` } alt={ diliput.alt } /> }
-                                    </div>
+                            </div>
+                        ) }
+                    </Slick>
+                }
+                { (tab == 1) && <Slick { ...diliputSlickSettings } className='__SlickDiliput__'>
+                        { diliputData.map((diliput, index) => 
+                            <div key={ index }>
+                                <div className={ styles.slick_slide }>
+                                    { (!diliput.image) ? '' : <img src={ `/media/diliput/${ diliput.image }` } alt={ diliput.alt } /> }
                                 </div>
-                            ) }
-                        </Slick>
-                    }
-                </div>
-            </section>
-        ),
-        Script: scripts
-    } 
+                            </div>
+                        ) }
+                    </Slick>
+                }
+            </div>
+        </section>
+    )
 }
 /* ------------------ End Media ------------------ */
 
 /* ------------------ Join ------------------ */
 const Join = () => {
-
-    const scripts = () => { }
-
-    return {
-        Html: (key) => (
-            <section id={ styles.Join } key={ key } className='container-padding align-center'>
-                <h2 className='text-natural-80'>
-                    Segera Bergabung Menjadi&nbsp;
-                    <div>
-                        <ul className='align-left __join_ul__'>
-                            <li><h2 className='text-green-60'>Petani</h2></li>
-                            <li><h2 className='text-green-40'>Gapoktan</h2></li>
-                            <li><h2 className='text-green-70'>Poktan</h2></li>
-                            <li><h2 className='text-green-50'>Toko Tani</h2></li>
-                            <li><h2 className='text-green-80'>Supplier</h2></li>
-                            <li><h2 className='text-green-30'>Buyer</h2></li>
-                        </ul>
-                    </div>
-                </h2>
-                <p>Daftar sekarang dan nikmati berbagai manfaat dari Eratani, mulai dari bantuan permodalan, penyediaan saprotan, hingga penyaluran gabah dan beras.<br />Mari bersama mewujudkan ekosistem pertanian yang kuat!</p>
-                <a href='#' className='btn'>Daftar Sekarang</a>
-            </section>
-        ),
-        Script: scripts
-    } 
+    return (
+        <section id={ styles.Join } className='container-padding align-center'>
+            <h2 className='text-natural-80'>
+                Segera Bergabung Menjadi&nbsp;
+                <div>
+                    <ul className='align-left __join_ul__'>
+                        <li><h2 className='text-green-60'>Petani</h2></li>
+                        <li><h2 className='text-green-40'>Gapoktan</h2></li>
+                        <li><h2 className='text-green-70'>Poktan</h2></li>
+                        <li><h2 className='text-green-50'>Toko Tani</h2></li>
+                        <li><h2 className='text-green-80'>Supplier</h2></li>
+                        <li><h2 className='text-green-30'>Buyer</h2></li>
+                    </ul>
+                </div>
+            </h2>
+            <p>Daftar sekarang dan nikmati berbagai manfaat dari Eratani, mulai dari bantuan permodalan, penyediaan saprotan, hingga penyaluran gabah dan beras.<br />Mari bersama mewujudkan ekosistem pertanian yang kuat!</p>
+            <a href='#' className='btn'>Daftar Sekarang</a>
+        </section>
+    )
 }
 /* ------------------ End Join ------------------ */
 
 /* ------------------ Testimoni ------------------ */
 const Testimoni = () => {
-
     const dataTestimonis = [
         {
             name: 'Yanto',
@@ -478,70 +449,60 @@ const Testimoni = () => {
         autoplaySpeed: 3500,
         cssEase: 'ease-out',
         centerMode: true,
-        centerPadding: '45px'
+        centerPadding: '45px',
+        arrows: true,
+        dots: true
     }
 
-    const testimoniSlickSettings = SlickNavigationCustom('__slickTestimoni__', { arrows: true, dots: true, ...slickSettings })
+    const testimoniSlickSettings = SlickNavigationCustom('__slickTestimoni__', slickSettings)
 
-    const scripts = () => { }
-
-    return {
-        Html: (key) => (
-            <section id={ styles.Testimoni } key={ key } className='bg-natural-10 container-padding align-center'>
-                <h2 className='text-natural-80'>Testimoni Mitra</h2>
-                <p>Kami merangkum beberapa mitra yang telah bergabung menjadi petani, gapoktan dan toko tani binaan Eratani.</p>
-                <div className={ styles.content }>
-                    <Slick { ...testimoniSlickSettings } className='__slickTestimoni__'>
-                        { dataTestimonis.map((testimoni, index) =>
-                            <div className={ styles.slick_slide } key={ index }>
-                                <div className='row middle-xs bg-green-10'>
-                                    <img src={ `/testimoni/${ testimoni.photo }` } className='image-cover' />
-                                    <div className={ `col-xs align-left ${ styles.caption }` }>
-                                        <h5>{ testimoni.name }</h5>
-                                        <h6 className='small'>{ testimoni.type }, { testimoni.dom }</h6>
-                                        <p>{ testimoni.testi }</p>
-                                    </div>
+    return (
+        <section id={ styles.Testimoni } className='bg-natural-10 container-padding align-center'>
+            <h2 className='text-natural-80'>Testimoni Mitra</h2>
+            <p>Kami merangkum beberapa mitra yang telah bergabung menjadi petani, gapoktan dan toko tani binaan Eratani.</p>
+            <div className={ styles.content }>
+                <Slick { ...testimoniSlickSettings } className='__slickTestimoni__'>
+                    { dataTestimonis.map((testimoni, index) =>
+                        <div className={ styles.slick_slide } key={ index }>
+                            <div className='row middle-xs bg-green-10'>
+                                <img src={ `/testimoni/${ testimoni.photo }` } className='image-cover' />
+                                <div className={ `col-xs align-left ${ styles.caption }` }>
+                                    <h5>{ testimoni.name }</h5>
+                                    <h6 className='small'>{ testimoni.type }, { testimoni.dom }</h6>
+                                    <p>{ testimoni.testi }</p>
                                 </div>
                             </div>
-                        ) }
-                    </Slick>
-                </div>
-            </section>
-        ),
-        Script: scripts
-    }
+                        </div>
+                    ) }
+                </Slick>
+            </div>
+        </section>
+    )
 }
 /* ------------------ End Testimoni ------------------ */
 
 /* ------------------ Download ------------------ */
 const Download = () => {
-
-    const scripts = () => { }
-
-    return {
-        Html: (key) => (
-            <section id={ styles.Download } key={ key } className='container-padding align-center'>
-                <div className={ styles.content }>
-                    <div className='row'>
-                        <img src={ MockupPng.src } width='416px' />
-                        <div className={ `col-xs align-left ${ styles.caption }` }>
-                            <p className='text-green-60'>Ingin menjadi petani sukses?</p>
-                            <h2>Segera Unduh Aplikasi Eratani di Handphone Anda!</h2>
-                            <p className='text-natural-50'><em>One-stop solution</em> untuk memenuhi kebutuhan petani Indonesia menuju ekosistem pertanian yang lebih kuat. Unduh untuk mendapatkan bantuan permodalan, saprotan berkualitas baik, hingga pendampingan dari para ahli di bidang pertanian.</p>
-                            <div className='align-right'>
-                                <a href='#'>
-                                    <img src={ FindPlaystorePng.src } width='200px' />
-                                </a>
-                            </div>
+    return (
+        <section id={ styles.Download } className='container-padding align-center'>
+            <div className={ styles.content }>
+                <div className='row'>
+                    <img src={ MockupPng.src } width='416px' />
+                    <div className={ `col-xs align-left ${ styles.caption }` }>
+                        <p className='text-green-60'>Ingin menjadi petani sukses?</p>
+                        <h2>Segera Unduh Aplikasi Eratani di Handphone Anda!</h2>
+                        <p className='text-natural-50'><em>One-stop solution</em> untuk memenuhi kebutuhan petani Indonesia menuju ekosistem pertanian yang lebih kuat. Unduh untuk mendapatkan bantuan permodalan, saprotan berkualitas baik, hingga pendampingan dari para ahli di bidang pertanian.</p>
+                        <div className='align-right'>
+                            <a href='#'>
+                                <img src={ FindPlaystorePng.src } width='200px' />
+                            </a>
                         </div>
                     </div>
                 </div>
-            </section>
-        ),
-        Script: scripts
-    }
+            </div>
+        </section>
+    )
 }
 /* ------------------ End Download ------------------ */
 
-const SectionsFunc = { Hero, Ecosystem, Solution, Maps, Media, Join, Testimoni, Download }
-export default SectionsFunc
+export default { Hero, Ecosystem, Solution, Maps, Media, Join, Testimoni, Download }

@@ -23,6 +23,12 @@
 
         a
             @extend .header-hover-transition
+            @include Define.padding($top: 7px, $bottom: 7px)
+            border-bottom: none
+
+            &.active
+                border-bottom: 2px solid map-get(Define.$colors, 'yellow-60')
+                @include Define.typograph($weight: 'bold')
         
         a:not(:last-child)
             @include Define.margin($right: 20px)

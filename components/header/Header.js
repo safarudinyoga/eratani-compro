@@ -1,4 +1,5 @@
 import Link from 'next/link' 
+import { useRouter } from "next/router";
 import styles from './Header.module.sass'
 
 import LogoVect from '../../assets/vector/logo-norm.svg'
@@ -16,13 +17,21 @@ export default function Header () {
         { id: 'Pertanyaan',          en: 'Question',                 link: 'qna' },
         { id: 'Karir',               en: 'Career',                   link: 'career' } ]
 
+    const router = useRouter()
+
     return (
         <header id={ styles.Header } className='container-padding'>
             <div className='row middle-xs between-xs'>
                 <div className='col-xs-2'><LogoVect className={ styles.svg_on_hover } /></div>
                 <div className='col-xs-8 align-center'>
                     <nav className={ styles.navigation }>
-                        <div className='row'>{ navs.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }><a className='text-white'>{ nav[lang] }</a></Link>) }</div>
+                        <div className='row'>
+                            { navs.map((nav, idx) => 
+                                <Link key={ idx } href={ `/${ nav.link }` }>
+                                    <a className={ `text-white ${ (router.pathname == `/${ nav.link }`) ? styles.active : '' }` }>{ nav[lang] }</a>
+                                </Link> ) 
+                            }
+                        </div>
                     </nav>
                 </div>
                 <div className={ `col-xs-2 ${ styles.sw_lang } align-right` }>

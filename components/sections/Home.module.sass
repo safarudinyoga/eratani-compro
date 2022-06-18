@@ -65,7 +65,8 @@
                 @include Define.margin($top: 13px)
                 @include Define.padding($right: 45px)
 
-                p
+                .text
+                    @include Define.typograph($size: 14px, $lineHeight: 20px)
                     @include Define.box($height: 44px)
                     overflow: hidden
 
@@ -85,7 +86,7 @@
                 .caption
                     @include Define.padding($right: 56px)
 
-                    p
+                    .text
                         @include Define.typograph($size: 16px, $lineHeight: 22px)
 
                     svg
