@@ -13,15 +13,16 @@ export default function SlickCustom (className, settings) {
     let ret = { ...settings }
 
     if (settings.arrows) {
-        const r = {
+        ret = { 
+            ...ret,
             nextArrow: <NextArrow />,
             prevArrow: <PrevArrow />
         }
-        ret = { ...ret , ...r  }
     }
 
     if (settings.dots) {
-        const r = {
+        ret = { 
+            ...ret,
             dotsClass: styles.slick_dots,
             customPaging: i => <a />,
             onInit: () => {
@@ -34,7 +35,6 @@ export default function SlickCustom (className, settings) {
                 nodes[next / slidePerShow].classList.add(styles.slick_active)
             }
         }
-        ret = { ...ret, ...r  }
     } 
 
     return ret
