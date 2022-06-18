@@ -1,14 +1,17 @@
 @use '../../styles/Define'
 
+.header-hover-transition
+    transition: all 0.3s ease
+
 #Header
-    @include Define.box($position: fixed, $width: 100%, $zindex: 100)
+    @include Define.box($position: absolute, $top: 0, $width: 100%, $zindex: 100)
     @include Define.padding($top: 29px, $bottom: 29px)
-    box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+    @extend .header-hover-transition
 
     .sw_lang
-        @include Define.margin($left: 62px)
-        
         > p
+            @extend .header-hover-transition
+
             &, *
                 @include Define.inlineBlock($align: middle)
 
@@ -16,11 +19,26 @@
                 @include Define.margin($bottom: 4px)
 
     .navigation
+        @include Define.inlineBlock($align: middle)
+
         a
-            @extend .text-natural-50
+            @extend .header-hover-transition
         
         a:not(:last-child)
             @include Define.margin($right: 20px)
 
         a:not(:first-child)
             @include Define.margin($left: 20px)
+
+    .svg_on_hover path
+        @extend .header-hover-transition
+
+    &:hover
+        @extend .bg-white
+        box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+
+        .navigation a, .sw_lang > p
+            @extend .text-green-60
+
+        .svg_on_hover path
+            fill: map-get(Define.$colors, 'green-60')

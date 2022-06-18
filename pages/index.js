@@ -16,7 +16,9 @@ export default function HomePage() {
         Sections.Solution(),
         Sections.Maps(),
         Sections.Media(),
-        Sections.Join()
+        Sections.Join(),
+        Sections.Testimoni(),
+        Sections.Download()
     ]
 
     useEffect(() => {

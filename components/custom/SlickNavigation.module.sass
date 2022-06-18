@@ -1,0 +1,43 @@
+@use '../../styles/Define'
+    
+.slick_arrow
+    @include Define.box($position: absolute, $top: 0, $width: 91px, $height: 100%, $zindex: 1)
+    
+    a
+        @include Define.box($position: absolute, $top: calc(50% - 19px), $width: 48px)
+        border-radius: 50%
+        line-height: 48px
+        transform: translateY(-50%)
+
+    &.arrow_prev
+        @include Define.box($left: -1px)
+
+        a
+            @include Define.box($left: 0)
+
+    &.arrow_next
+        @include Define.box($right: -1px)
+
+        a
+            @include Define.box($right: 0)
+
+.slick_dots
+    display: block
+    @include Define.box($width: 100%)
+    @include Define.margin($top: 23px)
+    @extend .align-center
+
+    li
+        @include Define.box($width: 16px, $height: 16px)
+        @include Define.margin($left: 16px, $right: 16px)
+        @include Define.inlineBlock($align: middle)
+
+        a
+            display: block
+            @include Define.box($width: 16px, $height: 16px)
+            @extend .bg-natural-40
+            border-radius: 16px
+            transition: all 0.6s ease
+
+            &.slick_active
+                @extend .bg-green-60

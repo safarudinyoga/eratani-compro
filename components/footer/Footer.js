@@ -1,11 +1,11 @@
 import Link from 'next/link' 
 import styles from './Footer.module.sass'
 
-import Logo from '../../assets/svgs/logo-w-norm.svg'
-import Instagram from '../../assets/svgs/instagram.svg'
-import Facebook from '../../assets/svgs/facebook.svg'
-import LinkedIn from '../../assets/svgs/linkedin.svg'
-import Youtube from '../../assets/svgs/youtube.svg'
+import LogoVect from '../../assets/vector/logo-w-norm.svg'
+import InstagramVect from '../../assets/vector/instagram.svg'
+import FacebookVect from '../../assets/vector/facebook.svg'
+import LinkedInVect from '../../assets/vector/linkedin.svg'
+import YoutubeVect from '../../assets/vector/youtube.svg'
 
 export default function Footer () {
     const lang = 'id'
@@ -31,7 +31,7 @@ export default function Footer () {
         <footer id={ styles.Footer } className='container-padding bg-green-80'>
             <div className={ `row ${ styles.main }` }>
                 <div className={`col-xs-6 ${ styles.left }`}>
-                    <Logo />
+                    <LogoVect />
                     <div className={ styles.office }>{ footerSub('KANTOR PUSAT', <p>Jl. R.A. Kartini No. Kav. 8 South Quarter, Tower C, RT 10/RW 4, Cilandak Barat, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12430</p>) }</div>
                     <div>{ footerSub('EMAIL', <p>info@eratani.co.id</p>) }</div>
                     <div>{ footerSub('TELEPON', <p>+62 811 952 2577</p>)}</div>
@@ -39,10 +39,10 @@ export default function Footer () {
                 <div className='col-xs-2'>{ footerSub('PERUSAHAAN', companyNav.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }>{ nav[lang] }</Link>) ) }</div>
                 <div className='col-xs-2'>{ footerSub('GABUNG', joinNav.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }>{ nav[lang] }</Link>) ) }</div>
                 <div className='col-xs-2'>{ footerSub('MEDIA SOSIAL', <div className={ `row middle-xs between-xs ${ styles.social }`  }>
-                        <a href='#'><Instagram /></a>
-                        <a href='#'><LinkedIn /></a>
-                        <a href='#'><Youtube /></a>
-                        <a href='#'><Facebook /></a>
+                        <a href='#'><InstagramVect /></a>
+                        <a href='#'><LinkedInVect /></a>
+                        <a href='#'><YoutubeVect /></a>
+                        <a href='#'><FacebookVect /></a>
                     </div>) }
                 </div>
             </div>

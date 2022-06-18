@@ -1,9 +1,9 @@
 import Link from 'next/link' 
 import styles from './Header.module.sass'
 
-import Logo from '../../assets/svgs/logo-norm.svg'
-import LangIco from '../../assets/svgs/lang-ico.svg'
-import KarrowDown from '../../assets/svgs/karrow-down.svg'
+import LogoVect from '../../assets/vector/logo-norm.svg'
+import LangIcoVect from '../../assets/vector/lang-ico.svg'
+import KarrowDownVect from '../../assets/vector/karrow-down.svg'
 
 export default function Header () {
     let lang = 'id'
@@ -19,16 +19,14 @@ export default function Header () {
     return (
         <header id={ styles.Header } className='container-padding'>
             <div className='row middle-xs between-xs'>
-                <div className='col-xs-2'><Logo /></div>
-                <div className='col-xs-10'>
-                    <div className='row middle-xs end-xs'>
-                        <nav className={ styles.navigation }>
-                            <div className='row'>{ navs.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }>{ nav[lang] }</Link>) }</div>
-                        </nav>
-                        <div className={ styles.sw_lang }>
-                            <p className='text-green-60 font-bold'><LangIco /> &nbsp;&nbsp;&nbsp;{ lang == 'id' ? 'ID' : 'EN' } &nbsp;<KarrowDown /></p>
-                        </div>
-                    </div>
+                <div className='col-xs-2'><LogoVect className={ styles.svg_on_hover } /></div>
+                <div className='col-xs-8 align-center'>
+                    <nav className={ styles.navigation }>
+                        <div className='row'>{ navs.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }><a className='text-white'>{ nav[lang] }</a></Link>) }</div>
+                    </nav>
+                </div>
+                <div className={ `col-xs-2 ${ styles.sw_lang } align-right` }>
+                    <p className='text-white font-bold'><LangIcoVect /> &nbsp;&nbsp;&nbsp;{ lang == 'id' ? 'ID' : 'EN' } &nbsp;<KarrowDownVect className={ styles.svg_on_hover } /></p>
                 </div>
             </div>
         </header>
