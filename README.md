@@ -33,7 +33,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## Font Size Naming:
+## Font Size Name:
 Line Height = 1.4x Font Size
 - font-xlg-1   	`60px`
 - font-xlg-2   	`48px`
