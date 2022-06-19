@@ -1,5 +1,8 @@
 @use './Define'
 
+body
+    font-family: 'Lato', sans-serif
+
 del
     text-decoration: line-through
 
@@ -83,4 +86,25 @@ h3
 h5
     font-size: 1em //16px
     font-weight: 400
+
+::-webkit-input-placeholder  /* Chrome/Opera/Safari */
+    font-size: 16px
+    font-weight: 400
+    color: Define.$natural_50
+
+::-moz-placeholder  /* Firefox 19+ */
+    font-size: 16px
+    font-weight: 400
+    color: Define.$natural_50
+
+:-ms-input-placeholder  /* IE 10+ */
+    font-size: 16px
+    font-weight: 400
+    color: Define.$natural_50
+
+:-moz-placeholder  /* Firefox 18- */
+    font-size: 16px
+    font-weight: 400
+    color: Define.$natural_50
+
 

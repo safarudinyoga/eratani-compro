@@ -31,10 +31,10 @@ const CardAgenda = ({ id }) => (
 
 const Agenda = props => {
   return (
-    <section className={styles.agenda}>
+    <section className={styles.event}>
       <h3 className='bold center-align c-green-70' style={{ marginBottom: '15px' }}>Akan Datang</h3>
       <h4 className={styles.sub_title}>Ayo ikuti kegiatan Eratani dengan mendaftar pada kegiatan-kegiatan dibawah ini.</h4>
-      <div className={`row ${styles.wrapper_agenda}`}>
+      <div className={`row ${styles.wrapper_event}`}>
         {[1,2,3,4,5,6].map((res, i) =>
           <CardAgenda key={i} id={i} />
         )}
