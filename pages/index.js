@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Sections from '../components/sections/Home'
+import Sections from '/components/sections/Home'
 
 export default function HomePage() {
     const PAGE_TITLE = 'Home'

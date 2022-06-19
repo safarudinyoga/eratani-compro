@@ -1,0 +1,8 @@
+@use '../../styles/Define'
+    
+.btn
+    @include Define.inlineBlock()
+    @include Define.padding($left: 32px, $right: 32px, $top: 18px, $bottom: 18px)
+    @include Define.typograph($size: 20px, $weight: 'bold')
+    border-radius: 8px
+    box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)

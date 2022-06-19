@@ -8,12 +8,12 @@ import SetRatio from '../custom/SetRatio'
 import Ellipsis from '../custom/Ellipsis'
 
 import styles from './Home.module.sass'
-import EyeViewVect from '../../assets/vector/eye-view.svg'
-import EcoArrowVect from '../../assets/vector/eco-arrow.svg'
-import IndonesiaVect from '../../assets/vector/indonesia.svg'
-import MapsHvrVect from '../../assets/vector/maps-hvr.svg'
-import MockupPng from '../../assets/static/mockup.png'
-import FindPlaystorePng from '../../assets/static/find-playstore.png'
+import EyeViewVect from '/assets/vector/eye-view.svg'
+import EcoArrowVect from '/assets/vector/eco-arrow.svg'
+import IndonesiaVect from '/assets/vector/indonesia.svg'
+import MapsHvrVect from '/assets/vector/maps-hvr.svg'
+import MockupPng from '/assets/static/mockup.png'
+import FindPlaystorePng from '/assets/static/find-playstore.png'
 
 /* ------------------ Hero Banner ------------------ */
 const Hero = () => {
@@ -38,32 +38,32 @@ const Ecosystem = () => {
         {
             no: '01',
             title: 'Memiliki 1.000+ Petani Binaan',
-            caption: 'Sejak berdiri 1 tahun lalu Eratani telah membantu lebih dari 5000 petani dalam kemudahan akses modal dan membuka akses...',
-            image: 'DSC04813 1.jpg'
+            description: 'Sejak berdiri 1 tahun lalu Eratani telah membantu lebih dari 5000 petani dalam kemudahan akses modal dan membuka akses...',
+            photo: 'DSC04813 1.jpg'
         },
         {
             no: '02',
             title: 'Lebih dari 20 Miliar Pendanaan Tersalurkan',
-            caption: 'Eratani telah menyalurkan lebih dari 20 Miliar pendanaan untuk petani binaannya, meningkat 100% dari sebelumnya dimana ini ...',
-            image: 'DSC04798 1.jpg'
+            description: 'Eratani telah menyalurkan lebih dari 20 Miliar pendanaan untuk petani binaannya, meningkat 100% dari sebelumnya dimana ini ...',
+            photo: 'DSC04798 1.jpg'
         },
         {
             no: '03',
             title: 'Pendapatan Petani Meningkat Lebih dari 20%',
-            caption: 'Eratani membantu para petani binaan untuk meningkatkan pendapatan dengan memberikan dukungan pendanaan dan...',
-            image: 'Eratanijogja-106 1.jpg'
+            description: 'Eratani membantu para petani binaan untuk meningkatkan pendapatan dengan memberikan dukungan pendanaan dan...',
+            photo: 'Eratanijogja-106 1.jpg'
         },
         {
             no: '04',
             title: 'Telah Memiliki Lebih dari 5.000 Ha Lahan Binaan',
-            caption: 'Luas lahan binaan Eratani kini telah mencapai lebih dari 5.000 yang kini tersebar di pulau Jawa.',
-            image: 'Eratanijogja-18 2.jpg'
+            description: 'Luas lahan binaan Eratani kini telah mencapai lebih dari 5.000 yang kini tersebar di pulau Jawa.',
+            photo: 'Eratanijogja-18 2.jpg'
         },
         {
             no: '05',
             title: 'Memiliki 1.000+ Petani Binaan',
-            caption: 'Eratani membantu para petani binaan untuk meningkatkan produktivitas dan hasil panen dengan memberikan pendampi...',
-            image: 'DSC04891 1.jpg'
+            description: 'Eratani membantu para petani binaan untuk meningkatkan produktivitas dan hasil panen dengan memberikan pendampi...',
+            photo: 'DSC04891 1.jpg'
         }
     ]
 
@@ -83,11 +83,11 @@ const Ecosystem = () => {
                                 <span>{ eco.title }</span>
                             </h6>
                             <SetRatio ax='1.42' ay='1' min='0'>
-                                <img src={ `/ecosystem/${ eco.image }` } width='100%' className='image-cover' />
+                                <img src={ `/ecosystem/${ eco.photo }` } width='100%' className='image-cover' />
                             </SetRatio>
                             <div className={ styles.caption }>
                                 <Ellipsis className={ styles.text }>
-                                    { eco.caption }
+                                    { eco.description }
                                 </Ellipsis>
                                 <a href="#"><EyeViewVect /></a>
                             </div>
@@ -107,32 +107,32 @@ const Solution = () => {
         {
             title1: 'Bantuan<br />Permodalan dan<br />Pendampingan',
             title2: 'Bantuan Permodalan dan<br />Pendampingan',
-            caption: 'Unduh aplikasi Eratani sekarang untuk mendapatkan bantuan permodalan, pemenuhan kebutuhan sarana produksi pertanian, penyaluran hasil panen, hingga pendampingan dari para ahli di bidang pertanian.',
+            description: 'Unduh aplikasi Eratani sekarang untuk mendapatkan bantuan permodalan, pemenuhan kebutuhan sarana produksi pertanian, penyaluran hasil panen, hingga pendampingan dari para ahli di bidang pertanian.',
             link: {
                 text: 'Unduh Sekarang',
                 href: '#'
             },
-            image: 'Pendampingan 3.jpg'
+            photo: 'Pendampingan 3.jpg'
         },
         {
             title1: 'Pilihan<br />Sarana Produksi<br />Pertanian Terbaik',
             title2: 'Pilihan Sarana Produksi<br />Pertanian Terbaik',
-            caption: 'Eratani bekerja sama dengan berbagai produsen sarana produksi pertanian untuk bisa menyediakan sarana produksi pertanian dengan kualitas terbaik kepada para petani binaan. Segera hubungi kami untuk mendapatkan berbagai pilihan sarana produksi pertanian terbaik dengan harga terstandarisasi.',
+            description: 'Eratani bekerja sama dengan berbagai produsen sarana produksi pertanian untuk bisa menyediakan sarana produksi pertanian dengan kualitas terbaik kepada para petani binaan. Segera hubungi kami untuk mendapatkan berbagai pilihan sarana produksi pertanian terbaik dengan harga terstandarisasi.',
             link: {
                 text: 'Hubungi Kami',
                 href: '#'
             },
-            image: 'DSC04912.jpg'
+            photo: 'DSC04912.jpg'
         },
         {
             title1: 'Penyaluran Beras<br />dan Gabah<br />Terbaik',
             title2: 'Penyaluran Beras dan Gabah<br />Terbaik',
-            caption: 'Pada proses pasca panen, Eratani membantu untuk mengolah hasil panen dengan menyalurkan gabah dan beras dari petani binaan yang tersebar di seluruh Indonesia. Bagi Anda yang ingin menjual ataupun membeli gabah dan beras dengan kualitas terbaik, silakan hubungi kami untuk informasi lebih lanjut.',
+            description: 'Pada proses pasca panen, Eratani membantu untuk mengolah hasil panen dengan menyalurkan gabah dan beras dari petani binaan yang tersebar di seluruh Indonesia. Bagi Anda yang ingin menjual ataupun membeli gabah dan beras dengan kualitas terbaik, silakan hubungi kami untuk informasi lebih lanjut.',
             link: {
                 text: 'Hubungi Kami',
                 href: '#'
             },
-            image: 'Hasil Panen.jpg'
+            photo: 'Hasil Panen.jpg'
         }
     ]
 
@@ -158,13 +158,13 @@ const Solution = () => {
                 { solutionData.map((solution, index) =>
                     <div className={`col-xs-4 ${ styles.column }`} key={ index }>
                         <SetRatio ax='1' ay='1.26' min='0' className={ styles.wrapper } onMouseEnter={ onSolutionEnter } onMouseLeave={ onSolutionLeave }>
-                            <img src={ `/solution/${ solution.image }` } className='image-cover' />
+                            <img src={ `/solution/${ solution.photo }` } className='image-cover' />
                             <h3 className='text-green-10 __SolutionNode__'>
                                 <span>{ Parse(solution.title1) }</span>
                                 <span>{ Parse(solution.title2) }</span>
                             </h3> 
                             <div className={ `${styles.caption} align-center __SolutionNode__` }>
-                                <p className='text-green-10 align-justify'>{ solution.caption }</p>
+                                <p className='text-green-10 align-justify'>{ solution.description }</p>
                                 <a href={ solution.link.href } className='btn' target='_blank'>{ solution.link.text }</a>
                             </div>
                         </SetRatio>
@@ -347,8 +347,8 @@ const Media = () => {
     return (
         <section id={ styles.Media } className='bg-natural-10 container-padding align-center'>
             <div className={ styles.tab_title }>
-                <h4 className={ `text-natural-40 __MediaTabNav__ ${ (tab == 0) ? styles.active : '' }` } onClick={ () => setTab(0) }>Mitra Kami</h4>
-                <h4 className={ `text-natural-40 __MediaTabNav__ ${ (tab == 1) ? styles.active : '' }` } onClick={ () => setTab(1) }>Diliput oleh</h4>
+                <h4 className={ `small text-natural-40 __MediaTabNav__ ${ (tab == 0) ? styles.active : '' }` } onClick={ () => setTab(0) }>Mitra Kami</h4>
+                <h4 className={ `small text-natural-40 __MediaTabNav__ ${ (tab == 1) ? styles.active : '' }` } onClick={ () => setTab(1) }>Diliput oleh</h4>
             </div>
             <p>Kami bekerja sama dengan mitra dan media terkemuka untuk mewujudkan ekosistem pertanian yang kuat demi mendukung kesejahteraan petani Indonesia.</p>
             <div className={ styles.content }>

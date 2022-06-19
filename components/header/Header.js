@@ -2,9 +2,9 @@ import Link from 'next/link'
 import { useRouter } from "next/router";
 import styles from './Header.module.sass'
 
-import LogoVect from '../../assets/vector/logo-norm.svg'
-import LangIcoVect from '../../assets/vector/lang-ico.svg'
-import KarrowDownVect from '../../assets/vector/karrow-down.svg'
+import LogoVect from '/assets/vector/logo-norm.svg'
+import LangIcoVect from '/assets/vector/lang-ico.svg'
+import KarrowDownVect from '/assets/vector/karrow-down.svg'
 
 export default function Header () {
     let lang = 'id'
@@ -20,7 +20,7 @@ export default function Header () {
     const router = useRouter()
 
     return (
-        <header id={ styles.Header } className='container-padding'>
+        <header id={ styles.Header } className={ `container-padding ${ (router.pathname != '/') ? styles.fix_white : '' }` }>
             <div className='row middle-xs between-xs'>
                 <div className='col-xs-2'><LogoVect className={ styles.svg_on_hover } /></div>
                 <div className='col-xs-8 align-center'>

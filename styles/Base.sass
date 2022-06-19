@@ -71,11 +71,11 @@ h3
 h4
     @include Define.typograph($size: 38px, $lineHeight: 53px)
 
+h4.small
+    @include Define.typograph($size: 32px, $lineHeight: 45px)
+
 h5 
     @include Define.typograph($size: 26px, $lineHeight: 36px)
-
-h6
-    @include Define.typograph($size: 18px)
 
 h6
     @include Define.typograph($size: 18px)
@@ -92,6 +92,9 @@ p.small
 .container-padding
     @include Define.padding($left: 72px, $right: 72px)
 
+.margin-auto
+    @include Define.margin($left: auto, $right: auto)
+
 .image-cover
     width: 100%
     height: 100%
@@ -100,7 +103,7 @@ p.small
 
 .btn
     @include Define.inlineBlock()
-    @include Define.padding($left: 18px, $right: 18px, $top: 18px, $bottom: 18px)
+    @include Define.padding($left: 32px, $right: 32px, $top: 18px, $bottom: 18px)
     @include Define.typograph($size: 19px, $weight: 'bold')
     @extend .text-white
     @extend .bg-green-60
