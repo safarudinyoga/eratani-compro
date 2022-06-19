@@ -1,6 +1,6 @@
 import styles from './Button.module.sass'
 
-export default function Ellipsis (props) {
+export default function Button (props) {
     const newProps = { ...props }
 
     newProps.className = `${ styles.btn } `
