@@ -257,10 +257,7 @@ const Culture = () => {
                     <Typograph tag='h3' size='xlg-3' color='green-10' maxWidth='400'>Lebih Dekat dengan Era-Fam<span className='bg-green-10'></span></Typograph>
                     <Typograph tag='p' size='md-3' color='green-30'>Kami selalu menjaga dan menjunjung tinggi nilai-nilai perusahaan demi terciptanya lingkungan kerja yang sinergis dan harmonis.</Typograph>
                     <Link href='#'>
-                        <a>
-                            <Typograph tag='span' size='md-3' color='green-10'>Lihat Detail</Typograph>
-                            <ArrowForwardVect />
-                        </a>
+                        <><Typograph tag='a' size='md-3' color='green-10'>Lihat Detail<ArrowForwardVect /></Typograph></>
                     </Link>
                 </div>
             </div>
