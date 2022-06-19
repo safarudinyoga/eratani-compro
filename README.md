@@ -33,27 +33,28 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-Revision Note:
-1. change to typograph page 1
-2. transition mixin
-3. React.createRef() to createRef()
-4. image alt
-5. container set component
-6. change button page 1
-7. hero banner page 1
-8. animation ecosystem page 1
+## Font Size Naming:
+Line Height = 1.4x Font Size
+- font-xlg-1   	`60px`
+- font-xlg-2   	`48px`
+- font-xlg-3   	`42px`
+- font-lg-1    	`38px`
+- font-lg-2    	`36px`
+- font-lg-3    	`32px`
+- font-md-1    	`26px`
+- font-md-2    	`24px`
+- font-md-3    	`20px`
+- font-sm-1   	`18px`
+- font-sm-2   	`16px`
+- font-xsm-1  	`14px`
+- font-xsm-2  	`12px`
 
-Font Size Naming (px):
-1. font-xlg-1   	60
-2. font-xlg-2   	48
-3. font-xlg-3   	42
-4. font-lg-1    	38
-5. font-lg-2    	36
-6. font-lg-3    	32
-7. font-md-1    	26
-8. font-md-2    	24
-9. font-md-3    	20
-10. font-sm-1   	18
-11. font-sm-2   	16
-12. font-xsm-1  	14
-13. font-xsm-2  	12
+## Revision Note:
+- change to typograph page 1
+- transition mixin
+- React.createRef() to createRef()
+- image alt
+- container set component
+- change button page 1
+- hero banner page 1
+- animation ecosystem page 1
