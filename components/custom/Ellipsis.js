@@ -1,17 +1,20 @@
 import React, { useEffect, useState, createRef } from 'react';
-import Typograph from '../custom/Typograph'
 
 export default function Ellipsis (props) {
     const divRef = createRef()
-    const [ dimensions, setDimensions ] = useState(0)
+    const [ text, setText ] = useState('')
 
     const calculateText = () => {
-        const span = divRef.current.getElementsByTagName('span')[0]
-        span.innerHTML = props.children
-        while (span.clientHeight > divRef.current.clientHeight)
-            span.innerHTML = span.innerHTML.replace(/\W*\s(\S)*$/, '...')
-        
-        setDimensions(window.innerHeight)
+        const node =  divRef.current
+        const span = node.getElementsByTagName('span')[0]
+
+        if (node.clientHeight > 0) {
+            span.innerHTML = props.children
+            while (span.clientHeight > node.clientHeight)
+                span.innerHTML = span.innerHTML.replace(/\W*\s(\S)*$/, '...')
+        }
+
+        setText(span.innerHTML)
     }
 
     useEffect(() => {
@@ -19,9 +22,9 @@ export default function Ellipsis (props) {
 
         window.addEventListener('resize', calculateText)
         return _ => window.removeEventListener('resize', calculateText)
-    })
+    }, [calculateText])
 
     return (
-        <p ref={ divRef } className={ props.className }><span>{ props.children }</span></p>
+        <p ref={ divRef } className={ props.className }><span style={{ display: 'block' }}>{ props.children }</span></p>
     )
 }

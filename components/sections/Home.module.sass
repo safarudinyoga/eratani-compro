@@ -25,8 +25,6 @@
 
 /* ------------------ Ecosystem ------------------ */
 #Ecosystem
-    @include Define.padding($top: 96px, $bottom: 90px)
-
     .eco_arrow
         a
             &:first-child
@@ -100,16 +98,8 @@
     transition: all .8s cubic-bezier(.4, 1.35, .6, 1)
 
 #Solution
-    @include Define.padding($top: 64px, $bottom: 80px)
-
     > p
         @include Define.margin($top: 16px, $bottom: 56px)
-
-    .row
-        @include Define.margin($left: -12px, $right: -12px)
-
-    .column
-        @include Define.padding($left: 12px, $right: 12px)
 
     .wrapper
         @include Define.box($position: relative)
@@ -213,8 +203,6 @@
         r: 8
 
 #Maps
-    @include Define.padding($top: 48px, $bottom: 96px)
-
     > div > p
         @include Define.margin($top: 24px, $bottom: 40px)
 
@@ -228,23 +216,23 @@
                 cursor: pointer
 
                 .shadow
-                    fill: map-get(Define.$colors, 'yellow-20')
+                    @extend .fill-yellow-20
 
                 .outline
-                    fill: map-get(Define.$colors, 'yellow-60')
+                    @extend .fill-yellow-60
 
                 .dot
-                    fill: map-get(Define.$colors, 'white')
+                    @extend .fill-white
 
                 &.coming_soon
                     .shadow, .dot
-                        fill: map-get(Define.$colors, 'natural-20')
+                        @extend .fill-natural-20
 
                     .shadow
                         filter: blur(2px)
 
                     .outline
-                        fill: map-get(Define.$colors, 'natural-50')
+                        @extend .fill-natural-50
 
                 &:hover 
                     &:not(.coming_soon)
@@ -274,8 +262,6 @@
 
 /* ------------------ Media ------------------ */
 #Media
-    @include Define.padding($top: 40px, $bottom: 68px)
-
     .tab_title
         h3 
             @include Define.box($position: relative)
@@ -342,8 +328,6 @@
         bottom: 0
 
 #Join
-    @include Define.padding($top: 80px, $bottom: 68px)
-
     > p
         @include Define.margin($top: 24px, $bottom: 56px)
 
@@ -362,8 +346,6 @@
 
 /* ------------------ Testimoni ------------------ */
 #Testimoni
-    @include Define.padding($top: 64px, $bottom: 52px)
-
     > p
         @include Define.margin($top: 16px, $bottom: 56px)
 
@@ -390,9 +372,7 @@
 
 /* ------------------ Download ------------------ */
 #Download
-    @include Define.padding($top: 96px, $bottom: 96px)
-
-    .content
+    > div
         @include Define.margin($left: auto, $right: auto)
         @include Define.box($width: 100%)
         max-width: 1124px

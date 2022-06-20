@@ -52,6 +52,6 @@ Line Height = 1.4x Font Size
 ## Revision Note:
 - transition mixin
 - image alt
-- container set component
 - hero banner page 1
 - animation ecosystem page 1
+- blog 1 / 2?

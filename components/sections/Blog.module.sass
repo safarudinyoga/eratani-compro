@@ -1,0 +1,91 @@
+@use '../../styles/Define'
+
+/* ------------------ Title ------------------ */
+#Title
+    h3
+        @include Define.margin($bottom: 8px)
+/* ------------------ End Title ------------------ */
+
+/* ------------------ Card Style Class ------------------ */
+.list 
+    @include Define.margin($top: -12px, $bottom: -12px)
+
+.card
+    @include Define.padding($top: 12px, $bottom: 12px)
+
+    > div
+        @include Define.box($position: relative, $width: 100%, $height: 100%)
+        @include Define.flex($flexDirection: column)
+        box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+        
+    .photo
+        overflow: hidden
+        flex-grow: 1
+        flex-basis: 0
+
+    .caption
+        @include Define.padding($top: 16px, $bottom: 20px, $left: 16px, $right: 20px)
+        @include Define.flex($justifyContent: space-between, $flexDirection: column)
+
+        &:not(.card_big, .card_normal)
+            min-height: 123px
+
+        h4
+            @include Define.margin($bottom: 16px)
+
+    &.card_big, &.card_normal
+        .caption
+            @include Define.box($height: 263px)
+            @include Define.flex($justifyContent: space-between, $flexDirection: column)
+
+            div:first-child
+                overflow: hidden
+                @include Define.flex($flexDirection: column)
+                @include Define.padding($bottom: 25px)
+
+                p
+                    overflow: hidden
+
+    &.card_big
+        .caption
+            @include Define.padding($top: 24px, $bottom: 24px, $left: 32px, $right: 47px)
+
+    &.card_normal
+        .caption
+            @include Define.padding($top: 24px, $bottom: 24px, $left: 24px, $right: 22px)
+
+    svg
+        path
+            @extend .fill-green-70
+/* ------------------ End Card Style Class ------------------ */
+
+/* ------------------ Article ------------------ */
+#Article
+    &::after
+        content: ''
+        @include Define.box($width: 100%)
+        display: block
+        border-bottom: 1px solid map-get(Define.$colors, 'natural-30')
+        @include Define.margin($top: 72px)
+
+    h2
+        @include Define.margin($bottom: 56px)
+
+    .loadmore 
+        @include Define.margin($top: 72px)
+/* ------------------ End Article ------------------ */
+
+/* ------------------ Tips ------------------ */
+#Tips
+    h2
+        @include Define.margin($bottom: 56px)
+
+    .loadmore 
+        @include Define.margin($top: 72px)
+
+    .list 
+        @include Define.margin($top: -20px, $bottom: -20px)
+
+    .card
+        @include Define.padding($top: 20px, $bottom: 20px)
+/* ------------------ End Tips ------------------ */

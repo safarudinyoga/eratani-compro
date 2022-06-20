@@ -21,7 +21,7 @@ export default function SetRatio (props) {
 
         window.addEventListener('resize', calculateHeight)
         return _ => window.removeEventListener('resize', calculateHeight)
-    })
+    }, [calculateHeight])
 
     delete newProps.ax
     delete newProps.ay

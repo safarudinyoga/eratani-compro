@@ -7,6 +7,7 @@ export default function Button (props) {
     newProps.className += (props.fontWeight) ? `font-${ props.fontWeight } ` : ''
     newProps.className += (props.fontSize) ? `font-${ props.fontSize } ` : ''
     newProps.className += (props.textColor) ? `text-${ props.textColor } ` : ''
+    newProps.className += (props.borderColor) ? `border-${ props.borderColor } ` : ''
     newProps.className += (props.backgroundColor) ? `bg-${ props.backgroundColor } ` : ''
     newProps.className += props.className || ''
 
@@ -22,12 +23,19 @@ export default function Button (props) {
         newProps.style.paddingBottom = parseInt(props.yPadding)
     }
 
+    if (props.borderWidth !== undefined) {
+        newProps.style.borderWidth = parseInt(props.borderWidth)
+        newProps.style.borderStyle = 'solid'
+    }
+
     delete newProps.fontWeight
     delete newProps.fontSize
     delete newProps.textColor
     delete newProps.backgroundColor
     delete newProps.xPadding
     delete newProps.yPadding
+    delete newProps.borderColor
+    delete newProps.borderWidth
 
     return (
         <a { ...newProps }>{ props.children }</a>

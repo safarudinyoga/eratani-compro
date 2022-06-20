@@ -8,6 +8,7 @@ import SetRatio from '../custom/SetRatio'
 import Ellipsis from '../custom/Ellipsis'
 import Typograph from '../custom/Typograph'
 import Button from '../custom/Button'
+import Container from '../custom/Container';
 
 import styles from './Home.module.sass'
 import EyeViewVect from '/assets/vector/eye-view.svg'
@@ -17,10 +18,11 @@ import MapsHvrVect from '/assets/vector/maps-hvr.svg'
 import MockupPng from '/assets/static/mockup.png'
 import FindPlaystorePng from '/assets/static/find-playstore.png'
 
+
 /* ------------------ Hero Banner ------------------ */
 const Hero = () => {
     return ( 
-        <section id={ styles.Hero }>
+        <Container id={ styles.Hero }>
             <SetRatio ax='2.33' ay='1' min='600' className={ styles.wrapper }>
                 <div className={ styles.background } style={ { backgroundImage: `url('/hero/IEP05860 1.jpg')` } }></div>
                 <div className={ styles.content }>
@@ -29,7 +31,7 @@ const Hero = () => {
                     <Button href='#' target='_blank' xPadding='18' textColor='white' backgroundColor='green-60'>Unduh Aplikasi Eratani</Button>
                 </div>
             </SetRatio>
-        </section>
+        </Container>
     )
 }
 /* ------------------ End Hero Banner ------------------ */
@@ -70,7 +72,7 @@ const Ecosystem = () => {
     ]
 
     return (
-        <section id={ styles.Ecosystem } className='container-padding'>
+        <Container id={ styles.Ecosystem } normalPadding paddingTop='96' paddingBottom='90'>
             <Typograph tag='h3' size='xlg-3' color='green-70'>Menuju Ekosistem yang<br />Lebih Kuat Bersama Eratani</Typograph>
             <div className={ `${ styles.eco_arrow } align-right` }>
                 <a href='#' id='eco-left'><EcoArrowVect /></a>
@@ -98,7 +100,7 @@ const Ecosystem = () => {
                     </div>
                 ) }
             </div>
-        </section>
+        </Container>
     )
 }
 /* ------------------ End Ecosystem ------------------ */
@@ -153,7 +155,7 @@ const Solution = () => {
     }
 
     return (
-        <section id={ styles.Solution } className='bg-natural-10 container-padding'>
+        <Container id={ styles.Solution } normalPadding backgroundColor='natural-10' paddingTop='64' paddingBottom='80'>
             <Typograph tag='h3' size='xlg-3' color='green-70' align='center'>Solusi Untuk Lahan Pertanian Anda</Typograph>
             <Typograph tag='p' size='md-3' align='center' maxWidth='900'>Kami bertekad untuk memenuhi segala kebutuhan pertanian demi meningkatkan kesejahteraan petani di seluruh Indonesia. Bergabung bersama kami dan dapatkan solusi dari setiap masalah pertanian Anda.</Typograph>
             <div className={ `row ${ styles.row }` }>
@@ -173,7 +175,7 @@ const Solution = () => {
                     </div>
                 ) }
             </div>
-        </section>
+        </Container>
     )
 }
 /* ------------------ End Solutions ------------------ */
@@ -257,7 +259,7 @@ const Maps = () => {
     const onPointLeave = () => gsap.to(mapsTipRef.current, { autoAlpha: 0, duration: 0.3 })
 
     return (
-        <section id={ styles.Maps }>
+        <Container id={ styles.Maps } paddingTop='48' paddingBottom='96'>
             <div className='container-padding align-center'>
                 <Typograph tag='h3' size='xlg-3' color='green-70' align='center'>Kami Mendukung Pertumbuhan dan<br />Digitalisasi Pertanian Seluruh Indonesia</Typograph>
                 <Typograph tag='p' size='md-3' align='center'>Program Eratani sudah tersebar di beberapa wilayah di Indonesia dan akan terus menjalar ke seluruh Indonesia.</Typograph>
@@ -285,7 +287,7 @@ const Maps = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </Container>
     )
 }
 /* ------------------ End Maps ------------------ */
@@ -347,7 +349,7 @@ const Media = () => {
     const [ tab, setTab ] = useState(0)
 
     return (
-        <section id={ styles.Media } className='bg-natural-10 container-padding align-center'>
+        <Container id={ styles.Media } normalPadding backgroundColor='natural-10' paddingTop='40' paddingBottom='68' className='align-center'>
             <div className={ styles.tab_title }>
                 <Typograph tag='h3' size='lg-3' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 0) ? styles.active : '' }` } onClick={ () => setTab(0) }>Mitra Kami</Typograph>
                 <Typograph tag='h3' size='lg-3' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 1) ? styles.active : '' }` } onClick={ () => setTab(1) }>Diliput oleh</Typograph>
@@ -375,7 +377,7 @@ const Media = () => {
                     </Slick>
                 }
             </div>
-        </section>
+        </Container>
     )
 }
 /* ------------------ End Media ------------------ */
@@ -383,7 +385,7 @@ const Media = () => {
 /* ------------------ Join ------------------ */
 const Join = () => {
     return (
-        <section id={ styles.Join } className='container-padding align-center'>
+        <Container id={ styles.Join } normalPadding paddingTop='80' paddingBottom='68' className='align-center'>
             <Typograph tag='h3' size='xlg-2' color='natural-60'>
                 Segera Bergabung Menjadi&nbsp;
                 <div>
@@ -399,7 +401,7 @@ const Join = () => {
             </Typograph>
             <Typograph tag='p' size='md-3' align='center' maxWidth='780'>Daftar sekarang dan nikmati berbagai manfaat dari Eratani, mulai dari bantuan permodalan, penyediaan saprotan, hingga penyaluran gabah dan beras.<br />Mari bersama mewujudkan ekosistem pertanian yang kuat!</Typograph>
             <Button href='#' xPadding='18' textColor='white' backgroundColor='green-60'>Daftar Sekarang</Button>
-        </section>
+        </Container>
     )
 }
 /* ------------------ End Join ------------------ */
@@ -459,14 +461,14 @@ const Testimoni = () => {
     const testimoniSlickSettings = SlickNavigationCustom('__slickTestimoni__', slickSettings)
 
     return (
-        <section id={ styles.Testimoni } className='bg-natural-10 container-padding'>
+        <Container id={ styles.Testimoni } normalPadding backgroundColor='natural-10' paddingTop='64' paddingBottom='52'>
             <Typograph tag='h3' size='xlg-2' align='center'>Testimoni Mitra</Typograph>
             <Typograph tag='p' size='md-3' align='center' maxWidth='685'>Kami merangkum beberapa mitra yang telah bergabung menjadi petani, gapoktan dan toko tani binaan Eratani.</Typograph>
             <div className={ styles.content }>
                 <Slick { ...testimoniSlickSettings } className='__slickTestimoni__'>
                     { dataTestimonis.map((testimoni, index) =>
                         <div className={ styles.slick_slide } key={ index }>
-                            <div className='row middle-xs bg-green-10'>
+                            <div className='row middle-xs no-margin bg-green-10'>
                                 <img src={ `/testimoni/${ testimoni.photo }` } className='image-cover' />
                                 <div className={ `col-xs align-left ${ styles.caption }` }>
                                     <Typograph tag='h5' size='md-1'>{ testimoni.name }</Typograph>
@@ -478,7 +480,7 @@ const Testimoni = () => {
                     ) }
                 </Slick>
             </div>
-        </section>
+        </Container>
     )
 }
 /* ------------------ End Testimoni ------------------ */
@@ -486,21 +488,19 @@ const Testimoni = () => {
 /* ------------------ Download ------------------ */
 const Download = () => {
     return (
-        <section id={ styles.Download } className='container-padding'>
-            <div className={ styles.content }>
-                <div className='row'>
-                    <img src={ MockupPng.src } width='416px' />
-                    <div className={ `col-xs align-left ${ styles.caption }` }>
-                        <Typograph tag='p' size='md-3' color='green-60'>Ingin menjadi petani sukses?</Typograph>
-                        <Typograph tag='h2' size='xlg-2'>Segera Unduh Aplikasi Eratani di Handphone Anda!</Typograph>
-                        <Typograph tag='p' size='md-3' color='natural-50'><em>One-stop solution</em> untuk memenuhi kebutuhan petani Indonesia menuju ekosistem pertanian yang lebih kuat. Unduh untuk mendapatkan bantuan permodalan, saprotan berkualitas baik, hingga pendampingan dari para ahli di bidang pertanian.</Typograph>
-                        <div className='align-right'>
-                            <a href='#'><img src={ FindPlaystorePng.src } width='200px' /></a>
-                        </div>
+        <Container id={ styles.Download } normalPadding paddingTop='64' paddingBottom='96'>
+            <div className='row no-margin middle-xs'>
+                <img src={ MockupPng.src } width='416px' />
+                <div className={ `col-xs align-left ${ styles.caption }` }>
+                    <Typograph tag='p' size='md-3' color='green-60'>Ingin menjadi petani sukses?</Typograph>
+                    <Typograph tag='h2' size='xlg-2'>Segera Unduh Aplikasi Eratani di Handphone Anda!</Typograph>
+                    <Typograph tag='p' size='md-3' color='natural-50'><em>One-stop solution</em> untuk memenuhi kebutuhan petani Indonesia menuju ekosistem pertanian yang lebih kuat. Unduh untuk mendapatkan bantuan permodalan, saprotan berkualitas baik, hingga pendampingan dari para ahli di bidang pertanian.</Typograph>
+                    <div className='align-right'>
+                        <a href='#'><img src={ FindPlaystorePng.src } width='200px' /></a>
                     </div>
                 </div>
             </div>
-        </section>
+        </Container>
     )
 }
 /* ------------------ End Download ------------------ */

@@ -1,4 +1,4 @@
-$colors: ("white": white, 'natural-60' : #121212, 'natural-40' : #b7b7b7, 'natural-20' : #f3f3f3, "natural-10": #F6F6F6, "natural-50": #707070, "yellow-20": #FFFACC, "yellow-60": #FFD800, "green-100": #013233, "green-40": #5DD291, "green-10": #E9FFEF, "green-60": #086C48, "green-70": #055C46, "green-30": #97F0B5, "green-80": #044D41, "green-50": #32A671,  "green-20": #C9F7D4, "green-90": #023E3A)
+$colors: ("white": white, 'natural-60' : #121212, 'natural-40' : #b7b7b7, 'natural-20' : #f3f3f3, 'natural-30': #E7E7E7, "natural-10": #F6F6F6, "natural-50": #707070, "yellow-20": #FFFACC, "yellow-60": #FFD800, "green-100": #013233, "green-40": #5DD291, "green-10": #E9FFEF, "green-60": #086C48, "green-70": #055C46, "green-30": #97F0B5, "green-80": #044D41, "green-50": #32A671,  "green-20": #C9F7D4, "green-90": #023E3A)
 
 $textAligns: ("left": left, "right": right, "center": center, "justify": justify)
 
@@ -18,6 +18,8 @@ $fontSizes: ("xsm-2": 12, "xsm-1": 14, "sm-2": 16, "sm-1": 18, "md-3": 20, "md-2
         background-color: $color
     .fill-#{$name}
         fill: $color
+    .border-#{$name}
+        border-color: $color
 
 @each $name, $align in $textAligns
     .align-#{$align}
