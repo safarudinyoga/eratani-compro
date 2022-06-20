@@ -14,7 +14,7 @@ export default function Ellipsis (props) {
         if (props.align == 'center' || props.align == 'justify') newProps.className += 'margin-auto '
     }
     if (props.line !== undefined) newProps.style.lineHeight = parseInt(props.line) + 'px'
-    if (props.style !== undefined) newProps.style.fontStyle = props.style
+    if (props.fontStyle !== undefined) newProps.style.fontStyle = props.fontStyle
     if (props.decoration !== undefined)  newProps.style.textDecoration = props.decoration
     if (props.transform !== undefined) newProps.style.textTransform = props.transform
 

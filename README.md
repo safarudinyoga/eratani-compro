@@ -50,11 +50,9 @@ Line Height = 1.4x Font Size
 - font-xsm-2  	`12px`
 
 ## Revision Note:
-- change to typograph page 1
 - transition mixin
 - React.createRef() to createRef()
 - image alt
 - container set component
-- change button page 1
 - hero banner page 1
 - animation ecosystem page 1

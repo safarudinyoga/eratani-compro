@@ -1,5 +1,5 @@
 import Parse from 'html-react-parser'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createRef } from 'react';
 import Link from 'next/link' 
 import Slick from "react-slick";
 import gsap from 'gsap'
@@ -172,7 +172,7 @@ const Team = () => {
                             <div className={ styles.quote }>
                                 <QuoteVect fill={ team.quoteColor } />
                             </div>
-                            <Typograph tag='p' size='sm-2' color='green-10' align='justify' style='italic'>{ team.quote }</Typograph>
+                            <Typograph tag='p' size='sm-2' color='green-10' align='justify' fontStyle='italic'>{ team.quote }</Typograph>
                         </div>
                     )}
                 </div>
@@ -218,7 +218,7 @@ const Culture = () => {
     ]
 
     let currentActive = 0
-    const sliderRef = React.createRef()
+    const sliderRef = createRef()
 
     useEffect(() => {
         const node = sliderRef.current

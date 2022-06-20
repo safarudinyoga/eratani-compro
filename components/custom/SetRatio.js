@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 
 export default function SetRatio (props) {
-    const divRef = React.createRef()
+    const divRef = createRef()
     const newProps = { ...props }
     const [h, setH] = useState(0)
 

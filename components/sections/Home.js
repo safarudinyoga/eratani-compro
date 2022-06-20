@@ -1,5 +1,5 @@
 import Parse from 'html-react-parser'
-import React, { useState } from 'react';
+import React, { useState, createRef } from 'react';
 import Slick from "react-slick";
 import gsap from 'gsap'
 
@@ -243,7 +243,7 @@ const Maps = () => {
         }
     ]
 
-    const mapsTipRef = React.createRef()
+    const mapsTipRef = createRef()
     const [ mapIndexHover, setMapIndexHover ] = useState(0)
 
     const onPointEnter = (event) => {

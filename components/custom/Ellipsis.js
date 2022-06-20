@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createRef } from 'react';
 import Typograph from '../custom/Typograph'
 
 export default function Ellipsis (props) {
-    const divRef = React.createRef()
+    const divRef = createRef()
     const [ dimensions, setDimensions ] = useState(0)
 
     const calculateText = () => {
