@@ -51,7 +51,6 @@ Line Height = 1.4x Font Size
 
 ## Revision Note:
 - transition mixin
-- React.createRef() to createRef()
 - image alt
 - container set component
 - hero banner page 1
