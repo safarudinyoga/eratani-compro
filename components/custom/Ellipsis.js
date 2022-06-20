@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Typograph from '../custom/Typograph'
 
 export default function Ellipsis (props) {
     const divRef = React.createRef()

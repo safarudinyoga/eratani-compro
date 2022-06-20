@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { useRouter } from "next/router";
 import styles from './Header.module.sass'
 
+import Typograph from '../custom/Typograph'
+
 import LogoVect from '/assets/vector/logo-norm.svg'
 import LangIcoVect from '/assets/vector/lang-ico.svg'
 import KarrowDownVect from '/assets/vector/karrow-down.svg'
@@ -35,7 +37,9 @@ export default function Header () {
                     </nav>
                 </div>
                 <div className={ `col-xs-2 ${ styles.sw_lang } align-right` }>
-                    <p className='text-white font-bold'><LangIcoVect /> &nbsp;&nbsp;&nbsp;{ lang == 'id' ? 'ID' : 'EN' } &nbsp;<KarrowDownVect className={ styles.svg_on_hover } /></p>
+                    <Typograph tag='h6' size='md-3' color='white'>
+                        <LangIcoVect /> &nbsp;&nbsp;&nbsp;{ lang == 'id' ? 'ID' : 'EN' } &nbsp;<KarrowDownVect className={ styles.svg_on_hover } />
+                    </Typograph>
                 </div>
             </div>
         </header>

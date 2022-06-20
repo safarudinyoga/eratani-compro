@@ -1,6 +1,8 @@
 import Link from 'next/link' 
 import styles from './Footer.module.sass'
 
+import Typograph from '../custom/Typograph'
+
 import LogoVect from '../../assets/vector/logo-w-norm.svg'
 import InstagramVect from '../../assets/vector/instagram.svg'
 import FacebookVect from '../../assets/vector/facebook.svg'
@@ -24,7 +26,11 @@ export default function Footer () {
         { id: 'BUYER',              en: 'Career',                   link: 'career' } ]
 
     function footerSub(title, content) {
-        return (<><h6>{ title }</h6>{ content }</>)
+        return (
+            <>
+                <Typograph tag='h6' size='sm-1'>{ title }</Typograph>
+                { content }
+            </>)
     }
 
     return (
@@ -32,12 +38,12 @@ export default function Footer () {
             <div className={ `row ${ styles.main }` }>
                 <div className={`col-xs-6 ${ styles.left }`}>
                     <LogoVect />
-                    <div className={ styles.office }>{ footerSub('KANTOR PUSAT', <p>Jl. R.A. Kartini No. Kav. 8 South Quarter, Tower C, RT 10/RW 4, Cilandak Barat, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12430</p>) }</div>
-                    <div>{ footerSub('EMAIL', <p>info@eratani.co.id</p>) }</div>
-                    <div>{ footerSub('TELEPON', <p>+62 811 952 2577</p>)}</div>
+                    <div className={ styles.office }>{ footerSub('KANTOR PUSAT', <Typograph tag='p' size='sm-2' line='28'>Jl. R.A. Kartini No. Kav. 8 South Quarter, Tower C, RT 10/RW 4, Cilandak Barat, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12430</Typograph>) }</div>
+                    <div>{ footerSub('EMAIL', <Typograph tag='p' size='sm-2' line='20'>info@eratani.co.id</Typograph>) }</div>
+                    <div>{ footerSub('TELEPON', <Typograph tag='p' size='sm-2' line='20'>+62 811 952 2577</Typograph>)}</div>
                 </div>
-                <div className='col-xs-2'>{ footerSub('PERUSAHAAN', companyNav.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }>{ nav[lang] }</Link>) ) }</div>
-                <div className='col-xs-2'>{ footerSub('GABUNG', joinNav.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }>{ nav[lang] }</Link>) ) }</div>
+                <div className='col-xs-2'>{ footerSub('PERUSAHAAN', companyNav.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }><><Typograph tag='a' size='sm-2' line='20'>{ nav[lang] }</Typograph></></Link>) ) }</div>
+                <div className='col-xs-2'>{ footerSub('GABUNG', joinNav.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }><><Typograph tag='a' size='sm-2' line='20'>{ nav[lang] }</Typograph></></Link>) ) }</div>
                 <div className='col-xs-2'>{ footerSub('MEDIA SOSIAL', <div className={ `row middle-xs between-xs ${ styles.social }`  }>
                         <a href='#'><InstagramVect /></a>
                         <a href='#'><LinkedInVect /></a>
@@ -46,11 +52,7 @@ export default function Footer () {
                     </div>) }
                 </div>
             </div>
-            <div className='row'>
-                <div className='col-xs-12'>
-                    <p className={ `${ styles.copyright } align-center small` }>Copyright © 2022 by PT Eratani Teknologi Nusantara</p>
-                </div>
-            </div>
+            <Typograph tag='p' size='xsm-1' align='center'>Copyright © 2022 by PT Eratani Teknologi Nusantara</Typograph>
         </footer>
     )
 }

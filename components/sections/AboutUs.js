@@ -5,9 +5,7 @@ import Slick from "react-slick";
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
 
-import SlickNavigationCustom from '../custom/SlickNavigation'
 import SetRatio from '../custom/SetRatio'
-import Ellipsis from '../custom/Ellipsis'
 import Typograph from '../custom/Typograph'
 import Button from '../custom/Button'
 

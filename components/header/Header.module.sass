@@ -9,7 +9,7 @@
     @extend .header-hover-transition
 
     .sw_lang
-        > p
+        > h6
             @extend .header-hover-transition
 
             &, *
@@ -28,7 +28,7 @@
 
             &.active
                 border-bottom: 2px solid map-get(Define.$colors, 'yellow-60')
-                @include Define.typograph($weight: 'bold')
+                @extend .font-bold
         
         a:not(:last-child)
             @include Define.margin($right: 20px)
@@ -43,7 +43,7 @@
         @extend .bg-white
         box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
 
-        .navigation a, .sw_lang > p
+        .navigation a, .sw_lang > h6
             @extend .text-green-60
 
         .svg_on_hover path

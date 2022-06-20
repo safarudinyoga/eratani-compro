@@ -21,7 +21,6 @@
 
             p
                 @include Define.margin($top: 25px, $bottom: 59px)
-                max-width: 528px
 /* ------------------ End Hero Banner ------------------ */
 
 /* ------------------ Ecosystem ------------------ */
@@ -48,7 +47,7 @@
             @include Define.margin($right: 15px)
             white-space: normal
 
-            h6
+            h5
                 @include Define.margin($bottom: 16px)
                 
                 span
@@ -66,8 +65,7 @@
                 @include Define.padding($right: 45px)
 
                 .text
-                    @include Define.typograph($size: 14px, $lineHeight: 20px)
-                    @include Define.box($height: 44px)
+                    @include Define.box($height: 45px)
                     overflow: hidden
 
                     span
@@ -80,14 +78,14 @@
             &.slide_active
                 @include Define.box($width: 42%)
                 
-                h6
-                    @include Define.typograph($size: 20px)
+                h5
+                    @extend .font-md-3
 
                 .caption
                     @include Define.padding($right: 56px)
 
                     .text
-                        @include Define.typograph($size: 16px, $lineHeight: 22px)
+                        @extend .font-sm-2
 
                     svg
                         visibility: visible
@@ -105,8 +103,7 @@
     @include Define.padding($top: 64px, $bottom: 80px)
 
     > p
-        @include Define.margin($top: 16px, $bottom: 56px, $left: auto, $right: auto)
-        max-width: 900px
+        @include Define.margin($top: 16px, $bottom: 56px)
 
     .row
         @include Define.margin($left: -12px, $right: -12px)
@@ -129,7 +126,7 @@
             transform: scale(1.2)
             @extend .solution-hover-transistion
 
-        h3
+        h4
             @include Define.box($position: absolute, $bottom: 40px, $left: 40px, $width: 100%, $zindex: 1)
             @include Define.padding($right: 40px)
             white-space: nowrap
@@ -150,9 +147,6 @@
             transform: scale(0.5)
             @extend .solution-hover-transistion
             
-            p
-                @include Define.typograph($size: 16px, $lineHeight: 23px)
-            
             a
                 @include Define.margin($top: 32px)
 
@@ -163,7 +157,7 @@
             &::after
                 opacity: 1
 
-            h3
+            h4
                 transform: scale(0.6)
 
                 span
@@ -283,7 +277,7 @@
     @include Define.padding($top: 40px, $bottom: 68px)
 
     .tab_title
-        h4 
+        h3 
             @include Define.box($position: relative)
             @include Define.inlineBlock($align: top)
             @include Define.margin($left: 31px, $right: 31px)
@@ -303,8 +297,7 @@
                     @include Define.box($width: 100%)
 
     > p
-        max-width: 705px
-        @include Define.margin($top: 35px, $bottom: 32px, $left: auto, $right: auto)
+        @include Define.margin($top: 35px, $bottom: 32px)
             
     .content
         .slick_slide
@@ -352,10 +345,9 @@
     @include Define.padding($top: 80px, $bottom: 68px)
 
     > p
-        @include Define.margin($top: 24px, $bottom: 56px, $left: auto, $right: auto)
-        max-width: 780px
+        @include Define.margin($top: 24px, $bottom: 56px)
 
-    h2        
+    h3        
         &, > *
             @include Define.inlineBlock($align: top)
 
@@ -373,8 +365,7 @@
     @include Define.padding($top: 64px, $bottom: 52px)
 
     > p
-        @include Define.margin($top: 16px, $bottom: 56px, $left: auto, $right: auto)
-        max-width: 685px
+        @include Define.margin($top: 16px, $bottom: 56px)
 
     .content
         @include Define.margin($left: auto, $right: auto)

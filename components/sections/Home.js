@@ -6,6 +6,8 @@ import gsap from 'gsap'
 import SlickNavigationCustom from '../custom/SlickNavigation'
 import SetRatio from '../custom/SetRatio'
 import Ellipsis from '../custom/Ellipsis'
+import Typograph from '../custom/Typograph'
+import Button from '../custom/Button'
 
 import styles from './Home.module.sass'
 import EyeViewVect from '/assets/vector/eye-view.svg'
@@ -22,9 +24,9 @@ const Hero = () => {
             <SetRatio ax='2.33' ay='1' min='600' className={ styles.wrapper }>
                 <div className={ styles.background } style={ { backgroundImage: `url('/hero/IEP05860 1.jpg')` } }></div>
                 <div className={ styles.content }>
-                    <h1 className='text-green-10'>Selalu Ada<br />Untuk Petani</h1>
-                    <p className='text-white align-justify'>Kemudahan bertani di dalam genggaman Anda. Semua kebutuhan petani dapat terpenuhi hanya dengan satu aplikasi. Ayo daftar sekarang dan rasakan manfaatnya!</p>
-                    <a href='#' className='btn' target='_blank'>Unduh Aplikasi Eratani</a>
+                    <Typograph tag='h1' size='xlg-1' weight='extrabold' color='green-10' line='70'>Selalu Ada<br />Untuk Petani</Typograph>
+                    <Typograph tag='p' size='md-3' color='white' align='justify' maxWidth='528'>Kemudahan bertani di dalam genggaman Anda. Semua kebutuhan petani dapat terpenuhi hanya dengan satu aplikasi. Ayo daftar sekarang dan rasakan manfaatnya!</Typograph>
+                    <Button href='#' target='_blank' xPadding='18' textColor='white' backgroundColor='green-60'>Unduh Aplikasi Eratani</Button>
                 </div>
             </SetRatio>
         </section>
@@ -69,7 +71,7 @@ const Ecosystem = () => {
 
     return (
         <section id={ styles.Ecosystem } className='container-padding'>
-            <h4 className='text-green-70'>Menuju Ekosistem yang<br />Lebih Kuat Bersama Eratani</h4>
+            <Typograph tag='h3' size='xlg-3' color='green-70'>Menuju Ekosistem yang<br />Lebih Kuat Bersama Eratani</Typograph>
             <div className={ `${ styles.eco_arrow } align-right` }>
                 <a href='#' id='eco-left'><EcoArrowVect /></a>
                 <a href='#' id='eco-right'><EcoArrowVect /></a>
@@ -78,15 +80,15 @@ const Ecosystem = () => {
                 { ecoSystemData.map((eco, index) =>
                     <div className={ `${ styles.slide } ${ (index == 0) ? styles.slide_active : '' }` } key={ index }>
                         <div className={ styles.slide_content }>
-                            <h6>
+                            <Typograph tag='h5' size='sm-1'>
                                 <span className='text-green-50'>{ eco.no }</span>
                                 <span>{ eco.title }</span>
-                            </h6>
+                            </Typograph>
                             <SetRatio ax='1.42' ay='1' min='0'>
                                 <img src={ `/ecosystem/${ eco.photo }` } width='100%' className='image-cover' />
                             </SetRatio>
                             <div className={ styles.caption }>
-                                <Ellipsis className={ styles.text }>
+                                <Ellipsis className={ `font-xsm-1 ${styles.text}` }>
                                     { eco.description }
                                 </Ellipsis>
                                 <a href="#"><EyeViewVect /></a>
@@ -152,20 +154,20 @@ const Solution = () => {
 
     return (
         <section id={ styles.Solution } className='bg-natural-10 container-padding'>
-            <h4 className='text-green-70 align-center'>Solusi Untuk Lahan Pertanian Anda</h4>
-            <p className='align-center'>Kami bertekad untuk memenuhi segala kebutuhan pertanian demi meningkatkan kesejahteraan petani di seluruh Indonesia. Bergabung bersama kami dan dapatkan solusi dari setiap masalah pertanian Anda.</p>
+            <Typograph tag='h3' size='xlg-3' color='green-70' align='center'>Solusi Untuk Lahan Pertanian Anda</Typograph>
+            <Typograph tag='p' size='md-3' align='center' maxWidth='900'>Kami bertekad untuk memenuhi segala kebutuhan pertanian demi meningkatkan kesejahteraan petani di seluruh Indonesia. Bergabung bersama kami dan dapatkan solusi dari setiap masalah pertanian Anda.</Typograph>
             <div className={ `row ${ styles.row }` }>
                 { solutionData.map((solution, index) =>
                     <div className={`col-xs-4 ${ styles.column }`} key={ index }>
                         <SetRatio ax='1' ay='1.26' min='0' className={ styles.wrapper } onMouseEnter={ onSolutionEnter } onMouseLeave={ onSolutionLeave }>
                             <img src={ `/solution/${ solution.photo }` } className='image-cover' />
-                            <h3 className='text-green-10 __SolutionNode__'>
+                            <Typograph tag='h4' size='xlg-3' color='green-10' className='__SolutionNode__'>
                                 <span>{ Parse(solution.title1) }</span>
                                 <span>{ Parse(solution.title2) }</span>
-                            </h3> 
+                            </Typograph>
                             <div className={ `${styles.caption} align-center __SolutionNode__` }>
-                                <p className='text-green-10 align-justify'>{ solution.description }</p>
-                                <a href={ solution.link.href } className='btn' target='_blank'>{ solution.link.text }</a>
+                                <Typograph tag='p' size='sm-2' color='green-10' line='23' align='justify'>{ solution.description }</Typograph>
+                                <Button href={ solution.link.href } target='_blank' xPadding='18' textColor='white' backgroundColor='green-60' >{ solution.link.text }</Button>
                             </div>
                         </SetRatio>
                     </div>
@@ -257,8 +259,8 @@ const Maps = () => {
     return (
         <section id={ styles.Maps }>
             <div className='container-padding align-center'>
-                <h4 className='text-green-70'>Kami Mendukung Pertumbuhan dan<br />Digitalisasi Pertanian Seluruh Indonesia</h4>
-                <p>Program Eratani sudah tersebar di beberapa wilayah di Indonesia dan akan terus menjalar ke seluruh Indonesia.</p>
+                <Typograph tag='h3' size='xlg-3' color='green-70' align='center'>Kami Mendukung Pertumbuhan dan<br />Digitalisasi Pertanian Seluruh Indonesia</Typograph>
+                <Typograph tag='p' size='md-3' align='center'>Program Eratani sudah tersebar di beberapa wilayah di Indonesia dan akan terus menjalar ke seluruh Indonesia.</Typograph>
             </div>
             <div className={ styles.indonesia }>
                 <IndonesiaVect />
@@ -275,9 +277,9 @@ const Maps = () => {
                     <div className={ styles.tip } ref={ mapsTipRef }>
                         <MapsHvrVect />
                         <div className={ styles.content }>
-                            <h6 className='text-green-60'>{ mapsData[mapIndexHover].prov }</h6>
+                            <Typograph tag='h6' size='sm-1' color='green-60'>{ mapsData[mapIndexHover].prov }</Typograph>
                             { mapsData[mapIndexHover].cities.map((city, index) => 
-                                <p className='label text-white bg-green-60' key={ index }>{ city }</p>
+                                <Typograph tag='p' size='md-3' color='white' className='label bg-green-60' key={ index }>{ city }</Typograph>
                             ) }
                         </div>
                     </div>
@@ -347,10 +349,10 @@ const Media = () => {
     return (
         <section id={ styles.Media } className='bg-natural-10 container-padding align-center'>
             <div className={ styles.tab_title }>
-                <h4 className={ `small text-natural-40 __MediaTabNav__ ${ (tab == 0) ? styles.active : '' }` } onClick={ () => setTab(0) }>Mitra Kami</h4>
-                <h4 className={ `small text-natural-40 __MediaTabNav__ ${ (tab == 1) ? styles.active : '' }` } onClick={ () => setTab(1) }>Diliput oleh</h4>
+                <Typograph tag='h3' size='lg-3' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 0) ? styles.active : '' }` } onClick={ () => setTab(0) }>Mitra Kami</Typograph>
+                <Typograph tag='h3' size='lg-3' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 1) ? styles.active : '' }` } onClick={ () => setTab(1) }>Diliput oleh</Typograph>
             </div>
-            <p>Kami bekerja sama dengan mitra dan media terkemuka untuk mewujudkan ekosistem pertanian yang kuat demi mendukung kesejahteraan petani Indonesia.</p>
+            <Typograph tag='p' size='md-3' align='center' maxWidth='705'>Kami bekerja sama dengan mitra dan media terkemuka untuk mewujudkan ekosistem pertanian yang kuat demi mendukung kesejahteraan petani Indonesia.</Typograph>
             <div className={ styles.content }>
                 { (tab == 0) && <Slick { ...mitaSlickSettings } className='__SlickMitra__'>
                         { mitraData.map((mitra, index) => 
@@ -382,21 +384,21 @@ const Media = () => {
 const Join = () => {
     return (
         <section id={ styles.Join } className='container-padding align-center'>
-            <h2 className='text-natural-80'>
+            <Typograph tag='h3' size='xlg-2' color='natural-60'>
                 Segera Bergabung Menjadi&nbsp;
                 <div>
                     <ul className='align-left __join_ul__'>
-                        <li><h2 className='text-green-60'>Petani</h2></li>
-                        <li><h2 className='text-green-40'>Gapoktan</h2></li>
-                        <li><h2 className='text-green-70'>Poktan</h2></li>
-                        <li><h2 className='text-green-50'>Toko Tani</h2></li>
-                        <li><h2 className='text-green-80'>Supplier</h2></li>
-                        <li><h2 className='text-green-30'>Buyer</h2></li>
+                        <li><Typograph tag='h3' size='xlg-2' color='green-60'>Petani</Typograph></li>
+                        <li><Typograph tag='h3' size='xlg-2' color='green-40'>Gapoktan</Typograph></li>
+                        <li><Typograph tag='h3' size='xlg-2' color='green-70'>Poktan</Typograph></li>
+                        <li><Typograph tag='h3' size='xlg-2' color='green-50'>Toko Tani</Typograph></li>
+                        <li><Typograph tag='h3' size='xlg-2' color='green-80'>Supplier</Typograph></li>
+                        <li><Typograph tag='h3' size='xlg-2' color='green-30'>Buyer</Typograph></li>
                     </ul>
                 </div>
-            </h2>
-            <p>Daftar sekarang dan nikmati berbagai manfaat dari Eratani, mulai dari bantuan permodalan, penyediaan saprotan, hingga penyaluran gabah dan beras.<br />Mari bersama mewujudkan ekosistem pertanian yang kuat!</p>
-            <a href='#' className='btn'>Daftar Sekarang</a>
+            </Typograph>
+            <Typograph tag='p' size='md-3' align='center' maxWidth='780'>Daftar sekarang dan nikmati berbagai manfaat dari Eratani, mulai dari bantuan permodalan, penyediaan saprotan, hingga penyaluran gabah dan beras.<br />Mari bersama mewujudkan ekosistem pertanian yang kuat!</Typograph>
+            <Button href='#' xPadding='18' textColor='white' backgroundColor='green-60'>Daftar Sekarang</Button>
         </section>
     )
 }
@@ -457,9 +459,9 @@ const Testimoni = () => {
     const testimoniSlickSettings = SlickNavigationCustom('__slickTestimoni__', slickSettings)
 
     return (
-        <section id={ styles.Testimoni } className='bg-natural-10 container-padding align-center'>
-            <h2 className='text-natural-80'>Testimoni Mitra</h2>
-            <p>Kami merangkum beberapa mitra yang telah bergabung menjadi petani, gapoktan dan toko tani binaan Eratani.</p>
+        <section id={ styles.Testimoni } className='bg-natural-10 container-padding'>
+            <Typograph tag='h3' size='xlg-2' align='center'>Testimoni Mitra</Typograph>
+            <Typograph tag='p' size='md-3' align='center' maxWidth='685'>Kami merangkum beberapa mitra yang telah bergabung menjadi petani, gapoktan dan toko tani binaan Eratani.</Typograph>
             <div className={ styles.content }>
                 <Slick { ...testimoniSlickSettings } className='__slickTestimoni__'>
                     { dataTestimonis.map((testimoni, index) =>
@@ -467,9 +469,9 @@ const Testimoni = () => {
                             <div className='row middle-xs bg-green-10'>
                                 <img src={ `/testimoni/${ testimoni.photo }` } className='image-cover' />
                                 <div className={ `col-xs align-left ${ styles.caption }` }>
-                                    <h5>{ testimoni.name }</h5>
-                                    <h6 className='small'>{ testimoni.type }, { testimoni.dom }</h6>
-                                    <p>{ testimoni.testi }</p>
+                                    <Typograph tag='h5' size='md-1'>{ testimoni.name }</Typograph>
+                                    <Typograph tag='h6' size='xsm-1'>{ testimoni.type }, { testimoni.dom }</Typograph>
+                                    <Typograph tag='p' size='md-3'>{ testimoni.testi }</Typograph>
                                 </div>
                             </div>
                         </div>
@@ -484,18 +486,16 @@ const Testimoni = () => {
 /* ------------------ Download ------------------ */
 const Download = () => {
     return (
-        <section id={ styles.Download } className='container-padding align-center'>
+        <section id={ styles.Download } className='container-padding'>
             <div className={ styles.content }>
                 <div className='row'>
                     <img src={ MockupPng.src } width='416px' />
                     <div className={ `col-xs align-left ${ styles.caption }` }>
-                        <p className='text-green-60'>Ingin menjadi petani sukses?</p>
-                        <h2>Segera Unduh Aplikasi Eratani di Handphone Anda!</h2>
-                        <p className='text-natural-50'><em>One-stop solution</em> untuk memenuhi kebutuhan petani Indonesia menuju ekosistem pertanian yang lebih kuat. Unduh untuk mendapatkan bantuan permodalan, saprotan berkualitas baik, hingga pendampingan dari para ahli di bidang pertanian.</p>
+                        <Typograph tag='p' size='md-3' color='green-60'>Ingin menjadi petani sukses?</Typograph>
+                        <Typograph tag='h2' size='xlg-2'>Segera Unduh Aplikasi Eratani di Handphone Anda!</Typograph>
+                        <Typograph tag='p' size='md-3' color='natural-50'><em>One-stop solution</em> untuk memenuhi kebutuhan petani Indonesia menuju ekosistem pertanian yang lebih kuat. Unduh untuk mendapatkan bantuan permodalan, saprotan berkualitas baik, hingga pendampingan dari para ahli di bidang pertanian.</Typograph>
                         <div className='align-right'>
-                            <a href='#'>
-                                <img src={ FindPlaystorePng.src } width='200px' />
-                            </a>
+                            <a href='#'><img src={ FindPlaystorePng.src } width='200px' /></a>
                         </div>
                     </div>
                 </div>
