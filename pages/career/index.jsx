@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 
 // components & styles
 import ImportExport from '../../assets/svgs/import_export.svg'
@@ -47,7 +48,9 @@ const CardCareer = ({ id }) => (
           </h5>
         </div>
       </div>
-      <button className={styles.career_button_detail}>Lihat Detil</button>
+      <Link href={`/career/${id}`}>
+        <button className={styles.career_button_detail}>Lihat Detil</button>
+      </Link>
     </div>
   </div>
 )

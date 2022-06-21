@@ -1,0 +1,28 @@
+@use '../../../styles/Define'
+@import '../../../styles/Define'
+
+.container_careerdetail
+  padding: 45px 72px
+
+  .navigation
+    +flex(row, space-between, center)
+
+    .title_page
+      font-size: 20px
+      font-weight: 700px
+      color: Define.$green_70
+
+    .back_button
+      +flex(row, center, center)
+      background-color: #fff
+      border: 1px solid #055C46
+      box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+      border-radius: 8px
+      padding: 12px 20px 12px 25px
+      font-size: 16px
+      font-weight: 700
+      color: Define.$green_70
+
+      &:hover
+        color: Define.$green_100
+        border-color: Define.$green_100
