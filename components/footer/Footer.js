@@ -18,12 +18,12 @@ export default function Footer () {
         { id: 'PERTANYAAN',          en: 'Question',                 link: 'qna' },
         { id: 'KARIR',               en: 'Career',                   link: 'career' } ]
     const joinNav = [
-        { id: 'PETANI',             en: 'About Us',                 link: 'about-us' },
-        { id: 'TOKO TANI',          en: 'Blog',                     link: 'blog' },
-        { id: 'GAPOKTAN',           en: 'Event',                    link: 'event' },
-        { id: 'POKTAN',             en: 'Question',                 link: 'qna' },
-        { id: 'SUPPLIER',           en: 'Career',                   link: 'career' },
-        { id: 'BUYER',              en: 'Career',                   link: 'career' } ]
+        { id: 'PETANI',             en: 'About Us',                 link: '#' },
+        { id: 'TOKO TANI',          en: 'Blog',                     link: '#' },
+        { id: 'GAPOKTAN',           en: 'Event',                    link: '#' },
+        { id: 'POKTAN',             en: 'Question',                 link: '#' },
+        { id: 'SUPPLIER',           en: 'Career',                   link: '#' },
+        { id: 'BUYER',              en: 'Career',                   link: '#' } ]
 
     function footerSub(title, content) {
         return (
@@ -42,8 +42,8 @@ export default function Footer () {
                     <div>{ footerSub('EMAIL', <Typograph tag='p' size='sm-2' line='20'>info@eratani.co.id</Typograph>) }</div>
                     <div>{ footerSub('TELEPON', <Typograph tag='p' size='sm-2' line='20'>+62 811 952 2577</Typograph>)}</div>
                 </div>
-                <div className='col-xs-2'>{ footerSub('PERUSAHAAN', companyNav.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }><><Typograph tag='a' size='sm-2' line='20'>{ nav[lang] }</Typograph></></Link>) ) }</div>
-                <div className='col-xs-2'>{ footerSub('GABUNG', joinNav.map((nav, idx) => <Link key={ idx } href={ `/${ nav.link }` }><><Typograph tag='a' size='sm-2' line='20'>{ nav[lang] }</Typograph></></Link>) ) }</div>
+                <div className='col-xs-2'>{ footerSub('PERUSAHAAN', companyNav.map((nav, index) => <Typograph key={ index } tag='a' href={ `/${ nav.link }` } size='sm-2' line='20'>{ nav[lang] }</Typograph>) ) }</div>
+                <div className='col-xs-2'>{ footerSub('GABUNG', joinNav.map((nav, index) => <Typograph key={ index } tag='a' href={ `/${ nav.link }` } size='sm-2' line='20'>{ nav[lang] }</Typograph>) ) }</div>
                 <div className='col-xs-2'>{ footerSub('MEDIA SOSIAL', <div className={ `row middle-xs between-xs ${ styles.social }`  }>
                         <a href='#'><InstagramVect /></a>
                         <a href='#'><LinkedInVect /></a>

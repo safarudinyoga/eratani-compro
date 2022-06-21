@@ -12,27 +12,25 @@ export default function Header () {
     let lang = 'id'
     const navs = [
         { id: 'Beranda',             en: 'Home',                     link: '' },
-        { id: 'Solusi Pertanian',    en: 'Agricultural Solution',    link: 'solution' },
+        { id: 'Solusi Pertanian',    en: 'Agricultural Solution',    anchor: '#Solution'},
         { id: 'Tentang Kami',        en: 'About Us',                 link: 'about-us' },
         { id: 'Blog',                en: 'Blog',                     link: 'blog' },
         { id: 'Agenda',              en: 'Event',                    link: 'event' },
         { id: 'Pertanyaan',          en: 'Question',                 link: 'qna' },
         { id: 'Karir',               en: 'Career',                   link: 'career' } ]
 
-    const router = useRouter()
+    const { pathname } = useRouter()
 
     return (
-        <header id={ styles.Header } className={ `container-padding ${ (router.pathname != '/') ? styles.fix_white : '' }` }>
+        <header id={ styles.Header } className={ `container-padding ${ (pathname != '/') ? styles.fix_white : '' }` }>
             <div className='row middle-xs between-xs'>
                 <div className='col-xs-2'><LogoVect className={ styles.svg_on_hover } /></div>
                 <div className='col-xs-8 align-center'>
                     <nav className={ styles.navigation }>
                         <div className='row'>
-                            { navs.map((nav, idx) => 
-                                <Link key={ idx } href={ `/${ nav.link }` }>
-                                    <a className={ `text-white ${ (router.pathname == `/${ nav.link }`) ? styles.active : '' }` }>{ nav[lang] }</a>
-                                </Link> ) 
-                            }
+                            { navs.map((nav, index) => 
+                                <Typograph key={ index } tag='a' href={ `/${ (nav.anchor !== undefined) ? nav.anchor : nav.link }` } size='sm-2' color='white' className={ (pathname.split('/')[1] == `${ nav.link }`) ? styles.active : '' }>{ nav[lang] }</Typograph>
+                            )}
                         </div>
                     </nav>
                 </div>

@@ -155,7 +155,7 @@ const Solution = () => {
     }
 
     return (
-        <Container id={ styles.Solution } normalPadding backgroundColor='natural-10' paddingTop='64' paddingBottom='80'>
+        <Container id='Solution' className={ styles.Solution } normalPadding backgroundColor='natural-10' paddingTop='64' paddingBottom='80'>
             <Typograph tag='h3' size='xlg-3' color='green-70' align='center'>Solusi Untuk Lahan Pertanian Anda</Typograph>
             <Typograph tag='p' size='md-3' align='center' maxWidth='900'>Kami bertekad untuk memenuhi segala kebutuhan pertanian demi meningkatkan kesejahteraan petani di seluruh Indonesia. Bergabung bersama kami dan dapatkan solusi dari setiap masalah pertanian Anda.</Typograph>
             <div className={ `row ${ styles.row }` }>

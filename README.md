@@ -50,8 +50,8 @@ Line Height = 1.4x Font Size
 - font-xsm-2  	`12px`
 
 ## Revision Note:
-- transition mixin
 - image alt
 - hero banner page 1
 - animation ecosystem page 1
-- blog 1 / 2?
+- article read
+- scrollTo anchor solution

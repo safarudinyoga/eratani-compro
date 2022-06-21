@@ -1,51 +1,13 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import Sections from '/components/sections/Blog'
 
 export default function AboutUsPage() {
-    const PAGE_TITLE = 'Blog'
-
-    const articleData = [
-        {
-            title: 'Dicari: Petani Muda Berdedikasi Tinggi Untuk Indonesia',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id nulla rhoncus, tincidunt eros tempus, auctor mi. Sed congue augue id ligula vehicula pharetra. Nullam eu magna nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas malesuada arcu mauris, vitae feugiat eros pretium quis. Sed non leo quis ex consequat malesuada id a sem. In euismod ipsum nec lacus porta porttitor sit amet et turpis. Vestibulum aliquet vulputate nisl. Etiam lacinia molestie velit quis commodo. Aenean vulputate maximus lectus, non tempor tellus convallis a. Duis ultricies semper malesuada. Donec tincidunt eros vel ex ullamcorper vulputate. In tincidunt turpis pharetra, bibendum leo quis, tempor ex. Curabitur vitae orci efficitur, aliquet orci sed, laoreet erat. Integer accumsan nec sapien non aliquet.',
-            creator: 'Eratani',
-            date: '12 Mei 2022',
-            photo: 'unsplash_QFmNQXLPbZc.jpg',
-            url: '#'
-        },
-        {
-            title: 'Kerjasama Eratani dengan Kementrian Pertanian',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id nulla rhoncus, tincidunt eros tempus, auctor mi. Sed congue augue id ligula vehicula pharetra. Nullam eu magna nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas malesuada arcu mauris, vitae feugiat eros pretium quis. Sed non leo quis ex consequat malesuada id a sem. In euismod ipsum nec lacus porta porttitor sit amet et turpis. Vestibulum aliquet vulputate nisl. Etiam lacinia molestie velit quis commodo. Aenean vulputate maximus lectus, non tempor tellus convallis a. Duis ultricies semper malesuada. Donec tincidunt eros vel ex ullamcorper vulputate. In tincidunt turpis pharetra, bibendum leo quis, tempor ex. Curabitur vitae orci efficitur, aliquet orci sed, laoreet erat. Integer accumsan nec sapien non aliquet.',
-            creator: 'Eratani',
-            date: '12 Mei 2022',
-            photo: '1744_sosmed 1.jpg',
-            url: '#'
-        },
-        {
-            title: 'Jepang dan Inovasi Teknologi Pertaniannya',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id nulla rhoncus, tincidunt eros tempus, auctor mi. Sed congue augue id ligula vehicula pharetra. Nullam eu magna nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas malesuada arcu mauris, vitae feugiat eros pretium quis. Sed non leo quis ex consequat malesuada id a sem. In euismod ipsum nec lacus porta porttitor sit amet et turpis. Vestibulum aliquet vulputate nisl. Etiam lacinia molestie velit quis commodo. Aenean vulputate maximus lectus, non tempor tellus convallis a. Duis ultricies semper malesuada. Donec tincidunt eros vel ex ullamcorper vulputate. In tincidunt turpis pharetra, bibendum leo quis, tempor ex. Curabitur vitae orci efficitur, aliquet orci sed, laoreet erat. Integer accumsan nec sapien non aliquet.',
-            creator: 'Eratani',
-            date: '12 Mei 2022',
-            photo: 'unsplash_aaYeR44t8Lk.jpg',
-            url: '#'
-        },
-        {
-            title: 'Minat Bertani Anak Muda Indonesia Turun 80%',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id nulla rhoncus, tincidunt eros tempus, auctor mi. Sed congue augue id ligula vehicula pharetra. Nullam eu magna nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas malesuada arcu mauris, vitae feugiat eros pretium quis. Sed non leo quis ex consequat malesuada id a sem. In euismod ipsum nec lacus porta porttitor sit amet et turpis. Vestibulum aliquet vulputate nisl. Etiam lacinia molestie velit quis commodo. Aenean vulputate maximus lectus, non tempor tellus convallis a. Duis ultricies semper malesuada. Donec tincidunt eros vel ex ullamcorper vulputate. In tincidunt turpis pharetra, bibendum leo quis, tempor ex. Curabitur vitae orci efficitur, aliquet orci sed, laoreet erat. Integer accumsan nec sapien non aliquet.',
-            creator: 'Eratani',
-            date: '12 Mei 2022',
-            photo: 'unsplash_VoHrP4Ay97w.jpg',
-            url: '#'
-        },
-        {
-            title: 'Petani Terancam Punah pada Tahun 2045',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id nulla rhoncus, tincidunt eros tempus, auctor mi. Sed congue augue id ligula vehicula pharetra. Nullam eu magna nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas malesuada arcu mauris, vitae feugiat eros pretium quis. Sed non leo quis ex consequat malesuada id a sem. In euismod ipsum nec lacus porta porttitor sit amet et turpis. Vestibulum aliquet vulputate nisl. Etiam lacinia molestie velit quis commodo. Aenean vulputate maximus lectus, non tempor tellus convallis a. Duis ultricies semper malesuada. Donec tincidunt eros vel ex ullamcorper vulputate. In tincidunt turpis pharetra, bibendum leo quis, tempor ex. Curabitur vitae orci efficitur, aliquet orci sed, laoreet erat. Integer accumsan nec sapien non aliquet.',
-            creator: 'Eratani',
-            date: '12 Mei 2022',
-            photo: 'unsplash_SBCvP6i8hR8.jpg',
-            url: '#'
-        }
-    ]
+    
+    const router = useRouter()
+    const { page } = router.query
+    
+    const PAGE_TITLE = `Blog | Tips Page ${ page }`
 
     const tipsData = [
         {
@@ -98,18 +60,23 @@ export default function AboutUsPage() {
         }
     ]
 
+    const breadcrumbProps = [
+        {
+            name: 'Tips',
+            url: `/blog/tips/${ page }`
+        }
+    ]
+
     return (
         <>
             <Head>
                 <title>Eratani - { PAGE_TITLE }</title>
             </Head>
 
-            <Sections.Title />
-            <Sections.ArticleTop { ...{ data: [ ...articleData ], title: 'ARTIKEL' } } />
-            <Sections.LoadMore href='/blog/article/1'>Lihat Artikel Lainnya</Sections.LoadMore>
-            <Sections.Devider />
-            <Sections.List { ...{ data: [ ...tipsData ], title: 'TIPS PERTANIAN' } } />
-            <Sections.LoadMore href='/blog/tips/1'>Lihat Tips Lainnya</Sections.LoadMore>
+            <Sections.Breadcrumb { ...{ links: [ ...breadcrumbProps ] } } />
+            <Sections.Search />
+            <Sections.List { ...{ data: [ ...tipsData ], title: 'TIPS LAINNYA' } } />
+            <Sections.NavPaginate { ...{ path: 'tips', currentPage: parseInt(page), totalPage: 3 } } />
             <div style={{ display: 'block', height: 68 }} />
         </>
     ) 

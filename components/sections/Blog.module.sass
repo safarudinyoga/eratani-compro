@@ -13,7 +13,7 @@
 .card
     @include Define.padding($top: 12px, $bottom: 12px)
 
-    > div
+    > div, > a
         @include Define.box($position: relative, $width: 100%, $height: 100%)
         @include Define.flex($flexDirection: column)
         box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
@@ -57,35 +57,68 @@
     svg
         path
             @extend .fill-green-70
+
+.search 
+    input
+        max-width: 484px
+
+    a
+        @include Define.margin($left: 16px)
+        
+        svg
+            @include Define.margin($bottom: -2px, $right: 7px)
 /* ------------------ End Card Style Class ------------------ */
 
-/* ------------------ Article ------------------ */
-#Article
-    &::after
-        content: ''
-        @include Define.box($width: 100%)
-        display: block
-        border-bottom: 1px solid map-get(Define.$colors, 'natural-30')
-        @include Define.margin($top: 72px)
-
+/* ------------------ ArticleTop ------------------ */
+#ArticleTop
     h2
         @include Define.margin($bottom: 56px)
+/* ------------------ End ArticleTop ------------------ */
 
-    .loadmore 
-        @include Define.margin($top: 72px)
-/* ------------------ End Article ------------------ */
-
-/* ------------------ Tips ------------------ */
-#Tips
+/* ------------------ List ------------------ */
+#List
     h2
         @include Define.margin($bottom: 56px)
-
-    .loadmore 
-        @include Define.margin($top: 72px)
 
     .list 
         @include Define.margin($top: -20px, $bottom: -20px)
 
     .card
         @include Define.padding($top: 20px, $bottom: 20px)
-/* ------------------ End Tips ------------------ */
+/* ------------------ End List ------------------ */
+
+/* ------------------ ArticleTop ------------------ */
+#Devider
+    &::after
+        content: ''
+        display: block
+        @include Define.box($width: 100%, $height: 2px)
+        @extend .bg-natural-30
+/* ------------------ End ArticleTop ------------------ */
+
+/* ------------------ Breadcrumb ------------------ */
+#Breadcrumb
+    p, a
+        display: inline
+/* ------------------ End Breadcrumb ------------------ */
+
+/* ------------------ Breadcrumb ------------------ */
+#NavPaginate
+    ul 
+        @include Define.inlineBlock()
+
+    li
+        @include Define.inlineBlock($align: middle)
+        @include Define.margin($left: 10px, $right: 10px)
+
+        a
+            @include Define.box($width: 56px)
+            @extend .align-center
+            display: block
+            line-height: 50px
+            border-radius: 50%
+            border: 3px solid map-get(Define.$colors, 'green-60')
+            
+        svg
+            @include Define.margin($bottom: -2px)
+/* ------------------ End Breadcrumb ------------------ */

@@ -255,9 +255,7 @@ const Culture = () => {
                 <div className={ `col-xs-5 ${ styles.title }` }>
                     <Typograph tag='h3' size='xlg-3' color='green-10' maxWidth='400'>Lebih Dekat dengan Era-Fam<span className='bg-green-10'></span></Typograph>
                     <Typograph tag='p' size='md-3' color='green-30'>Kami selalu menjaga dan menjunjung tinggi nilai-nilai perusahaan demi terciptanya lingkungan kerja yang sinergis dan harmonis.</Typograph>
-                    <Link href='#'>
-                        <><Typograph tag='a' size='md-3' color='green-10'>Lihat Detail<ArrowForwardVect /></Typograph></>
-                    </Link>
+                    <Typograph tag='a' href='#' size='md-3' color='green-10'>Lihat Detail<ArrowForwardVect /></Typograph>
                 </div>
             </div>
         </Container>
@@ -271,9 +269,7 @@ const JoinFam = () => {
         <Container id={ styles.JoinFam } normalPadding paddingTop='96' paddingBottom='104' className='align-center'>
             <Typograph tag='h3' color='green-70' size='lg-1' align='center'>Ingin Menjadi Bagian dari Era-Fam?</Typograph>
             <Typograph tag='p' size='md-3' align='center' maxWidth='636'>Mari berkarya bersama kami untuk menciptakan ekosistem pertanian Indonesia yang lebih baik!</Typograph>
-            <Link href='#'>
-                <><Button xPadding='32' yPadding='18' textColor='green-10' backgroundColor='green-60'>Cek Lowongan Di Sini</Button></>
-            </Link>
+            <Button href='#' xPadding='32' yPadding='18' textColor='green-10' backgroundColor='green-60'>Cek Lowongan Di Sini</Button>
         </Container>
     )
 }

@@ -1,4 +1,5 @@
 import styles from './Button.module.sass'
+import Link from 'next/link' 
 
 export default function Button (props) {
     const newProps = { ...props }
@@ -36,9 +37,11 @@ export default function Button (props) {
     delete newProps.yPadding
     delete newProps.borderColor
     delete newProps.borderWidth
+    delete newProps.href
+    delete newProps.target
 
     return (
-        <a { ...newProps }>{ props.children }</a>
+        <Link href={ props.href }><a { ...newProps }>{ props.children }</a></Link>
     )
 
 }

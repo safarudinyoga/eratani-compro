@@ -1,3 +1,5 @@
+import Link from 'next/link' 
+
 export default function Ellipsis (props) {
     const TagName = props.tag
     const newProps = { ...props }
@@ -26,6 +28,13 @@ export default function Ellipsis (props) {
     delete newProps.weight
     delete newProps.maxWidth
     delete newProps.align
+
+    if (TagName == 'a') {
+        delete newProps.href
+        return (
+            <Link href={ props.href }><a { ...newProps }>{ props.children }</a></Link>
+        )
+    }
 
     return (
         <TagName { ...newProps }>{ props.children }</TagName>

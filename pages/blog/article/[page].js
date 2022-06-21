@@ -1,8 +1,13 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import Sections from '/components/sections/Blog'
 
 export default function AboutUsPage() {
-    const PAGE_TITLE = 'Blog'
+    
+    const router = useRouter()
+    const { page } = router.query
+    
+    const PAGE_TITLE = `Blog | Article Page ${ page }`
 
     const articleData = [
         {
@@ -44,10 +49,7 @@ export default function AboutUsPage() {
             date: '12 Mei 2022',
             photo: 'unsplash_SBCvP6i8hR8.jpg',
             url: '#'
-        }
-    ]
-
-    const tipsData = [
+        },
         {
             title: 'Cara Membuat Lahan dengan Konsep Verticulture',
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id nulla rhoncus, tincidunt eros tempus, auctor mi. Sed congue augue id ligula vehicula pharetra. Nullam eu magna nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas malesuada arcu mauris, vitae feugiat eros pretium quis. Sed non leo quis ex consequat malesuada id a sem. In euismod ipsum nec lacus porta porttitor sit amet et turpis. Vestibulum aliquet vulputate nisl. Etiam lacinia molestie velit quis commodo. Aenean vulputate maximus lectus, non tempor tellus convallis a. Duis ultricies semper malesuada. Donec tincidunt eros vel ex ullamcorper vulputate. In tincidunt turpis pharetra, bibendum leo quis, tempor ex. Curabitur vitae orci efficitur, aliquet orci sed, laoreet erat. Integer accumsan nec sapien non aliquet.',
@@ -98,18 +100,30 @@ export default function AboutUsPage() {
         }
     ]
 
+    const breadcrumbLinks = [
+        {
+            name: 'Artikel',
+            url: `/blog/article/${ page }`
+        }
+    ]
+
     return (
         <>
             <Head>
                 <title>Eratani - { PAGE_TITLE }</title>
             </Head>
 
-            <Sections.Title />
-            <Sections.ArticleTop { ...{ data: [ ...articleData ], title: 'ARTIKEL' } } />
-            <Sections.LoadMore href='/blog/article/1'>Lihat Artikel Lainnya</Sections.LoadMore>
-            <Sections.Devider />
-            <Sections.List { ...{ data: [ ...tipsData ], title: 'TIPS PERTANIAN' } } />
-            <Sections.LoadMore href='/blog/tips/1'>Lihat Tips Lainnya</Sections.LoadMore>
+            <Sections.Breadcrumb { ...{ links: [ ...breadcrumbLinks ] } } />
+            <Sections.Search />
+            { (parseInt(page) == 1) ? 
+                <>
+                    <Sections.ArticleTop { ...{ data: [ ...articleData.slice(0, 5) ], title: 'TERBARU' } } />
+                    <Sections.Devider />
+                </>
+                : <></> 
+            }
+            <Sections.List { ...{ data: [ ...articleData.slice(5) ], title: 'ARTIKEL LAINNYA' } } />
+            <Sections.NavPaginate { ...{ path: 'article', currentPage: parseInt(page), totalPage: 3 } } />
             <div style={{ display: 'block', height: 68 }} />
         </>
     ) 
