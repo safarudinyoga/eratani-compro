@@ -68,14 +68,14 @@
       margin: 0 auto 40px
       width: 95%
 
-      .title
+      .title_job
         font-size: 24px
         font-weight: 700
         color: Define.$green_70
         line-height: 34px
         margin-bottom: 4px
 
-      .desc
+      .desc_job
         font-size: 1em
         font-weight: 400
         line-height: 22px
@@ -88,7 +88,10 @@
         .wrapper_year
           +flex(row, flex-start, flex-start)
 
-          h5
+          .title_wrapper_year
+            font-size: 1em
+            font-weight: 400
+            color: Define.$natural_50
             margin-left: 10px
 
         .title
@@ -131,3 +134,75 @@
     &:hover
       border: 1px solid Define.$green_80
       box-shadow: 0px 1px 0px rgba(112, 112, 112, 0.15)
+
+  .divider
+    border: 1px solid #E7E7E7
+    margin: 0 -24px 18px -24px
+
+@media only screen and (min-width: 1440px)
+  .career
+    max-width: 1440px
+
+@media only screen and (min-width: 768px) and (max-width: 976px)
+  .career
+    padding: 72px 50px 100px
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 768px)
+  .career
+    padding: 120px 50px 100px
+    background: transparent
+    margin: 0 auto
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  .career
+    padding: 120px 15px 100px
+    background: transparent
+    margin: 0 auto
+
+    .title_career
+      font-size: 18px
+      font-weight: 700
+      color: Define.$green_70
+      margin-bottom: 16px
+      text-align: center
+
+    .sub_title
+      width: 90%
+      font-size: 14px
+      margin: 0 auto 24px
+      line-height: auto
+
+    .wrapper_box_career
+      .box_career
+        padding: 24px
+        margin: 0 auto 24px
+        width: 95%
+
+        .title_job
+          font-size: 16px
+          line-height: unset
+
+        .desc_job
+          font-size: 14px
+          margin-bottom: 16px
+
+        .wrapper_career_info
+          .wrapper_year
+            svg
+              transform: scale(0.8)
+              position: relative
+              top: -4px
+
+            .title_wrapper_year
+              font-size: 14px
+
+          .title
+            font-size: 14px
+            margin-bottom: 8px
+
+          .desc
+            font-size: 14px
+
+      .career_button_detail
+        padding: 10px 16px
+        font-size: 14px
