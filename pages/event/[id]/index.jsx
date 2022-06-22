@@ -11,9 +11,12 @@ import Whatsapp from '../../../assets/svgs/whatsapp.svg'
 import Link from '../../../assets/svgs/link.svg'
 
 // utils
+import useWindowDimensions from 'hooks/useWindowDimensions'
 
 const EventDetail = props => {
   const router = useRouter()
+  const { width } = useWindowDimensions();
+  const deviceWidth = width > 546 ? (width > 900 ? 'large' : 'medium') : 'small'
 
   const nav = [
     {
@@ -30,9 +33,18 @@ const EventDetail = props => {
     <div className={styles.container_eventdetail}>
       <Breadcrumb nav={nav} />
       <div className={styles.eventdetail}>
-        <h2 className={styles.title}>Grand Launching Eratani Mobile-Apps untuk Petani Indonesia</h2>
-        <h4 className={styles.article_date}>Eratani / 12 Mei 2022</h4>
-        <img src='https://statik.tempo.co/data/2020/11/25/id_983211/983211_720.jpg' className={styles.img} alt='alt' />
+        {deviceWidth === 'small' ?
+          <>
+            <img src='https://statik.tempo.co/data/2020/11/25/id_983211/983211_720.jpg' className={styles.img} alt='alt' />
+            <h2 className={styles.title}>Grand Launching Eratani Mobile-Apps untuk Petani Indonesia</h2>
+            <h4 className={styles.article_date}>Eratani / 12 Mei 2022</h4>
+          </> :
+          <>
+            <h2 className={styles.title}>Grand Launching Eratani Mobile-Apps untuk Petani Indonesia</h2>
+            <h4 className={styles.article_date}>Eratani / 12 Mei 2022</h4>
+            <img src='https://statik.tempo.co/data/2020/11/25/id_983211/983211_720.jpg' className={styles.img} alt='alt' />
+          </>
+        }
         <h4 className={styles.article}>
           Halo Sobat Eratani!
 

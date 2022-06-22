@@ -73,8 +73,8 @@
       margin: 30px auto 0
 
       .title
-        font-size: 24px
-        line-height: 32px
+        font-size: 18px
+        line-height: 22px
         margin-bottom: 12px
 
       .article_date
@@ -82,7 +82,7 @@
         margin-bottom: 30px
 
       .img
-        margin-bottom: 30px
+        margin-bottom: 24px
 
       .article
         font-size: 14px
@@ -94,10 +94,17 @@
         margin: 0 auto 50px
 
       .share
-        +flex(column, flex-start, flex-start)
+        +flex(row, space-between, center)
+
+        h5
+          font-size: 14px
 
         .wrapper_icon
-          margin: 20px 0 0
+          margin: 0 0 0
+
+          .icon
+            &:last-child
+              margin-right: 0
 
 
 
