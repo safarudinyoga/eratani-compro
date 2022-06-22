@@ -16,11 +16,117 @@ $green_100: #013233
     height: $height
     z-index: $zindex
 
-@mixin flex($flexDirection: row, $justifyDirection: none, $alignDirection: none, $flexWrap: unset, $alignContent: none)
+@mixin Flex($flexDirection: row, $justifyDirection: none, $alignDirection: none, $flexWrap: unset, $alignContent: none)
     display: flex
     flex-direction: $flexDirection
     justify-content: $justifyDirection
     align-items: $alignDirection
     flex-wrap: $flexWrap
     align-content: $alignContent
+
+$colors: ("white": white, 'natural-60' : #121212, 'natural-40' : #b7b7b7, 'natural-20' : #f3f3f3, 'natural-30': #E7E7E7, "natural-10": #F6F6F6, "natural-50": #707070, "yellow-20": #FFFACC, "yellow-60": #FFD800, "green-100": #013233, "green-40": #5DD291, "green-10": #E9FFEF, "green-60": #086C48, "green-70": #055C46, "green-30": #97F0B5, "green-80": #044D41, "green-50": #32A671,  "green-20": #C9F7D4, "green-90": #023E3A)
+
+$textAligns: ("left": left, "right": right, "center": center, "justify": justify)
+
+$fontWeights: ("thin": 100, "light": 300, "regular": 400, "medium": 500, "semibold": 600, "bold": 700, "extrabold": 800, "black": 900)
+
+$fontSizes: ("xsm-2": 12, "xsm-1": 14, "sm-2": 16, "sm-1": 18, "md-3": 20, "md-2": 24, "md-1": 26, "lg-3": 32, "lg-2": 36, "lg-1": 38, "xlg-3": 42, "xlg-2": 48, "xlg-1": 60)
+
+
+@each $name, $color in $colors
+    .text-#{$name}
+        color: $color
+    .bg-#{$name}
+        background-color: $color
+    .text-#{$name}-hover:hover
+        color: $color
+    .bg-#{$name}-hover:hover
+        background-color: $color
+    .fill-#{$name}
+        fill: $color
+    .border-#{$name}
+        border-color: $color
+
+@each $name, $align in $textAligns
+    .align-#{$align}
+        text-align: $align
+
+@each $name, $weight in $fontWeights
+    .font-#{$name}
+        font-weight: $weight
+
+@each $name, $size in $fontSizes
+    .font-#{$name}
+        font-size: ($size)+px
+        line-height: ($size * 1.4)+px
+
+@mixin box($position: false, $top: false, $left: false, $width: false, $height: false, $bottom: false, $right: false, $zindex: false)
+    @if $position != false
+        position: $position
+    @if $top != false
+        top: $top
+    @if $left != false
+        left: $left
+    @if $bottom != false
+        bottom: $bottom
+    @if $right != false
+        right: $right
+    @if $width != false
+        width: $width
+    @if $height != false
+        height: $height
+    @if $zindex != false
+        z-index: $zindex
+
+@mixin bgGradient($deg: 0deg, $start: 0%, $startColor, $end: 100%, $endColor)
+    background: linear-gradient($deg, $startColor $start, $endColor $end)
+
+@mixin flex($justifyContent: false, $alignItems: false, $flexDirection: false)
+    display: flex
+    @if $alignItems != false
+        align-items: $alignItems
+    @if $justifyContent != false
+        justify-content: $justifyContent
+    @if $flexDirection != false
+        flex-direction: $flexDirection
+
+@mixin inlineBlock($align: top)
+    display: inline-block
+    vertical-align: $align
+
+@mixin bgImage($url: none, $size: cover, $position: center center, $repeat: no-repeat)
+    background-image: $url
+    background-size: $size
+    background-position: $position
+    background-repeat: $repeat
+
+@mixin padding($top: false, $bottom: false, $left: false, $right: false)
+    @if $left != false
+        padding-left: $left
+    @if $right != false
+        padding-right: $right
+    @if $top != false
+        padding-top: $top
+    @if $bottom != false
+        padding-bottom: $bottom
+
+@mixin margin($top: false, $bottom: false, $left: false, $right: false)
+    @if $left != false
+        margin-left: $left
+    @if $right != false
+        margin-right: $right
+    @if $top != false
+        margin-top: $top
+    @if $bottom != false
+        margin-bottom: $bottom
+
+@mixin typograph($size: false, $weight: false, $lineHeight: false, $letterSpacing: false)
+    @if $size != false
+        font-size: $size
+    @if $weight != false
+        font-weight: map-get($fontWeights, $weight)
+    @if $lineHeight != false
+        line-height: $lineHeight
+    @if $letterSpacing != false
+        letter-spacing: $letterSpacing
 

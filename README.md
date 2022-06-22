@@ -32,3 +32,27 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Font Size Name:
+Line Height = 1.4x Font Size
+- font-xlg-1   	`60px`
+- font-xlg-2   	`48px`
+- font-xlg-3   	`42px`
+- font-lg-1    	`38px`
+- font-lg-2    	`36px`
+- font-lg-3    	`32px`
+- font-md-1    	`26px`
+- font-md-2    	`24px`
+- font-md-3    	`20px`
+- font-sm-1   	`18px`
+- font-sm-2   	`16px`
+- font-xsm-1  	`14px`
+- font-xsm-2  	`12px`
+
+## Revision Note:
+- image alt
+- hero banner page 1
+- animation ecosystem page 1
+- article read
+- scrollTo anchor solution
+- flip arrow home

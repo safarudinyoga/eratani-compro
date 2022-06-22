@@ -1,41 +1,31 @@
 @use '../../styles/Define'
 
-.footer
-    @include Define.wrapper($position: relative, $width: 100%)
-    margin-top: auto
-    background: Define.$green_80
-    padding-top: 64px
-    padding-bottom: 24px
+#Footer
+    @include Define.box($position: relative, $width: 100%)
+    @include Define.padding($top: 64px, $bottom: 24px)
+    @include Define.margin($top: auto)
 
     *
-        color: white
+        @extend .text-white
 
     .main 
         h6
-            margin-bottom: 25px
+            @include Define.margin($bottom: 25px)
 
         p, a
             display: block
-            font-size: 16px
-            line-height: 20px
-            margin: 16px 0
+            @include Define.margin($top: 16px, $bottom: 16px)
 
     .left
         > div
             max-width: 375px
-            margin-top: 20px
+            @include Define.margin($top: 20px)
 
             &:nth-of-type(1)
-                margin-top: 30px
+                @include Define.margin($top: 30px)
 
         h6
-            margin-bottom: 18px
-
-    .copyright
-        text-align: center
-
-    .office p
-        line-height: 26px
+            @include Define.margin($bottom: 18px)
 
     .social a
-        margin: 0
+        @include Define.margin(0, 0, 0, 0)

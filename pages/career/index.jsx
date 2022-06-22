@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 // components & styles
-import ImportExport from '../../assets/svgs/import_export.svg'
-import Filter from '../../assets/svgs/filter.svg'
-import Star from '../../assets/svgs/star_outline.svg'
-import Place from '../../assets/svgs/place.svg'
+import ImportExport from '../../assets/vector/import_export.svg'
+import Filter from '../../assets/vector/filter.svg'
+import Star from '../../assets/vector/star_outline.svg'
+import Place from '../../assets/vector/place.svg'
 import styles from './career.module.sass'
 
 // utils

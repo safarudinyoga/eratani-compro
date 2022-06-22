@@ -7,7 +7,7 @@
 
   // mobile_view
   .navigation_mobile
-    +flex(row, flex-start, center)
+    +Flex(row, flex-start, center)
     margin-bottom: 40px
 
     .wrapper_circle
@@ -15,7 +15,7 @@
       height: 32px
       border-radius: 50%
       border: 2px solid #055C46
-      +flex(row, center, center)
+      +Flex(row, center, center)
       margin-right: 24px
 
     &_title
@@ -43,7 +43,7 @@
       margin-bottom: 24px
 
     &_wrapper_job_desc
-      +flex(row, flex-start, center)
+      +Flex(row, flex-start, center)
 
       svg
         transform: scale(0.8)
@@ -55,7 +55,7 @@
         margin-left: 12px
 
     &_job_type
-      +flex(row, space-between, flex-start)
+      +Flex(row, space-between, flex-start)
       margin-bottom: 32px
 
       &_title
@@ -89,7 +89,7 @@
 
   // web_view
   .navigation
-    +flex(row, space-between, center)
+    +Flex(row, space-between, center)
     margin-bottom: 50px
 
     .title_page
@@ -98,7 +98,7 @@
       color: Define.$green_70
 
     .back_button
-      +flex(row, center, center)
+      +Flex(row, center, center)
       background-color: #fff
       border: 1px solid #055C46
       box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
@@ -114,7 +114,7 @@
 
   .wrapper_content_career
     margin: 0 auto
-    +flex(row, center, flex-start)
+    +Flex(row, center, flex-start)
 
     &_first
       min-width: 22%
@@ -141,7 +141,7 @@
         text-align: center
 
       .wrapper_job_desc
-        +flex(row, center, center)
+        +Flex(row, center, center)
         margin: 0 auto
 
         &_text
@@ -151,7 +151,7 @@
           margin-left: 10px
 
       .wrapper_job_level
-        +flex(column, flex-start)
+        +Flex(column, flex-start)
         margin-bottom: 24px
 
         &_title
@@ -166,7 +166,7 @@
           color: Define.$natural_50
 
       .wrapper_job_type
-        +flex(row)
+        +Flex(row)
         margin-bottom: 60px
 
         div
@@ -231,7 +231,7 @@
 @media only screen and (min-width: 768px) and (max-width: 976px)
   .container_careerdetail
     .wrapper_content_career
-      +flex(column)
+      +Flex(column)
       &_first
         width: 50%
         margin-bottom: 25px
@@ -242,7 +242,7 @@
 @media only screen and (min-device-width: 481px) and (max-device-width: 768px)
   .container_careerdetail
     .wrapper_content_career
-      +flex(column)
+      +Flex(column)
       &_first
         width: 50%
         margin-bottom: 25px

@@ -5,10 +5,10 @@ import { useRouter } from 'next/router'
 // compoenents & styles
 import styles from './detail_event.module.sass'
 import Breadcrumb from 'components/breadcrumb'
-import Fb from '../../../assets/svgs/fb.svg'
-import Twitter from '../../../assets/svgs/twitter.svg'
-import Whatsapp from '../../../assets/svgs/whatsapp.svg'
-import Link from '../../../assets/svgs/link.svg'
+import Fb from '../../../assets/vector/fb.svg'
+import Twitter from '../../../assets/vector/twitter.svg'
+import Whatsapp from '../../../assets/vector/whatsapp.svg'
+import Link from '../../../assets/vector/link.svg'
 
 // utils
 import useWindowDimensions from 'hooks/useWindowDimensions'

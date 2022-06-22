@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Star from '../../../../assets/svgs/star_outline.svg'
-import Place from '../../../../assets/svgs/place.svg'
+import Star from '../../../assets/vector/star_outline.svg'
+import Place from '../../../assets/vector/place.svg'
 import styles from '../career_detail.module.sass'
 
 const CareerDetailMobileView = props => (

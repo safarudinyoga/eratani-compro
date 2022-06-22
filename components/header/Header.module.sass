@@ -1,32 +1,50 @@
 @use '../../styles/Define'
 
-.header
-    @include Define.wrapper($position: fixed, $width: 100%, $zindex: 100)
-    background: white
-    padding-top: 29px
-    padding-bottom: 29px
-    box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+.header-hover-transition
+    transition: all 0.3s ease
 
-.sw_lang
-    margin-left: 62px
-    
-    > p
-        font-weight: 700
-        color: Define.$green_60
+#Header
+    @include Define.box($position: absolute, $top: 0, $width: 100%, $zindex: 100)
+    @include Define.padding($top: 29px, $bottom: 29px)
+    @extend .header-hover-transition
 
-        &, *
-            display: inline-block
-            vertical-align: middle
+    .sw_lang
+        > h6
+            @extend .header-hover-transition
 
-        svg
-            margin-bottom: 4px
+            &, *
+                @include Define.inlineBlock($align: middle)
 
-.navigation
-    a
-        color: Define.$natural_50
-    
-    a:not(:last-child)
-        margin-right: 20px
+            svg
+                @include Define.margin($bottom: 4px)
 
-    a:not(:first-child)
-        margin-left: 20px
+    .navigation
+        @include Define.inlineBlock($align: middle)
+
+        a
+            @extend .header-hover-transition
+            @include Define.padding($top: 7px, $bottom: 7px)
+            border-bottom: none
+
+            &.active
+                border-bottom: 2px solid map-get(Define.$colors, 'yellow-60')
+                @extend .font-bold
+        
+        a:not(:last-child)
+            @include Define.margin($right: 20px)
+
+        a:not(:first-child)
+            @include Define.margin($left: 20px)
+
+    .svg_on_hover path
+        @extend .header-hover-transition
+
+    &:hover, &.fix_white
+        @extend .bg-white
+        box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+
+        .navigation a, .sw_lang > h6
+            @extend .text-green-60
+
+        .svg_on_hover path
+            fill: map-get(Define.$colors, 'green-60')
