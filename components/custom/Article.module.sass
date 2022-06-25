@@ -1,0 +1,34 @@
+@use '../../styles/Define'
+
+.title
+    @include Define.margin($bottom: 16px)
+    
+.cover
+    @include Define.margin($top: 56px, $bottom: 56px)
+
+.article
+    @include Define.margin($top: -12px, $bottom: -12px)
+
+    p
+        @include Define.padding($top: 12px, $bottom: 12px)
+        @extend .font-sm-1
+
+.buttonRef
+    @include Define.margin($top: 80px)
+    
+.share
+    @include Define.margin($top: 80px)
+
+    &, *
+        @include Define.inlineBlock($align: middle)
+
+    a
+        @include Define.margin($left: 20px)
+
+        &:first-child
+            @include Define.margin($left: 34px)
+
+        svg
+            @include Define.margin($top: -6px)
+        
+    

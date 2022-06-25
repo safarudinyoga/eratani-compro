@@ -8,6 +8,7 @@ import Typograph from '../custom/Typograph'
 import Button from '../custom/Button'
 import Container from '../custom/Container'
 import Input from '../custom/Input'
+import Article from '../custom/Article'
 
 import styles from './Blog.module.sass'
 import EyeViewVect from '/assets/vector/eye-view.svg'
@@ -61,8 +62,8 @@ const ArticleTop = ({ data, title }) => {
         <Container id={ styles.ArticleTop } normalPadding paddingTop='36' paddingBottom='36'>
             <Typograph tag='h2' size='md-3' weight='medium' color='natural-40'>{ title }</Typograph>
             <div className={ `row ${ styles.list }` }>
-                <SetRatio ax='1.15' ay='1' className={ `${ styles.card } ${ styles.card_big } col-xs-6` }>
-                    <Link href='#'>
+                <SetRatio ax='1.15' ay='1' className={ `${ styles.card } ${ styles.card_2x } col-xs-6` }>
+                    <Link href={ `/blog/article/read/${ articleData.highlight.url }` }>
                         <a>
                             <div className={ styles.photo }>
                                 <img src={ `/article/${ articleData.highlight.photo }` } width='100%' className='image-cover' />
@@ -83,8 +84,8 @@ const ArticleTop = ({ data, title }) => {
                 <div className='col-xs-6'>
                     <div className='row'>
                         { articleData.topFour.map((item, index) => 
-                            <SetRatio key={ index } ax='1.15' ay='1' className={ `${ styles.card } col-xs-6` }>
-                                <Link href='#'>
+                            <SetRatio key={ index } ax='1.15' ay='1' className={ `${ styles.card } ${ styles.card_1x } col-xs-6` }>
+                                <Link href={ `/blog/article/read/${ item.url }` }>
                                     <a>
                                         <div className={ styles.photo }>
                                             <img src={ `/article/${ item.photo }` } width='100%' className='image-cover' />
@@ -110,26 +111,26 @@ const ArticleTop = ({ data, title }) => {
 }
 /* ------------------ End ArticleTop ------------------ */
 
-/* ------------------ List ------------------ */
-const List = ({ data: listData, title }) => {
+/* ------------------ ListType1 ------------------ */
+const ListType1 = ({ data: listData, title, path }) => {
     return ( 
-        <Container id={ styles.List } normalPadding paddingTop='36' paddingBottom='36'>
-            <Typograph tag='h2' size='md-3' weight='medium' color='natural-40'>{ title }</Typograph>
+        <Container id={ styles.ListType1 } normalPadding paddingTop='36' paddingBottom='36'>
+            <Typograph tag='h4' size='md-3' weight='medium' color='natural-40'>{ title }</Typograph>
             <div className={ `row ${ styles.list }` }>
-                { listData.map((tip, index) => 
-                    <SetRatio key={ index } ay='1.28' ax='1' className={ `${ styles.card } ${ styles.card_normal } col-xs-4` }>
-                        <Link href='#'>
+                { listData.map((item, index) => 
+                    <SetRatio key={ index } ay='1.3' ax='1' className={ `${ styles.card } ${ styles.card_xv } col-xs-4` }>
+                        <Link href={ `/blog/${ path }/read/${ item.url }` }>
                             <a>
                                 <div className={ styles.photo }>
-                                    <img src={ `/article/${ tip.photo }` } width='100%' className='image-cover' />
+                                    <img src={ `/article/${ item.photo }` } width='100%' className='image-cover' />
                                 </div>
                                 <div className={ styles.caption }>
                                     <div>
-                                        <Typograph tag='h4' size='md-3' color='green-70'>{ tip.title }</Typograph>
-                                        <Ellipsis className={ `font-xsm-1 text-natural-50 align-justify` }>{ tip.content }</Ellipsis>
+                                        <Typograph tag='h4' size='md-3' color='green-70'>{ item.title }</Typograph>
+                                        <Ellipsis className={ `font-xsm-1 text-natural-50 align-justify` }>{ item.content }</Ellipsis>
                                     </div>
                                     <div className='row no-margin middle-xs between-xs'>
-                                        <Typograph tag='h6' size='xsm-1' color='natural-50'>{ tip.creator } / { tip.date }</Typograph>
+                                        <Typograph tag='h6' size='xsm-1' color='natural-50'>{ item.creator } / { item.date }</Typograph>
                                         <EyeViewVect />
                                     </div>
                                 </div>
@@ -141,7 +142,40 @@ const List = ({ data: listData, title }) => {
         </Container>
     )
 }
-/* ------------------ End List ------------------ */
+/* ------------------ End ListType1 ------------------ */
+
+/* ------------------ ListType2 ------------------ */
+const ListType2 = ({ data: listData, title, path }) => {
+    return ( 
+        <Container id={ styles.ListType2 } normalPadding paddingTop='36' paddingBottom='36'>
+            <Typograph tag='h4' size='lg-1' color='green-70'>{ title }</Typograph>
+            <div className={ `row ${ styles.list }` }>
+                { listData.map((item, index) => 
+                    <SetRatio key={ index } ay='1' ax='2.18' className={ `${ styles.card } ${ styles.card_xh } col-xs-6` }>
+                        <Link href={ `/blog/${ path }/read/${ item.url }` }>
+                            <a>
+                                <div className={ styles.photo }>
+                                    <img src={ `/article/${ item.photo }` } width='100%' className='image-cover' />
+                                </div>
+                                <div className={ styles.caption }>
+                                    <div>
+                                        <Typograph tag='h4' size='sm-1' color='green-70'>{ item.title }</Typograph>
+                                        <Ellipsis className={ `font-xsm-1 text-natural-50 align-justify` }>{ item.content }</Ellipsis>
+                                    </div>
+                                    <div className='row no-margin middle-xs between-xs'>
+                                        <Typograph tag='h6' size='xsm-2' color='natural-50'>{ item.creator } / { item.date }</Typograph>
+                                        <EyeViewVect />
+                                    </div>
+                                </div>
+                            </a>
+                        </Link>
+                    </SetRatio>
+                ) }
+            </div>
+        </Container>
+    )
+}
+/* ------------------ End ListType2 ------------------ */
 
 /* ------------------ LoadMore ------------------ */
 const LoadMore = ({ href, children }) => {
@@ -207,6 +241,17 @@ const NavPaginate = ({ path, currentPage, totalPage }) => {
 }
 /* ------------------ End NavPaginate ------------------ */
 
+/* ------------------ Read ------------------ */
+const Read = ({ data }) => {
+    return ( 
+        <Container id={ styles.Read } normalPadding paddingTop='64' paddingBottom='60'>
+            <Article title={ data.title } cover={ `/article/${ data.photo }` } creator={ data.creator } date={ data.date }>
+                <>{ Parse(data.content) }</>
+                <Button href='#' fontSize='md-3' textColor='white' backgroundColor='green-60'>Daftar sebagai Petani</Button>
+            </Article>    
+        </Container>
+    )
+}
+/* ------------------ End Read ------------------ */
 
-
-export default { Title, ArticleTop, List, Devider, LoadMore, Breadcrumb, Search, NavPaginate }
+export default { Title, ArticleTop, ListType1, ListType2, Devider, LoadMore, Breadcrumb, Search, NavPaginate, Read }

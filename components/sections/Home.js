@@ -1,7 +1,9 @@
 import Parse from 'html-react-parser'
-import React, { useState, createRef } from 'react';
+import React, { useState, createRef, useEffect } from 'react';
 import Slick from "react-slick";
 import gsap from 'gsap'
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
+import { CustomEase } from 'gsap/dist/CustomEase'
 
 import SlickNavigationCustom from '../custom/SlickNavigation'
 import SetRatio from '../custom/SetRatio'
@@ -9,6 +11,7 @@ import Ellipsis from '../custom/Ellipsis'
 import Typograph from '../custom/Typograph'
 import Button from '../custom/Button'
 import Container from '../custom/Container';
+import Popup from '../custom/Popup'
 
 import styles from './Home.module.sass'
 import EyeViewVect from '/assets/vector/eye-view.svg'
@@ -18,6 +21,8 @@ import MapsHvrVect from '/assets/vector/maps-hvr.svg'
 import MockupPng from '/assets/static/mockup.png'
 import FindPlaystorePng from '/assets/static/find-playstore.png'
 
+gsap.registerPlugin(ScrollToPlugin)
+gsap.registerPlugin(CustomEase)
 
 /* ------------------ Hero Banner ------------------ */
 const Hero = () => {
@@ -42,64 +47,122 @@ const Ecosystem = () => {
         {
             no: '01',
             title: 'Memiliki 1.000+ Petani Binaan',
-            description: 'Sejak berdiri 1 tahun lalu Eratani telah membantu lebih dari 5000 petani dalam kemudahan akses modal dan membuka akses...',
+            description: 'Sejak berdiri 1 tahun lalu, Eratani telah membantu lebih dari 5.000 petani dengan memberikan kemudahan akses modal dan membuka akses pasar untuk mendapatkan harga terbaik pada penjualan komoditas petani.',
             photo: 'DSC04813 1.jpg'
         },
         {
             no: '02',
             title: 'Lebih dari 20 Miliar Pendanaan Tersalurkan',
-            description: 'Eratani telah menyalurkan lebih dari 20 Miliar pendanaan untuk petani binaannya, meningkat 100% dari sebelumnya dimana ini ...',
+            description: 'Eratani telah menyalurkan lebih dari 20 Miliar pendanaan untuk petani binaan. Angka ini mengalami peningkatan 100% dari sebelumnya yang membuktikan bahwa Eratani semakin dipercaya untuk menjadi bagian dari ekosistem pertanian di Indonesia.',
             photo: 'DSC04798 1.jpg'
         },
         {
             no: '03',
             title: 'Pendapatan Petani Meningkat Lebih dari 20%',
-            description: 'Eratani membantu para petani binaan untuk meningkatkan pendapatan dengan memberikan dukungan pendanaan dan...',
+            description: 'Bukan hanya memberikan akses permodalan kepada petani, Eratani juga membantu para petani binaan untuk meningkatkan pendapatan yang didukung dengan pemberian edukasi dan saprotan yang berkualitas tinggi.',
             photo: 'Eratanijogja-106 1.jpg'
         },
         {
             no: '04',
             title: 'Telah Memiliki Lebih dari 5.000 Ha Lahan Binaan',
-            description: 'Luas lahan binaan Eratani kini telah mencapai lebih dari 5.000 yang kini tersebar di pulau Jawa.',
+            description: 'Luas lahan binaan Eratani kini telah mencapai lebih dari 5.000 Ha yang tersebar di pulau Jawa. Eratani akan terus memperluas cakupan lahan binaan hingga ke seluruh Indonesia.',
             photo: 'Eratanijogja-18 2.jpg'
         },
         {
             no: '05',
             title: 'Memiliki 1.000+ Petani Binaan',
-            description: 'Eratani membantu para petani binaan untuk meningkatkan produktivitas dan hasil panen dengan memberikan pendampi...',
+            description: 'Eratani membantu para petani binaan untuk meningkatkan produktivitas dan hasil panen dengan memberikan pendampingan bersama para ahli di bidang pertanian.',
             photo: 'DSC04891 1.jpg'
         }
-    ]
+    ]    
+
+    const sliderRef = createRef()
+    const [slide, slideTo] = useState(0)
+    const [activeSlide, setActiveSlide] = useState(0)
+    const [popup, setPopup] = useState(-1)
+
+    useEffect(() => {
+        CustomEase.create('BackEase', '.4, 1.35, .6, 1')
+
+        const slider = sliderRef.current
+
+        const node = document.createElement('div')
+        node.classList.add(styles.slide)
+        slider.prepend(...[node])
+
+        let nodes = ecoSystemData.map(() => {
+            const node = document.createElement('div')
+            node.classList.add(styles.slide)
+            return node
+        })
+        slider.append(...nodes)
+
+        const scrollToInitial = () => gsap.set(slider, { scrollTo: { x: node.clientWidth * (parseInt(slider.dataset.active) + 1) } })
+        scrollToInitial()
+        window.addEventListener('resize', scrollToInitial)
+        return _ => window.removeEventListener('resize', scrollToInitial)
+    }, [])
+
+    useEffect(() => {
+        if (activeSlide == slide) return
+
+        const slider = sliderRef.current
+        const photoNodes = slider.getElementsByClassName('__EcoPhotoNode__')
+
+        gsap.timeline({ onComplete: () => setActiveSlide(slide) })
+        .set(slider, { height: slider.clientHeight + 3 })
+        .to(photoNodes[activeSlide], { height: photoNodes[slide].clientHeight, duration: 1, ease: 'BackEase' }, '<')
+        .to(photoNodes[slide], { height: photoNodes[activeSlide].clientHeight, duration: 1, ease: 'BackEase' }, '<')
+        .to(slider, { duration: 1, ease: 'BackEase', scrollTo: { x: (photoNodes[slide].clientWidth + 31.5) * (slide + 1) } }, '<')
+        .set(slider, { height: 'auto' })
+    }, [slide]) 
 
     return (
         <Container id={ styles.Ecosystem } normalPadding paddingTop='96' paddingBottom='90'>
-            <Typograph tag='h3' size='xlg-3' color='green-70'>Menuju Ekosistem yang<br />Lebih Kuat Bersama Eratani</Typograph>
+            <Typograph tag='h2' size='xlg-3' color='green-70'>Menuju Ekosistem yang<br />Lebih Kuat Bersama Eratani</Typograph>
             <div className={ `${ styles.eco_arrow } align-right` }>
-                <a href='#' id='eco-left'><EcoArrowVect /></a>
-                <a href='#' id='eco-right'><EcoArrowVect /></a>
+                <a href='#' onClick={ () => ( activeSlide != 0 && activeSlide == slide ) && slideTo(activeSlide - 1) } className={ (slide == 0) ? styles.hidden : undefined }><EcoArrowVect className='flip-x' /></a>
+                <a href='#' onClick={ () => ((activeSlide + 1) != ecoSystemData.length && activeSlide == slide) && slideTo(activeSlide + 1) } className={ ((slide + 1) == ecoSystemData.length) ? styles.hidden : undefined }><EcoArrowVect /></a>
             </div>
-            <div className={ styles.slider }>
+            <div ref={ sliderRef } className={ styles.slider } data-active={ activeSlide }>
                 { ecoSystemData.map((eco, index) =>
-                    <div className={ `${ styles.slide } ${ (index == 0) ? styles.slide_active : '' }` } key={ index }>
+                    <div className={ `${ styles.slide } ${ (index == slide) && styles.slide_active }` } key={ index }>
                         <div className={ styles.slide_content }>
-                            <Typograph tag='h5' size='sm-1'>
-                                <span className='text-green-50'>{ eco.no }</span>
-                                <span>{ eco.title }</span>
-                            </Typograph>
-                            <SetRatio ax='1.42' ay='1' min='0'>
-                                <img src={ `/ecosystem/${ eco.photo }` } width='100%' className='image-cover' />
-                            </SetRatio>
-                            <div className={ styles.caption }>
-                                <Ellipsis className={ `font-xsm-1 ${styles.text}` }>
-                                    { eco.description }
-                                </Ellipsis>
-                                <a href="#"><EyeViewVect /></a>
+                            <div>
+                                <Typograph tag='h5' size='sm-1' className={ styles.title }>
+                                    <span className='text-green-50'>{ `${ eco.no }.` }</span>
+                                    <span>{ eco.title }</span>
+                                </Typograph>
+                                <SetRatio ax='1.42' ay='1' className='__EcoPhotoNode__'>
+                                    <img src={ `/ecosystem/${ eco.photo }` } width='100%' className='image-cover' />
+                                </SetRatio>
+                                <div className={ styles.caption }>
+                                    <Ellipsis className={ `font-xsm-1 ${styles.text}` }>
+                                        { eco.description }
+                                    </Ellipsis>
+                                    <a href="#" onClick={ () => setPopup(index) }><EyeViewVect /></a>
+                                </div>
                             </div>
                         </div>
-                        <div className={ styles.line }></div>
                     </div>
                 ) }
             </div>
+            { (popup > -1) &&
+                <Popup overlay='0.3' maxWidth='526' onPopupClose={ () => setPopup(-1) }>
+                    <div className={ `bg-white ${ styles.pop_ecosystem }` }>
+                        <SetRatio ax='1.42' ay='1'>
+                            <img src={ `/ecosystem/${ ecoSystemData[popup].photo }` } width='100%' className='image-cover' />
+                        </SetRatio>
+                        <div className={ styles.caption }>
+                            <Typograph tag='h5' size='sm-1' className={ styles.title }>
+                                <span className='text-green-50'>{ `${ ecoSystemData[popup].no }.` }</span>
+                                <span>{ ecoSystemData[popup].title }</span>
+                            </Typograph>
+                            <Typograph tag='p' size='sm-2' align='justify'>{ ecoSystemData[popup].description }</Typograph>
+                        </div>
+                    </div>
+                </Popup>
+            }
         </Container>
     )
 }
@@ -156,7 +219,7 @@ const Solution = () => {
 
     return (
         <Container id='Solution' className={ styles.Solution } normalPadding backgroundColor='natural-10' paddingTop='64' paddingBottom='80'>
-            <Typograph tag='h3' size='xlg-3' color='green-70' align='center'>Solusi Untuk Lahan Pertanian Anda</Typograph>
+            <Typograph tag='h2' size='xlg-3' color='green-70' align='center'>Solusi Untuk Lahan Pertanian Anda</Typograph>
             <Typograph tag='p' size='md-3' align='center' maxWidth='900'>Kami bertekad untuk memenuhi segala kebutuhan pertanian demi meningkatkan kesejahteraan petani di seluruh Indonesia. Bergabung bersama kami dan dapatkan solusi dari setiap masalah pertanian Anda.</Typograph>
             <div className={ `row ${ styles.row }` }>
                 { solutionData.map((solution, index) =>
@@ -261,7 +324,7 @@ const Maps = () => {
     return (
         <Container id={ styles.Maps } paddingTop='48' paddingBottom='96'>
             <div className='container-padding align-center'>
-                <Typograph tag='h3' size='xlg-3' color='green-70' align='center'>Kami Mendukung Pertumbuhan dan<br />Digitalisasi Pertanian Seluruh Indonesia</Typograph>
+                <Typograph tag='h2' size='xlg-3' color='green-70' align='center'>Kami Mendukung Pertumbuhan dan<br />Digitalisasi Pertanian Seluruh Indonesia</Typograph>
                 <Typograph tag='p' size='md-3' align='center'>Program Eratani sudah tersebar di beberapa wilayah di Indonesia dan akan terus menjalar ke seluruh Indonesia.</Typograph>
             </div>
             <div className={ styles.indonesia }>
@@ -269,7 +332,7 @@ const Maps = () => {
                 <div className={ styles.interactive }>
                     <svg viewBox="0 0 1440 521" fill="none" xmlns="http://www.w3.org/2000/svg">
                         { mapsData.map((map, index) => 
-                            <g onMouseEnter={ onPointEnter } onMouseLeave={ onPointLeave } className={ `${ (map.comingSoon) ? styles.coming_soon : '' } ${ styles.dot_point }` } key={ index } data-id={ index }>
+                            <g onMouseEnter={ onPointEnter } onMouseLeave={ onPointLeave } className={ `${ (map.comingSoon) && styles.coming_soon } ${ styles.dot_point }` } key={ index } data-id={ index }>
                                 <circle cx={ map.pos.x } cy={ map.pos.y } r="8" className={ styles.shadow }/>
                                 <circle cx={ map.pos.x } cy={ map.pos.y } r="8" className={ styles.outline }/>
                                 <circle cx={ map.pos.x } cy={ map.pos.y } r="5" className={ styles.dot }/>
@@ -317,11 +380,11 @@ const Media = () => {
         {image: '20.png', alt: 'bulog'},
         {image: '21.png', alt: 'bulog'},
         {image: '22.png', alt: 'bulog'},
-
-        {image: 0, alt: 'bulog'},
-        {image: 0, alt: 'bulog'},
-        {image: 0, alt: 'bulog'}
     ]
+
+    if (mitraData.length % 5 != 0)
+        for (let i = 0; i < mitraData.length % 5; i++) 
+            mitraData.push({image: 0, alt: 'bulog'})
 
     const diliputData = [
         {image: '1.png', alt: 'bulog'},
@@ -351,12 +414,12 @@ const Media = () => {
     return (
         <Container id={ styles.Media } normalPadding backgroundColor='natural-10' paddingTop='40' paddingBottom='68' className='align-center'>
             <div className={ styles.tab_title }>
-                <Typograph tag='h3' size='lg-3' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 0) ? styles.active : '' }` } onClick={ () => setTab(0) }>Mitra Kami</Typograph>
-                <Typograph tag='h3' size='lg-3' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 1) ? styles.active : '' }` } onClick={ () => setTab(1) }>Diliput oleh</Typograph>
+                <Typograph tag='h2' size='lg-3' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 0) && styles.active }` } onClick={ () => setTab(0) }>Mitra Kami</Typograph>
+                <Typograph tag='h2' size='lg-3' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 1) && styles.active }` } onClick={ () => setTab(1) }>Diliput oleh</Typograph>
             </div>
             <Typograph tag='p' size='md-3' align='center' maxWidth='705'>Kami bekerja sama dengan mitra dan media terkemuka untuk mewujudkan ekosistem pertanian yang kuat demi mendukung kesejahteraan petani Indonesia.</Typograph>
             <div className={ styles.content }>
-                { (tab == 0) && <Slick { ...mitaSlickSettings } className='__SlickMitra__'>
+                { (tab == 0) ? <Slick { ...mitaSlickSettings } className='__SlickMitra__'>
                         { mitraData.map((mitra, index) => 
                             <div key={ index }>
                                 <div className={ styles.slick_slide }>
@@ -365,8 +428,7 @@ const Media = () => {
                             </div>
                         ) }
                     </Slick>
-                }
-                { (tab == 1) && <Slick { ...diliputSlickSettings } className='__SlickDiliput__'>
+                : <Slick { ...diliputSlickSettings } className='__SlickDiliput__'>
                         { diliputData.map((diliput, index) => 
                             <div key={ index }>
                                 <div className={ styles.slick_slide }>
@@ -386,16 +448,16 @@ const Media = () => {
 const Join = () => {
     return (
         <Container id={ styles.Join } normalPadding paddingTop='80' paddingBottom='68' className='align-center'>
-            <Typograph tag='h3' size='xlg-2' color='natural-60'>
+            <Typograph tag='h2' size='xlg-2' color='natural-60'>
                 Segera Bergabung Menjadi&nbsp;
                 <div>
                     <ul className='align-left __join_ul__'>
-                        <li><Typograph tag='h3' size='xlg-2' color='green-60'>Petani</Typograph></li>
-                        <li><Typograph tag='h3' size='xlg-2' color='green-40'>Gapoktan</Typograph></li>
-                        <li><Typograph tag='h3' size='xlg-2' color='green-70'>Poktan</Typograph></li>
-                        <li><Typograph tag='h3' size='xlg-2' color='green-50'>Toko Tani</Typograph></li>
-                        <li><Typograph tag='h3' size='xlg-2' color='green-80'>Supplier</Typograph></li>
-                        <li><Typograph tag='h3' size='xlg-2' color='green-30'>Buyer</Typograph></li>
+                        <li><Typograph tag='h2' size='xlg-2' color='green-60'>Petani</Typograph></li>
+                        <li><Typograph tag='h2' size='xlg-2' color='green-40'>Gapoktan</Typograph></li>
+                        <li><Typograph tag='h2' size='xlg-2' color='green-70'>Poktan</Typograph></li>
+                        <li><Typograph tag='h2' size='xlg-2' color='green-50'>Toko Tani</Typograph></li>
+                        <li><Typograph tag='h2' size='xlg-2' color='green-80'>Supplier</Typograph></li>
+                        <li><Typograph tag='h2' size='xlg-2' color='green-30'>Buyer</Typograph></li>
                     </ul>
                 </div>
             </Typograph>
@@ -462,7 +524,7 @@ const Testimoni = () => {
 
     return (
         <Container id={ styles.Testimoni } normalPadding backgroundColor='natural-10' paddingTop='64' paddingBottom='52'>
-            <Typograph tag='h3' size='xlg-2' align='center'>Testimoni Mitra</Typograph>
+            <Typograph tag='h2' size='xlg-2' align='center'>Testimoni Mitra</Typograph>
             <Typograph tag='p' size='md-3' align='center' maxWidth='685'>Kami merangkum beberapa mitra yang telah bergabung menjadi petani, gapoktan dan toko tani binaan Eratani.</Typograph>
             <div className={ styles.content }>
                 <Slick { ...testimoniSlickSettings } className='__slickTestimoni__'>

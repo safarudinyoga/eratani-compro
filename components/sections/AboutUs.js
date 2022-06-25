@@ -21,7 +21,7 @@ const About = () => {
 
     return (
         <Container id={ styles.About } normalPadding paddingTop='72' paddingBottom='107'>
-            <Typograph tag='h3' color='green-70' size='lg-1' align='center'>Tentang Kami</Typograph>
+            <Typograph tag='h2' color='green-70' size='lg-1' align='center'>Tentang Kami</Typograph>
             <Typograph tag='p' size='md-2' align='justify' maxWidth='1076'>{ Parse(aboutData) }</Typograph>
         </Container>
     )
@@ -69,7 +69,7 @@ const VisiMisi = () => {
             <div className='row no-margin'>
                 <div className='col-xs bg-green-70'>
                     <div className={ styles.visi }>
-                        <Typograph tag='h3' color='green-10' size='lg-3'>VISI</Typograph>
+                        <Typograph tag='h2' color='green-10' size='lg-3'>VISI</Typograph>
                         <Typograph tag='p' color='green-10' size='md-3'>{ visiData }</Typograph>
                     </div>
                 </div>
@@ -84,7 +84,7 @@ const VisiMisi = () => {
                 </SetRatio>
                 <div className='col-xs bg-green-100'>
                     <div className={ styles.misi }>
-                        <Typograph tag='h3' color='green-20' size='md-3' weight='extrabold'>MISI</Typograph>
+                        <Typograph tag='h2' color='green-20' size='md-3' weight='extrabold'>MISI</Typograph>
                         <ul>
                             { misiData.map((misi, index) => 
                                 <li key={ index }>
@@ -253,7 +253,7 @@ const Culture = () => {
                     </div>
                 </SetRatio>
                 <div className={ `col-xs-5 ${ styles.title }` }>
-                    <Typograph tag='h3' size='xlg-3' color='green-10' maxWidth='400'>Lebih Dekat dengan Era-Fam<span className='bg-green-10'></span></Typograph>
+                    <Typograph tag='h2' size='xlg-3' color='green-10' maxWidth='400'>Lebih Dekat dengan Era-Fam<span className='bg-green-10'></span></Typograph>
                     <Typograph tag='p' size='md-3' color='green-30'>Kami selalu menjaga dan menjunjung tinggi nilai-nilai perusahaan demi terciptanya lingkungan kerja yang sinergis dan harmonis.</Typograph>
                     <Typograph tag='a' href='#' size='md-3' color='green-10'>Lihat Detail<ArrowForwardVect /></Typograph>
                 </div>
@@ -267,7 +267,7 @@ const Culture = () => {
 const JoinFam = () => {
     return (
         <Container id={ styles.JoinFam } normalPadding paddingTop='96' paddingBottom='104' className='align-center'>
-            <Typograph tag='h3' color='green-70' size='lg-1' align='center'>Ingin Menjadi Bagian dari Era-Fam?</Typograph>
+            <Typograph tag='h2' color='green-70' size='lg-1' align='center'>Ingin Menjadi Bagian dari Era-Fam?</Typograph>
             <Typograph tag='p' size='md-3' align='center' maxWidth='636'>Mari berkarya bersama kami untuk menciptakan ekosistem pertanian Indonesia yang lebih baik!</Typograph>
             <Button href='#' xPadding='32' yPadding='18' textColor='green-10' backgroundColor='green-60'>Cek Lowongan Di Sini</Button>
         </Container>

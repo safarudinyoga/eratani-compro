@@ -1,0 +1,12 @@
+@use '../../styles/Define'
+    
+.popup_fixed
+    @include Define.box($position: fixed, $top: 0, $left: 0, $bottom: 0, $right: 0, $zindex: 999)
+    @include Define.flex($justifyContent: center, $alignItems: center, $flexDirection: row)
+    @include Define.padding($top: 20px, $bottom: 20px, $left: 20px, $right: 20px)
+    
+    .popup_wrapper
+        @include Define.box($position: relative, $width: 100%)
+        
+    .popup_close
+        @include Define.box($position: absolute, $right: -55px, $top: 0)

@@ -6,6 +6,7 @@ export default function AboutUsPage() {
     
     const router = useRouter()
     const { page } = router.query
+    const totalPage = 3
     
     const PAGE_TITLE = `Blog | Article Page ${ page }`
 
@@ -16,7 +17,7 @@ export default function AboutUsPage() {
             creator: 'Eratani',
             date: '12 Mei 2022',
             photo: 'unsplash_QFmNQXLPbZc.jpg',
-            url: '#'
+            url: 'dicari-petani-muda-berdedikasi-tinggi-untuk-indonesia'
         },
         {
             title: 'Kerjasama Eratani dengan Kementrian Pertanian',
@@ -113,17 +114,17 @@ export default function AboutUsPage() {
                 <title>Eratani - { PAGE_TITLE }</title>
             </Head>
 
-            <Sections.Breadcrumb { ...{ links: [ ...breadcrumbLinks ] } } />
+            <Sections.Breadcrumb { ...{ links: breadcrumbLinks } } />
             <Sections.Search />
             { (parseInt(page) == 1) ? 
                 <>
-                    <Sections.ArticleTop { ...{ data: [ ...articleData.slice(0, 5) ], title: 'TERBARU' } } />
+                    <Sections.ArticleTop title='TERBARU' { ...{ data: articleData.slice(0, 5) } } />
                     <Sections.Devider />
                 </>
                 : <></> 
             }
-            <Sections.List { ...{ data: [ ...articleData.slice(5) ], title: 'ARTIKEL LAINNYA' } } />
-            <Sections.NavPaginate { ...{ path: 'article', currentPage: parseInt(page), totalPage: 3 } } />
+            <Sections.ListType1 title='ARTIKEL LAINNYA' path='article' { ...{ data: articleData.slice(5) } } />
+            <Sections.NavPaginate path='article' currentPage={ parseInt(page) } totalPage={ totalPage } />
             <div style={{ display: 'block', height: 68 }} />
         </>
     ) 

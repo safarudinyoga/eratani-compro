@@ -24,19 +24,20 @@
         flex-basis: 0
 
     .caption
-        @include Define.padding($top: 16px, $bottom: 20px, $left: 16px, $right: 20px)
         @include Define.flex($justifyContent: space-between, $flexDirection: column)
-
-        &:not(.card_big, .card_normal)
-            min-height: 123px
 
         h4
             @include Define.margin($bottom: 16px)
 
-    &.card_big, &.card_normal
+    &.card_1x
+        .caption
+            @include Define.padding($top: 16px, $bottom: 20px, $left: 16px, $right: 20px)
+            @include Define.flex($justifyContent: space-between, $flexDirection: column)
+            min-height: 123px            
+
+    &.card_xv, &.card_2x
         .caption
             @include Define.box($height: 263px)
-            @include Define.flex($justifyContent: space-between, $flexDirection: column)
 
             div:first-child
                 overflow: hidden
@@ -46,14 +47,29 @@
                 p
                     overflow: hidden
 
-    &.card_big
+    &.card_2x
         .caption
             @include Define.padding($top: 24px, $bottom: 24px, $left: 32px, $right: 47px)
 
-    &.card_normal
+    &.card_xv, &.card_xh
         .caption
             @include Define.padding($top: 24px, $bottom: 24px, $left: 24px, $right: 22px)
 
+    &.card_xh
+        > div, > a
+            @include Define.flex($flexDirection: row)
+
+        .caption
+            @include Define.box($width: 282px)
+
+            div:first-child
+                overflow: hidden
+                @include Define.flex($flexDirection: column)
+                @include Define.padding($bottom: 25px)
+
+                p
+                    overflow: hidden
+            
     svg
         path
             @extend .fill-green-70
@@ -71,13 +87,13 @@
 
 /* ------------------ ArticleTop ------------------ */
 #ArticleTop
-    h2
+    > h2
         @include Define.margin($bottom: 56px)
 /* ------------------ End ArticleTop ------------------ */
 
-/* ------------------ List ------------------ */
-#List
-    h2
+/* ------------------ ListType ------------------ */
+#ListType1, #ListType2
+    > h4
         @include Define.margin($bottom: 56px)
 
     .list 
@@ -85,7 +101,7 @@
 
     .card
         @include Define.padding($top: 20px, $bottom: 20px)
-/* ------------------ End List ------------------ */
+/* ------------------ End ListType ------------------ */
 
 /* ------------------ ArticleTop ------------------ */
 #Devider
@@ -99,7 +115,11 @@
 /* ------------------ Breadcrumb ------------------ */
 #Breadcrumb
     p, a
-        display: inline
+        @include Define.inlineBlock()
+        max-width: 245px
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
 /* ------------------ End Breadcrumb ------------------ */
 
 /* ------------------ Breadcrumb ------------------ */
@@ -121,4 +141,10 @@
             
         svg
             @include Define.margin($bottom: -2px)
+/* ------------------ End Breadcrumb ------------------ */
+
+/* ------------------ Breadcrumb ------------------ */
+#Read
+    max-width: 1000px
+    @include Define.margin($left: auto, $right: auto)
 /* ------------------ End Breadcrumb ------------------ */

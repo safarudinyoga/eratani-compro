@@ -6,6 +6,7 @@ export default function AboutUsPage() {
     
     const router = useRouter()
     const { page } = router.query
+    const totalPage = 3
     
     const PAGE_TITLE = `Blog | Tips Page ${ page }`
 
@@ -73,10 +74,10 @@ export default function AboutUsPage() {
                 <title>Eratani - { PAGE_TITLE }</title>
             </Head>
 
-            <Sections.Breadcrumb { ...{ links: [ ...breadcrumbProps ] } } />
+            <Sections.Breadcrumb { ...{ links: breadcrumbProps } } />
             <Sections.Search />
-            <Sections.List { ...{ data: [ ...tipsData ], title: 'TIPS LAINNYA' } } />
-            <Sections.NavPaginate { ...{ path: 'tips', currentPage: parseInt(page), totalPage: 3 } } />
+            <Sections.ListType1 title='TIPS LAINNYA' path='tips' { ...{ data: tipsData } } />
+            <Sections.NavPaginate path='tips' currentPage={ parseInt(page) } totalPage={ totalPage } />
             <div style={{ display: 'block', height: 68 }} />
         </>
     ) 

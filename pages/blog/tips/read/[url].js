@@ -17,7 +17,7 @@ export default function AboutUsPage() {
     
     const PAGE_TITLE = `Blog | ${ blogData.title }`
 
-    const articleData = [
+    const tipsData = [
         {
             title: 'Kerjasama Eratani dengan Kementrian Pertanian',
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id nulla rhoncus, tincidunt eros tempus, auctor mi. Sed congue augue id ligula vehicula pharetra. Nullam eu magna nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas malesuada arcu mauris, vitae feugiat eros pretium quis. Sed non leo quis ex consequat malesuada id a sem. In euismod ipsum nec lacus porta porttitor sit amet et turpis. Vestibulum aliquet vulputate nisl. Etiam lacinia molestie velit quis commodo. Aenean vulputate maximus lectus, non tempor tellus convallis a. Duis ultricies semper malesuada. Donec tincidunt eros vel ex ullamcorper vulputate. In tincidunt turpis pharetra, bibendum leo quis, tempor ex. Curabitur vitae orci efficitur, aliquet orci sed, laoreet erat. Integer accumsan nec sapien non aliquet.',
@@ -54,12 +54,12 @@ export default function AboutUsPage() {
 
     const breadcrumbProps = [
         {
-            name: 'Artikel',
-            url: `/blog/article/1`
+            name: 'Tips',
+            url: `/blog/tips/1`
         },
         {
             name: blogData.title,
-            url: `/blog/article/read/${ url }`
+            url: `/blog/tips/read/${ url }`
         }
     ]
 
@@ -71,7 +71,7 @@ export default function AboutUsPage() {
 
             <Sections.Breadcrumb { ...{ links: breadcrumbProps } } />
             <Sections.Read { ... { data: blogData } } />
-            <Sections.ListType2 title='Lihat Artikel Lainnya' path='article' { ...{ data: articleData } } />
+            <Sections.ListType2 title='Lihat Tips Lainnya' path='tips' { ...{ data: tipsData } } />
             <div style={{ display: 'block', height: 60 }} />
         </>
     ) 

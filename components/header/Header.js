@@ -16,7 +16,7 @@ export default function Header () {
         { id: 'Tentang Kami',        en: 'About Us',                 link: 'about-us' },
         { id: 'Blog',                en: 'Blog',                     link: 'blog' },
         { id: 'Agenda',              en: 'Event',                    link: 'event' },
-        { id: 'Pertanyaan',          en: 'Question',                 link: 'qna' },
+        { id: 'Pertanyaan',          en: 'Question',                 link: 'faq' },
         { id: 'Karir',               en: 'Career',                   link: 'career' } ]
 
     const { pathname } = useRouter()

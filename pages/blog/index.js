@@ -11,7 +11,7 @@ export default function AboutUsPage() {
             creator: 'Eratani',
             date: '12 Mei 2022',
             photo: 'unsplash_QFmNQXLPbZc.jpg',
-            url: '#'
+            url: 'dicari-petani-muda-berdedikasi-tinggi-untuk-indonesia'
         },
         {
             title: 'Kerjasama Eratani dengan Kementrian Pertanian',
@@ -105,10 +105,10 @@ export default function AboutUsPage() {
             </Head>
 
             <Sections.Title />
-            <Sections.ArticleTop { ...{ data: [ ...articleData ], title: 'ARTIKEL' } } />
+            <Sections.ArticleTop title='ARTIKEL' { ...{ data: articleData } } />
             <Sections.LoadMore href='/blog/article/1'>Lihat Artikel Lainnya</Sections.LoadMore>
             <Sections.Devider />
-            <Sections.List { ...{ data: [ ...tipsData ], title: 'TIPS PERTANIAN' } } />
+            <Sections.ListType1 title='TIPS PERTANTAN' path='tips' { ...{ data: tipsData } } />
             <Sections.LoadMore href='/blog/tips/1'>Lihat Tips Lainnya</Sections.LoadMore>
             <div style={{ display: 'block', height: 68 }} />
         </>
