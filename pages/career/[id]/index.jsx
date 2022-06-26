@@ -4,8 +4,6 @@ import { useRouter } from 'next/router'
 
 import CareerDetailWebContent from './web'
 import CareerDetailMobileContent from './mobile'
-import Star from '../../../assets/svgs/star_outline.svg'
-import Place from '../../../assets/svgs/place.svg'
 import styles from './career_detail.module.sass'
 
 // utils
