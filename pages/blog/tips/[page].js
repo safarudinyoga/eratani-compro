@@ -3,12 +3,36 @@ import { useRouter } from 'next/router'
 import Sections from '/components/sections/Blog'
 
 export default function AboutUsPage() {
-    
-    const router = useRouter()
-    const { page } = router.query
+    const { query, locale } = useRouter()
+    const { page } = query
     const totalPage = 3
-    
-    const PAGE_TITLE = `Blog | Tips Page ${ page }`
+
+    const searchContent = {
+        placeholder: {
+            id: 'Search Blog post ...',
+            en: 'Search Blog post ...'
+        },
+        button: {
+            id: 'Cari',
+            en: 'Find'
+        }
+    }
+
+    const otherContent = {
+        otherTips: {
+            id: 'TIPS LAINNYA',
+            en: 'TIPS LAINNYA'
+        },
+        breadcrumb: {
+            id: 'Tips',
+            en: 'Tips'
+        }
+    }
+
+    const pageTitle = {
+        id: `Blog | Tips Halaman ${ page }`,
+        en: `Blog | Tips Page ${ page }`
+    }
 
     const tipsData = [
         {
@@ -63,7 +87,7 @@ export default function AboutUsPage() {
 
     const breadcrumbProps = [
         {
-            name: 'Tips',
+            name: otherContent.breadcrumb[locale],
             url: `/blog/tips/${ page }`
         }
     ]
@@ -71,12 +95,12 @@ export default function AboutUsPage() {
     return (
         <>
             <Head>
-                <title>Eratani - { PAGE_TITLE }</title>
+                <title>Eratani - { pageTitle[locale] }</title>
             </Head>
 
             <Sections.Breadcrumb { ...{ links: breadcrumbProps } } />
-            <Sections.Search />
-            <Sections.ListType1 title='TIPS LAINNYA' path='tips' { ...{ data: tipsData } } />
+            <Sections.Search { ...searchContent } />
+            <Sections.ListType1 title={ otherContent.otherTips } path='tips' { ...{ data: tipsData } } />
             <Sections.NavPaginate path='tips' currentPage={ parseInt(page) } totalPage={ totalPage } />
             <div style={{ display: 'block', height: 68 }} />
         </>

@@ -9,14 +9,39 @@
     @extend .header-hover-transition
 
     .sw_lang
-        > h6
-            @extend .header-hover-transition
+        > div
+            cursor: pointer
+            @include Define.inlineBlock()
+            @include Define.box($position: relative)                
+
+            &:hover
+                svg:last-child
+                    transform: scaleY(-1)
+
+        .dropdown_lang
+            @include Define.box($position: absolute, $top: 0, $right: 0, $zindex: 10)
+            visibility: hidden
+            opacity: 0
+
+            ul
+                @include Define.margin($top: 35px)
+                @include Define.box($width: 180px)
+                @include Define.padding(4px, $bottom: 4px)
+                border-radius: 12px
+                box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+
+                li
+                    @include Define.padding($top: 10px, $bottom: 10px)
+                
+        h6
+            @extend .header-hover-transition  
 
             &, *
                 @include Define.inlineBlock($align: middle)
 
             svg
                 @include Define.margin($bottom: 4px)
+                transition: transform 0.3s ease
 
     .navigation
         @include Define.inlineBlock($align: middle)
@@ -43,7 +68,7 @@
         @extend .bg-white
         box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
 
-        .navigation a, .sw_lang > h6
+        .navigation a, .sw_lang h6
             @extend .text-green-60
 
         .svg_on_hover path

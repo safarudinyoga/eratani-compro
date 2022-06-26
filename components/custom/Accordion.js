@@ -18,16 +18,16 @@ const List = forwardRef((props, ref) => {
 
     useEffect(() => {
         if (show) props.onActive(props.aid)
-        setHeight((show) ? contentRef.current.children[0].clientHeight : 0)
+        setHeight((show) ? contentRef.current.children[0].clientHeight + 73 : 73)
     }, [show])
 
     return (
-        <li className={ `${ styles.accordion_list } bg-white ${ (show)? styles.active : undefined }` } >
+        <li className={ `${ styles.accordion_list } bg-white ${ (show)? styles.active : undefined }` }  style={ { height: height } }>
             <a href='#' className={ `row no-margin middle-xs between-xs ${ styles.title }` } onClick={ () => setShow(!show) }>
                 <Typograph tag='h5' size='sm-1' color='green-70'>{ props.title }</Typograph>
                 <KarrowDownVect />
             </a>
-            <div ref={ contentRef } className={ styles.content } style={ { maxHeight: height } }>
+            <div ref={ contentRef } className={ styles.content }>
                 <div>
                     { props.children }
                 </div>

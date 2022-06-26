@@ -1,4 +1,5 @@
 import Link from 'next/link' 
+import { useRouter } from "next/router";
 import styles from './Footer.module.sass'
 
 import Typograph from '../custom/Typograph'
@@ -10,20 +11,48 @@ import LinkedInVect from '../../assets/vector/linkedin.svg'
 import YoutubeVect from '../../assets/vector/youtube.svg'
 
 export default function Footer () {
-    const lang = 'id'
+    const { pathname, locale } = useRouter()
+    
     const companyNav = [
-        { id: 'TENTANG KAMI',        en: 'About Us',                 link: 'about-us' },
-        { id: 'BLOG',                en: 'Blog',                     link: 'blog' },
-        { id: 'AGENDA',              en: 'Event',                    link: 'event' },
-        { id: 'PERTANYAAN',          en: 'Question',                 link: 'qna' },
-        { id: 'KARIR',               en: 'Career',                   link: 'career' } ]
+        { id: 'TENTANG KAMI',        en: 'ABOUT',                   link: 'about' },
+        { id: 'BLOG',                en: 'BLOG',                    link: 'blog' },
+        { id: 'AGENDA',              en: 'AGENDA',                  link: 'event' },
+        { id: 'PERTANYAAN',          en: 'FAQ',                     link: 'faq' },
+        { id: 'KARIR',               en: 'CAREER',                  link: 'career' } ]
     const joinNav = [
-        { id: 'PETANI',             en: 'About Us',                 link: '#' },
-        { id: 'TOKO TANI',          en: 'Blog',                     link: '#' },
-        { id: 'GAPOKTAN',           en: 'Event',                    link: '#' },
-        { id: 'POKTAN',             en: 'Question',                 link: '#' },
-        { id: 'SUPPLIER',           en: 'Career',                   link: '#' },
-        { id: 'BUYER',              en: 'Career',                   link: '#' } ]
+        { id: 'PETANI',             en: 'PETANI',                   link: '#' },
+        { id: 'TOKO TANI',          en: 'TOKO TANI',                link: '#' },
+        { id: 'GAPOKTAN',           en: 'GAPOKTAN',                 link: '#' },
+        { id: 'POKTAN',             en: 'POKTAN',                   link: '#' },
+        { id: 'SUPPLIER',           en: 'SUPPLIER',                 link: '#' },
+        { id: 'BUYER',              en: 'BUYER',                    link: '#' } ]
+
+    const otherContent = {
+        officeTitle: {
+            id: 'KANTOR PUSAT',
+            en: 'KANTOR PUSAT',
+        },
+        emailTitle: {
+            id: 'EMAIL',
+            en: 'EMAIL',
+        },
+        telephoneTitle: {
+            id: 'TELEPON',
+            en: 'TELEPON',
+        },
+        companyTitle: {
+            id: 'PERUSAHAAN',
+            en: 'PERUSAHAAN',
+        },
+        joinTitle: {
+            id: 'GABUNG',
+            en: 'GABUNG',
+        },
+        medsosTitle: {
+            id: 'MEDIA SOSIAL',
+            en: 'MEDIA SOSIAL',
+        }
+    }
 
     function footerSub(title, content) {
         return (
@@ -38,17 +67,17 @@ export default function Footer () {
             <div className={ `row ${ styles.main }` }>
                 <div className={`col-xs-6 ${ styles.left }`}>
                     <LogoVect />
-                    <div className={ styles.office }>{ footerSub('KANTOR PUSAT', <Typograph tag='p' size='sm-2' line='28'>Jl. R.A. Kartini No. Kav. 8 South Quarter, Tower C, RT 10/RW 4, Cilandak Barat, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12430</Typograph>) }</div>
-                    <div>{ footerSub('EMAIL', <Typograph tag='p' size='sm-2' line='20'>info@eratani.co.id</Typograph>) }</div>
-                    <div>{ footerSub('TELEPON', <Typograph tag='p' size='sm-2' line='20'>+62 811 952 2577</Typograph>)}</div>
+                    <div className={ styles.office }>{ footerSub(otherContent.officeTitle[locale], <Typograph tag='p' size='sm-2' line='28'>Jl. R.A. Kartini No. Kav. 8 South Quarter, Tower C, RT 10/RW 4, Cilandak Barat, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12430</Typograph>) }</div>
+                    <div>{ footerSub(otherContent.emailTitle[locale], <Typograph tag='p' size='sm-2' line='20'>info@eratani.co.id</Typograph>) }</div>
+                    <div>{ footerSub(otherContent.telephoneTitle[locale], <Typograph tag='p' size='sm-2' line='20'>+62 811 952 2577</Typograph>)}</div>
                 </div>
-                <div className='col-xs-2'>{ footerSub('PERUSAHAAN', companyNav.map((nav, index) => <Typograph key={ index } tag='a' href={ `/${ nav.link }` } size='sm-2' line='20'>{ nav[lang] }</Typograph>) ) }</div>
-                <div className='col-xs-2'>{ footerSub('GABUNG', joinNav.map((nav, index) => <Typograph key={ index } tag='a' href={ `/${ nav.link }` } size='sm-2' line='20'>{ nav[lang] }</Typograph>) ) }</div>
-                <div className='col-xs-2'>{ footerSub('MEDIA SOSIAL', <div className={ `row middle-xs between-xs ${ styles.social }`  }>
-                        <a href='#'><InstagramVect /></a>
-                        <a href='#'><LinkedInVect /></a>
-                        <a href='#'><YoutubeVect /></a>
-                        <a href='#'><FacebookVect /></a>
+                <div className='col-xs-2'>{ footerSub(otherContent.companyTitle[locale], companyNav.map((nav, index) => <Typograph key={ index } tag='a' href={ `/${ nav.link }` } size='sm-2' line='20'>{ nav[locale] }</Typograph>) ) }</div>
+                <div className='col-xs-2'>{ footerSub(otherContent.joinTitle[locale], joinNav.map((nav, index) => <Typograph key={ index } tag='a' href={ `/${ nav.link }` } size='sm-2' line='20'>{ nav[locale] }</Typograph>) ) }</div>
+                <div className='col-xs-2'>{ footerSub(otherContent.medsosTitle[locale], <div className={ `row middle-xs between-xs ${ styles.social }`  }>
+                        <a href='#' className='col-xs'><InstagramVect /></a>
+                        <a href='#' className='col-xs'><LinkedInVect /></a>
+                        <a href='#' className='col-xs'><YoutubeVect /></a>
+                        <a href='#' className='col-xs'><FacebookVect /></a>
                     </div>) }
                 </div>
             </div>

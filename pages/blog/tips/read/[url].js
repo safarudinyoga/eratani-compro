@@ -3,9 +3,8 @@ import { useRouter } from 'next/router'
 import Sections from '/components/sections/Blog'
 
 export default function AboutUsPage() {
-    
-    const router = useRouter()
-    const { url } = router.query
+    const { locale, query } = useRouter()
+    const { url } = query
 
     const blogData = {
         title: 'Dicari: Petani Muda Berdedikasi Tinggi Untuk Indonesia',
@@ -15,7 +14,27 @@ export default function AboutUsPage() {
         photo: 'unsplash_QFmNQXLPbZc.jpg'
     }
     
-    const PAGE_TITLE = `Blog | ${ blogData.title }`
+    const pageTitle = {
+        id: `Blog | ${ blogData.title }`,
+        en: `Blog | ${ blogData.title }`
+    }
+
+    const otherContent = {
+        otherTips: {
+            id: 'Lihat Tips Lainnya',
+            en: 'Lihat Tips Lainnya',
+        },
+        breadcrumb: {
+            id: 'Tips',
+            en: 'Tips'
+        }
+    }
+
+    const buttonDaftar = {
+        id: 'Daftar Sebagai Petani',
+        en: 'Daftar Sebagai Petani',
+        url: '#'
+    }
 
     const tipsData = [
         {
@@ -54,7 +73,7 @@ export default function AboutUsPage() {
 
     const breadcrumbProps = [
         {
-            name: 'Tips',
+            name: otherContent.breadcrumb[locale],
             url: `/blog/tips/1`
         },
         {
@@ -66,12 +85,12 @@ export default function AboutUsPage() {
     return (
         <>
             <Head>
-                <title>Eratani - { PAGE_TITLE }</title>
+                <title>Eratani - { pageTitle[locale] }</title>
             </Head>
 
             <Sections.Breadcrumb { ...{ links: breadcrumbProps } } />
-            <Sections.Read { ... { data: blogData } } />
-            <Sections.ListType2 title='Lihat Tips Lainnya' path='tips' { ...{ data: tipsData } } />
+            <Sections.Read daftar={ buttonDaftar } { ... { data: blogData } } />
+            <Sections.ListType2 title={ otherContent.otherArticle } path='tips' { ...{ data: tipsData } } />
             <div style={{ display: 'block', height: 60 }} />
         </>
     ) 

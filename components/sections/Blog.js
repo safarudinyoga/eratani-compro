@@ -1,5 +1,6 @@
 import Parse from 'html-react-parser'
 import React, { useState, createRef, useEffect } from 'react';
+import { useRouter } from 'next/router'
 import Link from 'next/link' 
 
 import SetRatio from '../custom/SetRatio'
@@ -17,34 +18,36 @@ import FindWhiteVect from '/assets/vector/find-white.svg'
 import PaginateNextVect from '/assets/vector/paginate-next.svg'
 import PaginateLastVect from '/assets/vector/paginate-last.svg'
 
-/* ------------------ Title ------------------ */
-const Title = () => {
+/* ------------------ Heading ------------------ */
+const Heading = ({ title, caption, search }) => {
+    const { locale } = useRouter()
     return ( 
-        <Container id={ styles.Title } normalPadding paddingTop='81' paddingBottom='20'>
+        <Container id={ styles.Heading } normalPadding paddingTop='81' paddingBottom='20'>
             <div className='row bottom-xs'>
                 <div className='col-xs-6'>
-                    <Typograph tag='h3' size='lg-3' color='green-70'>Sekilas Info tentang Eratani dan Pertanian</Typograph>
-                    <Typograph tag='p' size='md-3'>Simak artikel terbaru dan berbagai keseruan Eratani dalam membangun ekosistem pertanian yang kuat.</Typograph>
+                    <Typograph tag='h3' size='lg-3' color='green-70'>{ title[locale] }</Typograph>
+                    <Typograph tag='p' size='md-3'>{ caption[locale] }</Typograph>
                 </div>
                 <div className='col-xs-6'>
                     <div className={ `row no-margin ${ styles.search }` }>
-                        <Input type='text' className='col-xs' placeholder='Search Blog post ...' model='1' />
-                        <Button href='#' fontSize='sm-1' textColor='white' backgroundColor='green-60' xPadding='37' yPadding='15'><FindWhiteVect />Cari</Button>
+                        <Input type='text' className='col-xs' placeholder={ search.placeholder[locale] } model='1' />
+                        <Button href='#' fontSize='sm-1' textColor='white' backgroundColor='green-60' xPadding='37' yPadding='15'><FindWhiteVect />{ search.button[locale] }</Button>
                     </div>
                 </div>
             </div>
         </Container>
     )
 }
-/* ------------------ End Title ------------------ */
+/* ------------------ End Heading ------------------ */
 
 /* ------------------ Search ------------------ */
-const Search = () => {
+const Search = ({ placeholder, button }) => {
+    const { locale } = useRouter()
     return ( 
         <Container id={ styles.Search } normalPadding paddingTop='48' paddingBottom='18'>
                 <div className={ `row no-margin ${ styles.search } center-xs` }>
-                    <Input type='text' className='col-xs' placeholder='Search Blog post ...' model='1' />
-                    <Button href='#' fontSize='sm-1' textColor='white' backgroundColor='green-60' xPadding='37' yPadding='15'><FindWhiteVect />Cari</Button>
+                    <Input type='text' className='col-xs' placeholder={ placeholder[locale] } model='1' />
+                    <Button href='#' fontSize='sm-1' textColor='white' backgroundColor='green-60' xPadding='37' yPadding='15'><FindWhiteVect />{ button[locale] }</Button>
                 </div>
         </Container>
     )
@@ -53,6 +56,7 @@ const Search = () => {
 
 /* ------------------ ArticleTop ------------------ */
 const ArticleTop = ({ data, title }) => {
+    const { locale } = useRouter()
     const articleData = {
         highlight: data[0],
         topFour: data.slice(1)
@@ -60,7 +64,7 @@ const ArticleTop = ({ data, title }) => {
 
     return ( 
         <Container id={ styles.ArticleTop } normalPadding paddingTop='36' paddingBottom='36'>
-            <Typograph tag='h2' size='md-3' weight='medium' color='natural-40'>{ title }</Typograph>
+            <Typograph tag='h2' size='md-3' weight='medium' color='natural-40'>{ title[locale] }</Typograph>
             <div className={ `row ${ styles.list }` }>
                 <SetRatio ax='1.15' ay='1' className={ `${ styles.card } ${ styles.card_2x } col-xs-6` }>
                     <Link href={ `/blog/article/read/${ articleData.highlight.url }` }>
@@ -113,9 +117,10 @@ const ArticleTop = ({ data, title }) => {
 
 /* ------------------ ListType1 ------------------ */
 const ListType1 = ({ data: listData, title, path }) => {
+    const { locale } = useRouter()
     return ( 
         <Container id={ styles.ListType1 } normalPadding paddingTop='36' paddingBottom='36'>
-            <Typograph tag='h4' size='md-3' weight='medium' color='natural-40'>{ title }</Typograph>
+            <Typograph tag='h4' size='md-3' weight='medium' color='natural-40'>{ title[locale] }</Typograph>
             <div className={ `row ${ styles.list }` }>
                 { listData.map((item, index) => 
                     <SetRatio key={ index } ay='1.3' ax='1' className={ `${ styles.card } ${ styles.card_xv } col-xs-4` }>
@@ -146,9 +151,10 @@ const ListType1 = ({ data: listData, title, path }) => {
 
 /* ------------------ ListType2 ------------------ */
 const ListType2 = ({ data: listData, title, path }) => {
+    const { locale } = useRouter()
     return ( 
         <Container id={ styles.ListType2 } normalPadding paddingTop='36' paddingBottom='36'>
-            <Typograph tag='h4' size='lg-1' color='green-70'>{ title }</Typograph>
+            <Typograph tag='h4' size='lg-1' color='green-70'>{ title[locale] }</Typograph>
             <div className={ `row ${ styles.list }` }>
                 { listData.map((item, index) => 
                     <SetRatio key={ index } ay='1' ax='2.18' className={ `${ styles.card } ${ styles.card_xh } col-xs-6` }>
@@ -242,16 +248,17 @@ const NavPaginate = ({ path, currentPage, totalPage }) => {
 /* ------------------ End NavPaginate ------------------ */
 
 /* ------------------ Read ------------------ */
-const Read = ({ data }) => {
+const Read = ({ data, daftar }) => {
+    const { locale } = useRouter()
     return ( 
         <Container id={ styles.Read } normalPadding paddingTop='64' paddingBottom='60'>
             <Article title={ data.title } cover={ `/article/${ data.photo }` } creator={ data.creator } date={ data.date }>
                 <>{ Parse(data.content) }</>
-                <Button href='#' fontSize='md-3' textColor='white' backgroundColor='green-60'>Daftar sebagai Petani</Button>
+                <Button href={ daftar.url } fontSize='md-3' textColor='white' backgroundColor='green-60'>{ daftar[locale] }</Button>
             </Article>    
         </Container>
     )
 }
 /* ------------------ End Read ------------------ */
 
-export default { Title, ArticleTop, ListType1, ListType2, Devider, LoadMore, Breadcrumb, Search, NavPaginate, Read }
+export default { Heading, ArticleTop, ListType1, ListType2, Devider, LoadMore, Breadcrumb, Search, NavPaginate, Read }
