@@ -1,11 +1,11 @@
 @use '../../styles/Define'
 @import '../../styles/Define'
 
-.agenda
+.event
   padding: 72px 100px 100px
   background: transparent
   margin: 0 auto
-  +flex(column, center, center)
+  +Flex(column, center, center)
 
   .sub_title
     width: 45vw
@@ -17,9 +17,9 @@
     margin: 0 auto 72px
     line-height: 28px
 
-  .wrapper_agenda
+  .wrapper_event
     margin: 0 auto 25px
-    +flex(row, flex-start, flex-start, wrap)
+    +Flex(row, flex-start, flex-start, wrap)
 
     .card
       width: 95%
@@ -50,7 +50,7 @@
 
       .place
         padding: 16px 24px 24px
-        +flex(row, space-between, center)
+        +Flex(row, space-between, center)
 
         .place_title
           font-size: 14px
@@ -89,18 +89,18 @@
       border: 1px solid Define.$green_80
       box-shadow: 0px 1px 0px rgba(112, 112, 112, 0.15)
 
+@media only screen and (min-width: 1440px)
+  .event
+    max-width: 1660px
+
 @media only screen and (min-width: 768px) and (max-width: 976px)
-  .agenda
-    .wrapper_agenda
+  .event
+    .wrapper_event
       .card
         max-width: 500px
 
-@media only screen and (min-width: 1440px)
-  .agenda
-    max-width: 1440px
-
-@media only screen and (min-device-width: 480px) and (max-device-width: 767px)
-  .agenda
+@media only screen and (min-device-width: 481px) and (max-device-width: 768px)
+  .event
     padding: 135px 15px
 
     h3
@@ -111,7 +111,28 @@
       font-size: 1em
       margin: 0 auto 50px
 
-    .wrapper_agenda
+    .wrapper_event
+      .card
+        max-width: 350px
+        margin: 0 auto 30px
+
+    .button_more
+      padding: 6px 12px
+      font-size: 0.8em
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  .event
+    padding: 135px 15px
+
+    h3
+      font-size: 2em
+
+    .sub_title
+      width: 80%
+      font-size: 1em
+      margin: 0 auto 50px
+
+    .wrapper_event
       .card
         max-width: 350px
         margin: 0 auto 30px

@@ -1,0 +1,111 @@
+@use 'styles/Define'
+@import 'styles/Define'
+
+.container_eventdetail
+  max-width: 1440px
+  padding: 72px 50px
+  margin: 0 auto 100px
+
+  .eventdetail
+    max-width: 900px
+    margin: 65px auto 0
+
+    .title
+      font-size: 42px
+      font-weight: 700
+      color: Define.$green_70
+      line-height: 60px
+      margin-bottom: 24px
+
+    .article_date
+      font-size: 16px
+      font-weight: 500
+      color: Define.$natural_50
+      margin-bottom: 60px
+
+    .img
+      width: 100%
+      height: auto
+      object-fit: contain
+      margin-bottom: 60px
+
+    .article
+      font-size: 18px
+      font-weight: 400
+      text-align: justify
+      line-height: 25px
+      color: Define.$natural_60
+      margin-bottom: 100px
+
+    .button_daftar_petani
+      background: Define.$green_60
+      box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+      border-radius: 8px
+      padding: 16px 32px
+      font-size: 20px
+      font-weight: 700
+      color: #fff
+      margin: 0 auto 100px
+      display: block
+
+      &:hover
+        background: Define.$green_70
+
+    .share
+      +Flex(row, flex-start, center)
+
+      .wrapper_icon
+        margin: 0 0 0 40px
+
+        .icon
+          margin-right: 20px
+
+@media only screen and (min-width: 768px) and (max-width: 976px)
+  .container_eventdetail
+    padding: 72px 50px
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  .container_eventdetail
+    padding: 135px 25px 0
+    margin: 0 auto 80px
+
+    .eventdetail
+      margin: 30px auto 0
+
+      .title
+        font-size: 18px
+        line-height: 22px
+        margin-bottom: 12px
+
+      .article_date
+        font-size: 12px
+        margin-bottom: 30px
+
+      .img
+        margin-bottom: 24px
+
+      .article
+        font-size: 14px
+        margin-bottom: 60px
+
+      .button_daftar_petani
+        padding: 12px 18px
+        font-size: 16px
+        margin: 0 auto 50px
+
+      .share
+        +Flex(row, space-between, center)
+
+        h5
+          font-size: 14px
+
+        .wrapper_icon
+          margin: 0 0 0
+
+          .icon
+            &:last-child
+              margin-right: 0
+
+
+
+

@@ -1,0 +1,385 @@
+@use '../../styles/Define'
+
+/* ------------------ Hero Banner ------------------ */
+#Hero
+    .wrapper
+        @include Define.padding($left: 104px, $right: 104px)
+        @include Define.flex($alignItems: center)
+
+        .background
+            @include Define.box($position: absolute, $left: 0, $top: -96px, $width: 100%, $height: calc(100% + 96px))
+            @include Define.bgImage()
+
+            &::before
+                content: ''
+                @include Define.box($position: absolute, $left: 0, $top: 0, $width: 100%, $height: 100%)
+                @extend .bg-natural-60
+                opacity: 0.3
+
+        .content
+            @include Define.box($zindex: 1)
+
+            p
+                @include Define.margin($top: 25px, $bottom: 59px)
+/* ------------------ End Hero Banner ------------------ */
+
+/* ------------------ Ecosystem ------------------ */
+#Ecosystem
+    .eco_arrow
+        a
+            &:first-child
+                @include Define.margin($right: 42px)
+                
+                svg
+                    transform: scaleX(-1)
+
+    .slider
+        @include Define.margin($top: 21px)
+        white-space: nowrap
+        overflow: hidden
+        
+        .slide
+            @include Define.inlineBlock($align: bottom)
+            @include Define.box($position: relative, $width: calc(29% - 6.5px))
+            @include Define.padding($right: 17px)
+            @include Define.margin($right: 15px)
+            white-space: normal
+
+            h5
+                @include Define.margin($bottom: 16px)
+                
+                span
+                    @include Define.inlineBlock($align: top)
+
+                    &:first-child
+                        @include Define.box($width: 34px)
+                
+                    &:last-child
+                        @include Define.box($width: calc(100% - 34px))
+
+            .caption
+                @include Define.box($position: relative, $width: 100%)
+                @include Define.margin($top: 13px)
+                @include Define.padding($right: 45px)
+
+                .text
+                    @include Define.box($height: 45px)
+                    overflow: hidden
+
+                    span
+                        display: block
+
+                a
+                    @include Define.box($position: absolute, $bottom: 4px, $right: 2px)
+                    visibility: hidden
+
+            &.slide_active
+                @include Define.box($width: 42%)
+                
+                h5
+                    @extend .font-md-3
+
+                .caption
+                    @include Define.padding($right: 56px)
+
+                    .text
+                        @extend .font-sm-2
+
+                    svg
+                        visibility: visible
+
+            .line
+                @include Define.box($position: absolute, $top: 0, $width: 2px, $height: 100%, $right: 0)
+                @extend .bg-green-50
+/* ------------------ End Ecosystem ------------------ */
+    
+/* ------------------ Solutions ------------------ */
+.solution-hover-transistion    
+    transition: all .8s cubic-bezier(.4, 1.35, .6, 1)
+
+Section.Solution
+    > p
+        @include Define.margin($top: 16px, $bottom: 56px)
+
+    .wrapper
+        @include Define.box($position: relative)
+        overflow: hidden
+        
+        &::after
+            content: ''
+            @include Define.box($position: absolute, $left: 0, $top: 0, $width: 100%, $height: 100%)
+            @include Define.bgGradient($deg: 0deg, $start: 0%, $startColor: rgba(18, 18, 18, 0.8), $end: 100%, $endColor: rgba(18, 18, 18, 0.1))
+            opacity: 0.5
+            @extend .solution-hover-transistion
+
+        img
+            transform: scale(1.2)
+            @extend .solution-hover-transistion
+
+        h4
+            @include Define.box($position: absolute, $bottom: 40px, $left: 40px, $width: 100%, $zindex: 1)
+            @include Define.padding($right: 40px)
+            white-space: nowrap
+            transform-origin: left top
+            @extend .solution-hover-transistion
+            
+            span
+                @extend .solution-hover-transistion
+
+                &:last-child
+                    @include Define.box($position: absolute, $top: 0, $left: 0)
+                    opacity: 0
+            
+        .caption
+            @include Define.box($position: absolute, $left: 0, $width: 100%, $zindex: 1)
+            @include Define.padding($left: 40px, $right: 40px)
+            transform-origin: center bottom
+            transform: scale(0.5)
+            @extend .solution-hover-transistion
+            
+            a
+                @include Define.margin($top: 32px)
+
+        &:hover
+            img
+                transform: scale(1)
+
+            &::after
+                opacity: 1
+
+            h4
+                transform: scale(0.6)
+
+                span
+                    &:last-child
+                        opacity: 1
+
+                    &:first-child
+                        opacity: 0
+
+            .caption 
+                transform: scale(1)
+/* ------------------ End Solutions ------------------ */
+
+/* ------------------ Maps ------------------ */
+@keyframes dot_hover_coming_soon
+    0%
+        r: 8
+    12%
+        r: 8
+    25%
+        r: 16
+    37%
+        r: 16
+    50%
+        r: 12
+    62%
+        r: 12
+    75%
+        r: 20
+    87%
+        r: 20
+    100%
+        r: 8
+
+@keyframes dot_hover
+    0%
+        r: 8
+    12%
+        r: 8
+    25%
+        r: 16
+    37%
+        r: 16
+    50%
+        r: 12
+    62%
+        r: 12
+    75%
+        r: 16
+    87%
+        r: 16
+    100%
+        r: 8
+
+#Maps
+    > div > p
+        @include Define.margin($top: 24px, $bottom: 40px)
+
+    .indonesia
+        @include Define.box($position: relative)
+        
+        .interactive
+            @include Define.box($position: absolute, $top: 0, $left:0, $width: 100%, $height: 100%)
+
+            .dot_point
+                cursor: pointer
+
+                .shadow
+                    @extend .fill-yellow-20
+
+                .outline
+                    @extend .fill-yellow-60
+
+                .dot
+                    @extend .fill-white
+
+                &.coming_soon
+                    .shadow, .dot
+                        @extend .fill-natural-20
+
+                    .shadow
+                        filter: blur(2px)
+
+                    .outline
+                        @extend .fill-natural-50
+
+                &:hover 
+                    &:not(.coming_soon)
+                        .shadow
+                            animation: dot_hover 2s cubic-bezier(.32,0,.44,1.23) 0s infinite normal
+                    
+                    &.coming_soon
+                        .shadow
+                            animation: dot_hover_coming_soon 2s cubic-bezier(.32,0,.44,1.23) 0s infinite normal
+            .tip
+                @include Define.box($position: absolute, $top: 0, $left: 0)
+                transform: translate(-50%, -180px)
+                opacity: 0
+                visibility: hidden
+                pointer-events: none
+                
+                .content
+                    @include Define.padding($top: 14px, $left: 16px)
+                    @include Define.box($position: absolute, $top: 0, $left: 0)
+                    
+                    h6
+                        @include Define.margin($bottom: 12px)
+                        
+                    p
+                        @include Define.margin($top: 4px, $bottom: 4px, $right: 8px )
+/* ------------------ End Maps ------------------ */
+
+/* ------------------ Media ------------------ */
+#Media
+    .tab_title
+        h3 
+            @include Define.box($position: relative)
+            @include Define.inlineBlock($align: top)
+            @include Define.margin($left: 31px, $right: 31px)
+            @include Define.padding($left: 3px, $right: 3px)
+            cursor: pointer
+
+            &::after
+                content: ''
+                @include Define.box($position: absolute, $left: 0, $width: 0, $height: 2px, $bottom: -6px)
+                @extend .bg-green-60
+                transition: all 0.7s ease
+            
+            &.active
+                @extend .text-green-60
+
+                &::after
+                    @include Define.box($width: 100%)
+
+    > p
+        @include Define.margin($top: 35px, $bottom: 32px)
+            
+    .content
+        .slick_slide
+            @include Define.box($height: 208px)
+            @include Define.flex($justifyContent: center, $alignItems: center)
+
+            img 
+                filter: grayscale(100%)
+                transition: all 0.3s linear
+                
+                &:hover
+                    filter: grayscale(0)
+/* ------------------ End Media ------------------ */
+
+/* ------------------ Join ------------------ */
+@keyframes join_ul 
+    0%
+        bottom: 0
+    7%
+        bottom: 0
+    16%
+        bottom: 67px
+    23%
+        bottom: 67px
+    32%
+        bottom: 134px
+    39%
+        bottom: 134px
+    48%
+        bottom: 201px
+    55%
+        bottom: 201px
+    64%
+        bottom: 268px
+    71%
+        bottom: 268px
+    80%
+        bottom: 335px
+    87%
+        bottom: 335px
+    100%
+        bottom: 0
+
+#Join
+    > p
+        @include Define.margin($top: 24px, $bottom: 56px)
+
+    h3        
+        &, > *
+            @include Define.inlineBlock($align: top)
+
+        div
+            max-height: 67px
+            overflow: hidden
+
+            ul
+                @include Define.box($position: relative, $bottom: 0)
+                animation: join_ul 10s ease 0s infinite normal
+/* ------------------ End Join ------------------ */
+
+/* ------------------ Testimoni ------------------ */
+#Testimoni
+    > p
+        @include Define.margin($top: 16px, $bottom: 56px)
+
+    .content
+        @include Define.margin($left: auto, $right: auto)
+        @include Define.box($width: 100%)
+        max-width: 1256px
+        
+        .slick_slide
+            @include Define.padding($left: 45px, $right: 45px)
+
+            > div
+                box-shadow: 0px 4px 12px rgba(18, 18, 18, 0.08)
+
+            img
+                @include Define.box($width: 440px, $height: 300px)
+
+            .caption
+                @include Define.padding($left: 88px, $right: 88px)
+
+                h6
+                    @include Define.margin($top: 2px, $bottom: 32px)
+/* ------------------ End Testimoni ------------------ */
+
+/* ------------------ Download ------------------ */
+#Download
+    > div
+        @include Define.margin($left: auto, $right: auto)
+        @include Define.box($width: 100%)
+        max-width: 1124px
+
+        .caption
+            @include Define.padding($top: 93px, $left: 48px)
+
+            *
+                @include Define.margin($bottom: 16px)
+/* ------------------ End Download ------------------ */

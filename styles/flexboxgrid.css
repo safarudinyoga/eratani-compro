@@ -23,8 +23,15 @@
   flex-direction: row;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  margin-left: 0;
+  margin-right: 0;
   /* margin-right: -0.5rem;
   margin-left: -0.5rem; */
+}
+
+.row:not(.no-margin) {
+  margin-left: -12px;
+  margin-right: -12px;
 }
 
 .row.reverse {
@@ -71,8 +78,38 @@
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
-  /* padding-right: 0.5rem;
-  padding-left: 0.5rem; */
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.row:not(.no-margin) > .col-xs,
+.row:not(.no-margin) > .col-xs-1,
+.row:not(.no-margin) > .col-xs-2,
+.row:not(.no-margin) > .col-xs-3,
+.row:not(.no-margin) > .col-xs-4,
+.row:not(.no-margin) > .col-xs-5,
+.row:not(.no-margin) > .col-xs-6,
+.row:not(.no-margin) > .col-xs-7,
+.row:not(.no-margin) > .col-xs-8,
+.row:not(.no-margin) > .col-xs-9,
+.row:not(.no-margin) > .col-xs-10,
+.row:not(.no-margin) > .col-xs-11,
+.row:not(.no-margin) > .col-xs-12,
+.row:not(.no-margin) > .col-xs-offset-0,
+.row:not(.no-margin) > .col-xs-offset-1,
+.row:not(.no-margin) > .col-xs-offset-2,
+.row:not(.no-margin) > .col-xs-offset-3,
+.row:not(.no-margin) > .col-xs-offset-4,
+.row:not(.no-margin) > .col-xs-offset-5,
+.row:not(.no-margin) > .col-xs-offset-6,
+.row:not(.no-margin) > .col-xs-offset-7,
+.row:not(.no-margin) > .col-xs-offset-8,
+.row:not(.no-margin) > .col-xs-offset-9,
+.row:not(.no-margin) > .col-xs-offset-10,
+.row:not(.no-margin) > .col-xs-offset-11,
+.row:not(.no-margin) > .col-xs-offset-12 {
+  padding-right: 12px;
+  padding-left: 12px;
 }
 
 .col-xs {
@@ -301,8 +338,8 @@
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    /* padding-right: 0.5rem;
-    padding-left: 0.5rem; */
+    padding-right: 12px;
+    padding-left: 12px;
   }
 
   .col-sm {
@@ -532,8 +569,8 @@
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    /* padding-right: 0.5rem;
-    padding-left: 0.5rem; */
+    padding-right: 12px;
+    padding-left: 12px;
   }
 
   .col-md {
@@ -763,8 +800,8 @@
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    /* padding-right: 0.5rem;
-    padding-left: 0.5rem; */
+    padding-right: 12px;
+    padding-left: 12px;
   }
 
   .col-lg {

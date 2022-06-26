@@ -1,0 +1,32 @@
+@use 'styles/Define'
+@import 'styles/Define'
+
+.breadcrumb
+  ol
+    margin: 0
+    list-style: none
+
+    li
+      display: inline
+      cursor: pointer
+
+      a
+        color: #707070
+        font-size: 14px
+        font-weight: 400
+
+        &:hover
+          color: Define.$natural_60
+
+      &:not(:first-child)::before
+        display: inline-block
+        margin: 0 0.75em
+        transform: rotate(15deg)
+        border-right: 0.1em solid #707070
+        height: 0.8em
+        content: ""
+
+      &:last-child
+        a
+          color: Define.$green_70
+          font-weight: 700

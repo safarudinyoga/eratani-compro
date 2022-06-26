@@ -1,0 +1,255 @@
+@use '../../../styles/Define'
+@import '../../../styles/Define'
+
+.container_careerdetail
+  padding: 45px 72px 100px
+  margin: 0 auto
+
+  // mobile_view
+  .navigation_mobile
+    +Flex(row, flex-start, center)
+    margin-bottom: 40px
+
+    .wrapper_circle
+      width: 32px
+      height: 32px
+      border-radius: 50%
+      border: 2px solid #055C46
+      +Flex(row, center, center)
+      margin-right: 24px
+
+    &_title
+      font-size: 18px
+      font-weight: 700
+      color: Define.$green_70
+
+  .wrapper_content_career_mobile
+    margin: 0 auto
+    box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+    border-radius: 8px
+    background-color: #fff
+    padding: 32px 24px
+
+    &_title
+      font-size: 16px
+      font-weight: 700
+      color: Define.$green_70
+      margin-bottom: 4px
+
+    &_category
+      font-size: 14px
+      font-weight: 400
+      color: Define.$green_100
+      margin-bottom: 24px
+
+    &_wrapper_job_desc
+      +Flex(row, flex-start, center)
+
+      svg
+        transform: scale(0.8)
+
+      &_text
+        font-size: 14px
+        font-weight: 400
+        color: Define.$natural_50
+        margin-left: 12px
+
+    &_job_type
+      +Flex(row, space-between, flex-start)
+      margin-bottom: 32px
+
+      &_title
+        font-size: 14px
+        font-weight: 700
+        color: Define.$green_100
+        margin-bottom: 8px
+
+      &_desc
+        font-size: 14px
+        font-weight: 400
+        color: Define.$natural_50
+
+    &_job_desc
+      margin-bottom: 24px
+
+      &_title
+        font-size: 14px
+        font-weight: 700
+        color: Define.$green_100
+        margin-bottom: 8px
+
+      ul
+        li
+          list-style-type: disc
+          font-size: 14px
+          font-weight: 400
+          color: Define.$natural_50
+          line-height: 26px
+          margin: 0 0 0 25px
+
+  // web_view
+  .navigation
+    +Flex(row, space-between, center)
+    margin-bottom: 50px
+
+    .title_page
+      font-size: 20px
+      font-weight: 700
+      color: Define.$green_70
+
+    .back_button
+      +Flex(row, center, center)
+      background-color: #fff
+      border: 1px solid #055C46
+      box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+      border-radius: 8px
+      padding: 12px 20px 12px 25px
+      font-size: 16px
+      font-weight: 700
+      color: Define.$green_70
+
+      &:hover
+        color: Define.$green_100
+        border-color: Define.$green_100
+
+  .wrapper_content_career
+    margin: 0 auto
+    +Flex(row, center, flex-start)
+
+    &_first
+      min-width: 22%
+      padding: 56px 41px 75px
+      background: #fff
+      border: 1px solid #E7E7E7
+      box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+      border-radius: 8px
+      margin-right: 24px
+      height: fit-content
+
+      .job_title
+        font-size: 24px
+        font-weight: 700
+        color: Define.$green_70
+        margin-bottom: 8px
+        text-align: center
+
+      .job_category
+        font-size: 16px
+        font-weight: 400
+        color: Define.$green_100
+        margin-bottom: 24px
+        text-align: center
+
+      .wrapper_job_desc
+        +Flex(row, center, center)
+        margin: 0 auto
+
+        &_text
+          font-size: 16px
+          font-weight: 400
+          color: Define.$natural_50
+          margin-left: 10px
+
+      .wrapper_job_level
+        +Flex(column, flex-start)
+        margin-bottom: 24px
+
+        &_title
+          font-size: 1em
+          font-weight: 700
+          color: Define.$green_100
+          margin-bottom: 8px
+
+        &_desc
+          font-size: 1em
+          font-weight: 400
+          color: Define.$natural_50
+
+      .wrapper_job_type
+        +Flex(row)
+        margin-bottom: 60px
+
+        div
+          width: 50%
+
+        &_title
+          font-size: 1em
+          font-weight: 700
+          color: Define.$green_100
+          margin-bottom: 8px
+
+        &_desc
+          font-size: 1em
+          font-weight: 400
+          color: Define.$natural_50
+
+      .register_now
+        background: Define.$green_60
+        box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+        border-radius: 8px
+        padding: 12px 26px
+        font-size: 16px
+        font-weight: 700
+        color: #fff
+        margin: 0 auto
+        display: block
+
+        &:hover
+          background: Define.$green_70
+          box-shadow: 0px 1px 0px rgba(112, 112, 112, 0.15)
+
+    &_second
+      width: 78%
+      padding: 56px
+      background: #fff
+      border: 1px solid #E7E7E7
+      box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+      border-radius: 8px
+
+      div
+        margin: 0 0 20px
+
+      &_title
+        font-size: 18px
+        font-weight: 700
+        color: Define.$green_100
+        margin-bottom: 16px
+
+      ul
+        li
+          list-style-type: disc
+          font-size: 16px
+          font-weight: 400
+          color: Define.$natural_50
+          line-height: 26px
+          margin: 0 0 0 25px
+
+@media only screen and (min-width: 1440px)
+  .container_careerdetail
+    max-width: 1660px
+
+@media only screen and (min-width: 768px) and (max-width: 976px)
+  .container_careerdetail
+    .wrapper_content_career
+      +Flex(column)
+      &_first
+        width: 50%
+        margin-bottom: 25px
+
+      &_second
+        width: 100%
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 768px)
+  .container_careerdetail
+    .wrapper_content_career
+      +Flex(column)
+      &_first
+        width: 50%
+        margin-bottom: 25px
+
+      &_second
+        width: 100%
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  .container_careerdetail
+    padding: 135px 16px 100px

@@ -1,0 +1,167 @@
+@use '../../styles/Define'
+    
+/* ------------------ About ------------------ */
+#About
+    h3
+        @include Define.margin($bottom: 56px)
+/* ------------------ End About ------------------ */
+
+/* ------------------ VisiMisi ------------------ */
+#VisiMisi
+    > div
+        @include Define.flex($alignItems: stretch)
+
+    .slider
+        @include Define.box($width: 29%)
+
+        div
+            height: 100%
+
+    .visi, .misi
+        @include Define.box($width: 100%, $height: 100%)
+        @include Define.flex($justifyContent: center, $flexDirection: column)
+        @include Define.padding($left: 48px, $right: 48px)
+
+    .visi h3
+        @include Define.margin($bottom: 24px)
+
+    .misi ul
+        @include Define.margin($top: 6px)
+
+        li
+            @include Define.margin($top: 24px)
+            @include Define.flex($alignItems: top, $flexDirection: row)
+
+            p:first-child
+                @include Define.margin($top: -9px, $right: 8px)
+/* ------------------ End VisiMisi ------------------ */
+
+/* ------------------ Team ------------------ */
+.team-active-transition
+    transition: all 1s ease
+
+#Team
+    > p
+        @include Define.margin($top: 8px, $bottom: 80px)
+
+    > div
+        @include Define.margin($left: auto, $right: auto)
+        max-width: 1320px
+
+    .wrapper
+        @include Define.box($position: relative, $width: 251px, $height: 498px)
+        @include Define.flex($justifyContent: flex-end, $flexDirection: column )
+        @include Define.padding($left: 35px, $right: 35px)
+        border-radius: 33px
+        box-shadow: 0px 0.830247px 1.66049px rgba(18, 18, 18, 0.3), 0px 1.66049px 4.98148px 1.66049px rgba(18, 18, 18, 0.15)
+        overflow: hidden
+        cursor: pointer
+        @extend .team-active-transition
+
+        img
+            @include Define.box($position: absolute, $left: 6px, $bottom: 0)
+            @extend .team-active-transition
+
+        h4 
+            @include Define.box($position: relative)
+            white-space: nowrap
+            @extend .team-active-transition
+            
+            span:first-child
+                @include Define.box($width: 181px)
+                @include Define.box($position: absolute, $left: 0, $bottom: 0)
+                opacity: 0
+                @extend .team-active-transition
+
+            span:last-child
+                @include Define.box($width: 181px)
+                @include Define.box($position: absolute, $left: 0, $bottom: 0)
+                opacity: 1
+                @extend .team-active-transition
+
+        h5
+            white-space: nowrap
+            @include Define.box($width: 181px)
+            @include Define.margin($top: 16px, $bottom: 322px)
+            @extend .team-active-transition
+
+        p
+            @include Define.box($position: absolute, $width: 225px, $left: 252px, $top: 177px)
+            @extend .team-active-transition
+
+        .quote
+            @include Define.box($position: absolute, $left: 332px, $bottom: 26px)
+            @extend .team-active-transition
+
+        &.isActive
+            @include Define.box($width: 471px)
+
+            img
+                @include Define.box($left: 0)
+
+            h4
+                transform: translateY(-8px)
+                
+                span:first-child
+                    @include Define.box($width: 157px)
+                    opacity: 1
+
+                span:last-child
+                    @include Define.box($width: 157px)
+                    opacity: 0
+
+            h5
+                @include Define.box($width: 157px)
+                transform: translateY(-16px)
+                
+            .quote
+                @include Define.box($left: 302px)
+
+            p
+                @include Define.box($left: 222px)
+/* ------------------ End Team ------------------ */
+
+/* ------------------ Fam ------------------ */
+#Culture
+    .slider
+        overflow: hidden
+        @include Define.box($height: 100%)
+
+        .slide
+            @include Define.box($position: relative, $height: 100%)
+
+            &:after
+                content: ''
+                @include Define.box($position: absolute, $top: 0, $left: 0, $width: 100%, $height: 100%)
+                @include Define.bgGradient($deg: 0deg, $start: 0%, $startColor: #121212, $end: 100%, $endColor: rgba(18, 18, 18, 0))
+
+            .caption
+                @include Define.box($position: absolute, $width: 100%, $bottom: 0, $left: 0, $zindex: 2)
+                @include Define.padding($left: 56px, $right: 56px, $bottom: 60px)
+
+                svg
+                    @include Define.margin($right: 4px)
+
+                h5
+                    @include Define.margin($top: -13px, $bottom: 24px)
+
+    .title
+        @include Define.padding($left: 60px, $bottom: 20px)
+
+        h3 span
+            @include Define.box($width: 32px, $height: 8px)
+            @include Define.margin($top: 16px)
+            display: block
+            
+        p
+            @include Define.margin($top: 40px, $bottom: 56px)
+
+        a svg
+                @include Define.margin($bottom: -3px, $left: 20px)
+/* ------------------ End Fam ------------------ */    
+
+/* ------------------ JoinFam ------------------ */
+#JoinFam
+    p
+        @include Define.margin($top: 24px, $bottom: 40px)
+/* ------------------ End JoinFam ------------------ */

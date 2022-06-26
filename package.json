@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "gsap": "^3.10.4",
+    "html-react-parser": "^1.4.14",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "sass": "^1.52.2"
+    "react-slick": "^0.29.0",
+    "sass": "^1.52.2",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.2.1",

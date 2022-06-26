@@ -1,4 +1,5 @@
 @use './Define'
+
 @import url(https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap)
 
 *
@@ -19,11 +20,11 @@
     text-rendering: optimizeLegibility !important
     -webkit-font-smoothing: antialiased !important
     -moz-osx-font-smoothing: antialiased !important
-    color: Define.$green_100
+    font-family: 'Poppins', sans-serif
+    @extend .text-green-100
     -webkit-appearance: none
     -moz-appearance: none
     appearance: none
-    font-family: 'Lato', sans-serif
 
 body,
 html
@@ -35,3 +36,57 @@ button
 .wrp-padding
     padding-left: 72px
     padding-right: 72px
+::-webkit-scrollbar
+    width: 5px
+    height: 5px
+
+::-webkit-scrollbar-track
+    @extend .bg-natural-10
+
+::-webkit-scrollbar-thumb
+    border-radius: 5px
+    @extend .bg-green-50
+
+a
+    cursor: pointer
+
+del
+    text-decoration: line-through
+
+strong,
+em,
+span,
+small
+    color: inherit
+    font-size: inherit
+    font-weight: inherit
+
+em
+    font-style: italic
+
+h1
+    letter-spacing: 0.02em
+
+.container-padding
+    @include Define.padding($left: 72px, $right: 72px)
+
+.margin-auto
+    @include Define.margin($left: auto, $right: auto)
+
+.image-cover
+    width: 100%
+    height: 100%
+    object-fit: cover
+    object-position: center center
+
+p.label
+    @include Define.inlineBlock()
+    @include Define.typograph($size: 14px, $weight: 'bold')
+    border-radius: 50px
+    @include Define.padding($left: 8px, $right: 8px)
+
+.flip-x
+    transform: scaleX(-1)
+
+.disable-pointer-event
+    pointer-events: none

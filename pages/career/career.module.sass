@@ -1,0 +1,212 @@
+@use '../../styles/Define'
+@import '../../styles/Define'
+
+.career
+  padding: 72px 100px 100px
+  background: transparent
+  margin: 0 auto
+
+  h3
+    margin-bottom: 25px
+
+  .sub_title
+    width: 45vw
+    font-size: 1.4em //20px
+    font-weight: 400
+    text-align: center
+    color: Define.$green_100
+    word-wrap: break-word
+    margin: 0 auto 90px
+    line-height: 28px
+
+  .career_search
+    +Flex(row)
+    margin-bottom: 65px
+
+    .search
+      position: relative
+      margin-right: 16px
+
+      input
+        min-width: 416px
+        padding: 16px 32px
+        height: 56px
+        background: #FFFFFF
+        border: 1px solid #B7B7B7
+        box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+        border-radius: 8px
+
+      span
+        position: absolute
+        transform: translate(-50%, -50%)
+        top: 50%
+        right: 5%
+
+        i
+          color: Define.$natural_50
+
+    .box
+      width: 56px
+      height: 56px
+      border-radius: 8px
+      background: #FFFFFF
+      border: 1px solid Define.$green_100
+      box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+      margin-right: 16px
+      +Flex(row, center, center)
+
+  .wrapper_box_career
+    margin: 0 auto 25px
+    +Flex(row, flex-start, flex-start, wrap)
+
+    div
+      padding: 0
+      margin: 0 auto 0 0
+
+    .box_career
+      background: #fff
+      border: 1px solid Define.$natural_30
+      box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+      border-radius: 16px
+      padding: 35px 24px
+      margin: 0 auto 40px 0
+      width: 95%
+
+      .title_job
+        font-size: 24px
+        font-weight: 700
+        color: Define.$green_70
+        line-height: 34px
+        margin-bottom: 4px
+
+      .desc_job
+        font-size: 1em
+        font-weight: 400
+        line-height: 22px
+        color: Define.$green_100
+        margin-bottom: 24px
+
+      .wrapper_career_info
+        +Flex(row, space-between, flex-start)
+
+        .wrapper_year
+          +Flex(row, flex-start, flex-start)
+
+          .title_wrapper_year
+            font-size: 1em
+            font-weight: 400
+            color: Define.$natural_50
+            margin-left: 10px
+
+        .title
+          font-size: 1em
+          font-weight: 700
+          color: Define.$green_100
+          margin-bottom: 8px
+
+        .desc
+          font-size: 1em
+          font-weight: 400
+          color: Define.$natural_50
+
+    .career_button_detail
+      display: block
+      margin: 0 0 0 auto
+      padding: 10px 12px
+      background: Define.$green_60
+      box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+      border-radius: 8px
+      font-size: 1em
+      font-weight: 700
+      color: #fff
+
+      &:hover
+        background: Define.$green_70
+
+  .button_more
+    display: block
+    margin: 0 auto
+    padding: 16px 43px
+    border-radius: 8px
+    background: #FFFFFF
+    font-size: 1.2em
+    font-weight: 700
+    color: Define.$green_60
+    box-shadow: 0px 5px 8px rgba(112, 112, 112, 0.15)
+    border: 1px solid Define.$green_60
+
+    &:hover
+      border: 1px solid Define.$green_80
+      box-shadow: 0px 1px 0px rgba(112, 112, 112, 0.15)
+
+  .divider
+    border: 1px solid #E7E7E7
+    margin: 0 -24px 18px -24px
+
+@media only screen and (min-width: 1440px)
+  .career
+    max-width: 1660px
+
+@media only screen and (min-width: 768px) and (max-width: 976px)
+  .career
+    padding: 72px 50px 100px
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 768px)
+  .career
+    padding: 120px 50px 100px
+    background: transparent
+    margin: 0 auto
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  .career
+    padding: 120px 15px 100px
+    background: transparent
+    margin: 0 auto
+
+    .title_career
+      font-size: 18px
+      font-weight: 700
+      color: Define.$green_70
+      margin-bottom: 16px
+      text-align: center
+
+    .sub_title
+      width: 90%
+      font-size: 14px
+      margin: 0 auto 24px
+      line-height: auto
+
+    .wrapper_box_career
+      .box_career
+        padding: 24px
+        margin: 0 auto 24px
+        width: 95%
+
+        .title_job
+          font-size: 16px
+          line-height: unset
+
+        .desc_job
+          font-size: 14px
+          margin-bottom: 16px
+
+        .wrapper_career_info
+          .wrapper_year
+            svg
+              transform: scale(0.8)
+              position: relative
+              top: -4px
+
+            .title_wrapper_year
+              font-size: 14px
+
+          .title
+            font-size: 14px
+            margin-bottom: 8px
+
+          .desc
+            font-size: 14px
+
+      .career_button_detail
+        padding: 10px 16px
+        font-size: 14px

@@ -1,0 +1,22 @@
+@use '../../styles/Define'
+    
+.input_1
+    @include Define.box($position: relative, $width: 100%)
+    background: transparent
+    border: 1px solid map-get(Define.$colors, 'natural-40')
+    border-radius: 6px
+    display: block
+    @include Define.typograph($size: 18px, $lineHeight: 54px)
+    @include Define.padding($left: 24px, $right: 24px)
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08)
+    
+    &::placeholder
+        @extend .text-natural-40
+        opacity: 1
+    
+    &:-ms-input-placeholder
+        @extend .text-natural-40
+
+    &::-ms-input-placeholder
+        @extend .text-natural-40
+    
