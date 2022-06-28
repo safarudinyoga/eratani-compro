@@ -11,9 +11,7 @@ import TwitterVect from '/assets/vector/share-twt.svg'
 import LinkVect from '/assets/vector/share-link.svg'
 
 export default function Container (props) {
-
     const ButtonRef = props.children[1]
-
     return (
         <>
             <Typograph tag='h2' size='xlg-3' color='green-70' className={ styles.title }>{ props.title }</Typograph>

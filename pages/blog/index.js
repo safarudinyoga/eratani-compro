@@ -4,12 +4,10 @@ import Sections from '/components/sections/Blog'
 
 export default function AboutUsPage() {
     const { locale } = useRouter()
-
     const pageTitle = {
         id: 'Blog',
         en: 'Blog'   
     }
-
     const searchContent = {
         placeholder: {
             id: 'Search Blog post ...',
@@ -20,7 +18,6 @@ export default function AboutUsPage() {
             en: 'Find'
         }
     }
-
     const headingContent = {
         title: {
             id: 'Sekilas Info tentang Eratani dan Pertanian',
@@ -32,7 +29,6 @@ export default function AboutUsPage() {
         },
         search: searchContent
     }
-
     const otherContent = {
         articleTopTitle: {
             id: 'ARTIKEL',
@@ -51,7 +47,6 @@ export default function AboutUsPage() {
             en: 'Lihat Tips Lainnya'
         },
     }
-
     const articleData = [
         {
             title: 'Dicari: Petani Muda Berdedikasi Tinggi Untuk Indonesia',
@@ -94,7 +89,6 @@ export default function AboutUsPage() {
             url: '#'
         }
     ]
-
     const tipsData = [
         {
             title: 'Cara Membuat Lahan dengan Konsep Verticulture',

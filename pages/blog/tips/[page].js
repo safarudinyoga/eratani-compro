@@ -6,7 +6,6 @@ export default function AboutUsPage() {
     const { query, locale } = useRouter()
     const { page } = query
     const totalPage = 3
-
     const searchContent = {
         placeholder: {
             id: 'Search Blog post ...',
@@ -17,7 +16,6 @@ export default function AboutUsPage() {
             en: 'Find'
         }
     }
-
     const otherContent = {
         otherTips: {
             id: 'TIPS LAINNYA',
@@ -28,12 +26,10 @@ export default function AboutUsPage() {
             en: 'Tips'
         }
     }
-
     const pageTitle = {
         id: `Blog | Tips Halaman ${ page }`,
         en: `Blog | Tips Page ${ page }`
     }
-
     const tipsData = [
         {
             title: 'Cara Membuat Lahan dengan Konsep Verticulture',
@@ -84,7 +80,6 @@ export default function AboutUsPage() {
             url: '#'
         }
     ]
-
     const breadcrumbProps = [
         {
             name: otherContent.breadcrumb[locale],

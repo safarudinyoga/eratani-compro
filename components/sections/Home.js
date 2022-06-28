@@ -22,6 +22,8 @@ import MapsHvrVect from '/assets/vector/maps-hvr.svg'
 import MockupPng from '/assets/static/mockup.png'
 import FindPlaystorePng from '/assets/static/find-playstore.png'
 
+import DaftarForm from '/components/sections/DaftarForm'
+
 gsap.registerPlugin(ScrollToPlugin)
 gsap.registerPlugin(CustomEase)
 
@@ -141,14 +143,12 @@ const Ecosystem = ({ title, data }) => {
 /* ------------------ Solutions ------------------ */
 const Solution = ({ title, caption, data }) => {
     const { locale } = useRouter()
-
     const onSolutionEnter = (event) => {
         const [ titleNode, captionNode ] = event.currentTarget.getElementsByClassName('__SolutionNode__')
         gsap.timeline()
             .set(captionNode, { bottom: 80 })
             .set(titleNode, { bottom: captionNode.clientHeight })
     }
-
     const onSolutionLeave = (event) => {
         const [ titleNode, captionNode ] = event.currentTarget.getElementsByClassName('__SolutionNode__')
         gsap.timeline()
@@ -185,10 +185,8 @@ const Solution = ({ title, caption, data }) => {
 /* ------------------ Maps ------------------ */
 const Maps = ({ title, caption, data }) => {
     const { locale } = useRouter()
-
     const mapsTipRef = createRef()
     const [ mapIndexHover, setMapIndexHover ] = useState(0)
-
     const onPointEnter = (event) => {
         const id = parseInt(event.currentTarget.dataset.id)
 
@@ -196,7 +194,6 @@ const Maps = ({ title, caption, data }) => {
         const scaleFactor = window.innerWidth / 1440
         gsap.fromTo(mapsTipRef.current, { left: (data[id].pos.x * scaleFactor), top: (data[id].pos.y * scaleFactor), autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 })
     }
-
     const onPointLeave = () => gsap.to(mapsTipRef.current, { autoAlpha: 0, duration: 0.3 })
 
     return (
@@ -236,15 +233,6 @@ const Maps = ({ title, caption, data }) => {
 /* ------------------ Media ------------------ */
 const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) => {
     const { locale } = useRouter()
-
-    if (mitraData.length % 5 != 0)
-        for (let i = 0; i < mitraData.length % 5; i++) 
-            mitraData.push({image: 0, alt: 'null'})
-
-    if (diliputData.length % 5 != 0)
-        for (let i = 0; i < mitraData.length % 5; i++) 
-            diliputData.push({image: 0, alt: 'null'})
-
     const slickSettings = {
         infinite: true,
         speed: 1800,
@@ -256,11 +244,17 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
         arrows: false, 
         dots: true
     }    
-
     const mitaSlickSettings = SlickNavigationCustom('__SlickMitra__', slickSettings)
     const diliputSlickSettings = SlickNavigationCustom('__SlickDiliput__', slickSettings)
-    
     const [ tab, setTab ] = useState(0)
+
+    if (mitraData.length % 5 != 0)
+        for (let i = 0; i < mitraData.length % 5; i++) 
+            mitraData.push({image: 0, alt: 'null'})
+
+    if (diliputData.length % 5 != 0)
+        for (let i = 0; i < mitraData.length % 5; i++) 
+            diliputData.push({image: 0, alt: 'null'})
 
     return (
         <Container id={ styles.Media } normalPadding backgroundColor='natural-10' paddingTop='40' paddingBottom='68' className='align-center'>
@@ -298,6 +292,7 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
 /* ------------------ Join ------------------ */
 const Join = ({ title, caption, data, daftar }) => {
     const { locale } = useRouter()
+    const [ formDaftar, setFormDaftar ] = useState(0)
     return (
         <Container id={ styles.Join } normalPadding paddingTop='80' paddingBottom='68' className='align-center'>
             <Typograph tag='h2' size='xlg-2' color='natural-60'>
@@ -311,7 +306,8 @@ const Join = ({ title, caption, data, daftar }) => {
                 </div>
             </Typograph>
             <Typograph tag='p' size='md-3' align='center' maxWidth='780'>{ caption[locale] }</Typograph>
-            <Button href={ daftar.url } xPadding='18' textColor='white' backgroundColor='green-60'>{ daftar[locale] }</Button>
+            <Button href='#' onClick={ () => setFormDaftar(1) } xPadding='18' textColor='white' backgroundColor='green-60'>{ daftar[locale] }</Button>
+            { (formDaftar) ? <DaftarForm onClose={ () => setFormDaftar(0) } /> : undefined }
         </Container>
     )
 }
@@ -331,7 +327,6 @@ const Testimoni = ({ title, caption, data }) => {
         arrows: true,
         dots: true
     }
-
     const testimoniSlickSettings = SlickNavigationCustom('__slickTestimoni__', slickSettings)
 
     return (

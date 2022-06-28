@@ -5,7 +5,6 @@ export default function Input (props) {
 
     newProps.className = `${ styles[`input_${ props.model }`] } `
     newProps.className += props.className || ''
-
     newProps.style = { ...props.style }
 
     delete newProps.model

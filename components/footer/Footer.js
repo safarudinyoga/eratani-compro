@@ -11,8 +11,7 @@ import LinkedInVect from '../../assets/vector/linkedin.svg'
 import YoutubeVect from '../../assets/vector/youtube.svg'
 
 export default function Footer () {
-    const { pathname, locale } = useRouter()
-    
+    const { locale } = useRouter()
     const companyNav = [
         { id: 'TENTANG KAMI',        en: 'ABOUT',                   link: 'about' },
         { id: 'BLOG',                en: 'BLOG',                    link: 'blog' },
@@ -26,7 +25,6 @@ export default function Footer () {
         { id: 'POKTAN',             en: 'POKTAN',                   link: '#' },
         { id: 'SUPPLIER',           en: 'SUPPLIER',                 link: '#' },
         { id: 'BUYER',              en: 'BUYER',                    link: '#' } ]
-
     const otherContent = {
         officeTitle: {
             id: 'KANTOR PUSAT',
@@ -54,7 +52,7 @@ export default function Footer () {
         }
     }
 
-    function footerSub(title, content) {
+    const footerSub = (title, content) => {
         return (
             <>
                 <Typograph tag='h6' size='sm-1'>{ title }</Typograph>

@@ -5,7 +5,6 @@ import Typograph from '/components/custom/Typograph'
 import KarrowDownVect from '/assets/vector/karrow-down.svg'
 
 const List = forwardRef((props, ref) => {
-
     const contentRef = createRef()
     const [show, setShow] = useState(false)
     const [height, setHeight] = useState(0)

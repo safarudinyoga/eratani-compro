@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Sections from '/components/sections/Home'
 
 export default function HomePage() {
-    
     const heroContent = {
         background: 'IEP05860 1.jpg',
         hashtag: {
@@ -19,7 +18,6 @@ export default function HomePage() {
             url: '#'
         }
     }
-
     const ecosystemContent = {
         title: {
             id: <>Menuju Ekosistem yang<br />Lebih Kuat Bersama Eratani</>,
@@ -88,7 +86,6 @@ export default function HomePage() {
             }
         ]   
     }
-
     const solutionContent = {
         title: {
             id: 'Solusi Untuk Lahan Pertanian Anda',
@@ -161,7 +158,6 @@ export default function HomePage() {
             }
         ]
     }
-
     const mapsContent = {
         title: {
             id: <>Kami Mendukung Pertumbuhan dan<br />Digitalisasi Pertanian Seluruh Indonesia</>,
@@ -234,7 +230,6 @@ export default function HomePage() {
             }
         ]
     }
-
     const mediaContent = {
         mitraTitle: {
             id: 'Mitra Kami',
@@ -280,7 +275,6 @@ export default function HomePage() {
             {image: '5.png', alt: 'bulog'},
         ]
     }
-
     const joinContent = {
         title: {
             id: 'Segera Bergabung Menjadi',
@@ -293,7 +287,6 @@ export default function HomePage() {
         daftar: {
             id: 'Daftar Sekarang',
             en: 'Daftar Sekarang',
-            url: '#'
         },
         data: [
             {
@@ -328,7 +321,6 @@ export default function HomePage() {
             }
         ]
     }
-
     const testimoniContent = {
         title: {
             id: 'Testimoni Mitra',
@@ -376,7 +368,6 @@ export default function HomePage() {
             }
         ]
     }
-
     const downloadContent = {
         subtitle: {
             id: 'Ingin menjadi petani sukses?',
@@ -398,7 +389,6 @@ export default function HomePage() {
             <Head>
                 <title>Eratani</title>
             </Head>
-
             <Sections.Hero { ...heroContent } />
             <Sections.Ecosystem { ...ecosystemContent } />
             <Sections.Solution { ...solutionContent } />

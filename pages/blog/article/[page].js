@@ -6,7 +6,6 @@ export default function AboutUsPage() {
     const { query, locale } = useRouter()
     const { page } = query
     const totalPage = 3
-
     const searchContent = {
         placeholder: {
             id: 'Search Blog post ...',
@@ -17,7 +16,6 @@ export default function AboutUsPage() {
             en: 'Find'
         }
     }
-
     const otherContent = {
         articleTopTitle: {
             id: 'TERBARU',
@@ -32,12 +30,10 @@ export default function AboutUsPage() {
             en: 'Article'
         }
     }
-
     const pageTitle = {
         id: `Blog | Artikel Halaman ${ page }`,
         en: `Blog | Article Page ${ page }`
     }
-
     const articleData = [
         {
             title: 'Dicari: Petani Muda Berdedikasi Tinggi Untuk Indonesia',
@@ -128,7 +124,6 @@ export default function AboutUsPage() {
             url: '#'
         }
     ]
-
     const breadcrumbLinks = [
         {
             name: otherContent.breadcrumb[locale],

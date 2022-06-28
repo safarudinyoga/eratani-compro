@@ -19,7 +19,6 @@ export default function Header () {
         { id: 'Agenda',              en: 'Agenda',                      link: 'agenda' },
         { id: 'Pertanyaan',          en: 'FAQ',                         link: 'faq' },
         { id: 'Karir',               en: 'Career',                      link: 'career' } ]
-
     const { pathname, locale } = useRouter()
     const dropdownRef = useRef()
     

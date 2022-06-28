@@ -8,7 +8,6 @@ export default function Ellipsis (props) {
     newProps.className += (props.weight) ? `font-${ props.weight } ` : ''
     newProps.className += (props.color) ? `text-${ props.color } ` : ''
     newProps.className += (props.align) ? `align-${ props.align } ` : ''
-
     newProps.style = { ...props.style }
     
     if (props.maxWidth !== undefined) {

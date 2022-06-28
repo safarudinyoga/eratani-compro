@@ -14,12 +14,10 @@ import NextVect from '/assets/vector/paginate-next.svg'
 
 export default function AboutUsPage() {
     const { locale } = useRouter()
-
     const pageTitle = {
         id: 'Pertanyaan',
         en: 'FAQ'   
     }
-
     const otherContent = {
         title: {
             id: 'Pertanyaan',
@@ -30,7 +28,6 @@ export default function AboutUsPage() {
             en: 'Pilih kategori untuk memudahkan mencari jawaban.'
         }
     }
-
     const filterContent = [
         {
             name: 'umum',
@@ -58,7 +55,6 @@ export default function AboutUsPage() {
             en: 'Lainnya'
         }
     ]
-
     const faqData = {
         umum: [
             {
@@ -143,7 +139,6 @@ export default function AboutUsPage() {
             }
         ]
     }
-
     const [filter, setFilter] = useState('umum')
 
     return (

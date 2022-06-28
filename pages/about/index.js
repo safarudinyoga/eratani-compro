@@ -4,12 +4,10 @@ import Sections from '/components/sections/About'
 
 export default function AboutUsPage() {
     const { locale } = useRouter()
-
     const pageTitle = {
         id: 'Tentang Kami',
         en: 'About Us'   
     }
-
     const aboutContent = {
         title: {
             id: 'Tentang Kami',
@@ -28,7 +26,6 @@ export default function AboutUsPage() {
                 </>,
         },
     }
-
     const visiMisiContent = {
         visiTitle: {
             id: 'VISI',
@@ -72,7 +69,6 @@ export default function AboutUsPage() {
             { image: 'IEP05859.jpg', alt: '' }
         ]
     }
-
     const teamContent = [
         {
             name1: <>Andrew<br />Soeherman</>,
@@ -115,7 +111,6 @@ export default function AboutUsPage() {
             top: 24
         }
     ]
-
     const culutreContent = {
         title: {
             id: 'Lebih Dekat dengan Era-Fam',
@@ -181,7 +176,6 @@ export default function AboutUsPage() {
             }
         ]
     }
-
     const joinFamContent = {
         title: {
             id: 'Ingin Menjadi Bagian dari Era-Fam?',
@@ -203,7 +197,6 @@ export default function AboutUsPage() {
             <Head>
                 <title>Eratani - { pageTitle[locale] }</title>
             </Head>
-
             <Sections.About { ...aboutContent } />
             <Sections.VisiMisi { ...visiMisiContent } />
             <Sections.Team { ...{ data: teamContent } } />

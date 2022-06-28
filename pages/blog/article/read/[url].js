@@ -5,7 +5,6 @@ import Sections from '/components/sections/Blog'
 export default function AboutUsPage() {
     const { locale, query } = useRouter()
     const { url } = query
-
     const blogData = {
         title: 'Dicari: Petani Muda Berdedikasi Tinggi Untuk Indonesia',
         content: `<p style="text-align: justify;">Halo Sobat Eratani!</p><p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque elit lorem nunc nibh porttitor posuere lorem vehicula. Vitae natoque tincidunt viverra vulputate morbi aliquet. Tristique urna tristique risus natoque in. Gravida praesent faucibus bibendum nisi, in leo. Pretium at nunc et, ac nullam risus parturient tortor massa. Viverra nunc ipsum etiam imperdiet ultrices amet vivamus elementum mattis. Quis morbi sit varius morbi fusce in purus. Mauris, morbi vestibulum sed enim dignissim tellus vestibulum, in. At a gravida auctor tellus arcu auctor. Imperdiet eget leo amet lectus nibh. Pharetra dis molestie tellus nisl, sit nisi id nisl eget.</p><p style="text-align: justify;">Lectus elit suscipit nullam et, placerat. Massa amet sit ultrices dictumst sapien. A interdum dui, egestas leo, gravida. Sagittis nulla proin id mauris turpis consectetur. Velit vel congue sit volutpat sit. Tincidunt non faucibus urna diam.</p><p style="text-align: justify;">Amet purus in velit lacus, nullam in quam. Scelerisque ipsum hac varius morbi nunc. Quis arcu elit consectetur montes, accumsan. Nulla quis in cras imperdiet lectus. Scelerisque ut posuere nulla fermentum ut ut eu, sit. Varius sed varius sit a. Magna orci vestibulum enim elit dis. Enim a, consectetur gravida risus mattis sagittis dui ultrices. Tincidunt elit vulputate varius sed eu bibendum. Mi, mauris amet vitae urna lorem ut curabitur. Leo morbi elementum mi rhoncus, varius bibendum phasellus tellus.</p><p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque elit lorem nunc nibh porttitor posuere lorem vehicula. Vitae natoque tincidunt viverra vulputate morbi aliquet. Tristique urna tristique risus natoque in. Gravida praesent faucibus bibendum nisi, in leo. Pretium at nunc et, ac nullam risus parturient tortor massa. Viverra nunc ipsum etiam imperdiet ultrices amet vivamus elementum mattis. Quis morbi sit varius morbi fusce in purus. Mauris, morbi vestibulum sed enim dignissim tellus vestibulum, in. At a gravida auctor tellus arcu auctor. Imperdiet eget leo amet lectus nibh. Pharetra dis molestie tellus nisl, sit nisi id nisl eget.</p><p style="text-align: justify;">Lectus elit suscipit nullam et, placerat. Massa amet sit ultrices dictumst sapien. A interdum dui, egestas leo, gravida. Sagittis nulla proin id mauris turpis consectetur. Velit vel congue sit volutpat sit. Tincidunt non faucibus urna diam.</p><p style="text-align: justify;">Amet purus in velit lacus, nullam in quam. Scelerisque ipsum hac varius morbi nunc. Quis arcu elit consectetur montes, accumsan. Nulla quis in cras imperdiet lectus. Scelerisque ut posuere nulla fermentum ut ut eu, sit. Varius sed varius sit a. Magna orci vestibulum enim elit dis. Enim a, consectetur gravida risus mattis sagittis dui ultrices. Tincidunt elit vulputate varius sed eu bibendum. Mi, mauris amet vitae urna lorem ut curabitur. Leo morbi elementum mi rhoncus, varius bibendum phasellus tellus.</p>`,
@@ -13,12 +12,10 @@ export default function AboutUsPage() {
         date: '12 Mei 2022',
         photo: 'unsplash_QFmNQXLPbZc.jpg'
     }
-
     const pageTitle = {
         id: `Blog | ${ blogData.title }`,
         en: `Blog | ${ blogData.title }`
     }
-
     const otherContent = {
         otherArticle: {
             id: 'Lihat Artikel Lainnya',
@@ -29,13 +26,11 @@ export default function AboutUsPage() {
             en: 'Article'
         }
     }
-
     const buttonDaftar = {
         id: 'Daftar Sebagai Petani',
         en: 'Daftar Sebagai Petani',
         url: '#'
     }
-
     const articleData = [
         {
             title: 'Kerjasama Eratani dengan Kementrian Pertanian',
@@ -70,7 +65,6 @@ export default function AboutUsPage() {
             url: '#'
         }
     ]
-
     const breadcrumbProps = [
         {
             name: otherContent.breadcrumb[locale],

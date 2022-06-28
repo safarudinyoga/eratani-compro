@@ -2,7 +2,6 @@ export default function Container (props) {
     const newProps = { ...props }
 
     newProps.className = (props.backgroundColor) ? `bg-${ props.backgroundColor } ` : ''
-
     newProps.style = { ...props.style }
     newProps.style.position = 'relative'
     

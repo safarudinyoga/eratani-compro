@@ -31,7 +31,6 @@ const About = ({ title, description }) => {
 /* ------------------ VisiMisi ------------------ */
 const VisiMisi = ({ visiTitle, misiTitle, visi, misi, slides }) => {
     const { locale } = useRouter()
-
     const slickSettings = {
         infinite: true,
         speed: 900,
@@ -88,7 +87,6 @@ const VisiMisi = ({ visiTitle, misiTitle, visi, misi, slides }) => {
 /* ------------------ Team ------------------ */
 const Team = ({ data }) => {
     const { locale } = useRouter()
-
     const QuoteVect = (props) => {
         return (
             <svg width="140" height="118" viewBox="0 0 140 118" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +94,6 @@ const Team = ({ data }) => {
             </svg>
         )
     }
-
     const [ teamActive, setTeamActive ] = useState(0)
 
     return (
@@ -129,9 +126,8 @@ const Team = ({ data }) => {
 /* ------------------ Culture ------------------ */
 const Culture = ({ title, caption, detail, data }) => {
     const { locale } = useRouter()
-
-    let currentActive = 0
     const sliderRef = createRef()
+    let currentActive = 0
 
     useEffect(() => {
         const node = sliderRef.current
