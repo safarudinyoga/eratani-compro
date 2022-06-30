@@ -17,13 +17,13 @@ export default function AboutUsPage() {
         en: `Blog | ${ blogData.title }`
     }
     const otherContent = {
-        otherArticle: {
-            id: 'Lihat Artikel Lainnya',
-            en: 'Lihat Artikel Lainnya',
+        otherTips: {
+            id: 'Lihat Tips Lainnya',
+            en: 'Lihat Tips Lainnya',
         },
         breadcrumb: {
-            id: 'Artikel',
-            en: 'Article'
+            id: 'Tips',
+            en: 'Tips'
         }
     }
     const buttonDaftar = {
@@ -31,7 +31,7 @@ export default function AboutUsPage() {
         en: 'Daftar Sebagai Petani',
         url: '#'
     }
-    const articleData = [
+    const tipsData = [
         {
             title: 'Kerjasama Eratani dengan Kementrian Pertanian',
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id nulla rhoncus, tincidunt eros tempus, auctor mi. Sed congue augue id ligula vehicula pharetra. Nullam eu magna nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas malesuada arcu mauris, vitae feugiat eros pretium quis. Sed non leo quis ex consequat malesuada id a sem. In euismod ipsum nec lacus porta porttitor sit amet et turpis. Vestibulum aliquet vulputate nisl. Etiam lacinia molestie velit quis commodo. Aenean vulputate maximus lectus, non tempor tellus convallis a. Duis ultricies semper malesuada. Donec tincidunt eros vel ex ullamcorper vulputate. In tincidunt turpis pharetra, bibendum leo quis, tempor ex. Curabitur vitae orci efficitur, aliquet orci sed, laoreet erat. Integer accumsan nec sapien non aliquet.',
@@ -68,11 +68,11 @@ export default function AboutUsPage() {
     const breadcrumbProps = [
         {
             name: otherContent.breadcrumb[locale],
-            url: `/blog/article/1`
+            url: `/blog/tips/1`
         },
         {
             name: blogData.title,
-            url: `/blog/article/read/${ url }`
+            url: `/blog/tips/read/${ url }`
         }
     ]
 
@@ -84,7 +84,7 @@ export default function AboutUsPage() {
 
             <Sections.Breadcrumb { ...{ links: breadcrumbProps } } />
             <Sections.Read daftar={ buttonDaftar } { ... { data: blogData } } />
-            <Sections.ListType2 title={ otherContent.otherArticle } path='article' { ...{ data: articleData } } />
+            <Sections.ListType2 title={ otherContent.otherArticle } path='tips' { ...{ data: tipsData } } />
             <div style={{ display: 'block', height: 60 }} />
         </>
     ) 

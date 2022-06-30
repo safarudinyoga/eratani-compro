@@ -18,7 +18,6 @@ export default function SetRatio (props) {
 
     useEffect(() => {
         calculateHeight()
-
         window.addEventListener('resize', calculateHeight)
         return _ => window.removeEventListener('resize', calculateHeight)
     }, [calculateHeight])

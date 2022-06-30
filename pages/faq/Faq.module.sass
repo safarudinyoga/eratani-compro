@@ -1,0 +1,35 @@
+@use '../../styles/Define'
+
+#Faq
+    > p
+        @include Define.margin($top: 8px, $bottom: 64px)
+        
+    .accordion
+        max-width: 1134px
+        @include Define.margin($left: auto, $right: auto)
+        
+    .filter
+        @include Define.margin($bottom: 56px)
+
+        .filter_cat
+            @include Define.margin($left: 32px, $right: 32px)
+            max-width: 1134px
+            width: 100%
+
+            a
+                @include Define.box($width: 200px)
+                border: 1px solid map-get(Define.$colors, 'green-100')
+                border-radius: 8px
+
+        > a
+            @include Define.box($width: 48px)
+            @extend .align-center
+            display: block
+            line-height: 46px
+            border-radius: 50%
+            border: 1px solid map-get(Define.$colors, 'green-100')
+            
+        .active
+            @extend .bg-green-60
+            @extend .text-green-10
+            @extend .border-green-60

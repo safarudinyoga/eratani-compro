@@ -3,12 +3,37 @@ import { useRouter } from 'next/router'
 import Sections from '/components/sections/Blog'
 
 export default function AboutUsPage() {
-    
-    const router = useRouter()
-    const { page } = router.query
-    
-    const PAGE_TITLE = `Blog | Article Page ${ page }`
-
+    const { query, locale } = useRouter()
+    const { page } = query
+    const totalPage = 3
+    const searchContent = {
+        placeholder: {
+            id: 'Search Blog post ...',
+            en: 'Search Blog post ...'
+        },
+        button: {
+            id: 'Cari',
+            en: 'Find'
+        }
+    }
+    const otherContent = {
+        articleTopTitle: {
+            id: 'TERBARU',
+            en: 'TERBARU'
+        },
+        otherArticle: {
+            id: 'ARTIKEL LAINNYA',
+            en: 'ARTIKEL LAINNYA'
+        },
+        breadcrumb: {
+            id: 'Artikel',
+            en: 'Article'
+        }
+    }
+    const pageTitle = {
+        id: `Blog | Artikel Halaman ${ page }`,
+        en: `Blog | Article Page ${ page }`
+    }
     const articleData = [
         {
             title: 'Dicari: Petani Muda Berdedikasi Tinggi Untuk Indonesia',
@@ -16,7 +41,7 @@ export default function AboutUsPage() {
             creator: 'Eratani',
             date: '12 Mei 2022',
             photo: 'unsplash_QFmNQXLPbZc.jpg',
-            url: '#'
+            url: 'dicari-petani-muda-berdedikasi-tinggi-untuk-indonesia'
         },
         {
             title: 'Kerjasama Eratani dengan Kementrian Pertanian',
@@ -99,10 +124,9 @@ export default function AboutUsPage() {
             url: '#'
         }
     ]
-
     const breadcrumbLinks = [
         {
-            name: 'Artikel',
+            name: otherContent.breadcrumb[locale],
             url: `/blog/article/${ page }`
         }
     ]
@@ -110,20 +134,20 @@ export default function AboutUsPage() {
     return (
         <>
             <Head>
-                <title>Eratani - { PAGE_TITLE }</title>
+                <title>Eratani - { pageTitle[locale] }</title>
             </Head>
 
-            <Sections.Breadcrumb { ...{ links: [ ...breadcrumbLinks ] } } />
-            <Sections.Search />
+            <Sections.Breadcrumb { ...{ links: breadcrumbLinks } } />
+            <Sections.Search { ...searchContent } />
             { (parseInt(page) == 1) ? 
                 <>
-                    <Sections.ArticleTop { ...{ data: [ ...articleData.slice(0, 5) ], title: 'TERBARU' } } />
+                    <Sections.ArticleTop title={ otherContent.articleTopTitle } { ...{ data: articleData.slice(0, 5) } } />
                     <Sections.Devider />
                 </>
                 : <></> 
             }
-            <Sections.List { ...{ data: [ ...articleData.slice(5) ], title: 'ARTIKEL LAINNYA' } } />
-            <Sections.NavPaginate { ...{ path: 'article', currentPage: parseInt(page), totalPage: 3 } } />
+            <Sections.ListType1 title={ otherContent.otherArticle } path='article' { ...{ data: articleData.slice(5) } } />
+            <Sections.NavPaginate path='article' currentPage={ parseInt(page) } totalPage={ totalPage } />
             <div style={{ display: 'block', height: 68 }} />
         </>
     ) 

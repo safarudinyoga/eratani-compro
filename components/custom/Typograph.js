@@ -8,7 +8,6 @@ export default function Ellipsis (props) {
     newProps.className += (props.weight) ? `font-${ props.weight } ` : ''
     newProps.className += (props.color) ? `text-${ props.color } ` : ''
     newProps.className += (props.align) ? `align-${ props.align } ` : ''
-
     newProps.style = { ...props.style }
     
     if (props.maxWidth !== undefined) {
@@ -32,7 +31,7 @@ export default function Ellipsis (props) {
     if (TagName == 'a') {
         delete newProps.href
         return (
-            <Link href={ props.href }><a { ...newProps }>{ props.children }</a></Link>
+            <Link href={ props.href } locale={ props.locale }><a { ...newProps }>{ props.children }</a></Link>
         )
     }
 
