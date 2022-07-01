@@ -13,7 +13,7 @@ import styles from './career.module.sass'
 import useWindowDimensions from 'hooks/useWindowDimensions'
 
 const CardCareer = ({ id, deviceWidth }) => (
-  <div className='col-xs-12 col-sm-6 col-md-6 col-lg-4'>
+  <div className={`col-xs-12 col-sm-6 col-md-6 col-lg-4 ${styles.reset_box}`}>
     <div className={`${styles.box_career}`}>
       <h4 className={styles.title_job}>
         Accounting Internal

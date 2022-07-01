@@ -16,7 +16,7 @@ export default function Header () {
         { id: 'Solusi Pertanian',    en: 'Agricultural Solution',       anchor: '#Solution'},
         { id: 'Tentang Kami',        en: 'About',                       link: 'about' },
         { id: 'Blog',                en: 'Blog',                        link: 'blog' },
-        { id: 'Agenda',              en: 'Agenda',                      link: 'agenda' },
+        { id: 'Agenda',              en: 'Agenda',                      link: 'event' },
         { id: 'Pertanyaan',          en: 'FAQ',                         link: 'faq' },
         { id: 'Karir',               en: 'Career',                      link: 'career' } ]
     const { pathname, locale } = useRouter()
@@ -62,5 +62,3 @@ export default function Header () {
         </header>
     )
 }
-
-export default Header
