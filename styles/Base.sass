@@ -63,7 +63,13 @@ h1
     letter-spacing: 0.02em
 
 .container-padding
-    @include Define.padding($left: 72px, $right: 72px)
+    @include Define.padding($left: 16px, $right: 16px)
+
+    @include Define.media('screen', '>=sm')
+        @include Define.padding($left: 32px, $right: 32px)
+
+    @include Define.media('screen', '>=lg')
+        @include Define.padding($left: 72px, $right: 72px)
 
 .margin-auto
     @include Define.margin($left: auto, $right: auto)

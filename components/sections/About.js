@@ -21,8 +21,8 @@ const About = ({ title, description }) => {
     const { locale } = useRouter()
     return (
         <Container id={ styles.About } normalPadding paddingTop='72' paddingBottom='107'>
-            <Typograph tag='h2' color='green-70' size='lg-1' align='center'>{ title[locale] }</Typograph>
-            <Typograph tag='p' size='md-2' align='justify' maxWidth='1076'>{ description[locale] }</Typograph>
+            <Typograph tag='h2' color='green-70' size='sm-1 md-1-sm lg-1-md' align='center'>{ title[locale] }</Typograph>
+            <Typograph tag='p' size='xsm-1 sm-1-sm md-2-md' align='justify' maxWidth='1076'>{ description[locale] }</Typograph>
         </Container>
     )
 }
@@ -50,10 +50,10 @@ const VisiMisi = ({ visiTitle, misiTitle, visi, misi, slides }) => {
     return (
         <Container id={ styles.VisiMisi }>
             <div className='row no-margin'>
-                <div className='col-xs bg-green-70'>
+                <div className='col-xs-12 col-md bg-green-70 align-center align-left-md'>
                     <div className={ styles.visi }>
-                        <Typograph tag='h2' color='green-10' size='lg-3'>{ visiTitle[locale] }</Typograph>
-                        <Typograph tag='p' color='green-10' size='md-3'>{ visi[locale] }</Typograph>
+                        <Typograph tag='h2' color='green-10' size='sm-1 md-2-sm lg-3-lg'>{ visiTitle[locale] }</Typograph>
+                        <Typograph tag='p' color='green-10' size='xsm-1 sm-1-sm md-3-lg'>{ visi[locale] }</Typograph>
                     </div>
                 </div>
                 <SetRatio ax='1' ay='1.72' max='719' className={ styles.slider }>
@@ -65,14 +65,23 @@ const VisiMisi = ({ visiTitle, misiTitle, visi, misi, slides }) => {
                         )}
                     </Slick>
                 </SetRatio>
-                <div className='col-xs bg-green-100'>
+                <SetRatio ax='2.38' ay='1' max='245' className={ styles.slider_mobile }>
+                    <Slick { ...slickSettings }>
+                        { slides.map((photo, index) =>
+                            <div key={ index } className={ styles.slide }>
+                                <img src={ `/visimisi/${ photo.image }` } alt={ photo.alt } width='100%' className='image-cover' />
+                            </div>
+                        )}
+                    </Slick>
+                </SetRatio>
+                <div className='col-xs-12 col-md bg-green-100'>
                     <div className={ styles.misi }>
-                        <Typograph tag='h2' color='green-20' size='md-3' weight='extrabold'>{ misiTitle[locale] }</Typograph>
+                        <Typograph tag='h2' color='green-20' size='sm-1 md-2-sm md-3-md' weight='extrabold' align='center left-md'>{ misiTitle[locale] }</Typograph>
                         <ul>
                             { misi.map((misi, index) => 
                                 <li key={ index }>
-                                    <Typograph tag='p' color='green-20' size='md-2' weight='bold'>{ index + 1 }</Typograph>
-                                    <Typograph tag='p' color='green-20' size='sm-2'>{ misi[locale] }</Typograph>
+                                    <Typograph tag='p' color='green-20' size='sm-1 md-2-lg' weight='bold'>{ index + 1 }</Typograph>
+                                    <Typograph tag='p' color='green-20' size='xsm-1 sm-2-lg'>{ misi[locale] }</Typograph>
                                 </li>
                             ) }
                         </ul>
@@ -97,9 +106,9 @@ const Team = ({ data }) => {
     const [ teamActive, setTeamActive ] = useState(0)
 
     return (
-        <Container id={ styles.Team } paddingTop='128' paddingBottom='121'>
-            <Typograph tag='h4' color='green-70' size='lg-1' align='center'>Tim Kami</Typograph>
-            <Typograph tag='p' size='md-3' align='center' maxWidth='636'>Segenap tim kami yang akan berusaha menyejahterakan petani Indonesia, kami adalah EraFamily (EraFam).</Typograph>
+        <Container id={ styles.Team } normalPadding paddingTop='128' paddingBottom='121'>
+            <Typograph tag='h4' color='green-70' size='sm-1 md-1-sm lg-1-md' align='center'>Tim Kami</Typograph>
+            <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='636'>Segenap tim kami yang akan berusaha menyejahterakan petani Indonesia, kami adalah EraFamily (EraFam).</Typograph>
             <div className='row'>
                 { data.map((team, index) => 
                     <div key={ index } className='col-xs'>
@@ -144,7 +153,7 @@ const Culture = ({ title, caption, detail, data }) => {
     return (
         <Container id={ styles.Culture } normalPadding backgroundColor='green-50'>
             <div className='row middle-xs'>
-                <SetRatio ax='1.43' ay='1' max='627' className='col-xs-7'>
+                <SetRatio ax='1.43' ay='1' max='627' className='col-xs-12 col-md-7 last-xs first-md'>
                     <div ref={ sliderRef } className={ styles.slider }>
                         { data.map(( culture, index ) =>
                             <div key={ index } className={ styles.slide }>
@@ -152,19 +161,24 @@ const Culture = ({ title, caption, detail, data }) => {
                                 <div className={ `row ${ styles.caption }` }>
                                     { <culture.numberVect /> }
                                     <div className='col-xs'>
-                                        <Typograph tag='h5' size='lg-1' color='green-10'>{ culture.title[locale] }</Typograph>
-                                        <Typograph tag='p' size='md-3' color='green-10'>{ culture.description[locale] }</Typograph>
+                                        <Typograph tag='h5' size='sm-1 md-1-sm lg-1-lg' color='green-10'>{ culture.title[locale] }</Typograph>
+                                        <Typograph tag='p' size='xsm-1 sm-1-sm md-3-lg' color='green-10'>{ culture.description[locale] }</Typograph>
                                     </div>
                                 </div>
                             </div>
                         )}
                     </div>
                 </SetRatio>
-                <div className={ `col-xs-5 ${ styles.title }` }>
-                    <Typograph tag='h2' size='xlg-3' color='green-10' maxWidth='400'>{ title[locale] }<span className='bg-green-10'></span></Typograph>
-                    <Typograph tag='p' size='md-3' color='green-30'>{ caption[locale] }</Typograph>
-                    <Typograph tag='a' href={ detail.url } size='md-3' color='green-10'>{ detail[locale] }<ArrowForwardVect /></Typograph>
+                <div className={ `col-xs-12 col-md-5 ${ styles.title }` }>
+                    <Typograph tag='h2' size='sm-1 lg-3-sm xlg-3-lg' color='green-10'>{ title[locale] }<span className='bg-green-10'></span></Typograph>
+                    <Typograph tag='p' size='xsm-1 sm-1-sm md-3-lg' color='green-30'>{ caption[locale] }</Typograph>
+                    <div className={ styles.detail }>
+                        <Typograph tag='a' href={ detail.url } size='xsm-1 sm-1-sm md-3-lg' color='green-10'>{ detail[locale] }<ArrowForwardVect /></Typograph>
+                    </div>
                 </div>
+            </div>
+            <div className={ `${ styles.detail } align-right` }>
+                <Typograph tag='a' href={ detail.url } size='xsm-1 sm-1-sm md-3-lg' color='green-10' className={ styles.detail }>{ detail[locale] }<ArrowForwardVect /></Typograph>
             </div>
         </Container>
     )
@@ -176,8 +190,8 @@ const JoinFam = ({ title, caption, lowongan }) => {
     const { locale } = useRouter()
     return (
         <Container id={ styles.JoinFam } normalPadding paddingTop='96' paddingBottom='104' className='align-center'>
-            <Typograph tag='h2' color='green-70' size='lg-1' align='center'>{ title[locale] }</Typograph>
-            <Typograph tag='p' size='md-3' align='center' maxWidth='636'>{ caption[locale] }</Typograph>
+            <Typograph tag='h2' color='green-70' size='sm-1 md-1-sm lg-1-md' align='center'>{ title[locale] }</Typograph>
+            <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='636'>{ caption[locale] }</Typograph>
             <Button href={ lowongan.url } xPadding='32' yPadding='18' textColor='green-10' backgroundColor='green-60'>{ lowongan[locale] }</Button>
         </Container>
     )

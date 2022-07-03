@@ -1,11 +1,171 @@
+
 $colors: ("white": white, 'natural-60' : #121212, 'natural-40' : #b7b7b7, 'natural-20' : #f3f3f3, 'natural-30': #E7E7E7, "natural-10": #F6F6F6, "natural-50": #707070, "yellow-20": #FFFACC, "yellow-60": #FFD800, "green-100": #013233, "green-40": #5DD291, "green-10": #E9FFEF, "green-60": #086C48, "green-70": #055C46, "green-30": #97F0B5, "green-80": #044D41, "green-50": #32A671,  "green-20": #C9F7D4, "green-90": #023E3A)
 
 $textAligns: ("left": left, "right": right, "center": center, "justify": justify)
 
 $fontWeights: ("thin": 100, "light": 300, "regular": 400, "medium": 500, "semibold": 600, "bold": 700, "extrabold": 800, "black": 900)
 
-$fontSizes: ("xsm-2": 12, "xsm-1": 14, "sm-2": 16, "sm-1": 18, "md-3": 20, "md-2": 24, "md-1": 26, "lg-3": 32, "lg-2": 36, "lg-1": 38, "xlg-3": 42, "xlg-2": 48, "xlg-1": 60)
+$fontSizes: ("xsm-3": 10, "xsm-2": 12, "xsm-1": 14, "sm-2": 16, "sm-1": 18, "md-3": 20, "md-2": 24, "md-1": 26, "lg-3": 32, "lg-2": 36, "lg-1": 38, "xlg-3": 42, "xlg-2": 48, "xlg-1": 60)
 
+$breakpoints: ('sm': 48em, 'md': 64em, 'lg': 75em) !default
+
+$media-expressions: ('screen': 'screen', 'print': 'print', 'handheld': 'handheld', 'retina2x': ('(-webkit-min-device-pixel-ratio: 2)', '(min-resolution: 192dpi)'), 'retina3x': ('(-webkit-min-device-pixel-ratio: 3)', '(min-resolution: 350dpi)')) !default
+
+$unit-intervals: ('px': 1, 'em': 0.01, 'rem': 0.1) !default
+
+@mixin media($conditions...)
+    @for $i from 1 through length($conditions)
+        $conditions: set-nth($conditions, $i, parse-expression(nth($conditions, $i)))
+
+    $branches: get-query-branches($conditions)
+    $query: ''
+
+    @each $branch in $branches
+        @if (str-length($query) != 0)
+            $query: $query + ', '
+
+        $query: $query + $branch
+
+    @media #{$query}
+        @content
+
+@function get-query-branches($expressions)
+    $result: ''
+    $has-groups: false
+
+    @each $expression in $expressions
+        @if (str-length($result) != 0)
+            $result: $result + ' and '
+
+        @if (type-of($expression) == 'string')
+            $result: $result + $expression
+        @else if (type-of($expression) == 'list')
+            $result: $result + nth($expression, 1)
+            $has-groups: true
+        @else
+            @warn '#{$expression} is not a valid expression.'
+
+    @if $has-groups
+        @each $expression in $expressions
+            @if (type-of($expression) == 'list')
+                $first: nth($expression, 1)
+
+                @each $member in $expression
+                    @if ($member != $first)
+                        @each $partial in $result
+                            $result: join($result, str-replace-first($first, $member, $partial))
+
+    @return $result
+
+@function parse-expression($expression)
+    $operator: ''
+    $value: ''
+    $element: ''
+    $result: ''
+    $is-width: true
+
+    @if (type-of($expression) != 'string')
+        @warn 'Expression with type `#{type-of($expression)}` detected, string expected.'
+
+    @if (str-slice($expression, 2, 2) == '=')
+        $operator: str-slice($expression, 1, 2)
+        $value: str-slice($expression, 3)
+    @else
+        $operator: str-slice($expression, 1, 1)
+        $value: str-slice($expression, 2)
+
+    @if map-has-key($breakpoints, $value)
+        $result: map-get($breakpoints, $value)
+    @else if map-has-key($media-expressions, $expression)
+        $result: map-get($media-expressions, $expression)
+        $is-width: false
+    @else
+        $result: to-number($value)
+    
+
+    @if ($is-width)
+        $unit: unit($result)
+        $interval: 0
+        
+        @if (map-has-key($unit-intervals, $unit)) 
+            $interval: map-get($unit-intervals, $unit)
+        @else
+            @warn 'Unknown unit: #{$unit}'
+        
+        @if ($operator == '>')
+            $element: '(min-width: #{$result + $interval})'
+        @else if ($operator == '<')
+            $element: '(max-width: #{$result - $interval})'
+        @else if ($operator == '>=')
+            $element: '(min-width: #{$result})'
+        @else if ($operator == '<=')
+            $element: '(max-width: #{$result})'
+        @else
+            @warn '#{$expression} is missing an operator.'
+    @else
+        $element: $result
+
+    @return $element
+
+@function str-replace-first($search, $replace, $subject)
+    $search-start: str-index($subject, $search)
+
+    @if $search-start == null
+        @return $subject
+
+    $result: str-slice($subject, 0, $search-start - 1)
+    $result: $result + $replace
+    $result: $result + str-slice($subject, $search-start + str-length($search))
+
+    @return $result
+
+@function to-number($string)
+
+    $strings: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9'
+    $numbers:  0   1   2   3   4   5   6   7   8   9
+
+    $result: 0
+    $divider: 0
+    $minus: false
+
+    @for $i from 1 through str-length($string)
+        $character: str-slice($string, $i, $i)
+        $index: index($strings, $character)
+        
+        @if $character == '-'
+            $minus: true
+        
+        @else if $character == '.'
+            $divider: 1
+        
+        @else
+            @if type-of($index) != 'number'
+                $result: if($minus, $result * -1, $result)
+                @return _length($result, str-slice($string, $i))
+
+            $number: nth($numbers, $index)
+            
+            @if $divider == 0
+                $result: $result * 10
+            
+            @else
+                $divider: $divider * 10
+                $number: $number / $divider
+        
+            $result: $result + $number
+
+    @return if($minus, $result * -1, $result)
+
+@function _length($number, $unit)
+    $strings: 'px' 'cm' 'mm' '%' 'ch' 'pica' 'in' 'em' 'rem' 'pt' 'pc' 'ex' 'vw' 'vh' 'vmin' 'vmax'
+    $units:   1px  1cm  1mm  1%  1ch  1pica  1in  1em  1rem  1pt  1pc  1ex  1vw  1vh  1vmin  1vmax
+    $index: index($strings, $unit)
+    
+    @if type-of($index) != 'number'
+        @warn 'Unknown unit `#{$unit}`.'
+        @return false
+    
+    @return $number * nth($units, $index)
 
 @each $name, $color in $colors
     .text-#{$name}
@@ -33,6 +193,48 @@ $fontSizes: ("xsm-2": 12, "xsm-1": 14, "sm-2": 16, "sm-1": 18, "md-3": 20, "md-2
     .font-#{$name}
         font-size: ($size)+px
         line-height: ($size * 1.4)+px 
+
+@include media('screen', '>=sm')
+    @each $name, $align in $textAligns
+        .align-#{$align}-sm
+            text-align: $align
+
+    @each $name, $weight in $fontWeights
+        .font-#{$name}-sm
+            font-weight: $weight
+
+    @each $name, $size in $fontSizes
+        .font-#{$name}-sm
+            font-size: ($size)+px
+            line-height: ($size * 1.4)+px 
+
+@include media('screen', '>=md')
+    @each $name, $align in $textAligns
+        .align-#{$align}-md
+            text-align: $align
+
+    @each $name, $weight in $fontWeights
+        .font-#{$name}-md
+            font-weight: $weight
+
+    @each $name, $size in $fontSizes
+        .font-#{$name}-md
+            font-size: ($size)+px
+            line-height: ($size * 1.4)+px 
+
+@include media('screen', '>=lg')
+    @each $name, $align in $textAligns
+        .align-#{$align}-lg
+            text-align: $align
+
+    @each $name, $weight in $fontWeights
+        .font-#{$name}-lg
+            font-weight: $weight
+
+    @each $name, $size in $fontSizes
+        .font-#{$name}-lg
+            font-size: ($size)+px
+            line-height: ($size * 1.4)+px 
 
 @mixin box($position: false, $top: false, $left: false, $width: false, $height: false, $bottom: false, $right: false, $zindex: false)
     @if $position != false
