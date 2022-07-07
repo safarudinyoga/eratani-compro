@@ -5,6 +5,12 @@
     @include Define.padding($top: 64px, $bottom: 24px)
     @include Define.margin($top: auto)
 
+    > svg
+        @include Define.margin($bottom: 40px)
+
+        @include Define.media('screen', '>=md')
+            display: none
+
     *
         @extend .text-white
 
@@ -17,9 +23,13 @@
             @include Define.margin($top: 16px, $bottom: 16px)
 
     .left
+
         > div
             max-width: 375px
             @include Define.margin($top: 20px)
+
+            @include Define.media('screen', '<sm')
+                max-width: 285px
 
             &:nth-of-type(1)
                 @include Define.margin($top: 30px)
@@ -27,5 +37,16 @@
         h6
             @include Define.margin($bottom: 18px)
 
+        @include Define.media('screen', '<md')
+            @include Define.margin($bottom: 40px)
+
+            svg
+                display: none
+
     .social a
         @include Define.margin(0, 0, 0, 0)
+
+    .email, .telephone
+        @include Define.media('screen', '<md')
+            display: none
+    

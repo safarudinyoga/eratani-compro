@@ -1,5 +1,24 @@
 @use '../../styles/Define'
 
+.hamburger_menu
+    @include Define.box($position: relative, $width: 20px, $height: 20px)
+
+    div
+        @include Define.box($position: absolute, $width: 18px, $height: 2px, $left: 50%)
+        @extend .bg-green-10
+        transform: translate(-50%, -50%)
+        transition: all 0.35s ease
+
+        &:nth-of-type(2)
+            transform: translate(0, -50%)
+            @include Define.box($top: 50%, $left: 1px)
+
+        &:nth-of-type(1)
+            @include Define.box($top: calc(50% - 6px))
+
+        &:nth-of-type(3)
+            @include Define.box($top: calc(50% + 6px))
+
 .header-hover-transition
     transition: all 0.3s ease
 
@@ -8,15 +27,43 @@
     @include Define.padding($top: 29px, $bottom: 29px)
     @extend .header-hover-transition
 
+    @include Define.media('screen', '<md')
+        display: none
+
     .sw_lang
-        > h6
-            @extend .header-hover-transition
+        > div
+            cursor: pointer
+            @include Define.inlineBlock()
+            @include Define.box($position: relative)                
+
+            &:hover
+                svg:last-child
+                    transform: scaleY(-1)
+
+        .dropdown_lang
+            @include Define.box($position: absolute, $top: 0, $right: 0, $zindex: 10)
+            visibility: hidden
+            opacity: 0
+
+            ul
+                @include Define.margin($top: 35px)
+                @include Define.box($width: 180px)
+                @include Define.padding(4px, $bottom: 4px)
+                border-radius: 12px
+                box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+
+                li
+                    @include Define.padding($top: 10px, $bottom: 10px, $left: 16px)
+                
+        h6
+            @extend .header-hover-transition  
 
             &, *
                 @include Define.inlineBlock($align: middle)
 
             svg
                 @include Define.margin($bottom: 4px)
+                transition: transform 0.3s ease
 
     .navigation
         @include Define.inlineBlock($align: middle)
@@ -43,8 +90,93 @@
         @extend .bg-white
         box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
 
-        .navigation a, .sw_lang > h6
+        .navigation a, .sw_lang h6
             @extend .text-green-60
 
         .svg_on_hover path
-            fill: map-get(Define.$colors, 'green-60')
+            @extend .fill-green-60
+
+#Header_Mobile
+    @include Define.media('screen', '>=md')
+        display: none
+
+    .menu_toggler
+        @include Define.box($position: fixed, $top: 22px, $right: 16px, $width: 24px, $height: 24px, $zindex: 151)
+        @extend .bg-natural-10
+        opacity: 0
+
+        @include Define.media('screen', '>=sm')
+            @include Define.box($right: 32px)
+
+        &:checked
+            @extend .bg-yellow-60
+
+    .toggle
+        @include Define.box($position: fixed, $top: 0, $left: 0, $width: 100%, $height: 68px, $zindex: 100)
+        overflow: hidden
+        transition: height 0.35s ease
+
+    .menu_toggler:checked ~ .toggle
+        @include Define.box($height: 100%)
+
+        .hamburger_menu div
+            &:nth-of-type(2)
+                @include Define.box($width: 0)
+
+            &:nth-of-type(1)
+                @include Define.box($width: 22px)
+                @include Define.box($top: 50%)
+                transform: translate(-50%, -50%) rotate(45deg)
+
+            &:nth-of-type(3)
+                @include Define.box($width: 22px)
+                @include Define.box($top: 50%)
+                transform: translate(-50%, -50%) rotate(-45deg)
+
+    .menu_bar
+        @include Define.padding($top: 22px, $bottom: 22px)
+
+    nav
+        @include Define.margin($top: 70px)
+
+        ul
+            li
+                @include Define.padding($top: 14px, $bottom: 14px)
+
+                .active
+                    @extend .font-bold
+                    @include Define.box($position: relative)
+
+                    &:after
+                        content: ''
+                        @include Define.box($position: absolute, $bottom: -7px, $left: 0, $width: 100%, $height: 2px)
+                        @extend .bg-yellow-60
+
+    .sw_lang
+        @include Define.margin($top: 70px)
+
+        > svg path
+            @extend .fill-natural-10
+
+        .switch
+            @include Define.margin($left: 10px)
+            @include Define.box($position: relative)
+            border-radius: 60px
+
+            a
+                @include Define.inlineBlock($align: middle)
+                @include Define.box($position: relative, $width: 64px, $zindex: 1)
+                @include Define.margin($top: 4px, $bottom: 4px, $left: 4px, $right: 4px)
+
+            &::before
+                content: ''
+                @include Define.box($position: absolute, $top: 4px, $width: calc(50% - 8px), $height: calc(100% - 8px))
+                @extend .bg-green-60
+                border-radius: 60px
+                transition: left 0.3s ease
+
+            &.active_id::before
+                @include Define.box($left: 4px)
+
+            &.active_en::before
+                @include Define.box($left: calc(50% + 4px))

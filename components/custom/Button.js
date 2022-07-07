@@ -11,7 +11,6 @@ export default function Button (props) {
     newProps.className += (props.borderColor) ? `border-${ props.borderColor } ` : ''
     newProps.className += (props.backgroundColor) ? `bg-${ props.backgroundColor } ` : ''
     newProps.className += props.className || ''
-
     newProps.style = { ...props.style }
 
     if (props.xPadding !== undefined) {

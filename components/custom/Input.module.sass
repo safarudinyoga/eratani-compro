@@ -14,9 +14,14 @@
         @extend .text-natural-40
         opacity: 1
     
-    &:-ms-input-placeholder
-        @extend .text-natural-40
+.input_2
+    @include Define.box($width: 100%)
+    background: transparent
+    border-bottom: 2px solid map-get(Define.$colors, 'green-60')
+    @include Define.padding($bottom: 10px)
+    @extend .font-semibold
+    @extend .font-sm-1
 
-    &::-ms-input-placeholder
-        @extend .text-natural-40
-    
+    &::placeholder
+        @extend .text-green-60
+        opacity: 1
