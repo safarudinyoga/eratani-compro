@@ -1,10 +1,8 @@
-import Parse from 'html-react-parser'
 import React, { useEffect, useState, createRef } from 'react';
 import { useRouter } from 'next/router'
 import Link from 'next/link' 
 
 import styles from './DaftarForm.module.sass'
-import Container from '../custom/Container'
 import Typograph from '../custom/Typograph'
 import Button from '../custom/Button'
 import Input from '../custom/Input';
@@ -12,155 +10,162 @@ import Input from '../custom/Input';
 import EraiconVect from '/assets/vector/eraicon.svg'
 import ArrowForwardVect from '/assets/vector/arrow-forward.svg'
 
-const FormLender = () => {
+const FormLender = ({ perusahaan, email, alamat }) => {
+    const { locale } = useRouter()
     return (
         <div className='row'>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Nama Perusahaan' model='2' />
+                <Input type='text' placeholder={ perusahaan[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Email' model='2' />
+                <Input type='text' placeholder={ email[locale] } model='2' />
             </div>
             <div className='col-xs-12'>
-                <Input type='text' placeholder='Alamat' model='2' />
+                <Input type='text' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )
 }
 
-const FormPembeliBeras = () => {
+const FormPembeliBeras = ({ perusahaan, nama, hp, jenis, kuantitas, alamat }) => {
+    const { locale } = useRouter()
     return (
         <div className='row'>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Nama Perusahaan' model='2' />
+                <Input type='text' placeholder={ perusahaan[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Nama Lengkap' model='2' />
+                <Input type='text' placeholder={ nama[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='No. Handphone' model='2' />
+                <Input type='text' placeholder={ hp[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Jenis Beras' model='2' />
+                <Input type='text' placeholder={ jenis[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Kuantitas' model='2' />
+                <Input type='text' placeholder={ kuantitas[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Alamat' model='2' />
+                <Input type='text' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )
 }
 
-const FormSupplierSaprotan = () => {
+const FormSupplierSaprotan = ({ perusahaan, email, jenis, alamat }) => {
+    const { locale } = useRouter()
     return (
         <div className='row'>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Nama Perusahaan' model='2' />
+                <Input type='text' placeholder={ perusahaan[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Email' model='2' />
+                <Input type='text' placeholder={ email[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Jenis Saprotan' model='2' />
+                <Input type='text' placeholder={ jenis[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Alamat Perusahaan' model='2' />
+                <Input type='text' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )
 }
 
-const FormPoktan = () => {
+const FormPoktan = ({ nama, usia, hp, hasil, petani, alamat }) => {
+    const { locale } = useRouter()
     return (
         <div className='row'>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Nama Lengkap' model='2' />
+                <Input type='text' placeholder={ nama[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Usia' model='2' />
+                <Input type='text' placeholder={ usia[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='No. Handphone' model='2' />
+                <Input type='text' placeholder={ hp[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Komoditas yang Dihasilkan' model='2' />
+                <Input type='text' placeholder={ hasil[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Jumlah Petani' model='2' />
+                <Input type='text' placeholder={ petani[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Alamat' model='2' />
+                <Input type='text' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )
 }
 
-const FormGapoktan = () => {
+const FormGapoktan = ({ nama, usia, hp, hasil, petani, alamat }) => {
+    const { locale } = useRouter()
     return (
         <div className='row'>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Nama Lengkap' model='2' />
+                <Input type='text' placeholder={ nama[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Usia' model='2' />
+                <Input type='text' placeholder={ usia[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='No. Handphone' model='2' />
+                <Input type='text' placeholder={ hp[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Komoditas yang Dihasilkan' model='2' />
+                <Input type='text' placeholder={ hasil[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Jumlah Petani' model='2' />
+                <Input type='text' placeholder={ petani[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Alamat' model='2' />
+                <Input type='text' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )
 }
 
-const FormTokoTani = () => {
+const FormTokoTani = ({ nama, usia, hp, toko, alamat }) => {
+    const { locale } = useRouter()
     return (
         <div className='row'>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Nama Lengkap' model='2' />
+                <Input type='text' placeholder={ nama[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Usia' model='2' />
+                <Input type='text' placeholder={ usia[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='No. Handphone' model='2' />
+                <Input type='text' placeholder={ hp[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Luas Toko' model='2' />
+                <Input type='text' placeholder={ toko[locale] } model='2' />
             </div>
             <div className='col-xs-12'>
-                <Input type='text' placeholder='Alamat' model='2' />
+                <Input type='text' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )
 }
 
-const FormPetani = () => {
+const FormPetani = ({ nama, usia, hp, hasil, alamat }) => {
+    const { locale } = useRouter()
     return (
         <div className='row'>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Nama Lengkap' model='2' />
+                <Input type='text' placeholder={ nama[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Usia' model='2' />
+                <Input type='text' placeholder={ usia[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='No. Handphone' model='2' />
+                <Input type='text' placeholder={ hp[locale] } model='2' />
             </div>
             <div className='col-xs-6'>
-                <Input type='text' placeholder='Komoditas yang Dihasilkan' model='2' />
+                <Input type='text' placeholder={ hasil[locale] } model='2' />
             </div>
             <div className='col-xs-12'>
-                <Input type='text' placeholder='Alamat' model='2' />
+                <Input type='text' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )
@@ -170,34 +175,188 @@ export default function DaftarForm({ onClose }) {
     const daftarTypes = [
         {
             name: 'Petani',
-            form: FormPetani
+            form: FormPetani,
+            placeholder: {
+                nama: {
+                    id: 'Nama Lengkap',
+                    en: 'Nama Lengkap'
+                },
+                usia: {
+                    id: 'Usia',
+                    en: 'Usia'
+                },
+                hp: {
+                    id: 'No. Handphone',
+                    en: 'No. Handphone'
+                },
+                hasil: {
+                    id: 'Komoditas yang Dihasilkan',
+                    en: 'Komoditas yang Dihasilkan'
+                },
+                alamat: {
+                    id: 'Alamat',
+                    en: 'Alamat'
+                }
+            }
         },
         {
             name: 'Toko Tani',
-            form: FormTokoTani
+            form: FormTokoTani,
+            placeholder: {
+                nama: {
+                    id: 'Nama Lengkap',
+                    en: 'Nama Lengkap'
+                },
+                usia: {
+                    id: 'Usia',
+                    en: 'Usia'
+                },
+                hp: {
+                    id: 'No. Handphone',
+                    en: 'No. Handphone'
+                },
+                toko: {
+                    id: 'Luas Toko',
+                    en: 'Luas Toko'
+                },
+                alamat: {
+                    id: 'Alamat',
+                    en: 'Alamat'
+                }
+            }
         },
         {
             name: 'Gapoktan',
-            form: FormGapoktan
+            form: FormGapoktan,
+            placeholder: {
+                nama: {
+                    id: 'Nama Lengkap',
+                    en: 'Nama Lengkap'
+                },
+                usia: {
+                    id: 'Usia',
+                    en: 'Usia'
+                },
+                hp: {
+                    id: 'No. Handphone',
+                    en: 'No. Handphone'
+                },
+                hasil: {
+                    id: 'Komoditas yang Dihasilkan',
+                    en: 'Komoditas yang Dihasilkan'
+                },
+                petani: {
+                    id: 'Jumlah Petani',
+                    en: 'Jumlah Petani'
+                },
+                alamat: {
+                    id: 'Alamat',
+                    en: 'Alamat'
+                }
+            }
         },
         {
             name: 'Poktan',
-            form: FormPoktan
+            form: FormPoktan,
+            placeholder: {
+                nama: {
+                    id: 'Nama Lengkap',
+                    en: 'Nama Lengkap'
+                },
+                usia: {
+                    id: 'Usia',
+                    en: 'Usia'
+                },
+                hp: {
+                    id: 'No. Handphone',
+                    en: 'No. Handphone'
+                },
+                hasil: {
+                    id: 'Komoditas yang Dihasilkan',
+                    en: 'Komoditas yang Dihasilkan'
+                },
+                petani: {
+                    id: 'Jumlah Petani',
+                    en: 'Jumlah Petani'
+                },
+                alamat: {
+                    id: 'Alamat',
+                    en: 'Alamat'
+                }
+            }
         },
         {
             name: 'Supplier Saprotan',
-            form: FormSupplierSaprotan
+            form: FormSupplierSaprotan,
+            placeholder: {
+                perusahaan: {
+                    id: 'Nama Perusahaan',
+                    en: 'Nama Perusahaan'
+                },
+                email: {
+                    id: 'Email',
+                    en: 'Email'
+                },
+                jenis: {
+                    id: 'Jenis Saprotan',
+                    en: 'Jenis Saprotan'
+                },
+                alamat: {
+                    id: 'Alamat Perusahaan',
+                    en: 'Alamat Perusahaan'
+                }
+            }
         },
         {
             name: 'Pembeli Beras',
-            form: FormPembeliBeras
+            form: FormPembeliBeras,
+            placeholder: {
+                perusahaan: {
+                    id: 'Nama Perusahaan',
+                    en: 'Nama Perusahaan'
+                },
+                nama: {
+                    id: 'Nama Lengkap',
+                    en: 'Nama Lengkap'
+                },
+                hp: {
+                    id: 'No. Handphone',
+                    en: 'No. Handphone'
+                },
+                jenis: {
+                    id: 'Jenis Beras',
+                    en: 'Jenis Beras'
+                },
+                kuantitas: {
+                    id: 'Kuantitas',
+                    en: 'Kuantitas'
+                },
+                alamat: {
+                    id: 'Alamat',
+                    en: 'Alamat'
+                }
+            }
         },
         {
             name: 'Lender',
-            form: FormLender
+            form: FormLender,
+            placeholder: {
+                perusahaan: {
+                    id: 'Nama Perusahaan',
+                    en: 'Nama Perusahaan'
+                },
+                email: {
+                    id: 'Email',
+                    en: 'Email'
+                },
+                alamat: {
+                    id: 'Alamat',
+                    en: 'Alamat'
+                }
+            }
         }
     ]
-    const [selectedForm, setSelectedForm] = useState(0)
+    const [selectedForm, setSelectedForm] = useState(-1)
 
     return (
         <section id={ styles.Form } className='bg-white align-left'>
@@ -214,16 +373,17 @@ export default function DaftarForm({ onClose }) {
                                 ) }
                             </div>
                         </div>
+                        
                         <div className={ styles.data_input }>
-                            <Typograph tag='h6' size='sm-2' color='natural-50' weight='light'>Isi Formulir</Typograph>
+                            { selectedForm > -1 && <Typograph tag='h6' size='sm-2' color='natural-50' weight='light'>Isi Formulir</Typograph> }
                             <form>
                                 { daftarTypes.map((type, index) => 
-                                    <div key={ index }>{ (selectedForm == index) && <type.form /> }</div>
+                                    <div key={ index }>{ (selectedForm == index) && <type.form { ...type.placeholder } /> }</div>
                                 ) }
                             </form>
                         </div>
                         <div className={ `align-right ${ styles.button }` }>
-                            <Button href='#' backgroundColor='green-60' textColor='white'>Kirim&nbsp;&nbsp;&nbsp;&nbsp;<ArrowForwardVect /></Button>
+                            { selectedForm > -1 && <Button href='#' backgroundColor='green-60' textColor='white'>Kirim&nbsp;&nbsp;&nbsp;&nbsp;<ArrowForwardVect /></Button> }
                         </div>
                     </div>
                 </div>

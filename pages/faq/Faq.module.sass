@@ -3,11 +3,11 @@
 #Faq
     > p
         @include Define.margin($top: 8px, $bottom: 64px)
-        
+
     .accordion
         max-width: 1134px
         @include Define.margin($left: auto, $right: auto)
-        
+
     .filter
         @include Define.margin($bottom: 56px)
 
@@ -28,7 +28,7 @@
             line-height: 46px
             border-radius: 50%
             border: 1px solid map-get(Define.$colors, 'green-100')
-            
+
         .active
             @extend .bg-green-60
             @extend .text-green-10

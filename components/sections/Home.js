@@ -30,7 +30,7 @@ gsap.registerPlugin(CustomEase)
 /* ------------------ Hero Banner ------------------ */
 const Hero = ({ background, hashtag, caption, download }) => {
     const { locale } = useRouter()
-    return ( 
+    return (
         <Container id={ styles.Hero }>
             <SetRatio ax='2.33' ay='1' min='600' className={ styles.wrapper }>
                 <div className={ styles.background } style={ { backgroundImage: `url('/hero/${ background }')` } }></div>
@@ -52,6 +52,18 @@ const Ecosystem = ({ title, data }) => {
     const [slide, slideTo] = useState(0)
     const [activeSlide, setActiveSlide] = useState(0)
     const [popup, setPopup] = useState(-1)
+
+    const slickSettings = {
+        infinite: true,
+        speed: 1800,
+        autoplay: false,
+        cssEase: 'ease-out',
+        arrows: false,
+        dots: true,
+        centerPadding: '16px',
+        centerMode: true
+    }
+    const ecosystemSlickSettings = SlickNavigationCustom('__slickEcosystem__', slickSettings)
 
     useEffect(() => {
         CustomEase.create('BackEase', '.4, 1.35, .6, 1')
@@ -87,21 +99,21 @@ const Ecosystem = ({ title, data }) => {
         .to(photoNodes[slide], { height: photoNodes[activeSlide].clientHeight, duration: 1, ease: 'BackEase' }, '<')
         .to(slider, { duration: 1, ease: 'BackEase', scrollTo: { x: (photoNodes[slide].clientWidth + 31.5) * (slide + 1) } }, '<')
         .set(slider, { height: 'auto' })
-    }, [slide]) 
+    }, [slide])
 
     return (
         <Container id={ styles.Ecosystem } normalPadding paddingTop='96' paddingBottom='90'>
-            <Typograph tag='h2' size='xlg-3' color='green-70'>{ title[locale] }</Typograph>
+            <Typograph tag='h2' size='sm-1 lg-3-sm xlg-3-md' color='green-70'>{ title[locale] }</Typograph>
             <div className={ `${ styles.eco_arrow } align-right` }>
                 <a href='#' onClick={ () => ( activeSlide != 0 && activeSlide == slide ) && slideTo(activeSlide - 1) } className={ (slide == 0) ? styles.hidden : undefined }><EcoArrowVect className='flip-x' /></a>
                 <a href='#' onClick={ () => ((activeSlide + 1) != data.length && activeSlide == slide) && slideTo(activeSlide + 1) } className={ ((slide + 1) == data.length) ? styles.hidden : undefined }><EcoArrowVect /></a>
             </div>
-            <div ref={ sliderRef } className={ styles.slider } data-active={ activeSlide }>
+            <div ref={ sliderRef } className={ `${ styles.custom_slider }` } data-active={ activeSlide }>
                 { data.map((eco, index) =>
                     <div className={ `${ styles.slide } ${ (index == slide) && styles.slide_active }` } key={ index }>
                         <div className={ styles.slide_content }>
                             <div>
-                                <Typograph tag='h5' size='sm-1' className={ styles.title }>
+                                <Typograph tag='h5' size='sm-2 sm-1-md' className={ styles.title }>
                                     <span className='text-green-50'>{ `${ eco.no }.` }</span>
                                     <span>{ eco.title[locale] }</span>
                                 </Typograph>
@@ -118,6 +130,22 @@ const Ecosystem = ({ title, data }) => {
                         </div>
                     </div>
                 ) }
+            </div>
+            <div className={ styles.slick_slider }>
+                <Slick { ...ecosystemSlickSettings } className='__slickEcosystem__'>
+                    { data.map((eco, index) =>
+                        <div className={ styles.slide } key={ index } onClick={ () => setPopup(index) }>
+                            <SetRatio ax='1.34' ay='1' className='__EcoPhotoNode__'>
+                                <img src={ `/ecosystem/${ eco.photo }` } width='100%' className='image-cover' />
+                            </SetRatio>
+                            <Typograph tag='h5' size='sm-2' className={ styles.title }>
+                                <span className='text-green-50'>{ `${ eco.no }.` }</span>
+                                <span>{ eco.title[locale] }</span>
+                            </Typograph>
+                            <Typograph tag='p' size='xsm-1'>{ eco.description[locale] }</Typograph>
+                        </div>
+                    ) }
+                </Slick>
             </div>
             { (popup > -1) &&
                 <Popup overlay='0.3' maxWidth='526' onPopupClose={ () => setPopup(-1) }>
@@ -158,11 +186,11 @@ const Solution = ({ title, caption, data }) => {
 
     return (
         <Container id='Solution' className={ styles.Solution } normalPadding backgroundColor='natural-10' paddingTop='64' paddingBottom='80'>
-            <Typograph tag='h2' size='xlg-3' color='green-70' align='center'>{ title[locale] }</Typograph>
-            <Typograph tag='p' size='md-3' align='center' maxWidth='900'>{ caption[locale] }</Typograph>
-            <div className={ `row ${ styles.row }` }>
+            <Typograph tag='h2' size='sm-1 lg-3-sm xlg-3-md' color='green-70' align='center'>{ title[locale] }</Typograph>
+            <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='900'>{ caption[locale] }</Typograph>
+            <div className={ `row center-xs ${ styles.row }` }>
                 { data.map((solution, index) =>
-                    <div className={`col-xs-4 ${ styles.column }`} key={ index }>
+                    <div className={`col-xs-12 col-sm-6 col-md-5 col-lg-4 align-left ${ styles.column }`} key={ index }>
                         <SetRatio ax='1' ay='1.26' min='0' className={ styles.wrapper } onMouseEnter={ onSolutionEnter } onMouseLeave={ onSolutionLeave }>
                             <img src={ `/solution/${ solution.photo }` } className='image-cover' />
                             <Typograph tag='h4' size='xlg-3' color='green-10' className='__SolutionNode__'>
@@ -172,6 +200,18 @@ const Solution = ({ title, caption, data }) => {
                             <div className={ `${styles.caption} align-center __SolutionNode__` }>
                                 <Typograph tag='p' size='sm-2' color='green-10' line='23' align='justify'>{ solution.description[locale] }</Typograph>
                                 <Button href={ solution.link.url } target='_blank' xPadding='18' textColor='white' backgroundColor='green-60' >{ solution.link[locale] }</Button>
+                            </div>
+                        </SetRatio>
+                        <SetRatio ax='1' ay='1.26' min='420' max='485' className={ styles.wrapper_sm } onMouseEnter={ onSolutionEnter } onMouseLeave={ onSolutionLeave }>
+                            <img src={ `/solution/${ solution.photo }` } className='image-cover' />
+                            <div className={ styles.content }>
+                                <div>
+                                    <Typograph tag='h4' size='md-3' color='green-10'>{ solution.title2[locale] }</Typograph>
+                                    <Typograph tag='p' size='xsm-1' color='green-10' align='justify'>{ solution.description[locale] }</Typograph>
+                                </div>
+                                <div className='align-center'>
+                                    <Button href={ solution.link.url } target='_blank' xPadding='32' textColor='white' backgroundColor='green-60' >{ solution.link[locale] }</Button>
+                                </div>
                             </div>
                         </SetRatio>
                     </div>
@@ -199,14 +239,14 @@ const Maps = ({ title, caption, data }) => {
     return (
         <Container id={ styles.Maps } paddingTop='48' paddingBottom='96'>
             <div className='container-padding align-center'>
-                <Typograph tag='h2' size='xlg-3' color='green-70' align='center'>{ title[locale] }</Typograph>
-                <Typograph tag='p' size='md-3' align='center'>{ caption[locale] }</Typograph>
+                <Typograph tag='h2' size='sm-1 lg-3-sm xlg-3-md' color='green-70' align='center'>{ title[locale] }</Typograph>
+                <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center'>{ caption[locale] }</Typograph>
             </div>
             <div className={ styles.indonesia }>
                 <IndonesiaVect />
                 <div className={ styles.interactive }>
                     <svg viewBox="0 0 1440 521" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        { data.map((map, index) => 
+                        { data.map((map, index) =>
                             <g onMouseEnter={ onPointEnter } onMouseLeave={ onPointLeave } className={ `${ (map.comingSoon) && styles.coming_soon } ${ styles.dot_point }` } key={ index } data-id={ index }>
                                 <circle cx={ map.pos.x } cy={ map.pos.y } r="8" className={ styles.shadow }/>
                                 <circle cx={ map.pos.x } cy={ map.pos.y } r="8" className={ styles.outline }/>
@@ -218,7 +258,7 @@ const Maps = ({ title, caption, data }) => {
                         <MapsHvrVect />
                         <div className={ styles.content }>
                             <Typograph tag='h6' size='sm-1' color='green-60'>{ data[mapIndexHover].prov }</Typograph>
-                            { data[mapIndexHover].cities.map((city, index) => 
+                            { data[mapIndexHover].cities.map((city, index) =>
                                 <Typograph tag='p' size='md-3' color='white' className='label bg-green-60' key={ index }>{ city }</Typograph>
                             ) }
                         </div>
@@ -234,38 +274,60 @@ const Maps = ({ title, caption, data }) => {
 const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) => {
     const { locale } = useRouter()
     const slickSettings = {
-        infinite: true,
         speed: 1800,
         slidesToShow: 5,
         slidesToScroll: 5,
         autoplay: true,
         autoplaySpeed: 3500,
         cssEase: 'ease-out',
-        arrows: false, 
-        dots: true
-    }    
+        arrows: false,
+        dots: true,
+        responsive: [
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 1023,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 1199,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                }
+            }
+        ]
+    }
     const mitaSlickSettings = SlickNavigationCustom('__SlickMitra__', slickSettings)
     const diliputSlickSettings = SlickNavigationCustom('__SlickDiliput__', slickSettings)
     const [ tab, setTab ] = useState(0)
 
-    if (mitraData.length % 5 != 0)
-        for (let i = 0; i < mitraData.length % 5; i++) 
-            mitraData.push({image: 0, alt: 'null'})
+    // if (mitraData.length % 5 != 0)
+    //     for (let i = 0; i < mitraData.length % 5; i++)
+    //         mitraData.push({image: 0, alt: 'null'})
 
-    if (diliputData.length % 5 != 0)
-        for (let i = 0; i < mitraData.length % 5; i++) 
-            diliputData.push({image: 0, alt: 'null'})
+    // if (diliputData.length % 5 != 0)
+    //     for (let i = 0; i < mitraData.length % 5; i++)
+    //         diliputData.push({image: 0, alt: 'null'})
 
     return (
         <Container id={ styles.Media } normalPadding backgroundColor='natural-10' paddingTop='40' paddingBottom='68' className='align-center'>
             <div className={ styles.tab_title }>
-                <Typograph tag='h2' size='lg-3' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 0) && styles.active }` } onClick={ () => setTab(0) }>{ mitraTitle[locale] }</Typograph>
-                <Typograph tag='h2' size='lg-3' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 1) && styles.active }` } onClick={ () => setTab(1) }>{ diliputTitle[locale] }</Typograph>
+                <Typograph tag='h2' size='sm-1 md-2-sm lg-3-md' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 0) && styles.active }` } onClick={ () => setTab(0) }>{ mitraTitle[locale] }</Typograph>
+                <Typograph tag='h2' size='sm-1 md-2-sm lg-3-md' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 1) && styles.active }` } onClick={ () => setTab(1) }>{ diliputTitle[locale] }</Typograph>
             </div>
-            <Typograph tag='p' size='md-3' align='center' maxWidth='705'>{ caption[locale] }</Typograph>
+            <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='705'>{ caption[locale] }</Typograph>
             <div className={ styles.content }>
                 { (tab == 0) ? <Slick { ...mitaSlickSettings } className='__SlickMitra__'>
-                        { mitraData.map((mitra, index) => 
+                        { mitraData.map((mitra, index) =>
                             <div key={ index }>
                                 <div className={ styles.slick_slide }>
                                     { (!mitra.image) ? '' : <img src={ `/media/mitra/${ mitra.image }` } alt={ mitra.alt } /> }
@@ -274,7 +336,7 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
                         ) }
                     </Slick>
                 : <Slick { ...diliputSlickSettings } className='__SlickDiliput__'>
-                        { diliputData.map((diliput, index) => 
+                        { diliputData.map((diliput, index) =>
                             <div key={ index }>
                                 <div className={ styles.slick_slide }>
                                     { (!diliput.image) ? '' : <img src={ `/media/diliput/${ diliput.image }` } alt={ diliput.alt } /> }
@@ -295,17 +357,17 @@ const Join = ({ title, caption, data, daftar }) => {
     const [ formDaftar, setFormDaftar ] = useState(0)
     return (
         <Container id={ styles.Join } normalPadding paddingTop='80' paddingBottom='68' className='align-center'>
-            <Typograph tag='h2' size='xlg-2' color='natural-60'>
+            <Typograph tag='h2' size='sm-1 lg-3-sm xlg-2-md' color='natural-60'>
                 { title[locale] }&nbsp;
                 <div>
                     <ul className='align-left __join_ul__'>
-                        { data.map((j, index) => 
-                            <li key={ index }><Typograph tag='h2' size='xlg-2' color={ j.color }>{ j[locale] }</Typograph></li>
+                        { data.map((j, index) =>
+                            <li key={ index }><Typograph tag='h2' size='sm-1 lg-3-sm xlg-2-md' color={ j.color }>{ j[locale] }</Typograph></li>
                         ) }
                     </ul>
                 </div>
             </Typograph>
-            <Typograph tag='p' size='md-3' align='center' maxWidth='780'>{ caption[locale] }</Typograph>
+            <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='780'>{ caption[locale] }</Typograph>
             <Button href='#' onClick={ () => setFormDaftar(1) } xPadding='18' textColor='white' backgroundColor='green-60'>{ daftar[locale] }</Button>
             { (formDaftar) ? <DaftarForm onClose={ () => setFormDaftar(0) } /> : undefined }
         </Container>
@@ -325,24 +387,42 @@ const Testimoni = ({ title, caption, data }) => {
         centerMode: true,
         centerPadding: '45px',
         arrows: true,
-        dots: true
+        dots: true,
+        responsive: [
+            {
+                breakpoint: 1023,
+                settings: {
+                    arrows: false,
+                    centerPadding: '16px',
+                }
+            },
+            {
+                breakpoint: 1199,
+                settings: {
+                    arrows: false,
+                    centerPadding: '32px',
+                }
+            }
+        ]
     }
     const testimoniSlickSettings = SlickNavigationCustom('__slickTestimoni__', slickSettings)
 
     return (
         <Container id={ styles.Testimoni } normalPadding backgroundColor='natural-10' paddingTop='64' paddingBottom='52'>
-            <Typograph tag='h2' size='xlg-2' align='center'>{ title[locale] }</Typograph>
-            <Typograph tag='p' size='md-3' align='center' maxWidth='685'>{ caption[locale] }</Typograph>
+            <Typograph tag='h2' size='sm-1 lg-3-sm xlg-2-md' align='center'>{ title[locale] }</Typograph>
+            <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='685'>{ caption[locale] }</Typograph>
             <div className={ styles.content }>
                 <Slick { ...testimoniSlickSettings } className='__slickTestimoni__'>
                     { data.map((testimoni, index) =>
                         <div className={ styles.slick_slide } key={ index }>
                             <div className='row middle-xs no-margin bg-green-10'>
-                                <img src={ `/testimoni/${ testimoni.photo }` } className='image-cover' />
-                                <div className={ `col-xs align-left ${ styles.caption }` }>
-                                    <Typograph tag='h5' size='md-1'>{ testimoni.name }</Typograph>
-                                    <Typograph tag='h6' size='xsm-1'>{ testimoni.type }, { testimoni.dom }</Typograph>
-                                    <Typograph tag='p' size='md-3'>{ testimoni.testi }</Typograph>
+                                <SetRatio ax='1.46' ay='1' min='230' max='400' className={ styles.photo }>
+                                    <img src={ `/testimoni/${ testimoni.photo }` } width='100%' className='image-cover' />
+                                </SetRatio>
+                                <div className={ `col-xs-12 col-md align-left ${ styles.caption }` }>
+                                    <Typograph tag='h5' size='sm-2 md-2-sm md-1-lg'>{ testimoni.name }</Typograph>
+                                    <Typograph tag='h6' size='xsm-3 xsm-1-sm' weight='light medium-md'>{ testimoni.type }, { testimoni.dom }</Typograph>
+                                    <Typograph tag='p' size='xsm-1 sm-1-sm md-3-lg'>{ testimoni.testi }</Typograph>
                                 </div>
                             </div>
                         </div>
@@ -360,12 +440,14 @@ const Download = ({ subtitle, title, caption, url }) => {
     return (
         <Container id={ styles.Download } normalPadding paddingTop='64' paddingBottom='96'>
             <div className='row no-margin middle-xs'>
-                <img src={ MockupPng.src } width='416px' />
-                <div className={ `col-xs align-left ${ styles.caption }` }>
-                    <Typograph tag='p' size='md-3' color='green-60'>{ subtitle[locale] }</Typograph>
-                    <Typograph tag='h2' size='xlg-2'>{ title[locale] }</Typograph>
-                    <Typograph tag='p' size='md-3' color='natural-50'>{ caption[locale] }</Typograph>
-                    <div className='align-right'>
+                <div className={ `${ styles.mockup } align-center`  }>
+                    <img src={ MockupPng.src } />
+                </div>
+                <div className={ `col-xs-12 col-md align-center align-left-md ${ styles.caption }` }>
+                    <Typograph tag='p' size='xsm-2 sm-1-sm md-3-lg' color='green-60'>{ subtitle[locale] }</Typograph>
+                    <Typograph tag='h2' size='sm-1 lg-2-sm xlg-2-lg'>{ title[locale] }</Typograph>
+                    <Typograph tag='p' size='xsm-1 sm-1-sm md-3-lg' color='natural-50'>{ caption[locale] }</Typograph>
+                    <div className='align-center align-right-md'>
                         <a href={ url }><img src={ FindPlaystorePng.src } width='200px' /></a>
                     </div>
                 </div>

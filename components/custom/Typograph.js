@@ -4,10 +4,28 @@ export default function Ellipsis (props) {
     const TagName = props.tag
     const newProps = { ...props }
 
-    newProps.className = (props.size) ? `font-${ props.size } ` : ''
-    newProps.className += (props.weight) ? `font-${ props.weight } ` : ''
+    const sizeResp = () => {
+        let t = ''
+        props.size.split(' ').forEach(element => t += `font-${ element } `)
+        return t
+    } 
+
+    const weightResp = () => {
+        let t = ''
+        props.weight.split(' ').forEach(element => t += `font-${ element } `)
+        return t
+    }
+
+    const alignResp = () => {
+        let t = ''
+        props.align.split(' ').forEach(element => t += `align-${ element } `)
+        return t
+    }
+
+    newProps.className = (props.size) ? sizeResp() : ''
+    newProps.className += (props.weight) ? weightResp() : ''
     newProps.className += (props.color) ? `text-${ props.color } ` : ''
-    newProps.className += (props.align) ? `align-${ props.align } ` : ''
+    newProps.className += (props.align) ? alignResp() : ''
     newProps.style = { ...props.style }
     
     if (props.maxWidth !== undefined) {

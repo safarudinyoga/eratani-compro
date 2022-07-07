@@ -3,6 +3,7 @@
 /* ------------------ Hero Banner ------------------ */
 #Hero
     .wrapper
+        height: calc( 100vh - 95px ) !important
         @include Define.padding($left: 104px, $right: 104px)
         @include Define.flex($alignItems: center)
 
@@ -24,7 +25,6 @@
 /* ------------------ End Hero Banner ------------------ */
 
 /* ------------------ Ecosystem ------------------ */
-
 #Ecosystem
 
     .eco_arrow
@@ -36,32 +36,55 @@
                 opacity: 0
                 pointer-events: none
 
+        @include Define.media('screen', '<sm')
+            display: none
+
     .title
-        @include Define.margin($bottom: 16px)
-        
         span
             @include Define.inlineBlock($align: top)
 
             &:first-child
                 @include Define.box($width: 34px)
-        
+
             &:last-child
                 @include Define.box($width: calc(100% - 34px))
 
-    .slider
+    .slick_slider
+        @include Define.margin($top: 26px, $left: -32px, $right: -32px)
+        display: block
+
+        @include Define.media('screen', '>=sm')
+            display: none
+
+        .slide
+            @include Define.padding($left: 16px, $right: 16px)
+
+        .title
+            @include Define.margin($top: 16px, $bottom: 6px)
+
+    .custom_slider
         @include Define.margin($top: 21px)
         @include Define.flex($alignItems: stretch, $flexDirection: row)
         overflow: hidden
-        
+
+        @include Define.media('screen', '<sm')
+            display: none
+
+        .title
+            @include Define.margin($bottom: 16px)
+
         .slide
-            flex: 1 0 calc(29% + 16px)
+            flex: 1 0 calc(42% + 18px)
             @include Define.padding($right: 32px)
             transition: flex-basis 1s cubic-bezier(.4, 1.35, .6, 1)
+
+            @include Define.media('screen', '>=lg')
+                flex: 1 0 calc(29% + 16px)
 
             .slide_content
                 @include Define.box($height: 100%)
                 @include Define.flex($justifyContent: flex-end, $flexDirection: column)
-    
+
                 > div
                     @include Define.box($position: relative)
 
@@ -87,8 +110,11 @@
                     visibility: hidden
 
             &.slide_active
-                flex: 1 0 42%
-                
+                flex: 1 0 58%
+
+                @include Define.media('screen', '>=lg')
+                    flex: 1 0 42%
+
                 h5
                     @extend .font-md-3
 
@@ -100,26 +126,34 @@
 
                     svg
                         visibility: visible
-    
+
     .pop_ecosystem
         .caption
             @include Define.padding($top: 40px, $bottom: 30px, $left: 30px, $right: 30px)
             min-height: 265px
-        
+
 /* ------------------ End Ecosystem ------------------ */
-    
+
 /* ------------------ Solutions ------------------ */
-.solution-hover-transistion    
+.solution-hover-transistion
     transition: all .8s cubic-bezier(.4, 1.35, .6, 1)
 
 Section.Solution
     > p
         @include Define.margin($top: 16px, $bottom: 56px)
 
+    .row
+        @include Define.margin($top: -12px, $bottom: -12px)
+
+    .column
+        @include Define.padding($top: 12px, $bottom: 12px)
+
     .wrapper
         @include Define.box($position: relative)
         overflow: hidden
-        
+        @include Define.media('screen', '<md')
+            display: none
+
         &::after
             content: ''
             @include Define.box($position: absolute, $left: 0, $top: 0, $width: 100%, $height: 100%)
@@ -137,21 +171,21 @@ Section.Solution
             white-space: nowrap
             transform-origin: left top
             @extend .solution-hover-transistion
-            
+
             span
                 @extend .solution-hover-transistion
 
                 &:last-child
                     @include Define.box($position: absolute, $top: 0, $left: 0)
                     opacity: 0
-            
+
         .caption
             @include Define.box($position: absolute, $left: 0, $width: 100%, $zindex: 1)
             @include Define.padding($left: 40px, $right: 40px)
             transform-origin: center bottom
             transform: scale(0.5)
             @extend .solution-hover-transistion
-            
+
             a
                 @include Define.margin($top: 32px)
 
@@ -172,8 +206,31 @@ Section.Solution
                     &:first-child
                         opacity: 0
 
-            .caption 
+            .caption
                 transform: scale(1)
+
+    .wrapper_sm
+        @include Define.box($position: relative)
+        overflow: hidden
+        @include Define.media('screen', '>=md')
+            display: none
+
+        &::after
+            content: ''
+            @include Define.box($position: absolute, $left: 0, $top: 0, $width: 100%, $height: 100%, $zindex: 1)
+            @include Define.bgGradient($deg: 0deg, $start: 0%, $startColor: rgba(18, 18, 18, 0.8), $end: 100%, $endColor: rgba(18, 18, 18, 0.1))
+            opacity: 1
+
+        img
+            @include Define.box($position: absolute, $zindex: 0)
+
+        .content
+            @include Define.box($position: relative, $height: 100%, $zindex: 2)
+            @include Define.padding($top: 55px, $bottom: 64px, $left: 24px, $right: 24px)
+            @include Define.flex($justifyContent: space-between, $flexDirection: column)
+
+            h4
+                @include Define.margin($bottom: 16px)
 /* ------------------ End Solutions ------------------ */
 
 /* ------------------ Maps ------------------ */
@@ -223,7 +280,7 @@ Section.Solution
 
     .indonesia
         @include Define.box($position: relative)
-        
+
         .interactive
             @include Define.box($position: absolute, $top: 0, $left:0, $width: 100%, $height: 100%)
 
@@ -249,11 +306,11 @@ Section.Solution
                     .outline
                         @extend .fill-natural-50
 
-                &:hover 
+                &:hover
                     &:not(.coming_soon)
                         .shadow
                             animation: dot_hover 2s cubic-bezier(.32,0,.44,1.23) 0s infinite normal
-                    
+
                     &.coming_soon
                         .shadow
                             animation: dot_hover_coming_soon 2s cubic-bezier(.32,0,.44,1.23) 0s infinite normal
@@ -263,14 +320,14 @@ Section.Solution
                 opacity: 0
                 visibility: hidden
                 pointer-events: none
-                
+
                 .content
                     @include Define.padding($top: 14px, $left: 16px)
                     @include Define.box($position: absolute, $top: 0, $left: 0)
-                    
+
                     h6
                         @include Define.margin($bottom: 12px)
-                        
+
                     p
                         @include Define.margin($top: 4px, $bottom: 4px, $right: 8px )
 /* ------------------ End Maps ------------------ */
@@ -278,19 +335,22 @@ Section.Solution
 /* ------------------ Media ------------------ */
 #Media
     .tab_title
-        h2 
+        h2
             @include Define.box($position: relative)
             @include Define.inlineBlock($align: top)
             @include Define.margin($left: 31px, $right: 31px)
             @include Define.padding($left: 3px, $right: 3px)
             cursor: pointer
 
+            @include Define.media('screen', '<sm')
+                @include Define.margin($left: 13px, $right: 13px)
+
             &::after
                 content: ''
                 @include Define.box($position: absolute, $left: 0, $width: 0, $height: 2px, $bottom: -6px)
                 @extend .bg-green-60
                 transition: all 0.7s ease
-            
+
             &.active
                 @extend .text-green-60
 
@@ -299,64 +359,75 @@ Section.Solution
 
     > p
         @include Define.margin($top: 35px, $bottom: 32px)
-            
+
     .content
         .slick_slide
             @include Define.box($height: 208px)
             @include Define.flex($justifyContent: center, $alignItems: center)
 
-            img 
+            @include Define.media('screen', '<sm')
+                @include Define.box($height: 160px)
+
+            img
                 filter: grayscale(100%)
                 transition: all 0.3s linear
-                
+
+                @include Define.media('screen', '<sm')
+                    width: 135px
+
                 &:hover
                     filter: grayscale(0)
 /* ------------------ End Media ------------------ */
 
 /* ------------------ Join ------------------ */
-@keyframes join_ul 
+@keyframes join_ul
     0%
-        bottom: 0
+        margin-top: 0
     7%
-        bottom: 0
+        margin-top: 0
     16%
-        bottom: 67px
+        margin-top: -31.8%
     23%
-        bottom: 67px
+        margin-top: -31.8%
     32%
-        bottom: 134px
+        margin-top: -63.6%
     39%
-        bottom: 134px
+        margin-top: -63.6%
     48%
-        bottom: 201px
+        margin-top: -95.4%
     55%
-        bottom: 201px
+        margin-top: -95.4%
     64%
-        bottom: 268px
+        margin-top: -127.2%
     71%
-        bottom: 268px
+        margin-top: -127.2%
     80%
-        bottom: 335px
+        margin-top: -159%
     87%
-        bottom: 335px
+        margin-top: -159%
     100%
-        bottom: 0
+        margin-top: 0
 
 #Join
     > p
         @include Define.margin($top: 24px, $bottom: 56px)
 
-    h2        
+    h2
         &, > *
             @include Define.inlineBlock($align: top)
 
         div
-            max-height: 67px
+            max-height: 67.2px
             overflow: hidden
 
             ul
-                @include Define.box($position: relative, $bottom: 0)
                 animation: join_ul 10s ease 0s infinite normal
+
+            @include Define.media('screen', '<md')
+                max-height: 36.4px
+
+            @include Define.media('screen', '<sm')
+                max-height: 25.2px
 /* ------------------ End Join ------------------ */
 
 /* ------------------ Testimoni ------------------ */
@@ -368,21 +439,45 @@ Section.Solution
         @include Define.margin($left: auto, $right: auto)
         @include Define.box($width: 100%)
         max-width: 1256px
-        
+
+        @include Define.media('screen', '<lg')
+            @include Define.margin($left: -64px, $right: -64px)
+            @include Define.box($width: calc(100% + 128px) )
+
+        @include Define.media('screen', '<md')
+            @include Define.margin($left: -32px, $right: -32px)
+            @include Define.box($width: calc(100% + 64px) )
+
         .slick_slide
             @include Define.padding($left: 45px, $right: 45px)
+
+            @include Define.media('screen', '<lg')
+                @include Define.padding($left: 32px, $right: 32px)
+
+            @include Define.media('screen', '<md')
+                @include Define.padding($left: 16px, $right: 16px)
 
             > div
                 box-shadow: 0px 4px 12px rgba(18, 18, 18, 0.08)
 
-            img
-                @include Define.box($width: 440px, $height: 300px)
+            .photo
+                @include Define.box($width: 440px)
+
+                @include Define.media('screen', '<md')
+                    @include Define.box($width: 100%)
 
             .caption
                 @include Define.padding($left: 88px, $right: 88px)
 
+                @include Define.media('screen', '<md')
+                    @include Define.box($height: 180px)
+                    @include Define.padding($top: 24px, $bottom: 16px, $left: 16px, $right: 16px)
+
                 h6
                     @include Define.margin($top: 2px, $bottom: 32px)
+
+                    @include Define.media('screen', '<md')
+                        @include Define.margin($bottom: 16px)
 /* ------------------ End Testimoni ------------------ */
 
 /* ------------------ Download ------------------ */
@@ -392,8 +487,19 @@ Section.Solution
         @include Define.box($width: 100%)
         max-width: 1124px
 
+        .mockup
+            @include Define.media('screen', '<md')
+                @include Define.box($width: 100%)
+
+            img
+                @include Define.box($width: 100%)
+                max-width: 416px
+
         .caption
             @include Define.padding($top: 93px, $left: 48px)
+
+            @include Define.media('screen', '<md')
+                @include Define.padding($top: 32px, $left: 0)
 
             *
                 @include Define.margin($bottom: 16px)

@@ -12,7 +12,7 @@ const CardAgenda = ({ id }) => (
     <div className={styles.card}>
       <img src='https://statik.tempo.co/data/2020/11/25/id_983211/983211_720.jpg' className={styles.img} alt='alt' />
       <div className={styles.card_desc}>
-        <h5 className='regular left-align c-green-60' style={{ marginBottom: '15px' }}>Panen Raya Cantigi</h5>
+        <h5 className='bold left-align c-green-60' style={{ marginBottom: '15px' }}>Panen Raya Cantigi</h5>
         <h6 className={styles.desc}>Panen Raya adalah acara tahunan yang dilaksanakan oleh petani - petani di seluruh daerah seperti halnya di Kecamatan Cantigi, Indramayu, Jawa Barat ini. Acara ini akan dihadiri oleh Menteri Pertanian Republik Indonesia Bapak Syahrul Yasin Limpo ...</h6>
       </div>
       <div className={styles.divider} />

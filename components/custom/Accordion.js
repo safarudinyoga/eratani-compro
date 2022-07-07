@@ -23,7 +23,7 @@ const List = forwardRef((props, ref) => {
     return (
         <li className={ `${ styles.accordion_list } bg-white ${ (show)? styles.active : undefined }` }  style={ { height: height } }>
             <a href='#' className={ `row no-margin middle-xs between-xs ${ styles.title }` } onClick={ () => setShow(!show) }>
-                <Typograph tag='h5' size='sm-1' color='green-70'>{ props.title }</Typograph>
+                <Typograph tag='h5' size='sm-1' weight='extrabold' color='green-70'>{ props.title }</Typograph>
                 <KarrowDownVect />
             </a>
             <div ref={ contentRef } className={ styles.content }>

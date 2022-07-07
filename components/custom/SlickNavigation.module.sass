@@ -42,3 +42,10 @@
 
             &.slick_active
                 @extend .bg-green-60
+
+        @include Define.media('screen', '<sm')
+            @include Define.box($width: 8px, $height: 8px)
+            @include Define.margin($left: 8px, $right: 8px)
+
+            a
+                @include Define.box($width: 8px, $height: 8px)
