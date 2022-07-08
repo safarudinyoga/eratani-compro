@@ -20,12 +20,11 @@
     text-rendering: optimizeLegibility !important
     -webkit-font-smoothing: antialiased !important
     -moz-osx-font-smoothing: antialiased !important
-    font-family: 'Poppins', sans-serif
-    @extend .text-green-100
     -webkit-appearance: none
     -moz-appearance: none
     appearance: none
     font-family: 'Lato', sans-serif
+    @extend .text-green-100
 
 body,
 html
@@ -70,6 +69,10 @@ h1
 
     @include Define.media('screen', '>=lg')
         @include Define.padding($left: 72px, $right: 72px)
+
+.container-max-width > div
+    max-width: 1600px
+    @include Define.margin($left: auto, $right: auto)
 
 .margin-auto
     @include Define.margin($left: auto, $right: auto)

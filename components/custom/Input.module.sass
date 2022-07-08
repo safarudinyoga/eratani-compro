@@ -9,6 +9,9 @@
     @include Define.typograph($size: 18px, $lineHeight: 54px)
     @include Define.padding($left: 24px, $right: 24px)
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08)
+
+    @include Define.media('screen', '<md')
+        @include Define.typograph($size: 14px, $lineHeight: 46px)
     
     &::placeholder
         @extend .text-natural-40
@@ -18,9 +21,12 @@
     @include Define.box($width: 100%)
     background: transparent
     border-bottom: 2px solid map-get(Define.$colors, 'green-60')
-    @include Define.padding($bottom: 10px)
+    @include Define.padding($bottom: 11px)
     @extend .font-semibold
     @extend .font-sm-1
+
+    @include Define.media('screen', '<md')
+        @include Define.typograph($size: 16px, $lineHeight: 22.4px)
 
     &::placeholder
         @extend .text-green-60

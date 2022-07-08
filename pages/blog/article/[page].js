@@ -18,12 +18,12 @@ export default function AboutUsPage() {
     }
     const otherContent = {
         articleTopTitle: {
-            id: 'TERBARU',
-            en: 'TERBARU'
+            id: 'ARTIKEL TERBARU',
+            en: 'ARTIKEL TERBARU'
         },
         otherArticle: {
-            id: 'ARTIKEL LAINNYA',
-            en: 'ARTIKEL LAINNYA'
+            id: 'ARTIKEL',
+            en: 'ARTIKEL'
         },
         breadcrumb: {
             id: 'Artikel',

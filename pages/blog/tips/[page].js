@@ -18,8 +18,8 @@ export default function AboutUsPage() {
     }
     const otherContent = {
         otherTips: {
-            id: 'TIPS LAINNYA',
-            en: 'TIPS LAINNYA'
+            id: 'TIPS PERTANIAN',
+            en: 'TIPS PERTANIAN'
         },
         breadcrumb: {
             id: 'Tips',

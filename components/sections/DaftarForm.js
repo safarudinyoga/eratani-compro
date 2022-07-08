@@ -8,16 +8,17 @@ import Button from '../custom/Button'
 import Input from '../custom/Input';
 
 import EraiconVect from '/assets/vector/eraicon.svg'
+import Eraicon2Vect from '/assets/vector/eraicon-2.svg'
 import ArrowForwardVect from '/assets/vector/arrow-forward.svg'
 
 const FormLender = ({ perusahaan, email, alamat }) => {
     const { locale } = useRouter()
     return (
         <div className='row'>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ perusahaan[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ email[locale] } model='2' />
             </div>
             <div className='col-xs-12'>
@@ -31,22 +32,22 @@ const FormPembeliBeras = ({ perusahaan, nama, hp, jenis, kuantitas, alamat }) =>
     const { locale } = useRouter()
     return (
         <div className='row'>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ perusahaan[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ nama[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ hp[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ jenis[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ kuantitas[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
@@ -57,16 +58,16 @@ const FormSupplierSaprotan = ({ perusahaan, email, jenis, alamat }) => {
     const { locale } = useRouter()
     return (
         <div className='row'>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ perusahaan[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ email[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ jenis[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
@@ -77,22 +78,22 @@ const FormPoktan = ({ nama, usia, hp, hasil, petani, alamat }) => {
     const { locale } = useRouter()
     return (
         <div className='row'>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ nama[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ usia[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ hp[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ hasil[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ petani[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
@@ -103,22 +104,22 @@ const FormGapoktan = ({ nama, usia, hp, hasil, petani, alamat }) => {
     const { locale } = useRouter()
     return (
         <div className='row'>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ nama[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ usia[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ hp[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ hasil[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ petani[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
@@ -129,16 +130,16 @@ const FormTokoTani = ({ nama, usia, hp, toko, alamat }) => {
     const { locale } = useRouter()
     return (
         <div className='row'>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ nama[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ usia[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ hp[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ toko[locale] } model='2' />
             </div>
             <div className='col-xs-12'>
@@ -152,16 +153,16 @@ const FormPetani = ({ nama, usia, hp, hasil, alamat }) => {
     const { locale } = useRouter()
     return (
         <div className='row'>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ nama[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ usia[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ hp[locale] } model='2' />
             </div>
-            <div className='col-xs-6'>
+            <div className='col-xs-12 col-md-6'>
                 <Input type='text' placeholder={ hasil[locale] } model='2' />
             </div>
             <div className='col-xs-12'>
@@ -363,19 +364,22 @@ export default function DaftarForm({ onClose }) {
             <div className='row no-margin'>
                 <div className={ `col-xs ${ styles.form_main }` }>
                     <div>
-                        <Typograph tag='h2' size='lg-3'>Solusi Pertanian dalam Genggaman Anda!</Typograph>
-                        <Typograph tag='p' size='sm-1' color='natural-50'>Silakan isi formulir di bawah ini untuk bergabung menjadi pembentuk ekosistem pertanian yang kuat.</Typograph>
+                        <div className={ `align-center ${ styles.eraicon_mobile }` } onClick={ onClose }>
+                            <Eraicon2Vect />
+                        </div>
+                        <Typograph tag='h2' size='sm-1 md-2-sm lg-3-md'>Solusi Pertanian dalam Genggaman Anda!</Typograph>
+                        <Typograph tag='p' size='xsm-1 sm-2-sm sm-1-md' color='natural-50'>Silakan isi formulir di bawah ini untuk bergabung menjadi pembentuk ekosistem pertanian yang kuat.</Typograph>
                         <div className={ styles.selection }>
-                            <Typograph tag='h6' size='sm-2' color='natural-50' weight='light'>Pilih salah satu</Typograph>
+                            <Typograph tag='h6' size='xsm-1 sm-2-md' color='natural-50' weight='light'>Pilih salah satu</Typograph>
                             <div>
                                 { daftarTypes.map((type, index) => 
-                                    <Typograph key={ index } tag='a' href='#' size='md-3' line='40' weight='semibold' color='green-60' onClick={ () => setSelectedForm(index) } className={ (selectedForm == index) ? styles.active : undefined } >{ type.name }</Typograph>
+                                    <Typograph key={ index } tag='a' href='#' size='sm-2 md-3-md' weight='semibold' color='green-60' onClick={ () => setSelectedForm(index) } className={ (selectedForm == index) ? styles.active : undefined } >{ type.name }</Typograph>
                                 ) }
                             </div>
                         </div>
                         
                         <div className={ styles.data_input }>
-                            { selectedForm > -1 && <Typograph tag='h6' size='sm-2' color='natural-50' weight='light'>Isi Formulir</Typograph> }
+                            { selectedForm > -1 && <Typograph tag='h6' size='xsm-1 sm-2-md' color='natural-50' weight='light'>Isi Formulir</Typograph> }
                             <form>
                                 { daftarTypes.map((type, index) => 
                                     <div key={ index }>{ (selectedForm == index) && <type.form { ...type.placeholder } /> }</div>
@@ -383,7 +387,7 @@ export default function DaftarForm({ onClose }) {
                             </form>
                         </div>
                         <div className={ `align-right ${ styles.button }` }>
-                            { selectedForm > -1 && <Button href='#' backgroundColor='green-60' textColor='white'>Kirim&nbsp;&nbsp;&nbsp;&nbsp;<ArrowForwardVect /></Button> }
+                            { selectedForm > -1 && <Button href='#' backgroundColor='green-60' textColor='white'>Kirim&nbsp;&nbsp;&nbsp;&nbsp;<ArrowForwardVect width='16' /></Button> }
                         </div>
                     </div>
                 </div>

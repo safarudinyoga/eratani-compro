@@ -50,7 +50,7 @@ const Ecosystem = ({ title, data }) => {
     const { locale } = useRouter()
     const sliderRef = createRef()
     const [slide, slideTo] = useState(0)
-    const [activeSlide, setActiveSlide] = useState(0)
+    const [lock, setLock] = useState(1)
     const [popup, setPopup] = useState(-1)
 
     const slickSettings = {
@@ -81,34 +81,33 @@ const Ecosystem = ({ title, data }) => {
         })
         slider.append(...nodes)
 
-        const scrollToInitial = () => gsap.set(slider, { scrollTo: { x: node.clientWidth * (parseInt(slider.dataset.active) + 1) } })
+        const scrollToInitial = () => gsap.set(slider, { scrollTo: { x: node.clientWidth * (parseInt(slider.dataset.active) + 1) }, onComplete: () => setLock(0) })
         scrollToInitial()
         window.addEventListener('resize', scrollToInitial)
         return _ => window.removeEventListener('resize', scrollToInitial)
     }, [])
 
     useEffect(() => {
-        if (activeSlide == slide) return
+        if (lock) return
+        setLock(1)
 
         const slider = sliderRef.current
-        const photoNodes = slider.getElementsByClassName('__EcoPhotoNode__')
+        const slideNode = slider.getElementsByClassName(styles.slide_content)
 
-        gsap.timeline({ onComplete: () => setActiveSlide(slide) })
-        .set(slider, { height: slider.clientHeight + 3 })
-        .to(photoNodes[activeSlide], { height: photoNodes[slide].clientHeight, duration: 1, ease: 'BackEase' }, '<')
-        .to(photoNodes[slide], { height: photoNodes[activeSlide].clientHeight, duration: 1, ease: 'BackEase' }, '<')
-        .to(slider, { duration: 1, ease: 'BackEase', scrollTo: { x: (photoNodes[slide].clientWidth + 31.5) * (slide + 1) } }, '<')
-        .set(slider, { height: 'auto' })
+        gsap.timeline({ onComplete: () => setLock(0) })
+        .set(slider, { minHeight: slider.clientHeight + 3 })
+        .to(slider, { duration: 1, ease: 'BackEase', scrollTo: { x: (slideNode[slide].clientWidth + 31.5) * (slide + 1) } })
+        .set(slider, { minHeight: 0 })
     }, [slide]) 
 
     return (
         <Container id={ styles.Ecosystem } normalPadding paddingTop='96' paddingBottom='90'>
             <Typograph tag='h2' size='sm-1 lg-3-sm xlg-3-md' color='green-70'>{ title[locale] }</Typograph>
             <div className={ `${ styles.eco_arrow } align-right` }>
-                <a href='#' onClick={ () => ( activeSlide != 0 && activeSlide == slide ) && slideTo(activeSlide - 1) } className={ (slide == 0) ? styles.hidden : undefined }><EcoArrowVect className='flip-x' /></a>
-                <a href='#' onClick={ () => ((activeSlide + 1) != data.length && activeSlide == slide) && slideTo(activeSlide + 1) } className={ ((slide + 1) == data.length) ? styles.hidden : undefined }><EcoArrowVect /></a>
+                <a href='#' onClick={ () => (slide != 0 && !lock) && slideTo(slide - 1) } className={ (slide == 0) ? styles.hidden : undefined }><EcoArrowVect className='flip-x' /></a>
+                <a href='#' onClick={ () => ((slide + 1) != data.length && !lock) && slideTo(slide + 1) } className={ ((slide + 1) == data.length) ? styles.hidden : undefined }><EcoArrowVect /></a>
             </div>
-            <div ref={ sliderRef } className={ `${ styles.custom_slider }` } data-active={ activeSlide }>
+            <div ref={ sliderRef } className={ `${ styles.custom_slider }` } data-active={ slide }>
                 { data.map((eco, index) =>
                     <div className={ `${ styles.slide } ${ (index == slide) && styles.slide_active }` } key={ index }>
                         <div className={ styles.slide_content }>
@@ -117,14 +116,14 @@ const Ecosystem = ({ title, data }) => {
                                     <span className='text-green-50'>{ `${ eco.no }.` }</span>
                                     <span>{ eco.title[locale] }</span>
                                 </Typograph>
-                                <SetRatio ax='1.42' ay='1' className='__EcoPhotoNode__'>
+                                <SetRatio ax='1.42' ay='1'>
                                     <img src={ `/ecosystem/${ eco.photo }` } width='100%' className='image-cover' />
                                 </SetRatio>
                                 <div className={ styles.caption }>
                                     <Ellipsis className={ `font-xsm-1 ${styles.text}` }>
                                         { eco.description[locale] }
                                     </Ellipsis>
-                                    <a href="#" onClick={ () => setPopup(index) }><EyeViewVect /></a>
+                                    <a href="#" onClick={ () => setPopup(index) }><EyeViewVect width='30' /></a>
                                 </div>
                             </div>
                         </div>
@@ -173,19 +172,21 @@ const Solution = ({ title, caption, data }) => {
     const { locale } = useRouter()
     const onSolutionEnter = (event) => {
         const [ titleNode, captionNode ] = event.currentTarget.getElementsByClassName('__SolutionNode__')
+        if (captionNode === undefined) return
         gsap.timeline()
             .set(captionNode, { bottom: 80 })
             .set(titleNode, { bottom: captionNode.clientHeight })
     }
     const onSolutionLeave = (event) => {
         const [ titleNode, captionNode ] = event.currentTarget.getElementsByClassName('__SolutionNode__')
+        if (captionNode === undefined) return
         gsap.timeline()
             .set(captionNode, { bottom: (captionNode.clientHeight / 2) * -1 })
             .set(titleNode, { bottom: 40 })
     }
 
     return (
-        <Container id='Solution' className={ styles.Solution } normalPadding backgroundColor='natural-10' paddingTop='64' paddingBottom='80'>
+        <Container anchor='Solution' id={ styles.Solution } normalPadding backgroundColor='natural-10' paddingTop='64' paddingBottom='80'>
             <Typograph tag='h2' size='sm-1 lg-3-sm xlg-3-md' color='green-70' align='center'>{ title[locale] }</Typograph>
             <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='900'>{ caption[locale] }</Typograph>
             <div className={ `row center-xs ${ styles.row }` }>
@@ -284,21 +285,21 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
         dots: true,
         responsive: [
             {
-                breakpoint: 767,
+                breakpoint: 768,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2
                 }
             },
             {
-                breakpoint: 1023,
+                breakpoint: 1024,
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3
                 }
             },
             {
-                breakpoint: 1199,
+                breakpoint: 1200,
                 settings: {
                     slidesToShow: 4,
                     slidesToScroll: 4
@@ -390,14 +391,14 @@ const Testimoni = ({ title, caption, data }) => {
         dots: true,
         responsive: [
             {
-                breakpoint: 1023,
+                breakpoint: 1024,
                 settings: {
                     arrows: false,
                     centerPadding: '16px',
                 }
             },
             {
-                breakpoint: 1199,
+                breakpoint: 1200,
                 settings: {
                     arrows: false,
                     centerPadding: '32px',

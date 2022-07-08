@@ -276,25 +276,33 @@ $unit-intervals: ('px': 1, 'em': 0.01, 'rem': 0.1) !default
     background-position: $position
     background-repeat: $repeat
 
-@mixin padding($top: false, $bottom: false, $left: false, $right: false) 
-    @if $left != false
-        padding-left: $left
-    @if $right != false
-        padding-right: $right
-    @if $top != false
-        padding-top: $top
-    @if $bottom != false
-        padding-bottom: $bottom
+@mixin padding($top: false, $bottom: false, $left: false, $right: false, $important: false) 
+    $r: null
+    @if $important == true 
+        $r: !important
 
-@mixin margin($top: false, $bottom: false, $left: false, $right: false) 
     @if $left != false
-        margin-left: $left
+        padding-left: $left $r
     @if $right != false
-        margin-right: $right
+        padding-right: $right $r
     @if $top != false
-        margin-top: $top
+        padding-top: $top $r
     @if $bottom != false
-        margin-bottom: $bottom
+        padding-bottom: $bottom $r
+
+@mixin margin($top: false, $bottom: false, $left: false, $right: false, $important: false) 
+    $r: null
+    @if $important == true 
+        $r: !important
+    
+    @if $left != false
+        margin-left: $left $r
+    @if $right != false
+        margin-right: $right $r
+    @if $top != false
+        margin-top: $top $r
+    @if $bottom != false
+        margin-bottom: $bottom $r
 
 @mixin typograph($size: false, $weight: false, $lineHeight: false, $letterSpacing: false)
     @if $size != false

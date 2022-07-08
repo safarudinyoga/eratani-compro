@@ -4,47 +4,67 @@
 #Heading
     h3
         @include Define.margin($bottom: 8px)
+
+    @include Define.media('screen', '<md')
+        .search
+            @include Define.margin($top: 32px)
+
 /* ------------------ End Title ------------------ */
 
 /* ------------------ Card Style Class ------------------ */
 .list 
     @include Define.margin($top: -12px, $bottom: -12px)
 
+    @include Define.media('screen', '<sm')
+        @include Define.margin($left: -5px, $right: -5px, $important: true)
+
 .card
     @include Define.padding($top: 12px, $bottom: 12px)
+
+    @include Define.media('screen', '<sm')
+        @include Define.padding($left: 5px, $right: 5px, $important: true)
 
     > div, > a
         @include Define.box($position: relative, $width: 100%, $height: 100%)
         @include Define.flex($flexDirection: column)
-        box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
-        
-    .photo
-        overflow: hidden
-        flex-grow: 1
-        flex-basis: 0
 
-    .caption
-        @include Define.flex($justifyContent: space-between, $flexDirection: column)
+    &:not(.card_2x_mobile, .card_1x_mobile, .card_xv_mobile)
+        > div, > a
+            box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
 
-        h4
-            @include Define.margin($bottom: 16px)
+    &.card_1x, &.card_xv, &.card_2x, &.card_xh, &.card_1x_mobile
+        .photo
+            overflow: hidden
+            flex-grow: 1
+            flex-basis: 0
+
+        .caption
+            @include Define.flex($justifyContent: space-between, $flexDirection: column)
+
+            h4
+                @include Define.margin($bottom: 16px)
 
     &.card_1x
+        @include Define.media('screen', '<sm')
+            display: none    
+
         .caption
             @include Define.padding($top: 16px, $bottom: 20px, $left: 16px, $right: 20px)
             @include Define.flex($justifyContent: space-between, $flexDirection: column)
-            min-height: 123px            
+            min-height: 123px       
 
     &.card_xv, &.card_2x
+        @include Define.media('screen', '<sm')
+            display: none
+
         .caption
             @include Define.box($height: 263px)
 
             div:first-child
-                overflow: hidden
-                @include Define.flex($flexDirection: column)
                 @include Define.padding($bottom: 25px)
 
                 p
+                    @include Define.box($height: 80px)
                     overflow: hidden
 
     &.card_2x
@@ -56,19 +76,61 @@
             @include Define.padding($top: 24px, $bottom: 24px, $left: 24px, $right: 22px)
 
     &.card_xh
+        @include Define.media('screen', '<sm')
+            display: none
+
         > div, > a
             @include Define.flex($flexDirection: row)
 
         .caption
-            @include Define.box($width: 282px)
+            min-width: 282px
+            flex: 0 0 56%
 
             div:first-child
                 overflow: hidden
-                @include Define.flex($flexDirection: column)
                 @include Define.padding($bottom: 25px)
 
                 p
+                    @include Define.box($height: 80px)
                     overflow: hidden
+
+                    @include Define.media('screen', '<lg')
+                        @include Define.box($height: 60px)
+
+    &.card_2x_mobile
+        @include Define.margin($bottom: 24px)
+
+        @include Define.media('screen', '>=sm')
+            display: none
+
+        .caption 
+            p
+                @include Define.box($height: 60px)
+                @include Define.margin($bottom: 14px)
+
+            h4
+                @include Define.margin($top: 24px, $bottom: 8px)
+
+    &.card_1x_mobile
+        @include Define.media('screen', '>=sm')
+            display: none
+
+        > div, > a
+            @include Define.flex($flexDirection: row)
+            @include Define.padding($bottom: 16px)
+            border-bottom: 1px solid map-get(Define.$colors, 'natural-30')                
+
+        .caption 
+            @include Define.box($width: 58%)
+            @include Define.padding($left: 16px)        
+
+    &.card_xv_mobile
+        @include Define.media('screen', '>=sm')
+            display: none
+
+        .caption 
+            h4
+                @include Define.margin($top: 16px, $bottom: 20px)
             
     svg
         path
@@ -80,21 +142,45 @@
 
     a
         @include Define.margin($left: 16px)
-        
+        @include Define.padding($top: 15px, $bottom: 15px, $left: 37px, $right: 37px)
+
+        @include Define.media('screen', '<lg')
+            @include Define.padding($top: 15px, $bottom: 15px, $left: 15px, $right: 15px)
+            
+            span
+                display: none
+
+        @include Define.media('screen', '<md')
+            @include Define.padding($top: 9px, $bottom: 9px)
+
+
         svg
             @include Define.margin($bottom: -2px, $right: 7px)
+
+            @include Define.media('screen', '<lg')
+                @include Define.margin($right: 0)
 /* ------------------ End Card Style Class ------------------ */
 
 /* ------------------ ArticleTop ------------------ */
 #ArticleTop
     > h2
         @include Define.margin($bottom: 56px)
+
+        @include Define.media('screen', '<sm')
+            border-bottom: 1px solid map-get(Define.$colors, 'natural-30')
+            @include Define.margin($bottom: 24px)
+            @include Define.padding($bottom: 7px)
 /* ------------------ End ArticleTop ------------------ */
 
 /* ------------------ ListType ------------------ */
 #ListType1, #ListType2
     > h4
         @include Define.margin($bottom: 56px)
+
+        @include Define.media('screen', '<sm')
+            border-bottom: 1px solid map-get(Define.$colors, 'natural-30')
+            @include Define.margin($bottom: 24px)
+            @include Define.padding($bottom: 7px)
 
     .list 
         @include Define.margin($top: -20px, $bottom: -20px)
@@ -105,6 +191,9 @@
 
 /* ------------------ ArticleTop ------------------ */
 #Devider
+    @include Define.media('screen', '<sm')
+        display: none    
+
     &::after
         content: ''
         display: block
@@ -114,12 +203,16 @@
 
 /* ------------------ Breadcrumb ------------------ */
 #Breadcrumb
-    p, a
-        @include Define.inlineBlock()
-        max-width: 245px
+    > div
         overflow: hidden
         white-space: nowrap
         text-overflow: ellipsis
+        word-wrap: break-word
+        max-width: 410px
+
+        p, a
+            display: inline
+        
 /* ------------------ End Breadcrumb ------------------ */
 
 /* ------------------ Breadcrumb ------------------ */
@@ -131,6 +224,9 @@
         @include Define.inlineBlock($align: middle)
         @include Define.margin($left: 10px, $right: 10px)
 
+        @include Define.media('screen', '<md')
+            @include Define.margin($left: 6px, $right: 6px)
+
         a
             @include Define.box($width: 56px)
             @extend .align-center
@@ -138,13 +234,22 @@
             line-height: 50px
             border-radius: 50%
             border: 3px solid map-get(Define.$colors, 'green-60')
+
+            @include Define.media('screen', '<md')
+                @include Define.box($width: 32px)
+                line-height: 26px
             
         svg
             @include Define.margin($bottom: -2px)
+
+            @include Define.media('screen', '<md')
+                @include Define.margin($bottom: 0)
+                @include Define.box($height: 12px)
 /* ------------------ End Breadcrumb ------------------ */
 
 /* ------------------ Breadcrumb ------------------ */
 #Read
-    max-width: 1000px
-    @include Define.margin($left: auto, $right: auto)
+    > div
+        max-width: 1000px
+        @include Define.margin($left: auto, $right: auto)
 /* ------------------ End Breadcrumb ------------------ */
