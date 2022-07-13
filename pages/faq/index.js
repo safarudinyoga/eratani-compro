@@ -12,7 +12,7 @@ import Typograph from '/components/custom/Typograph'
 
 import NextVect from '/assets/vector/paginate-next.svg'
 
-export default function AboutUsPage() {
+export default function FaqPage() {
     const { locale } = useRouter()
     const pageTitle = {
         id: 'Pertanyaan',

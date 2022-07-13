@@ -2,7 +2,19 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Sections from '/components/sections/Blog'
 
-export default function AboutUsPage() {
+// export async function getServerSideProps(context) {
+//     try {
+//         const mapRes = await (await fetch(`https://compro-api.eratani.co.id/api/locations`)).json()
+//         if (!mapRes) return { notFound: true }
+
+//         return { props: { mapData: mapRes.data } }
+//     } catch (error) {
+//         return { props: { mapData: [] } }
+//     }    
+// }
+
+export default function BlogPage() {
+    
     const { locale } = useRouter()
     const pageTitle = {
         id: 'Blog',

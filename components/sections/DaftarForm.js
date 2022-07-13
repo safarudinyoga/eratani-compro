@@ -16,13 +16,13 @@ const FormLender = ({ perusahaan, email, alamat }) => {
     return (
         <div className='row'>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ perusahaan[locale] } model='2' />
+                <Input type='text' id='lender_perusahaan' name='lender_perusahaan' placeholder={ perusahaan[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ email[locale] } model='2' />
+                <Input type='text' id='lender_email' name='lender_email' placeholder={ email[locale] } model='2' />
             </div>
             <div className='col-xs-12'>
-                <Input type='text' placeholder={ alamat[locale] } model='2' />
+                <Input type='text' id='lender_alamat' name='lender_alamat' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )
@@ -33,22 +33,22 @@ const FormPembeliBeras = ({ perusahaan, nama, hp, jenis, kuantitas, alamat }) =>
     return (
         <div className='row'>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ perusahaan[locale] } model='2' />
+                <Input type='text' id='pembeli_perusahaan' name='pembeli_perusahaan' placeholder={ perusahaan[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ nama[locale] } model='2' />
+                <Input type='text' id='pembeli_nama' name='pembeli_nama' placeholder={ nama[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ hp[locale] } model='2' />
+                <Input type='text' id='pembeli_hp' name='pembeli_hp' placeholder={ hp[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ jenis[locale] } model='2' />
+                <Input type='text' id='pembeli_jenis' name='pembeli_jenis' placeholder={ jenis[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ kuantitas[locale] } model='2' />
+                <Input type='text' id='pembeli_kuantitas' name='pembeli_kuantitas' unit='Kg' placeholder={ kuantitas[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ alamat[locale] } model='2' />
+                <Input type='text' id='pembeli_alamat' name='pembeli_alamat' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )
@@ -59,16 +59,16 @@ const FormSupplierSaprotan = ({ perusahaan, email, jenis, alamat }) => {
     return (
         <div className='row'>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ perusahaan[locale] } model='2' />
+                <Input type='text' id='supplier_perusahaan' name='supplier_perusahaan' placeholder={ perusahaan[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ email[locale] } model='2' />
+                <Input type='text' id='supplier_email' name='supplier_email' placeholder={ email[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ jenis[locale] } model='2' />
+                <Input type='text' id='supplier_jenis' name='supplier_jenis' placeholder={ jenis[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ alamat[locale] } model='2' />
+                <Input type='text' id='supplier_alamat' name='supplier_alamat' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )
@@ -79,22 +79,22 @@ const FormPoktan = ({ nama, usia, hp, hasil, petani, alamat }) => {
     return (
         <div className='row'>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ nama[locale] } model='2' />
+                <Input type='text' id='poktan_nama' name='poktan_nama' placeholder={ nama[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ usia[locale] } model='2' />
+                <Input type='text' id='poktan_usia' name='poktan_usia' unit='Tahun' placeholder={ usia[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ hp[locale] } model='2' />
+                <Input type='text' id='poktan_hp' name='poktan_hp' placeholder={ hp[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ hasil[locale] } model='2' />
+                <Input type='text' id='poktan_hasil' name='poktan_hasil' placeholder={ hasil[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ petani[locale] } model='2' />
+                <Input type='text' id='poktan_petani' name='poktan_petani' unit='Orang' placeholder={ petani[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ alamat[locale] } model='2' />
+                <Input type='text' id='poktan_alamat' name='poktan_alamat' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )
@@ -105,22 +105,22 @@ const FormGapoktan = ({ nama, usia, hp, hasil, petani, alamat }) => {
     return (
         <div className='row'>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ nama[locale] } model='2' />
+                <Input type='text' id='gapoktan_nama' name='gapoktan_nama' placeholder={ nama[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ usia[locale] } model='2' />
+                <Input type='text' id='gapoktan_usia' name='gapoktan_usia' unit='Tahun' placeholder={ usia[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ hp[locale] } model='2' />
+                <Input type='text' id='gapoktan_hp' name='gapoktan_hp' placeholder={ hp[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ hasil[locale] } model='2' />
+                <Input type='text' id='gapoktan_hasil' name='gapoktan_hasil' placeholder={ hasil[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ petani[locale] } model='2' />
+                <Input type='text' id='gapoktan_petani' name='gapoktan_petani' unit='Orang' placeholder={ petani[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ alamat[locale] } model='2' />
+                <Input type='text' id='gapoktan_alamat' name='gapoktan_alamat' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )
@@ -131,19 +131,19 @@ const FormTokoTani = ({ nama, usia, hp, toko, alamat }) => {
     return (
         <div className='row'>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ nama[locale] } model='2' />
+                <Input type='text' id='tokotani_nama' name='tokotani_nama' placeholder={ nama[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ usia[locale] } model='2' />
+                <Input type='text' id='tokotani_usia' name='tokotani_usia' unit='Tahun' placeholder={ usia[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ hp[locale] } model='2' />
+                <Input type='text' id='tokotani_hp' name='tokotani_hp' placeholder={ hp[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ toko[locale] } model='2' />
+                <Input type='text' id='tokotani_toko' name='tokotani_toko' unit='m<sup>2</sup>' placeholder={ toko[locale] } model='2' />
             </div>
             <div className='col-xs-12'>
-                <Input type='text' placeholder={ alamat[locale] } model='2' />
+                <Input type='text' id='tokotani_alamat' name='tokotani_alamat' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )
@@ -154,19 +154,19 @@ const FormPetani = ({ nama, usia, hp, hasil, alamat }) => {
     return (
         <div className='row'>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ nama[locale] } model='2' />
+                <Input type='text' id='petani_nama' name='petani_nama' placeholder={ nama[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ usia[locale] } model='2' />
+                <Input type='text' id='petani_usia' name='petani_usia' unit='Tahun' placeholder={ usia[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ hp[locale] } model='2' />
+                <Input type='text' id='petani_hp' name='petani_hp' placeholder={ hp[locale] } model='2' />
             </div>
             <div className='col-xs-12 col-md-6'>
-                <Input type='text' placeholder={ hasil[locale] } model='2' />
+                <Input type='text' id='petani_hasil' name='petani_hasil' placeholder={ hasil[locale] } model='2' />
             </div>
             <div className='col-xs-12'>
-                <Input type='text' placeholder={ alamat[locale] } model='2' />
+                <Input type='text' id='petani_alamat' name='petani_alamat' placeholder={ alamat[locale] } model='2' />
             </div>
         </div>
     )

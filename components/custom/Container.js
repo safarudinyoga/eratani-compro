@@ -13,10 +13,20 @@ export default function Container (props) {
         if (props.paddingRight !== undefined) sectionProps.style.paddingRight = parseInt(props.paddingRight)
     }
     else sectionProps.className += 'container-padding '
-    sectionProps.className += 'container-max-width '
+
+    if (props.fullWidth === undefined){
+        sectionProps.className += 'container-max-width '
+    }
+
+    if (props.fullHeight !== undefined) {
+        sectionProps.className += 'container-full-height '
+    }
 
     if (props.paddingTop !== undefined) sectionProps.style.paddingTop = parseInt(props.paddingTop)
     if (props.paddingBottom !== undefined) sectionProps.style.paddingBottom = parseInt(props.paddingBottom)
+
+    if (props.marginTop !== undefined) sectionProps.style.marginTop = parseInt(props.marginTop)
+    if (props.marginBottom !== undefined) sectionProps.style.marginBottom = parseInt(props.marginBottom)
 
     if (props.anchor !== undefined) sectionProps.id = props.anchor
 
@@ -29,7 +39,11 @@ export default function Container (props) {
     delete newProps.paddingRight
     delete newProps.paddingTop
     delete newProps.paddingBottom
+    delete newProps.marginTop
+    delete newProps.marginBottom
     delete newProps.normalPadding
+    delete newProps.fullWidth
+    delete newProps.fullHeight
     delete newProps.backgroundColor
     delete newProps.anchor
 

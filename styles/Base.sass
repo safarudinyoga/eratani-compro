@@ -72,7 +72,14 @@ h1
 
 .container-max-width > div
     max-width: 1600px
+    width: 100%
     @include Define.margin($left: auto, $right: auto)
+
+.container-full-height 
+    flex: 1 0 100%
+    
+    > div
+        height: 100%
 
 .margin-auto
     @include Define.margin($left: auto, $right: auto)
