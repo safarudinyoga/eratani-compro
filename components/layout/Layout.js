@@ -4,10 +4,10 @@ import styles from './Layout.module.sass'
 
 export default function Layout ({ children }) {
     return (
-        <section className={ styles.pagescroll }>
+        <main className={ styles.pagescroll }>
             <Header />
-            <main>{ children }</main>
+            { children }
             <Footer />
-        </section>
+        </main>
     )
 }

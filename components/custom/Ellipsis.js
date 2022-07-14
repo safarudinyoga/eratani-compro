@@ -2,7 +2,7 @@ import React, { useEffect, useState, createRef } from 'react';
 
 export default function Ellipsis (props) {
     const divRef = createRef()
-    const [ text, setText ] = useState('')
+
     const calculateText = () => {
         const node =  divRef.current
         const span = node.getElementsByTagName('span')[0]
@@ -12,7 +12,6 @@ export default function Ellipsis (props) {
             while (span.clientHeight > node.clientHeight)
                 span.innerHTML = span.innerHTML.replace(/\W*\s(\S)*$/, '...')
         }
-        setText(span.innerHTML)
     }
 
     useEffect(() => {

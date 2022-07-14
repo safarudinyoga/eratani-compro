@@ -5,29 +5,74 @@
         @include Define.margin($top: 8px, $bottom: 64px)
 
     .accordion
-        max-width: 1134px
+        @include Define.box($width: calc(100% - 160px))
         @include Define.margin($left: auto, $right: auto)
+        max-width: 1132px
+
+        @include Define.media('screen', '<md')
+            @include Define.box($width: 100%)
 
     .filter
-        @include Define.margin($bottom: 56px)
+        @include Define.box($position: relative, $width: calc(100% - 160px))
+        @include Define.margin($bottom: 56px, $left: auto, $right: auto)
+        max-width: 1132px
+
+        @include Define.media('screen', '<sm')
+            @include Define.box($width: calc(100% - 86px))
 
         .filter_cat
-            @include Define.margin($left: 32px, $right: 32px)
-            max-width: 1134px
-            width: 100%
+            overflow: hidden
+            flex-wrap: nowrap
 
-            a
-                @include Define.box($width: 200px)
-                border: 1px solid map-get(Define.$colors, 'green-100')
-                border-radius: 8px
+            @include Define.media('screen', '<sm')
+                @include Define.margin($left: -4px, $right: -4px, $important: true)
+
+            div
+                @include Define.media('screen', '<sm')
+                    @include Define.padding($left: 4px, $right: 4px, $important: true)
+
+                a
+                    @include Define.padding($left: 12px, $right: 12px)
+                    @include Define.flex($justifyContent: center, $alignItems: center, $flexDirection: row)
+                    @include Define.box($height: 64px, $width: 100%)
+                    border: 1px solid map-get(Define.$colors, 'green-100')
+                    border-radius: 8px
+
+                    @include Define.media('screen', '<sm')
+                        @include Define.box($height: 48px)
 
         > a
-            @include Define.box($width: 48px)
+            @include Define.box($position: absolute, $width: 48px)
             @extend .align-center
             display: block
             line-height: 46px
             border-radius: 50%
             border: 1px solid map-get(Define.$colors, 'green-100')
+            transform: translateY(-50%)
+
+            &.arrow_left
+                @include Define.box($left: -80px, $top: 50%)
+
+            &.arrow_right
+                @include Define.box($right: -80px, $top: 50%)
+
+            svg
+                display: inline-block
+                @include Define.margin($bottom: -4px)
+
+            @include Define.media('screen', '<sm')
+                @include Define.box($width: 32px)
+                line-height: 30px
+
+                &.arrow_left
+                    @include Define.box($left: -42px, $top: 50%)
+
+                &.arrow_right
+                    @include Define.box($right: -42px, $top: 50%)
+
+                svg
+                    @include Define.margin($bottom: 0)
+                    @include Define.box($height: 12px)
 
         .active
             @extend .bg-green-60

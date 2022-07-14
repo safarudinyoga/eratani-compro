@@ -20,11 +20,11 @@
     text-rendering: optimizeLegibility !important
     -webkit-font-smoothing: antialiased !important
     -moz-osx-font-smoothing: antialiased !important
-    font-family: 'Poppins', sans-serif
-    @extend .text-green-100
     -webkit-appearance: none
     -moz-appearance: none
     appearance: none
+    font-family: 'Lato', sans-serif
+    @extend .text-green-100
 
 body,
 html
@@ -76,6 +76,17 @@ h1
     @include Define.media('screen', '>=lg')
         @include Define.padding($left: 72px, $right: 72px)
 
+.container-max-width > div
+    max-width: 1600px
+    width: 100%
+    @include Define.margin($left: auto, $right: auto)
+
+.container-full-height
+    flex: 1 0 100%
+
+    > div
+        height: 100%
+
 .margin-auto
     @include Define.margin($left: auto, $right: auto)
 
@@ -95,7 +106,7 @@ p.label
     transform: scaleX(-1)
 
 .flip-y
-    transform: scaleY(-1)    
+    transform: scaleY(-1)
 
 .disable-pointer-event
     pointer-events: none

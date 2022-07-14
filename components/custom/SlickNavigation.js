@@ -25,28 +25,21 @@ export default function SlickCustom (className, settings) {
             dotsClass: styles.slick_dots,
             customPaging: i => <a />,
             onInit: () => {
-                const node = document.querySelectorAll(`.${ className } .${ styles.slick_dots } a`)[0]
-                if (node) node.classList.add(styles.slick_active)
+                try {
+                    document.querySelectorAll(`.${ className } .${ styles.slick_dots } a`)[0].classList.add(styles.slick_active)
+                } catch (error) { }
             },
             beforeChange: (current, next) => {
+                if (settings.onBeforeChange !== undefined) settings.onBeforeChange(current, next)
 
-                let slidePerShow = (settings.slidesToShow !== undefined) ? settings.slidesToShow : 1
-
-                if (settings.responsive !== undefined && settings.responsive.length > 0) {
-                    for (let i = 0; i < settings.responsive.length; i++) {
-                        const element = settings.responsive[i];
-                        if (window.innerWidth < element.breakpoint) {
-                            slidePerShow = (element.settings.slidesToShow !== undefined) ? element.settings.slidesToShow : slidePerShow
-                            break
-                        }
-                    }
-                }
-
-                const nodes = document.querySelectorAll(`.${ className } .${ styles.slick_dots } a`)
-                if (nodes.length == 0) return
-                
-                nodes[current / slidePerShow].classList.remove(styles.slick_active)
-                nodes[next / slidePerShow].classList.add(styles.slick_active)
+                try {
+                    document.querySelectorAll(`.${ className } .${ styles.slick_dots } .${ styles.slick_active }`)[0].className = ''
+                } catch (error) { }
+                try {
+                    setTimeout(() => {
+                        document.querySelectorAll(`.${ className } .${ styles.slick_dots } .slick-active`)[0].children[0].classList.add(styles.slick_active)
+                    }, 20)
+                } catch (error) { }
             }
         }
     } 

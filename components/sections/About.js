@@ -1,10 +1,9 @@
-import Parse from 'html-react-parser'
-import React, { useEffect, useState, createRef } from 'react';
+import React, { useEffect, useState, createRef, useRef } from 'react';
 import { useRouter } from 'next/router'
-import Link from 'next/link' 
 import Slick from "react-slick";
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
+import SlickNavigationCustom from '../custom/SlickNavigation'
 
 import SetRatio from '../custom/SetRatio'
 import Typograph from '../custom/Typograph'
@@ -48,9 +47,9 @@ const VisiMisi = ({ visiTitle, misiTitle, visi, misi, slides }) => {
     }    
 
     return (
-        <Container id={ styles.VisiMisi }>
+        <Container id={ styles.VisiMisi } sectionClass={ styles.visimisiSection }>
             <div className='row no-margin'>
-                <div className='col-xs-12 col-md bg-green-70 align-center align-left-md'>
+                <div className='col-xs-12 col-md align-center align-left-md'>
                     <div className={ styles.visi }>
                         <Typograph tag='h2' color='green-10' size='sm-1 md-2-sm lg-3-lg'>{ visiTitle[locale] }</Typograph>
                         <Typograph tag='p' color='green-10' size='xsm-1 sm-1-sm md-3-lg'>{ visi[locale] }</Typograph>
@@ -74,7 +73,7 @@ const VisiMisi = ({ visiTitle, misiTitle, visi, misi, slides }) => {
                         )}
                     </Slick>
                 </SetRatio>
-                <div className='col-xs-12 col-md bg-green-100'>
+                <div className='col-xs-12 col-md'>
                     <div className={ styles.misi }>
                         <Typograph tag='h2' color='green-20' size='sm-1 md-2-sm md-3-md' weight='extrabold' align='center left-md'>{ misiTitle[locale] }</Typograph>
                         <ul>
@@ -95,7 +94,6 @@ const VisiMisi = ({ visiTitle, misiTitle, visi, misi, slides }) => {
 
 /* ------------------ Team ------------------ */
 const Team = ({ data }) => {
-    const { locale } = useRouter()
     const QuoteVect = (props) => {
         return (
             <svg width="140" height="118" viewBox="0 0 140 118" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -103,16 +101,45 @@ const Team = ({ data }) => {
             </svg>
         )
     }
+    const teamPosRef = createRef()
     const [ teamActive, setTeamActive ] = useState(0)
+    const [ lock, setLock ] = useState(0)
+    const quoteSliderRef = useRef()
+
+    const slickSettings = {
+        fade: true,
+        speed: 500,
+        autoplay: false,
+        arrows: false,
+        dots: true,
+        onBeforeChange: (current, next) => setTeamActive(next)
+    }
+    const teamQuoteSlickSetting = SlickNavigationCustom('__slickTeamQuote__', slickSettings)
+
+    useEffect(() => {
+        setLock(1)
+        const teamPos = teamPosRef.current
+
+        quoteSliderRef.current.slickGoTo(teamActive)
+
+        if (window.innerWidth >= 1024) {
+            const diff = window.innerWidth - 1357
+            if (diff < 0) gsap.to(teamPos, { x: teamActive / (data.length - 1) * diff, duration: 1, onComplete: () => setLock(0) })
+            else setLock(0)
+        } else {
+            gsap.set(teamPos, { minHeight: teamPos.clientHeight })
+            gsap.set(teamPos, { minHeight: 'auto', delay: 0.5, onComplete: () =>  setLock(0) })
+        }
+    }, [teamActive])
 
     return (
-        <Container id={ styles.Team } normalPadding paddingTop='128' paddingBottom='121'>
+        <Container id={ styles.Team } paddingTop='128' paddingBottom='121'>
             <Typograph tag='h4' color='green-70' size='sm-1 md-1-sm lg-1-md' align='center'>Tim Kami</Typograph>
             <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='636'>Segenap tim kami yang akan berusaha menyejahterakan petani Indonesia, kami adalah EraFamily (EraFam).</Typograph>
-            <div className='row'>
-                { data.map((team, index) => 
-                    <div key={ index } className='col-xs'>
-                        <div className={ `bg-${ team.bgColor } ${ styles.wrapper } ${ (teamActive == index) ? styles.isActive : '' }`  } onClick={ () => { setTeamActive(index) } } style={ { marginTop: team.top } } >
+            <div ref={ teamPosRef } className={ `row bottom-xs top-md no-margin ${ styles.container }` }>
+                { data.map((team, index) =>
+                    <div key={ index } className={ `${ styles.team } ${ (teamActive == index) ? styles.isActive : '' }` }>
+                        <div className={ `bg-${ team.bgColor } ${ styles.wrapper }`  } onClick={ () => { (!lock) && setTeamActive(index) } } style={ { marginTop: team.top } } >
                             <Typograph tag='h4' size='lg-3' color='green-10' line='34' align='center'>
                                 <span>{ team.name2 }</span>
                                 <span>{ team.name1 }</span>
@@ -124,8 +151,22 @@ const Team = ({ data }) => {
                             </div>
                             <Typograph tag='p' size='sm-2' color='green-10' align='justify' fontStyle='italic'>{ team.quote }</Typograph>
                         </div>
+                        <SetRatio ax='1' ay='2.67' className={ `bg-${ team.bgColor } ${ styles.wrapper } ${ styles.wrapper_mobile }`  } onClick={ () => { (!lock) && setTeamActive(index) } } >
+                            <img src={ `/team/${ team.photo }` } />
+                        </SetRatio>
                     </div>
-                )}
+                ) }
+            </div>
+            <div className={ styles.quote_mobile }>
+                <Slick ref={ quoteSliderRef } { ...teamQuoteSlickSetting } className='__slickTeamQuote__'>
+                    { data.map((team, index) =>
+                        <div className={ styles.slide } key={ index }>
+                            <Typograph tag='h4' size='sm-2 sm-1-sm'>{ team.name2 }</Typograph>
+                            <Typograph tag='h5' size='xsm-2 xsm-1-sm' weight='regular' color='green-60'>{ team.position }</Typograph>
+                            <Typograph tag='p' size='xsm-1 sm-2-sm' color='natural-60' align='justify'>{ team.quote }</Typograph>
+                        </div>
+                    ) }
+                </Slick>
             </div>
         </Container>
     )
@@ -173,12 +214,12 @@ const Culture = ({ title, caption, detail, data }) => {
                     <Typograph tag='h2' size='sm-1 lg-3-sm xlg-3-lg' color='green-10'>{ title[locale] }<span className='bg-green-10'></span></Typograph>
                     <Typograph tag='p' size='xsm-1 sm-1-sm md-3-lg' color='green-30'>{ caption[locale] }</Typograph>
                     <div className={ styles.detail }>
-                        <Typograph tag='a' href={ detail.url } size='xsm-1 sm-1-sm md-3-lg' color='green-10'>{ detail[locale] }<ArrowForwardVect /></Typograph>
+                        <Typograph tag='a' href={ detail.url } size='xsm-1 sm-1-sm md-3-lg' color='green-10'>{ detail[locale] }<ArrowForwardVect width='20' /></Typograph>
                     </div>
                 </div>
             </div>
             <div className={ `${ styles.detail } align-right` }>
-                <Typograph tag='a' href={ detail.url } size='xsm-1 sm-1-sm md-3-lg' color='green-10' className={ styles.detail }>{ detail[locale] }<ArrowForwardVect /></Typograph>
+                <Typograph tag='a' href={ detail.url } size='xsm-1 sm-1-sm md-3-lg' color='green-10' className={ styles.detail }>{ detail[locale] }<ArrowForwardVect width='16' /></Typograph>
             </div>
         </Container>
     )

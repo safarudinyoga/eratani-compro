@@ -1,12 +1,24 @@
 import Head from 'next/head'
 import Sections from '/components/sections/Home'
 
-export default function HomePage() {
+export async function getServerSideProps(context) {
+    try {
+        const mapRes = await (await fetch(`https://compro-api.eratani.co.id/api/locations`)).json()
+        if (!mapRes) return { notFound: true }
+
+        return { props: { mapData: mapRes.data } }
+    } catch (error) {
+        return { props: { mapData: [] } }
+    }    
+}
+
+export default function HomePage({ mapData }) {
+
     const heroContent = {
         background: 'IEP05860 1.jpg',
         hashtag: {
-            id: <>Selalu Ada<br />Untuk Petani</>,
-            en: <>Selalu Ada<br />Untuk Petani</>
+            id: 'Selalu Ada Untuk Petani',
+            en: 'Selalu Ada Untuk Petani'
         },
         caption: {
             id: 'Kemudahan bertani di dalam genggaman Anda. Semua kebutuhan petani dapat terpenuhi hanya dengan satu aplikasi. Ayo daftar sekarang dan rasakan manfaatnya!',
@@ -171,61 +183,61 @@ export default function HomePage() {
             {
                 prov: 'Aceh',
                 cities: [],
-                pos: { x: 146, y: 86},
+                pos: { x: 73, y: 86},
                 comingSoon: true
             },
             {
                 prov: 'Sumatera Utara',
                 cities: ['Medan'],
-                pos: { x: 191, y: 147},
+                pos: { x: 118, y: 147},
                 comingSoon: true
             },
             {
                 prov: 'Sumatera Barat',
                 cities: ['Padang'],
-                pos: { x: 226, y: 220},
+                pos: { x: 153, y: 220},
                 comingSoon: true
             },
             {
                 prov: 'Sumatera Selatan',
                 cities: [],
-                pos: { x: 314, y: 299},
+                pos: { x: 241, y: 299},
                 comingSoon: true
             },
             {
                 prov: 'Lampung',
                 cities: [],
-                pos: { x: 361, y: 345},
+                pos: { x: 288, y: 345},
                 comingSoon: true
             },
             {
                 prov: 'Sulawesi Selatan',
                 cities: [],
-                pos: { x: 786, y: 282},
+                pos: { x: 713, y: 282},
                 comingSoon: true
             },
             {
                 prov: 'Jawa Barat',
                 cities: ['Cirebon', 'Indramayu', 'Karawang', 'Majalengka', 'Sumedang'],
-                pos: { x: 439, y: 398},
+                pos: { x: 366, y: 398},
                 comingSoon: false
             },
             {
                 prov: 'Jawa Tengah',
                 cities: ['Klaten'],
-                pos: { x: 485, y: 409},
+                pos: { x: 412, y: 409},
                 comingSoon: false
             },
             {
                 prov: 'Daerah Istimewa Yogyakarta',
                 cities: ['Bantul', 'Kulon', 'Progo'],
-                pos: { x: 507, y: 436},
+                pos: { x: 434, y: 436},
                 comingSoon: false
             },
             {
                 prov: 'Jawa Timur',
                 cities: ['Ngawi', 'Jombang'],
-                pos: { x: 558, y: 422},
+                pos: { x: 485, y: 422},
                 comingSoon: false
             }
         ]

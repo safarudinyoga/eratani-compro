@@ -7,12 +7,23 @@
 /* ------------------ End About ------------------ */
 
 /* ------------------ VisiMisi ------------------ */
+.visimisiSection
+    @include Define.padding($left: 48px, $right: 48px)
+    background: linear-gradient(90deg, map-get(Define.$colors, 'green-70') 0%, map-get(Define.$colors, 'green-70') 50%, map-get(Define.$colors, 'green-100') 50%, map-get(Define.$colors, 'green-100') 100%)
+
+    @include Define.media('screen', '<md')
+        @include Define.padding($left: 0, $right: 0)
+        background: none
+
+
 #VisiMisi
+    // @include Define.padding($left: 48px, $right: 48px)
+
     > div
         @include Define.flex($alignItems: stretch)
 
     .slider
-        @include Define.box($width: 29%)
+        @include Define.box($width: 31%)
 
         @include Define.media('screen', '<md')
             display: none
@@ -29,14 +40,24 @@
         div
             height: 100%
 
+    .visi
+        @include Define.padding($right: 48px)
+
+        @include Define.media('screen', '<md')
+            background: map-get(Define.$colors, 'green-70')
+
+    .misi
+        @include Define.padding($left: 48px)
+
+        @include Define.media('screen', '<md')
+            background: map-get(Define.$colors, 'green-100')
+
     .visi, .misi
         @include Define.box($width: 100%, $height: 100%)
         @include Define.flex($justifyContent: center, $flexDirection: column)
-        @include Define.padding($left: 48px, $right: 48px)
 
         @include Define.media('screen', '<md')
             @include Define.padding($left: 32px, $right: 32px, $top: 32px, $bottom: 32px)
-
 
         @include Define.media('screen', '<sm')
             @include Define.padding($left: 16px, $right: 16px, $top: 32px, $bottom: 32px)
@@ -60,84 +81,142 @@
     transition: all 1s ease
 
 #Team
+    @include Define.padding($left: 16px, $right: 16px)
+
     > p
         @include Define.margin($top: 8px, $bottom: 80px)
 
-    > div
-        @include Define.margin($left: auto, $right: auto)
-        max-width: 1320px
+    .container
+        @include Define.margin($left: -4px, $right: -4px)
 
-    .wrapper
-        @include Define.box($position: relative, $width: 251px, $height: 498px)
-        @include Define.flex($justifyContent: flex-end, $flexDirection: column )
-        @include Define.padding($left: 35px, $right: 35px)
-        border-radius: 33px
-        box-shadow: 0px 0.830247px 1.66049px rgba(18, 18, 18, 0.3), 0px 1.66049px 4.98148px 1.66049px rgba(18, 18, 18, 0.15)
-        overflow: hidden
-        cursor: pointer
-        @extend .team-active-transition
+        @include Define.media('screen', '>=sm')
+            @include Define.margin($left: auto, $right: auto)
+            @include Define.box($width: 686px)
 
-        img
-            @include Define.box($position: absolute, $left: 6px, $bottom: 0)
-            @extend .team-active-transition
+        @include Define.media('screen', '>=md')
+            @include Define.margin($left: auto, $right: auto)
+            @include Define.box($width: 1320px)
 
-        h4 
-            @include Define.box($position: relative)
-            white-space: nowrap
-            @extend .team-active-transition
-            
-            span:first-child
-                @include Define.box($width: 181px)
-                @include Define.box($position: absolute, $left: 0, $bottom: 0)
-                opacity: 0
-                @extend .team-active-transition
+    .team
+        flex: 1 0 23.5%
+        @include Define.padding($left: 4px, $right: 4px)
+        transition: flex-basis 0.5s ease
 
-            span:last-child
-                @include Define.box($width: 181px)
-                @include Define.box($position: absolute, $left: 0, $bottom: 0)
-                opacity: 1
-                @extend .team-active-transition
+        @include Define.media('screen', '>=sm')
+            @include Define.padding($left: 12px, $right: 12px)
 
-        h5
-            white-space: nowrap
-            @include Define.box($width: 181px)
-            @include Define.margin($top: 16px, $bottom: 322px)
-            @extend .team-active-transition
+        @include Define.media('screen', '>=md')
+            flex: 1 0 275px
+            transition: flex-basis 1s ease
 
-        p
-            @include Define.box($position: absolute, $width: 225px, $left: 252px, $top: 177px)
-            @extend .team-active-transition
-
-        .quote
-            @include Define.box($position: absolute, $left: 332px, $bottom: 26px)
-            @extend .team-active-transition
-
-        &.isActive
-            @include Define.box($width: 471px)
+        .wrapper 
+            @include Define.box($position: relative, $height: 498px)
+            @include Define.flex($justifyContent: flex-end, $flexDirection: column )
+            @include Define.padding($left: 35px, $right: 35px)
+            border-radius: 33px
+            box-shadow: 0px 0.830247px 1.66049px rgba(18, 18, 18, 0.3), 0px 1.66049px 4.98148px 1.66049px rgba(18, 18, 18, 0.15)
+            overflow: hidden
+            cursor: pointer
 
             img
-                @include Define.box($left: 0)
+                @include Define.box($position: absolute, $bottom: 0)
 
-            h4
-                transform: translateY(-8px)
-                
-                span:first-child
-                    @include Define.box($width: 157px)
-                    opacity: 1
+            &.wrapper_mobile
+                @include Define.padding($left: 0, $right: 0)
+                border-radius: 12px
 
-                span:last-child
-                    @include Define.box($width: 157px)
-                    opacity: 0
+                @include Define.media('screen', '>=md')
+                    display: none
 
-            h5
-                @include Define.box($width: 157px)
-                transform: translateY(-16px)
-                
-            .quote
-                @include Define.box($left: 302px)
+                img
+                    @include Define.box($left: 50%, $width: 210%)
+                    transform: translateX(-39%)                    
 
-            p
-                @include Define.box($left: 222px)
+            &:not(.wrapper_mobile)
+                @extend .team-active-transition
+
+                @include Define.media('screen', '<md')
+                    display: none
+
+                img
+                    @include Define.box($left: 6px)
+                    @extend .team-active-transition
+
+                h4 
+                    @include Define.box($position: relative)
+                    white-space: nowrap
+                    @extend .team-active-transition
+                    
+                    span:first-child
+                        @include Define.box($width: 181px)
+                        @include Define.box($position: absolute, $left: 0, $bottom: 0)
+                        opacity: 0
+                        @extend .team-active-transition
+
+                    span:last-child
+                        @include Define.box($width: 181px)
+                        @include Define.box($position: absolute, $left: 0, $bottom: 0)
+                        opacity: 1
+                        @extend .team-active-transition
+
+                h5
+                    white-space: nowrap
+                    @include Define.box($width: 181px)
+                    @include Define.margin($top: 16px, $bottom: 322px)
+                    @extend .team-active-transition
+
+                p
+                    @include Define.box($position: absolute, $width: 225px, $left: 252px, $top: 177px)
+                    @extend .team-active-transition
+
+                .quote
+                    @include Define.box($position: absolute, $left: 332px, $bottom: 26px)
+                    @extend .team-active-transition
+
+        &.isActive
+            flex: 1 0 29.5%
+
+            @include Define.media('screen', '>=md')
+                flex: 1 0 calc(100% - 825px)
+
+            .wrapper
+                &:not(.wrapper_mobile)
+                    img
+                        @include Define.box($left: 0px)
+
+                    h4
+                        transform: translateY(-8px)
+                        
+                        span:first-child
+                            @include Define.box($width: 157px)
+                            opacity: 1
+
+                        span:last-child
+                            @include Define.box($width: 157px)
+                            opacity: 0
+
+                    h5
+                        @include Define.box($width: 157px)
+                        transform: translateY(-16px)
+                        
+                    .quote
+                        @include Define.box($left: 302px)
+
+                    p
+                        @include Define.box($left: 222px)
+
+    .quote_mobile
+        @include Define.margin($top: 16px)
+
+        @include Define.media('screen', '>=sm')
+            @include Define.margin($left: auto, $right: auto, $top: 32px)
+            @include Define.box($width: 670px)
+
+        @include Define.media('screen', '>=md')
+            display: none
+
+        p
+            @include Define.margin($top: 24px)
 /* ------------------ End Team ------------------ */
 
 /* ------------------ Fam ------------------ */
@@ -175,7 +254,10 @@
                         @include Define.margin($bottom: 8px)
 
     .detail svg
-            @include Define.margin($bottom: -3px, $left: 20px)
+        @include Define.margin($bottom: -3px, $left: 20px)
+
+        @include Define.media('screen', '<md')
+            @include Define.margin($left: 12px)
 
     > .detail
         @include Define.padding($top: 18px, $bottom: 24px)
