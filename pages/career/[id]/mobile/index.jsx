@@ -67,6 +67,7 @@ const CareerDetailMobileView = props => (
         </ul>
       </div>
     </div>
+    <button className={styles.register_now}>Daftar Sekarang</button>
   </>
 )
 

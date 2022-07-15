@@ -12,7 +12,7 @@ import Typograph from '/components/custom/Typograph'
 
 import NextVect from '/assets/vector/paginate-next.svg'
 
-export default function AboutUsPage() {
+export default function FaqPage() {
     const { locale } = useRouter()
     const pageTitle = {
         id: 'Pertanyaan',
@@ -147,27 +147,27 @@ export default function AboutUsPage() {
                 <title>Eratani - { pageTitle[locale] }</title>
             </Head>
 
-            <Container id={ styles.Faq } paddingTop='72' paddingBottom='156'>
-                <Typograph tag='h2' size='lg-1' color='green-70' align='center'>{ otherContent.title[locale] }</Typograph>
-                <Typograph tag='p' size='md-3' align='center'>{ otherContent.caption[locale] }</Typograph>
+            <Container id={ styles.Faq } normalPadding paddingTop='72' paddingBottom='156'>
+                <Typograph tag='h2' size='sm-1 md-1-sm lg-1-md' color='green-70' align='center'>{ otherContent.title[locale] }</Typograph>
+                <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center'>{ otherContent.caption[locale] }</Typograph>
             
-                <div className={ `row no-margin middle-xs center-xs ${ styles.filter }` }>
-                    <a href='#'><NextVect className='flip-x'/></a>
-                    <div className={ styles.filter_cat }>
-                        <div className='row no-margin between-xs'>
-                            { filterContent.map((f, index) => 
-                                <Typograph key={ index } tag='a' href='#' size='sm-2' weight='bold' line='62' align='center' onClick={ () => setFilter(f.name) } className={ (filter == f.name) ? styles.active : undefined }>{ f[locale] }</Typograph>
-                            ) }
-                        </div>
+                <div className={ `${ styles.filter }` }>
+                    <a href='#' className={ styles.arrow_left }><NextVect height='20' className='flip-x'/></a>
+                    <div className={ `row between-xs ${ styles.filter_cat }` }>
+                        { filterContent.map((f, index) => 
+                            <div className='col-xs-6 col-sm-4 col-md-3 col-lg' key={ index }>
+                                <Typograph tag='a' href='#' size='xsm-1 sm-2-md' weight='bold' align='center' onClick={ () => setFilter(f.name) } className={ (filter == f.name) ? styles.active : undefined }>{ f[locale] }</Typograph>
+                            </div>
+                        ) }
                     </div>
-                    <a href='#'><NextVect /></a>
+                    <a href='#' className={ styles.arrow_right }><NextVect height='20' /></a>
                 </div>
 
                 <div className={ styles.accordion }>
                     <Accordion toggleOther>
                         { faqData.umum.map((faq, index) => 
                             <li key={ index } title={ faq.q[locale] }>
-                                <Typograph tag='p' size='sm-2' line='26'>{ faq.a[locale] }</Typograph>
+                                <Typograph tag='p' size='xsm-2 sm-2-md' align='justify left-sm'>{ faq.a[locale] }</Typograph>
                             </li>
                         )}
                     </Accordion>

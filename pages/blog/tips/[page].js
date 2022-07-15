@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Sections from '/components/sections/Blog'
 
-export default function AboutUsPage() {
+export default function BlogPage() {
     const { query, locale } = useRouter()
     const { page } = query
     const totalPage = 3
@@ -18,8 +18,8 @@ export default function AboutUsPage() {
     }
     const otherContent = {
         otherTips: {
-            id: 'TIPS LAINNYA',
-            en: 'TIPS LAINNYA'
+            id: 'TIPS PERTANIAN',
+            en: 'TIPS PERTANIAN'
         },
         breadcrumb: {
             id: 'Tips',

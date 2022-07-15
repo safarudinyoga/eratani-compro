@@ -12,19 +12,37 @@
     box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
     transition: height .45s cubic-bezier(.4,0,.5,-0.5)
 
+    @include Define.media('screen', '<sm')
+        @include Define.padding($left: 16px, $right: 16px)
+
     .title
         @include Define.padding($top: 24px, $bottom: 24px)
+
+        @include Define.media('screen', '<sm')
+            @include Define.padding($top: 16px, $bottom: 16px)
+
+        h5
+            @include Define.box($width: calc(100% - 20px))
         
         svg
+            @include Define.margin($top: 8px)
             transition: all .45s ease
+
+            @include Define.media('screen', '<md')
+                @include Define.margin($top: 6px)
 
             path
                 @extend .fill-green-70
 
     .content
-        
         > div
             @include Define.padding($bottom: 24px)
+
+            @include Define.media('screen', '<sm')
+                @include Define.padding($right: 24px)
+
+            @include Define.media('screen', '<sm')
+                @include Define.padding($bottom: 16px)
 
     &.active
         svg

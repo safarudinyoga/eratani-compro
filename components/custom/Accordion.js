@@ -6,6 +6,7 @@ import KarrowDownVect from '/assets/vector/karrow-down.svg'
 
 const List = forwardRef((props, ref) => {
     const contentRef = createRef()
+    const titleRef = createRef()
     const [show, setShow] = useState(false)
     const [height, setHeight] = useState(0)
 
@@ -15,15 +16,24 @@ const List = forwardRef((props, ref) => {
         },
     }));
 
+    const setHeightCalc = () => {
+        setHeight((show) ? contentRef.current.children[0].clientHeight + titleRef.current.clientHeight : titleRef.current.clientHeight)
+    }
+
     useEffect(() => {
         if (show) props.onActive(props.aid)
-        setHeight((show) ? contentRef.current.children[0].clientHeight + 73 : 73)
+        setHeightCalc()
     }, [show])
+
+    useEffect(() => {
+        window.addEventListener('resize', setHeightCalc)
+        return _ => window.removeEventListener('resize', setHeightCalc)
+    }, [setHeightCalc])
 
     return (
         <li className={ `${ styles.accordion_list } bg-white ${ (show)? styles.active : undefined }` }  style={ { height: height } }>
-            <a href='#' className={ `row no-margin middle-xs between-xs ${ styles.title }` } onClick={ () => setShow(!show) }>
-                <Typograph tag='h5' size='sm-1' weight='extrabold' color='green-70'>{ props.title }</Typograph>
+            <a ref={ titleRef } href='#' className={ `row no-margin between-xs ${ styles.title }` } onClick={ () => setShow(!show) }>
+                <Typograph tag='h5' size='xsm-1 sm-1-md' weight='bold extrabold-sm' color='green-70'>{ props.title }</Typograph>
                 <KarrowDownVect />
             </a>
             <div ref={ contentRef } className={ styles.content }>

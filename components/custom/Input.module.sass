@@ -9,19 +9,63 @@
     @include Define.typograph($size: 18px, $lineHeight: 54px)
     @include Define.padding($left: 24px, $right: 24px)
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08)
+
+    @include Define.media('screen', '<md')
+        @include Define.typograph($size: 14px, $lineHeight: 46px)
     
     &::placeholder
         @extend .text-natural-40
+        opacity: 1
+
+.input_2_label
+    @include Define.box($position: relative)
+
+    &.input_2_w_unit input
+        @include Define.padding($right: 72px)
+
+        @include Define.media('screen', '<md')
+            @include Define.padding($right: 56px)
+
+    .placeholder
+        @include Define.box($position: absolute, $top: -3px, $left: 0)
+        @extend .font-semibold
+        @extend .font-sm-1
+        @extend .text-green-60
+        pointer-events: none
+        transition: all 0.4s ease
+
+        @include Define.media('screen', '<md')
+            @include Define.typograph($size: 16px, $lineHeight: 22.4px)
+
+    .unit
+        @include Define.box($position: absolute, $top: -2px, $right: 0, $width: 60px)
+        @extend .font-xsm-1
+        @extend .text-green-60
+        opacity: 0
+        pointer-events: none
+        transition: opacity 0.4s ease
+
+        @include Define.media('screen', '<md')
+            @include Define.box($top: 1px, $width: 48px)
+            @include Define.typograph($size: 12px)
+
+    input:focus + .placeholder, input:not(:placeholder-shown) + .placeholder
+        @include Define.box($top: -26px)
+        @include Define.typograph($size: 11px, $weight: 'regular')
+
+        @include Define.media('screen', '<md')
+            @include Define.box($top: -22px)
+
+    input:focus + .placeholder + .unit, input:not(:placeholder-shown) + .placeholder + .unit
         opacity: 1
     
 .input_2
     @include Define.box($width: 100%)
     background: transparent
     border-bottom: 2px solid map-get(Define.$colors, 'green-60')
-    @include Define.padding($bottom: 10px)
+    @include Define.padding($bottom: 11px)
     @extend .font-semibold
     @extend .font-sm-1
 
-    &::placeholder
-        @extend .text-green-60
-        opacity: 1
+    @include Define.media('screen', '<md')
+        @include Define.typograph($size: 16px, $lineHeight: 22.4px)

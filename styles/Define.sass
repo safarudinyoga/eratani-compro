@@ -30,7 +30,7 @@ $textAligns: ("left": left, "right": right, "center": center, "justify": justify
 
 $fontWeights: ("thin": 100, "light": 300, "regular": 400, "medium": 500, "semibold": 600, "bold": 700, "extrabold": 800, "black": 900)
 
-$fontSizes: ("xsm-3": 10, "xsm-2": 12, "xsm-1": 14, "sm-2": 16, "sm-1": 18, "md-3": 20, "md-2": 24, "md-1": 26, "lg-3": 32, "lg-2": 36, "lg-1": 38, "xlg-3": 42, "xlg-2": 48, "xlg-1": 60)
+$fontSizes: ("xsm-3": 10, "xsm-2": 12, "xsm-1": 14, "sm-2": 16, "sm-1": 18, "md-3": 20, "md-2": 24, "md-1": 26, "lg-3": 32, "lg-2": 36, "lg-1": 38, "xlg-3": 42, "xlg-2": 48, "xlg-1": 60, "ulg-1": 80)
 
 $breakpoints: ('sm': 48em, 'md': 64em, 'lg': 75em) !default
 
@@ -301,25 +301,33 @@ $unit-intervals: ('px': 1, 'em': 0.01, 'rem': 0.1) !default
     background-position: $position
     background-repeat: $repeat
 
-@mixin padding($top: false, $bottom: false, $left: false, $right: false)
-    @if $left != false
-        padding-left: $left
-    @if $right != false
-        padding-right: $right
-    @if $top != false
-        padding-top: $top
-    @if $bottom != false
-        padding-bottom: $bottom
+@mixin padding($top: false, $bottom: false, $left: false, $right: false, $important: false)
+    $r: null
+    @if $important == true
+        $r: !important
 
-@mixin margin($top: false, $bottom: false, $left: false, $right: false)
     @if $left != false
-        margin-left: $left
+        padding-left: $left $r
     @if $right != false
-        margin-right: $right
+        padding-right: $right $r
     @if $top != false
-        margin-top: $top
+        padding-top: $top $r
     @if $bottom != false
-        margin-bottom: $bottom
+        padding-bottom: $bottom $r
+
+@mixin margin($top: false, $bottom: false, $left: false, $right: false, $important: false)
+    $r: null
+    @if $important == true
+        $r: !important
+
+    @if $left != false
+        margin-left: $left $r
+    @if $right != false
+        margin-right: $right $r
+    @if $top != false
+        margin-top: $top $r
+    @if $bottom != false
+        margin-bottom: $bottom $r
 
 @mixin typograph($size: false, $weight: false, $lineHeight: false, $letterSpacing: false)
     @if $size != false

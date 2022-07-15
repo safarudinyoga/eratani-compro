@@ -2,33 +2,42 @@
 
 .title
     @include Define.margin($bottom: 16px)
+
+    @include Define.media('screen', '<sm')
+        @include Define.margin($bottom: 8px)
     
 .cover
     @include Define.margin($top: 56px, $bottom: 56px)
+    object-fit: cover
+    object-position: center center
+    min-height: 240px
+
+    @include Define.media('screen', '<sm')
+        @include Define.margin($top: 0, $bottom: 24px)
 
 .article
     @include Define.margin($top: -12px, $bottom: -12px)
 
+    @include Define.media('screen', '<sm')
+        @include Define.margin($top: 20px)
+
     p
         @include Define.padding($top: 12px, $bottom: 12px)
         @extend .font-sm-1
+
+        @include Define.media('screen', '<md')
+            @include Define.typograph($size: 14px, $lineHeight: 19.6px)
 
 .buttonRef
     @include Define.margin($top: 80px)
     
 .share
     @include Define.margin($top: 80px)
+    max-width: 340px
 
-    &, *
-        @include Define.inlineBlock($align: middle)
+    @include Define.media('screen', '<sm')
+        max-width: none
 
     a
         @include Define.margin($left: 20px)
-
-        &:first-child
-            @include Define.margin($left: 34px)
-
-        svg
-            @include Define.margin($top: -6px)
-        
     

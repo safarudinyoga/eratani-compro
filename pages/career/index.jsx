@@ -120,7 +120,8 @@ const Career = props => {
               <ImportExport />
             </div>
           </div>
-          <div className={ `row no-margin middle-xs center-xs ${ styles.filter }` }>
+          {/* !nitip masbur */}
+          {/* <div className={ `row no-margin middle-xs center-xs ${ styles.filter }` }>
             <a href='#'><NextVect className='flip-x'/></a>
             <div className={ styles.filter_cat }>
               <div className='row no-margin between-xs'>
@@ -130,7 +131,7 @@ const Career = props => {
               </div>
             </div>
             <a href='#'><NextVect /></a>
-          </div>
+          </div> */}
         </>
       )}
       <div className={styles.wrapper_box_career}>

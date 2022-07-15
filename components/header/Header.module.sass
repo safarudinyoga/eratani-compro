@@ -80,8 +80,15 @@
         a:not(:last-child)
             @include Define.margin($right: 20px)
 
+            @include Define.media('screen', '<lg')
+                @include Define.margin($right: 15px)
+
         a:not(:first-child)
             @include Define.margin($left: 20px)
+
+            @include Define.media('screen', '<lg')
+                @include Define.margin($left: 15px)
+
 
     .svg_on_hover path
         @extend .header-hover-transition
