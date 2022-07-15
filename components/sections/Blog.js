@@ -25,7 +25,7 @@ const Heading = ({ title, caption, search }) => {
         <Container id={ styles.Heading } normalPadding paddingTop='81' paddingBottom='20'>
             <div className='row bottom-xs'>
                 <div className='col-xs-12 col-md-6 align-center align-left-md'>
-                    <Typograph tag='h3' size='sm-1 md-1-sm lg-3-md' color='green-70' style={{ fontWeight: 700 }} >{ title[locale] }</Typograph>
+                    <Typograph tag='h3' size='sm-1 md-1-sm lg-3-md' color='green-70'>{ title[locale] }</Typograph>
                     <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md'>{ caption[locale] }</Typograph>
                 </div>
                 <div className='col-xs-12 col-md-6'>

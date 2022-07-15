@@ -87,5 +87,5 @@ export default function BlogPage() {
             <Sections.ListType2 title={ otherContent.otherArticle } path='article' { ...{ data: articleData } } />
             <div style={{ display: 'block', height: 60 }} />
         </>
-    ) 
+    )
 }
