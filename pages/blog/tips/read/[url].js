@@ -14,7 +14,7 @@ export async function getServerSideProps({ params }) {
 
         return { props: { s_blogData: blogRes.data || {}, s_tipsData: tipsRes.data || [] } }
     } catch (error) {
-        return { notFound: true }
+        return { props: { s_blogData: {}, s_tipsData: [] } }
     }    
 }
 
@@ -38,8 +38,8 @@ export default function BlogPage({ s_blogData, s_tipsData }) {
     //     photo: 'unsplash_QFmNQXLPbZc.jpg'
     // }
     const pageTitle = {
-        id: `Blog | ${ blogData.title }`,
-        en: `Blog | ${ blogData.title }`
+        id: `Blog | ${ blogData.title || 'Not Found' }`,
+        en: `Blog | ${ blogData.title || 'Not Found' }`
     }
     const otherContent = {
         otherTips: {
@@ -115,7 +115,7 @@ export default function BlogPage({ s_blogData, s_tipsData }) {
             url: `/blog/tips/1`
         },
         {
-            name: blogData.title,
+            name: blogData.title || '-',
             url: `/blog/tips/read/${ url }`
         }
     ]

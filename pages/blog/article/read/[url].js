@@ -14,7 +14,7 @@ export async function getServerSideProps({ params }) {
 
         return { props: { s_blogData: blogRes.data || {}, s_articleData: articleRes.data || [] } }
     } catch (error) {
-        return { notFound: true }
+        return { props: { s_blogData: {}, s_articleData: [] } }
     }    
 }
 
