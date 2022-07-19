@@ -1,4 +1,3 @@
-// import React from 'react'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
@@ -7,17 +6,50 @@ import styles from './event.module.sass'
 
 // utils
 
-const CardAgenda = ({ id }) => (
+export async function getServerSideProps(context) {
+  try {
+    const eventResponse = await (await fetch('https://compro-api.eratani.co.id/api/events')).json()
+
+    return {
+      props: {
+        eventData: eventResponse.data || []
+      }
+    }
+  } catch (error) {
+    return {
+      props: {
+        eventData: []
+      }
+    }
+  }
+}
+
+const CardAgenda = ({ id, data }) => (
   <div className={`col-xs-12 col-md-6 col-lg-4`}>
     <div className={styles.card}>
-      <img src='https://statik.tempo.co/data/2020/11/25/id_983211/983211_720.jpg' className={styles.img} alt='alt' />
+      <div className={styles.date_wrap}>
+        <h3 className={styles.date_dd}>{data.event_start_day}</h3>
+        <h5 className={styles.date_mm_yyyy}>{`${data.event_start_month} ${data.event_start_year}`}</h5>
+      </div>
+      <div className={styles.image_wrap}>
+        <img
+          src={data.event_image}
+          className={styles.img}
+          alt='alt'
+          onError={({ currentTarget }) => {
+            currentTarget.onerror = null // prevents looping
+            currentTarget.src =
+              '/dummy.png'
+          }}
+        />
+      </div>
       <div className={styles.card_desc}>
-        <h5 className='bold left-align c-green-60' style={{ marginBottom: '15px' }}>Panen Raya Cantigi</h5>
-        <h6 className={styles.desc}>Panen Raya adalah acara tahunan yang dilaksanakan oleh petani - petani di seluruh daerah seperti halnya di Kecamatan Cantigi, Indramayu, Jawa Barat ini. Acara ini akan dihadiri oleh Menteri Pertanian Republik Indonesia Bapak Syahrul Yasin Limpo ...</h6>
+        <h5 className='bold left-align c-green-60' style={{ marginBottom: '15px' }}>{data.event_title}</h5>
+        <h6 className={styles.desc}>{data.event_article}</h6>
       </div>
       <div className={styles.divider} />
       <div className={styles.place}>
-        <div>
+        <div style={{ maxWidth: '50%' }}>
           <h4 className={styles.place_title}>Kecamatan Cantigi</h4>
           <h4 className={styles.place_desc}>Indramayu, Jawa Barat</h4>
         </div>
@@ -29,17 +61,33 @@ const CardAgenda = ({ id }) => (
   </div>
 )
 
-const Agenda = props => {
+const Agenda = ({ eventData }) => {
+  const date = new Date
+
+  const remapData = eventData.map(res => ({
+    ...res,
+    event_image: res.event_image || '/dummy.png',
+    event_article: res.event_article
+      .split('</p>')[0]
+      .replace(/(<([^>]+)>)/gi, " ")
+      .replace('&nbsp;', " ")
+      .trim()
+      .replace(/\s+/g, " "),
+    event_start_day: new Date(res.event_start).toLocaleDateString('default', { day: 'numeric' }),
+    event_start_month: new Date(res.event_start).toLocaleDateString('default', { month: 'long' }),
+    event_start_year: new Date(res.event_start).toLocaleDateString('default', { year: 'numeric' })
+  }))
+
   return (
     <section className={styles.event}>
-      <h3 className='bold center-align c-green-70' style={{ marginBottom: '15px' }}>Akan Datang</h3>
+      <h3 className={styles.title_page} style={{ marginBottom: '15px' }}>Akan Datang</h3>
       <h4 className={styles.sub_title}>Ayo ikuti kegiatan Eratani dengan mendaftar pada kegiatan-kegiatan dibawah ini.</h4>
       <div className={`row ${styles.wrapper_event}`}>
-        {[1,2,3,4,5,6].map((res, i) =>
-          <CardAgenda key={i} id={i} />
+        {remapData.map((data, i) =>
+          <CardAgenda key={i} id={i} data={data} />
         )}
       </div>
-      <button className={styles.button_more}>Lihat Lebih Banyak</button>
+      <button className={styles.button_more} style={{ display: eventData.length > 6 ? 'block' : 'none' }}>Lihat Lebih Banyak</button>
     </section>
   )
 }

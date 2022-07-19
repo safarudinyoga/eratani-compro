@@ -7,6 +7,11 @@
   margin: 0 auto
   +Flex(column, center, center)
 
+  .title_page
+    @include typograph($size: 38px, $weight: "bold")
+    color: Define.$green_70
+    text-align: center
+
   .sub_title
     width: 45vw
     font-size: 1.4em
@@ -29,11 +34,37 @@
       border-radius: 24px
       overflow: hidden
       margin: 0 auto 55px
+      position: relative
+
+      .date_wrap
+        width: 70px
+        height: 70px
+        background-color: Define.$green_60
+        border-radius: 20px
+        position: absolute
+        top: 28px
+        left: 28px
+        +Flex(column, center, center)
+
+        .date_dd
+          @include typograph($size: 20px, $weight: "extrabold", $lineHeight: 28px, $letterSpacing: 0.02em)
+          color: Define.$green_10
+          text-align: center
+
+        .date_mm_yyyy
+          @include typograph($size: 10px, $weight: "regular", $lineHeight: 17px)
+          color: Define.$green_10
+          text-align: center
+
+      .image_wrap
+        min-height: 285px
+        +Flex(row, center, center)
 
       .img
-        min-width: 100%
-        height: 33vh
+        width: 100%
+        min-height: 100%
         object-fit: cover
+        object-position: center center
 
       .card_desc
         padding: 32px 24px 35px
@@ -116,6 +147,20 @@
         max-width: 350px
         margin: 0 auto 30px
 
+        .date_wrap
+          width: 40px
+          height: 40px
+          border-radius: 8px
+          position: absolute
+          top: 24px
+          left: 24px
+
+          .date_dd
+            @include typograph($size: 16px, $weight: "bold", $lineHeight: 20px, $letterSpacing: 0.02em)
+
+          .date_mm_yyyy
+            @include typograph($size: 7px, $weight: "regular", $lineHeight: 10px)
+
     .button_more
       padding: 6px 12px
       font-size: 0.8em
@@ -139,6 +184,20 @@
         width: 100%
         border-radius: 16px
         box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
+
+        .date_wrap
+          width: 40px
+          height: 40px
+          border-radius: 8px
+          position: absolute
+          top: 24px
+          left: 24px
+
+          .date_dd
+            @include typograph($size: 16px, $weight: "bold", $lineHeight: 20px, $letterSpacing: 0.02em)
+
+          .date_mm_yyyy
+            @include typograph($size: 7px, $weight: "regular", $lineHeight: 10px)
 
     .button_more
       padding: 6px 12px

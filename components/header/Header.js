@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter } from "next/router";
 import gsap from 'gsap'
 
@@ -19,8 +19,16 @@ export default function Header () {
         { id: 'Agenda',              en: 'Agenda',                      link: 'event' },
         { id: 'Pertanyaan',          en: 'FAQ',                         link: 'faq' },
         { id: 'Karir',               en: 'Career',                      link: 'career' } ]
-    const { pathname, locale } = useRouter()
+    const { pathname, locale, events: routerEvent } = useRouter()
     const dropdownRef = useRef()
+    const mobileMenuTogglerRef = useRef()
+
+    useEffect(() => {
+        const handleRouteChange = url => setTimeout(() => mobileMenuTogglerRef.current.checked = false, 500)
+
+        routerEvent.on('routeChangeStart', handleRouteChange)
+        return _ => routerEvent.off('routeChangeStart', handleRouteChange)
+    }, [])
 
     return (
         <>
@@ -64,7 +72,7 @@ export default function Header () {
                 </div>
             </header>
             <header id={ styles.Header_Mobile }>
-                <input type='checkbox' name='menu-toggler' className={ styles.menu_toggler } />
+                <input type='checkbox' ref={ mobileMenuTogglerRef } name='menu-toggler' className={ styles.menu_toggler } />
                 <div className={ `container-padding bg-green-60 ${ styles.toggle }` }>
                     <div className={ `row middle-xs between-xs no-margin ${ styles.menu_bar }` }>
                         <LogoVect height='20' />

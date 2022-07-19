@@ -9,11 +9,27 @@ import Filter from '../../assets/vector/filter.svg'
 import Star from '../../assets/vector/star_outline.svg'
 import Place from '../../assets/vector/place.svg'
 import styles from './career.module.sass'
-import Typograph from '/components/custom/Typograph'
-import NextVect from '/assets/vector/paginate-next.svg'
 
 // utils
 import useWindowDimensions from 'hooks/useWindowDimensions'
+
+export async function getServerSideProps(context) {
+  try {
+    const eventResponse = await (await fetch('https://compro-api.eratani.co.id/api/jobs')).json()
+
+    return {
+      props: {
+        careerData: eventResponse.data || []
+      }
+    }
+  } catch (error) {
+    return {
+      props: {
+        careerData: []
+      }
+    }
+  }
+}
 
 const CardCareer = ({ id, deviceWidth }) => (
   <div className={`col-xs-12 col-sm-6 col-md-6 col-lg-4 ${styles.reset_box}`}>
@@ -30,7 +46,7 @@ const CardCareer = ({ id, deviceWidth }) => (
           <h4 className={styles.desc}>Mid Level</h4>
         </div>
         <div>
-          <h4 className={`${styles.title} center-align`}>Job Level</h4>
+          <h4 className={`${styles.title} center-align`}>Tipe</h4>
           <h4 className={`${styles.desc} center-align`}>Mid Level</h4>
         </div>
         <div>
@@ -60,9 +76,9 @@ const CardCareer = ({ id, deviceWidth }) => (
   </div>
 )
 
-const Career = props => {
+const Career = ({ careerData }) => {
   const { locale } = useRouter()
-  const [filter, setFilter] = useState('semua')
+  const [ filter, setFilter ] = useState('semua')
 
   const filterContent = [
     {
@@ -103,7 +119,7 @@ const Career = props => {
     <section className={styles.career} id={ styles.Career }>
       {deviceWidth === 'small' ?
         <h4 className={styles.title_career}>Karir</h4> :
-        <h3 className='bold center-align c-green-70'>Bergabung Menjadi EraFam</h3>
+        <h3 className={styles.title_career}>Bergabung Menjadi EraFam</h3>
       }
       <h4 className={styles.sub_title}>Ayo bergabung bersama kami mewujudkan ekosistem yang sehat dari hulu sampai hilir untuk pertanian Indonesia.</h4>
       {deviceWidth !== 'small' && (

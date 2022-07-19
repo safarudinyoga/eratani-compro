@@ -170,6 +170,18 @@ export default function HomePage({ mapData }) {
             }
         ]
     }
+    const mapProvincePosition = {
+        'Aceh': { x: 73, y: 86 },
+        'Sumatera Utara': { x: 118, y: 147 },
+        'Sumatera Barat': { x: 153, y: 220 },
+        'Sumatera Selatan': { x: 241, y: 299 },
+        'Lampung': { x: 288, y: 345 },
+        'Sulawesi Selatan': { x: 713, y: 282 },
+        'Jawa Barat': { x: 366, y: 398 },
+        'Jawa Tengah': { x: 412, y: 409 },
+        'Daerah Istimewa Yogyakarta': { x: 434, y: 436 },
+        'Jawa Timur': { x: 485, y: 422 }
+    }
     const mapsContent = {
         title: {
             id: <>Kami Mendukung Pertumbuhan dan<br />Digitalisasi Pertanian Seluruh Indonesia</>,
@@ -179,69 +191,79 @@ export default function HomePage({ mapData }) {
             id: 'Program Eratani sudah tersebar di beberapa wilayah di Indonesia dan akan terus menjalar ke seluruh Indonesia.',
             en: 'Program Eratani sudah tersebar di beberapa wilayah di Indonesia dan akan terus menjalar ke seluruh Indonesia.'
         },
-        data: [
-            {
-                prov: 'Aceh',
-                cities: [],
-                pos: { x: 73, y: 86},
-                comingSoon: true
-            },
-            {
-                prov: 'Sumatera Utara',
-                cities: ['Medan'],
-                pos: { x: 118, y: 147},
-                comingSoon: true
-            },
-            {
-                prov: 'Sumatera Barat',
-                cities: ['Padang'],
-                pos: { x: 153, y: 220},
-                comingSoon: true
-            },
-            {
-                prov: 'Sumatera Selatan',
-                cities: [],
-                pos: { x: 241, y: 299},
-                comingSoon: true
-            },
-            {
-                prov: 'Lampung',
-                cities: [],
-                pos: { x: 288, y: 345},
-                comingSoon: true
-            },
-            {
-                prov: 'Sulawesi Selatan',
-                cities: [],
-                pos: { x: 713, y: 282},
-                comingSoon: true
-            },
-            {
-                prov: 'Jawa Barat',
-                cities: ['Cirebon', 'Indramayu', 'Karawang', 'Majalengka', 'Sumedang'],
-                pos: { x: 366, y: 398},
-                comingSoon: false
-            },
-            {
-                prov: 'Jawa Tengah',
-                cities: ['Klaten'],
-                pos: { x: 412, y: 409},
-                comingSoon: false
-            },
-            {
-                prov: 'Daerah Istimewa Yogyakarta',
-                cities: ['Bantul', 'Kulon', 'Progo'],
-                pos: { x: 434, y: 436},
-                comingSoon: false
-            },
-            {
-                prov: 'Jawa Timur',
-                cities: ['Ngawi', 'Jombang'],
-                pos: { x: 485, y: 422},
-                comingSoon: false
+        data: mapData.locations.map.map(prov => {
+            return {
+                prov: prov.province,
+                cities: prov.cities.map(city => city.nama.replace(/^(kabupaten|kota|kab)[\.\s]*/gi, "")),
+                pos: (mapProvincePosition[prov.province] === undefined) ? { x: 0, y: 0 } : mapProvincePosition[prov.province],
+                comingSoon: prov.coming_soon
             }
-        ]
+        })
+        // data: [
+        //     {
+        //         id: 11,
+        //         prov: 'Aceh',
+        //         cities: [],
+        //         pos: { x: 73, y: 86},
+        //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Sumatera Utara',
+        //         cities: ['Medan'],
+        //         pos: { x: 118, y: 147},
+        //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Sumatera Barat',
+        //         cities: ['Padang'],
+        //         pos: { x: 153, y: 220},
+        //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Sumatera Selatan',
+        //         cities: [],
+        //         pos: { x: 241, y: 299},
+        //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Lampung',
+        //         cities: [],
+        //         pos: { x: 288, y: 345},
+        //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Sulawesi Selatan',
+        //         cities: [],
+        //         pos: { x: 713, y: 282},
+        //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Jawa Barat',
+        //         cities: ['Cirebon', 'Indramayu', 'Karawang', 'Majalengka', 'Sumedang'],
+        //         pos: { x: 366, y: 398},
+        //         comingSoon: false
+        //     },
+        //     {
+        //         prov: 'Jawa Tengah',
+        //         cities: ['Klaten'],
+        //         pos: { x: 412, y: 409},
+        //         comingSoon: false
+        //     },
+        //     {
+        //         prov: 'Daerah Istimewa Yogyakarta',
+        //         cities: ['Bantul', 'Kulon', 'Progo'],
+        //         pos: { x: 434, y: 436},
+        //         comingSoon: false
+        //     },
+        //     {
+        //         prov: 'Jawa Timur',
+        //         cities: ['Ngawi', 'Jombang'],
+        //         pos: { x: 485, y: 422},
+        //         comingSoon: false
+        //     }
+        // ]
     }
+
     const mediaContent = {
         mitraTitle: {
             id: 'Mitra Kami',
