@@ -1,4 +1,4 @@
-import Link from 'next/link' 
+import Link from 'next/link'
 import { useRouter } from "next/router";
 import styles from './Footer.module.sass'
 
@@ -15,20 +15,22 @@ export default function Footer () {
     const companyNav = [
         { id: 'TENTANG KAMI',        en: 'ABOUT',                   link: 'about' },
         { id: 'BLOG',                en: 'BLOG',                    link: 'blog' },
-        { id: 'AGENDA',              en: 'AGENDA',                  link: 'event' },
+        { id: 'AGENDA',              en: 'EVENT',                   link: 'event' },
         { id: 'PERTANYAAN',          en: 'FAQ',                     link: 'faq' },
-        { id: 'KARIR',               en: 'CAREER',                  link: 'career' } ]
+        { id: 'KARIR',               en: 'CAREER',                  link: 'career' }
+    ]
     const joinNav = [
-        { id: 'PETANI',             en: 'PETANI',                   link: '#' },
-        { id: 'TOKO TANI',          en: 'TOKO TANI',                link: '#' },
-        { id: 'GAPOKTAN',           en: 'GAPOKTAN',                 link: '#' },
-        { id: 'POKTAN',             en: 'POKTAN',                   link: '#' },
-        { id: 'SUPPLIER',           en: 'SUPPLIER',                 link: '#' },
-        { id: 'BUYER',              en: 'BUYER',                    link: '#' } ]
+        { id: 'PETANI',             en: 'PETANI',                                   link: '#' },
+        { id: 'TOKO TANI',          en: 'AGRICULTURAL SUPPLY STORE',                link: '#' },
+        { id: 'GAPOKTAN',           en: 'ASSOCIATION OF FARMER GROUPS (GAPOKTAN)',  link: '#' },
+        { id: 'POKTAN',             en: 'FARMER GROUP (POKTAN)',                    link: '#' },
+        { id: 'SUPPLIER',           en: 'SUPPLIER',                                 link: '#' },
+        { id: 'BUYER',              en: 'BUYER',                                    link: '#' }
+    ]
     const otherContent = {
         officeTitle: {
             id: 'KANTOR PUSAT',
-            en: 'KANTOR PUSAT',
+            en: 'HEADQUARTERS',
         },
         emailTitle: {
             id: 'EMAIL',
@@ -36,19 +38,19 @@ export default function Footer () {
         },
         telephoneTitle: {
             id: 'TELEPON',
-            en: 'TELEPON',
+            en: 'PHONE',
         },
         companyTitle: {
             id: 'PERUSAHAAN',
-            en: 'PERUSAHAAN',
+            en: 'COMPANY',
         },
         joinTitle: {
             id: 'GABUNG',
-            en: 'GABUNG',
+            en: 'JOIN US',
         },
         medsosTitle: {
             id: 'MEDIA SOSIAL',
-            en: 'MEDIA SOSIAL',
+            en: 'SOCIAL MEDIA',
         }
     }
 
@@ -74,10 +76,10 @@ export default function Footer () {
                     <div className='col-xs-6 col-sm-4 col-md-2'>{ footerSub(otherContent.companyTitle[locale], companyNav.map((nav, index) => <Typograph key={ index } tag='a' href={ `/${ nav.link }` } size='xsm-2 sm-2-sm' line='20'>{ nav[locale] }</Typograph>) ) }</div>
                     <div className='col-xs-6 col-sm-4 col-md-2'>{ footerSub(otherContent.joinTitle[locale], joinNav.map((nav, index) => <Typograph key={ index } tag='a' href={ `/${ nav.link }` } size='xsm-2 sm-2-sm' line='20'>{ nav[locale] }</Typograph>) ) }</div>
                     <div className='col-xs-8 col-sm-4 col-md-3 col-lg-2'>{ footerSub(otherContent.medsosTitle[locale], <div className={ `row middle-xs between-xs no-margin ${ styles.social }`  }>
-                            <a href='#' className='col-xs'><InstagramVect /></a>
-                            <a href='#' className='col-xs'><LinkedInVect /></a>
-                            <a href='#' className='col-xs'><YoutubeVect /></a>
-                            <a href='#' className='col-xs'><FacebookVect /></a>
+                            <a href='https://www.instagram.com/erataniindonesia/' target="_blank" className='col-xs' rel="noreferrer"><InstagramVect /></a>
+                            <a href='https://www.linkedin.com/company/eratani/' target="_blank" className='col-xs' rel="noreferrer"><LinkedInVect /></a>
+                            <a href='https://www.youtube.com/channel/UCJVSBg8OVokZooGalKhLUHQ' target="_blank" className='col-xs' rel="noreferrer"><YoutubeVect /></a>
+                            <a href='https://www.facebook.com/profile.php?id=100077791967452' target="_blank" className='col-xs' rel="noreferrer"><FacebookVect /></a>
                         </div>) }
                     </div>
                 </div>

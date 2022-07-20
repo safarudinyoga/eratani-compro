@@ -13,19 +13,19 @@ export async function getServerSideProps(context) {
         return { props: { s_articleData: articleRes.data || [], s_tipsData: tipsRes.data || [] } }
     } catch (error) {
         return { props: { s_articleData: [], s_tipsData: [] } }
-    }    
+    }
 }
 
 export default function BlogPage({ s_articleData, s_tipsData }) {
-    
+
     const { locale } = useRouter()
     const pageTitle = {
         id: 'Blog',
-        en: 'Blog'   
+        en: 'Blog'
     }
     const searchContent = {
         placeholder: {
-            id: 'Search Blog post ...',
+            id: 'Cari Blog ...',
             en: 'Search Blog post ...'
         },
         button: {
@@ -36,11 +36,11 @@ export default function BlogPage({ s_articleData, s_tipsData }) {
     const headingContent = {
         title: {
             id: 'Sekilas Info tentang Eratani dan Pertanian',
-            en: 'Sekilas Info tentang Eratani dan Pertanian',
+            en: 'A Glimpse about Eratani and Agriculture',
         },
         caption: {
             id: 'Simak artikel terbaru dan berbagai keseruan Eratani dalam membangun ekosistem pertanian yang kuat.',
-            en: 'Simak artikel terbaru dan berbagai keseruan Eratani dalam membangun ekosistem pertanian yang kuat.',
+            en: 'Check out our newest articles and join all the fun with Eratani in building our agricultural ecosystem.',
         },
         search: searchContent
     }
@@ -51,7 +51,7 @@ export default function BlogPage({ s_articleData, s_tipsData }) {
         },
         loadMoreArticle: {
             id: 'Lihat Artikel Lainnya',
-            en: 'Lihat Artikel Lainnya'
+            en: 'See more Articles'
         },
         tipsTitle: {
             id: 'TIPS PERTANTAN',
@@ -59,7 +59,7 @@ export default function BlogPage({ s_articleData, s_tipsData }) {
         },
         loadMoreTips: {
             id: 'Lihat Tips Lainnya',
-            en: 'Lihat Tips Lainnya'
+            en: 'See more Tips'
         },
     }
     const monthString = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
@@ -209,5 +209,5 @@ export default function BlogPage({ s_articleData, s_tipsData }) {
             <Sections.LoadMore href='/blog/tips/1'>{ otherContent.loadMoreTips[locale] }</Sections.LoadMore>
             <div style={{ display: 'block', height: 68 }} />
         </>
-    ) 
+    )
 }

@@ -32,20 +32,12 @@ const CareerDetail = ({ careerDetail }) => {
 
   const remapData = {
     ...careerDetail,
-    job_requirements: careerDetail.job_requirements.split('</p>')[0]
-      .replace(/(<([^>]+)>)/gi, " ")
-      .replace('&nbsp;', " ")
-      .trim()
-      .replace(/\s+/g, " "),
-    job_benefits: careerDetail.job_benefits.split('</p>')[0]
-      .replace(/(<([^>]+)>)/gi, " ")
-      .replace('&nbsp;', " ")
-      .trim()
-      .replace(/\s+/g, " "),
     job_day: new Date(careerDetail.job_application_deadline).toLocaleDateString('default', { day: 'numeric' }),
     job_month: new Date(careerDetail.job_application_deadline).toLocaleDateString('default', { month: 'long' }),
     job_year: new Date(careerDetail.job_application_deadline).toLocaleDateString('default', { year: 'numeric' })
   }
+
+  console.log(remapData);
 
   return (
     <div className={styles.container_careerdetail}>

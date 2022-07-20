@@ -468,12 +468,12 @@ const Testimoni = ({ title, caption, data }) => {
                         <div className={ styles.slick_slide } key={ index }>
                             <div className='row middle-xs no-margin bg-green-10'>
                                 <SetRatio ax='1.46' ay='1' min='230' max='400' className={ styles.photo }>
-                                    <img src={ `/testimoni/${ testimoni.photo }` } width='100%' className='image-cover' />
+                                    <img src={ `/testimoni/${ testimoni[locale].photo }` } width='100%' className='image-cover' />
                                 </SetRatio>
                                 <div className={ `col-xs-12 col-md align-left ${ styles.caption }` }>
-                                    <Typograph tag='h5' size='sm-2 md-2-sm md-1-lg'>{ testimoni.name }</Typograph>
-                                    <Typograph tag='h6' size='xsm-3 xsm-1-sm' weight='light medium-md'>{ testimoni.type }, { testimoni.dom }</Typograph>
-                                    <Typograph tag='p' size='xsm-1 sm-1-sm md-3-lg'>{ testimoni.testi }</Typograph>
+                                    <Typograph tag='h5' size='sm-2 md-2-sm md-1-lg'>{ testimoni[locale].name }</Typograph>
+                                    <Typograph tag='h6' size='xsm-3 xsm-1-sm' weight='light medium-md'>{ testimoni[locale].type }, { testimoni[locale].domisili }</Typograph>
+                                    <Typograph tag='p' size='xsm-1 sm-1-sm md-3-lg'>{ testimoni[locale].testi }</Typograph>
                                 </div>
                             </div>
                         </div>

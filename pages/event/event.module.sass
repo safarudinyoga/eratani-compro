@@ -4,7 +4,7 @@
 .event
   padding: 72px 100px 100px
   background: transparent
-  margin: 0 auto
+  margin: 0
   +Flex(column, center, center)
 
   .title_page
@@ -25,6 +25,7 @@
   .wrapper_event
     margin: 0 auto 25px
     +Flex(row, flex-start, flex-start, wrap)
+    width: 100%
 
     .card
       width: 95%
@@ -57,13 +58,13 @@
           text-align: center
 
       .image_wrap
-        min-height: 285px
+        height: 285px
         +Flex(row, center, center)
 
       .img
         width: 100%
         min-height: 100%
-        object-fit: cover
+        object-fit: contain
         object-position: center center
 
       .card_desc

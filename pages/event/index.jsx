@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 
 // components & styles
@@ -24,7 +26,26 @@ export async function getServerSideProps(context) {
   }
 }
 
-const CardAgenda = ({ id, data }) => (
+const content = {
+  title: {
+    en: 'Coming Next',
+    id: 'Akan Datang'
+  },
+  desc: {
+    en: 'Let’s participate in Eratani’s events by registering for these upcoming activities.',
+    id: 'Mari berpartisipasi pada kegiatan Eratani dengan mendaftar pada kegiatan-kegiatan di bawah ini.'
+  },
+  button: {
+    en: 'See Details',
+    id: 'Lihat Detil'
+  },
+  pagination: {
+    en: 'See More',
+    id: 'Lihat Lebih Banyak'
+  }
+}
+
+const CardAgenda = ({ data, locale }) => (
   <div className={`col-xs-12 col-md-6 col-lg-4`}>
     <div className={styles.card}>
       <div className={styles.date_wrap}>
@@ -44,17 +65,17 @@ const CardAgenda = ({ id, data }) => (
         />
       </div>
       <div className={styles.card_desc}>
-        <h5 className='bold left-align c-green-60' style={{ marginBottom: '15px' }}>{data.event_title}</h5>
-        <h6 className={styles.desc}>{data.event_article}</h6>
+        <h5 className='bold left-align c-green-60' style={{ marginBottom: '15px' }}>{data.event_title || ''}</h5>
+        <h6 className={styles.desc}>{data.event_article || ''}</h6>
       </div>
       <div className={styles.divider} />
       <div className={styles.place}>
         <div style={{ maxWidth: '50%' }}>
-          <h4 className={styles.place_title}>Kecamatan Cantigi</h4>
-          <h4 className={styles.place_desc}>Indramayu, Jawa Barat</h4>
+          <h4 className={styles.place_title}>{data.event_location_title || ''}</h4>
+          <h4 className={styles.place_desc}>{data.event_location_subtitle || ''}</h4>
         </div>
         <Link href={`/event/${data.event_url}`}>
-          <button className={styles.button_detail}>Lihat Detail</button>
+          <button className={styles.button_detail}>{content.button[locale]}</button>
         </Link>
       </div>
     </div>
@@ -62,9 +83,10 @@ const CardAgenda = ({ id, data }) => (
 )
 
 const Agenda = ({ eventData }) => {
-  const date = new Date
+  const { locale } = useRouter()
 
-  const remapData = eventData.map(res => ({
+  const [ expand, setExpand ] = useState(1)
+  const [ data, setData ] = useState(eventData.map(res => ({
     ...res,
     event_image: res.event_image || '/dummy.png',
     event_article: res.event_article
@@ -76,18 +98,35 @@ const Agenda = ({ eventData }) => {
     event_start_day: new Date(res.event_start).toLocaleDateString('default', { day: 'numeric' }),
     event_start_month: new Date(res.event_start).toLocaleDateString('default', { month: 'long' }),
     event_start_year: new Date(res.event_start).toLocaleDateString('default', { year: 'numeric' })
-  }))
+  })).slice(0, 6))
+
+  const handleExpand = (expandedCount) => {
+    setExpand(expandedCount)
+    setData(eventData.map(res => ({
+      ...res,
+      event_image: res.event_image || '/dummy.png',
+      event_article: res.event_article
+        .split('</p>')[0]
+        .replace(/(<([^>]+)>)/gi, " ")
+        .replace('&nbsp;', " ")
+        .trim()
+        .replace(/\s+/g, " "),
+      event_start_day: new Date(res.event_start).toLocaleDateString('default', { day: 'numeric' }),
+      event_start_month: new Date(res.event_start).toLocaleDateString('default', { month: 'long' }),
+      event_start_year: new Date(res.event_start).toLocaleDateString('default', { year: 'numeric' })
+    })).slice(0, expandedCount))
+  }
 
   return (
     <section className={styles.event}>
-      <h3 className={styles.title_page} style={{ marginBottom: '15px' }}>Akan Datang</h3>
-      <h4 className={styles.sub_title}>Ayo ikuti kegiatan Eratani dengan mendaftar pada kegiatan-kegiatan dibawah ini.</h4>
+      <h3 className={styles.title_page} style={{ marginBottom: '15px' }}>{content.title[locale]}</h3>
+      <h4 className={styles.sub_title}>{content.desc[locale]}</h4>
       <div className={`row ${styles.wrapper_event}`}>
-        {remapData.map((data, i) =>
-          <CardAgenda key={i} id={i} data={data} />
+        {data.map((data, i) =>
+          <CardAgenda key={i} data={data} locale={locale} />
         )}
       </div>
-      <button className={styles.button_more} style={{ display: eventData.length > 6 ? 'block' : 'none' }}>Lihat Lebih Banyak</button>
+      <button className={styles.button_more} style={{ display: eventData.length > 6 && eventData.length > (expand * 6) ? 'block' : 'none' }} onClick={() => handleExpand((expand+1) * 6)}>{content.pagination[locale]}</button>
     </section>
   )
 }

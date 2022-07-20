@@ -47,38 +47,19 @@ const CareerDetailWebview = ({ router, data }) => (
           <h3 className={`${styles.wrapper_content_career_second_title}`}>
             Requirements:
           </h3>
-          {data.job_requirements}
-          {/* <ul>
-            <li>Minimum 2 years of hands-on experience in designing, developing, testing, and deploying front end applications in React JS.</li>
-            <li>Ability to work with clean code and good design practice.</li>
-            <li>Understand Typescript, Next JS, Tailwind, Redux persist, and Native Js.</li>
-            <li>Understand cloud service and version control systems like Git.</li>
-            <li>Understand the latest UI/UX trend is considered an added value.</li>
-            <li>Ability to generate a user interface aligned with the UI/UX design.</li>
-          </ul> */}
+          <div dangerouslySetInnerHTML={{ __html: data.job_requirements }}></div>
         </div>
         <div>
           <h3 className={`${styles.wrapper_content_career_second_title}`}>
             Responsibilities:
           </h3>
-          {/* <ul>
-            <li>Design and develop the frontend using React JS as the framework.</li>
-            <li>Be responsible for the overall delivery and the solution architecture of the feature your team will be working on.</li>
-            <li>Show initiatives and ownership of the product.</li>
-            <li>Provide mentorship and learn from other experiences and mistakes.</li>
-            <li>Be responsible for the growth and happiness of your team members.</li>
-          </ul> */}
+          <div dangerouslySetInnerHTML={{ __html: data.job_responsibilities }}></div>
         </div>
         <div>
           <h3 className={`${styles.wrapper_content_career_second_title}`}>
             Benefit:
           </h3>
-          {data.job_benefits}
-          {/* <ul>
-            <li>BPJS</li>
-            <li>Assurance</li>
-            <li>Bonus</li>
-          </ul> */}
+          <div dangerouslySetInnerHTML={{ __html: data.job_benefits }}></div>
         </div>
       </div>
     </div>

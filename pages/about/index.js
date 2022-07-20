@@ -6,12 +6,12 @@ export default function AboutUsPage() {
     const { locale } = useRouter()
     const pageTitle = {
         id: 'Tentang Kami',
-        en: 'About Us'   
+        en: 'About Us'
     }
     const aboutContent = {
         title: {
             id: 'Tentang Kami',
-            en: 'Tentang Kami',
+            en: 'About Us',
         },
         description: {
             id: <>
@@ -74,7 +74,10 @@ export default function AboutUsPage() {
             name1: <>Andrew<br />Soeherman</>,
             name2: 'Andrew Soeherman',
             position: 'Chief Executive Officer',
-            quote: '“Dengan semangat Ora et Labora, harapan saya Eratani dapat merangkul bukan hanya 100 atau 1.000 petani tapi seluruh petani di Indonesia agar para pahlawan pangan kita dapat menjalani kehidupan yang lebih sejahtera.”',
+            quote: {
+                en: '“Dengan semangat Ora et Labora, harapan saya Eratani dapat merangkul bukan hanya 100 atau 1.000 petani tapi seluruh petani di Indonesia agar para pahlawan pangan kita dapat menjalani kehidupan yang lebih sejahtera.”',
+                id: '“With the spirit of Ora et Labora, I hope Eratani can embrace not only 100 or 1000 farmers, but all farmers in Indonesia so that our agricultural heroes will be able to live a prosperous life.”',
+            },
             photo: 'DSCF8724.png',
             quoteSymColor: 'green-70',
             bgColor: 'green-60',
@@ -84,7 +87,10 @@ export default function AboutUsPage() {
             name1: 'Kevin Juan',
             name2: 'Kevin Juan',
             position: 'Chief Operating Officer',
-            quote: '“Kami ingin Eratani memberikan ‘impact’ nyata kepada petani serta dapat menunjukkan kepada calon petani genarasi muda bahwa bertani itu merupakan bisnis yang canggih, berprospek, dan juga menghasilkan.”',
+            quote: {
+                en: '“Kami ingin Eratani memberikan ‘impact’ nyata kepada petani serta dapat menunjukkan kepada calon petani genarasi muda bahwa bertani itu merupakan bisnis yang canggih, berprospek, dan juga menghasilkan.”',
+                id: 'We want Eratani to give real ‘impact’ to the farmers as well as to show future farmers of the young generation that farming is a high-technology, prospective, and productive business.”',
+            },
             photo: 'DSCF8734.png',
             quoteSymColor: 'green-50',
             bgColor: 'green-40',
@@ -94,7 +100,10 @@ export default function AboutUsPage() {
             name1: 'Angles Gani',
             name2: 'Angles Gani',
             position: 'Chief Plantation Officer',
-            quote: '“When life blesses you financially, don’t raise your standard of living but raise your standard of giving. Salah satu kesamaan antara saya dan visi Eratani adalah sama-sama ingin berdampak bagi sekitar, dalam konteks ini menyejahterakan petani.”',
+            quote: {
+                en: '“When life blesses you financially, don’t raise your standard of living but raise your standard of giving. Salah satu kesamaan antara saya dan visi Eratani adalah sama-sama ingin berdampak bagi sekitar, dalam konteks ini menyejahterakan petani.”',
+                id: '“When life blesses you financially, don’t raise your standard of living but raise your standard of giving. One of the similarities between Eratani’s vision and mine is that we both want to bring an impact to our surroundings, in this case, by prospering the farmers’ lives.”',
+            },
             photo: 'DSCF8748 (1).png',
             quoteSymColor: 'green-100',
             bgColor: 'green-90',
@@ -104,12 +113,15 @@ export default function AboutUsPage() {
             name1: 'Grace Astari',
             name2: 'Grace Astari',
             position: 'Chief Business Officer',
-            quote: '“Sebagai pemimpin di Eratani, kami datang dengan sebuah pemikiran yang sama yaitu menjadi bagian dari solusi pada ekosistem pertanian. Kami percaya dalam menjalankan bisnis yang diimbangi dengan memberikan dampak sosial dapat membuat kita bertahan dan berkesinambungan dalam jangka panjang.”',
+            quote: {
+                en: '“Sebagai pemimpin di Eratani, kami datang dengan sebuah pemikiran yang sama yaitu menjadi bagian dari solusi pada ekosistem pertanian. Kami percaya dalam menjalankan bisnis yang diimbangi dengan memberikan dampak sosial dapat membuat kita bertahan dan berkesinambungan dalam jangka panjang.”',
+                id: '“As a leader in EraTani, we grow with one mindset: being a part of the solution for the agritech value chain. We believe that doing business, along with amplifying social impacts to our partners will make all of us more sustainable in the long run.”',
+            },
             photo: '4 10.png',
             quoteSymColor: 'green-40',
             bgColor: 'green-50',
             top: 24
-        }
+        },
     ]
     const culutreContent = {
         title: {
@@ -188,7 +200,7 @@ export default function AboutUsPage() {
         lowongan: {
             id: 'Cek Lowongan Di Sini',
             en: 'Cek Lowongan Di Sini',
-            url: '#'
+            url: '/career'
         }
     }
 
@@ -203,5 +215,5 @@ export default function AboutUsPage() {
             <Sections.Culture { ...culutreContent } />
             <Sections.JoinFam { ...joinFamContent } />
         </>
-    ) 
+    )
 }

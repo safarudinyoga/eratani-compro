@@ -36,7 +36,7 @@ const VisiMisi = ({ visiTitle, misiTitle, visi, misi, slides }) => {
         autoplay: true,
         autoplaySpeed: 2500,
         cssEase: 'ease-out',
-        arrows: false, 
+        arrows: false,
         dots: false,
         accessibility: false,
         draggable: false,
@@ -44,7 +44,7 @@ const VisiMisi = ({ visiTitle, misiTitle, visi, misi, slides }) => {
         pauseOnHover: false,
         swipe: false,
         touchMove: false
-    }    
+    }
 
     return (
         <Container id={ styles.VisiMisi } sectionClass={ styles.visimisiSection }>
@@ -77,7 +77,7 @@ const VisiMisi = ({ visiTitle, misiTitle, visi, misi, slides }) => {
                     <div className={ styles.misi }>
                         <Typograph tag='h2' color='green-20' size='sm-1 md-2-sm md-3-md' weight='extrabold' align='center left-md'>{ misiTitle[locale] }</Typograph>
                         <ul>
-                            { misi.map((misi, index) => 
+                            { misi.map((misi, index) =>
                                 <li key={ index }>
                                     <Typograph tag='p' color='green-20' size='sm-1 md-2-lg' weight='bold'>{ index + 1 }</Typograph>
                                     <Typograph tag='p' color='green-20' size='xsm-1 sm-2-lg'>{ misi[locale] }</Typograph>
@@ -94,6 +94,8 @@ const VisiMisi = ({ visiTitle, misiTitle, visi, misi, slides }) => {
 
 /* ------------------ Team ------------------ */
 const Team = ({ data }) => {
+    const { locale } = useRouter()
+
     const QuoteVect = (props) => {
         return (
             <svg width="140" height="118" viewBox="0 0 140 118" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -149,7 +151,7 @@ const Team = ({ data }) => {
                             <div className={ styles.quote }>
                                 <QuoteVect fill={ team.quoteSymColor } />
                             </div>
-                            <Typograph tag='p' size='sm-2' color='green-10' align='justify' fontStyle='italic'>{ team.quote }</Typograph>
+                            <Typograph tag='p' size='sm-2' color='green-10' align='justify' fontStyle='italic'>{ team.quote[locale] }</Typograph>
                         </div>
                         <SetRatio ax='1' ay='2.67' className={ `bg-${ team.bgColor } ${ styles.wrapper } ${ styles.wrapper_mobile }`  } onClick={ () => { (!lock) && setTeamActive(index) } } >
                             <img src={ `/team/${ team.photo }` } />
@@ -163,7 +165,7 @@ const Team = ({ data }) => {
                         <div className={ styles.slide } key={ index }>
                             <Typograph tag='h4' size='sm-2 sm-1-sm'>{ team.name2 }</Typograph>
                             <Typograph tag='h5' size='xsm-2 xsm-1-sm' weight='regular' color='green-60'>{ team.position }</Typograph>
-                            <Typograph tag='p' size='xsm-1 sm-2-sm' color='natural-60' align='justify'>{ team.quote }</Typograph>
+                            <Typograph tag='p' size='xsm-1 sm-2-sm' color='natural-60' align='justify'>{ team.quote[locale] }</Typograph>
                         </div>
                     ) }
                 </Slick>

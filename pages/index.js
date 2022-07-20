@@ -9,7 +9,7 @@ export async function getServerSideProps(context) {
         return { props: { mapData: mapRes.data } }
     } catch (error) {
         return { props: { mapData: [] } }
-    }    
+    }
 }
 
 export default function HomePage({ mapData }) {
@@ -22,29 +22,29 @@ export default function HomePage({ mapData }) {
         },
         caption: {
             id: 'Kemudahan bertani di dalam genggaman Anda. Semua kebutuhan petani dapat terpenuhi hanya dengan satu aplikasi. Ayo daftar sekarang dan rasakan manfaatnya!',
-            en: 'Kemudahan bertani di dalam genggaman Anda. Semua kebutuhan petani dapat terpenuhi hanya dengan satu aplikasi. Ayo daftar sekarang dan rasakan manfaatnya!'
+            en: 'The ease of farming at the palm of your hands. Every needs of the farmers can be met in just one application. Register now and get all the benefits!'
         },
         download: {
             id: 'Unduh Aplikasi Eratani',
-            en: 'Unduh Aplikasi Eratani',
+            en: 'Download Eratani Mobile Application',
             url: '#'
         }
     }
     const ecosystemContent = {
         title: {
             id: <>Menuju Ekosistem yang<br />Lebih Kuat Bersama Eratani</>,
-            en: <>Menuju Ekosistem yang<br />Lebih Kuat Bersama Eratani</>
+            en: <>Towards A Greater<br />Ecosystem with Eratani</>
         },
         data: [
             {
                 no: '01',
                 title: {
-                    id: 'Memiliki 1.000+ Petani Binaan',
-                    en: 'Memiliki 1.000+ Petani Binaan',
+                    id: 'Memiliki 5.000+ Petani Binaan',
+                    en: '+5000 Trained Farmers',
                 },
                 description: {
                     id: 'Sejak berdiri 1 tahun lalu, Eratani telah membantu lebih dari 5.000 petani dengan memberikan kemudahan akses modal dan membuka akses pasar untuk mendapatkan harga terbaik pada penjualan komoditas petani.',
-                    en: 'Sejak berdiri 1 tahun lalu, Eratani telah membantu lebih dari 5.000 petani dengan memberikan kemudahan akses modal dan membuka akses pasar untuk mendapatkan harga terbaik pada penjualan komoditas petani.',
+                    en: 'In its one year of existence, Eratani has helped more than 5000 farmers by providing easy access to capitals and open markets to provide the best prices for farming commodities.',
                 },
                 photo: 'DSC04813 1.jpg'
             },
@@ -52,12 +52,12 @@ export default function HomePage({ mapData }) {
                 no: '02',
                 title: {
                     id: 'Lebih dari 20 Miliar Pendanaan Tersalurkan',
-                    en: 'Lebih dari 20 Miliar Pendanaan Tersalurkan',
+                    en: 'More Than 20B Funds Distributed',
                 },
                 description: {
                     id: 'Eratani telah menyalurkan lebih dari 20 Miliar pendanaan untuk petani binaan. Angka ini mengalami peningkatan 100% dari sebelumnya yang membuktikan bahwa Eratani semakin dipercaya untuk menjadi bagian dari ekosistem pertanian di Indonesia.',
-                    en: 'Eratani telah menyalurkan lebih dari 20 Miliar pendanaan untuk petani binaan. Angka ini mengalami peningkatan 100% dari sebelumnya yang membuktikan bahwa Eratani semakin dipercaya untuk menjadi bagian dari ekosistem pertanian di Indonesia.',
-                }, 
+                    en: 'Eratani has distributed more than 20B funds for its farmers. The number has increased by 100%, which signifies that Eratani has gained more trust to be a part of the Indonesian agriculture ecosystem.',
+                },
                 photo: 'DSC04798 1.jpg'
             },
             {
@@ -68,7 +68,7 @@ export default function HomePage({ mapData }) {
                 },
                 description: {
                     id: 'Bukan hanya memberikan akses permodalan kepada petani, Eratani juga membantu para petani binaan untuk meningkatkan pendapatan yang didukung dengan pemberian edukasi dan saprotan yang berkualitas tinggi.',
-                    en: 'Bukan hanya memberikan akses permodalan kepada petani, Eratani juga membantu para petani binaan untuk meningkatkan pendapatan yang didukung dengan pemberian edukasi dan saprotan yang berkualitas tinggi.',
+                    en: 'Eratani helps its farmers increase their incomes through financial support and the provision of high-quality supplies.',
                 },
                 photo: 'Eratanijogja-106 1.jpg'
             },
@@ -80,23 +80,23 @@ export default function HomePage({ mapData }) {
                 },
                 description: {
                     id: 'Luas lahan binaan Eratani kini telah mencapai lebih dari 5.000 Ha yang tersebar di pulau Jawa. Eratani akan terus memperluas cakupan lahan binaan hingga ke seluruh Indonesia.',
-                    en: 'Luas lahan binaan Eratani kini telah mencapai lebih dari 5.000 Ha yang tersebar di pulau Jawa. Eratani akan terus memperluas cakupan lahan binaan hingga ke seluruh Indonesia.',
+                    en: 'Eratani helps its farmers increase their incomes through financial support and the provision of high-quality supplies.',
                 },
                 photo: 'Eratanijogja-18 2.jpg'
             },
             {
                 no: '05',
                 title: {
-                    id: 'Memiliki 1.000+ Petani Binaan',
+                    id: 'Produktivitas Petani Meningkat Lebih dari 20%',
                     en: 'Memiliki 1.000+ Petani Binaan',
                 },
                 description: {
                     id: 'Eratani membantu para petani binaan untuk meningkatkan produktivitas dan hasil panen dengan memberikan pendampingan bersama para ahli di bidang pertanian.',
-                    en: 'Eratani membantu para petani binaan untuk meningkatkan produktivitas dan hasil panen dengan memberikan pendampingan bersama para ahli di bidang pertanian.',
+                    en: 'Eratani helps the farmers increase productivity and crops yield by providing consultations with professional agronomists.',
                 },
                 photo: 'DSC04891 1.jpg'
             }
-        ]   
+        ]
     }
     const solutionContent = {
         title: {
@@ -185,10 +185,10 @@ export default function HomePage({ mapData }) {
     const mapsContent = {
         title: {
             id: <>Kami Mendukung Pertumbuhan dan<br />Digitalisasi Pertanian Seluruh Indonesia</>,
-            en: <>Kami Mendukung Pertumbuhan dan<br />Digitalisasi Pertanian Seluruh Indonesia</>,
+            en: <>We Support The Growth and<br />Digitalization of Agriculture in The Whole Indonesia</>,
         },
         caption: {
-            id: 'Program Eratani sudah tersebar di beberapa wilayah di Indonesia dan akan terus menjalar ke seluruh Indonesia.',
+            id: 'Eratani telah melayani petani di berbagai wilayah di Indonesia dan akan terus bertambah hingga ke seluruh wilayah di Indonesia.',
             en: 'Program Eratani sudah tersebar di beberapa wilayah di Indonesia dan akan terus menjalar ke seluruh Indonesia.'
         },
         data: mapData.locations.map.map(prov => {
@@ -200,6 +200,7 @@ export default function HomePage({ mapData }) {
             }
         })
         // data: [
+        //     // sumatera
         //     {
         //         id: 11,
         //         prov: 'Aceh',
@@ -220,9 +221,21 @@ export default function HomePage({ mapData }) {
         //         comingSoon: true
         //     },
         //     {
+        //         prov: 'Riau',
+        //         cities: [],
+        //         pos: { x: 185, y: 190},
+        //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Jambi',
+        //         cities: [],
+        //         pos: { x: 220, y: 255},
+        //         comingSoon: true
+        //     },
+        //     {
         //         prov: 'Sumatera Selatan',
         //         cities: [],
-        //         pos: { x: 241, y: 299},
+        //         pos: { x: 250, y: 299},
         //         comingSoon: true
         //     },
         //     {
@@ -232,10 +245,94 @@ export default function HomePage({ mapData }) {
         //         comingSoon: true
         //     },
         //     {
+        //         prov: 'Bengkulu',
+        //         cities: [],
+        //         pos: { x: 200, y: 305},
+        //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Bangka Belitung',
+        //         cities: [],
+        //         pos: { x: 310, y: 270},
+        //         comingSoon: true
+        //     },
+
+        //     // Sulawesi
+        //     {
+        //         prov: 'Sulawesi Utara',
+        //         cities: [],
+        //         pos: { x: 830, y: 190},
+        //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Gorontalo',
+        //         cities: [],
+        //         pos: { x: 770, y: 190},
+        //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Sulawesi Tengah',
+        //         cities: [],
+        //         pos: { x: 715, y: 245},
+        //         comingSoon: true
+        //     },
+        //     {
         //         prov: 'Sulawesi Selatan',
         //         cities: [],
         //         pos: { x: 713, y: 282},
         //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Sulawesi Barat',
+        //         cities: [],
+        //         pos: { x: 687, y: 270},
+        //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Sulawesi Tenggara',
+        //         cities: [],
+        //         pos: { x: 760, y: 310},
+        //         comingSoon: true
+        //     },
+
+        //     // Kalimantan
+        //     {
+        //         prov: 'Kalimantan Barat',
+        //         cities: [],
+        //         pos: { x: 450, y: 220},
+        //         comingSoon: false
+        //     },
+        //     {
+        //         prov: 'Kalimantan Tengah',
+        //         cities: [],
+        //         pos: { x: 520, y: 250},
+        //         comingSoon: false
+        //     },
+        //     {
+        //         prov: 'Kalimantan Timur',
+        //         cities: [],
+        //         pos: { x: 600, y: 150},
+        //         comingSoon: false
+        //     },
+        //     {
+        //         prov: 'Kalimantan Selatan',
+        //         cities: [],
+        //         pos: { x: 580, y: 290},
+        //         comingSoon: false
+        //     },
+
+        //     // jawa
+        //     {
+        //         prov: 'Banten',
+        //         cities: [],
+        //         pos: { x: 305, y: 390},
+        //         comingSoon: false
+        //     },
+        //     {
+        //         prov: 'Jakarta',
+        //         cities: [],
+        //         pos: { x: 335, y: 380},
+        //         comingSoon: false
         //     },
         //     {
         //         prov: 'Jawa Barat',
@@ -260,7 +357,55 @@ export default function HomePage({ mapData }) {
         //         cities: ['Ngawi', 'Jombang'],
         //         pos: { x: 485, y: 422},
         //         comingSoon: false
-        //     }
+        //     },
+
+        //     {
+        //         prov: 'Bali',
+        //         cities: [],
+        //         pos: { x: 570, y: 445},
+        //         comingSoon: false
+        //     },
+
+        //     {
+        //         prov: 'Nusa Tenggara Barat',
+        //         cities: [],
+        //         pos: { x: 630, y: 450},
+        //         comingSoon: false
+        //     },
+        //     {
+        //         prov: 'Nusa Tenggara Timur',
+        //         cities: [],
+        //         pos: { x: 730, y: 450},
+        //         comingSoon: false
+        //     },
+
+        //     // maluku
+        //     {
+        //         prov: 'Maluku Utara',
+        //         cities: [],
+        //         pos: { x: 930, y: 190},
+        //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Maluku',
+        //         cities: [],
+        //         pos: { x: 950, y: 300},
+        //         comingSoon: true
+        //     },
+
+        //     // Papua
+        //     {
+        //         prov: 'Papua Barat',
+        //         cities: [],
+        //         pos: { x: 1070, y: 250},
+        //         comingSoon: true
+        //     },
+        //     {
+        //         prov: 'Papua',
+        //         cities: [],
+        //         pos: { x: 1200, y: 300},
+        //         comingSoon: true
+        //     },
         // ]
     }
 
@@ -312,7 +457,7 @@ export default function HomePage({ mapData }) {
     const joinContent = {
         title: {
             id: 'Segera Bergabung Menjadi',
-            en: 'Segera Bergabung Menjadi'
+            en: 'Join Us as'
         },
         caption: {
             id: <>Daftar sekarang dan nikmati berbagai manfaat dari Eratani, mulai dari bantuan permodalan, penyediaan saprotan, hingga penyaluran gabah dan beras.<br />Mari bersama mewujudkan ekosistem pertanian yang kuat!</>,
@@ -325,7 +470,7 @@ export default function HomePage({ mapData }) {
         data: [
             {
                 id: 'Petani',
-                en: 'Petani',
+                en: 'Farmers',
                 color: 'green-60'
             },
             {
@@ -340,7 +485,7 @@ export default function HomePage({ mapData }) {
             },
             {
                 id: 'Toko Tani',
-                en: 'Toko Tani',
+                en: 'Agricultural Supply Store',
                 color: 'green-50'
             },
             {
@@ -358,7 +503,7 @@ export default function HomePage({ mapData }) {
     const testimoniContent = {
         title: {
             id: 'Testimoni Mitra',
-            en: 'Testimoni Mitra'
+            en: 'Partners Testimony'
         },
         caption: {
             id: 'Kami merangkum beberapa mitra yang telah bergabung menjadi petani, gapoktan dan toko tani binaan Eratani.',
@@ -366,54 +511,99 @@ export default function HomePage({ mapData }) {
         },
         data: [
             {
-                name: 'Yanto',
-                type: 'Petani',
-                domisili: 'Jawa Barat',
-                testi: 'Eratani memudahkan dalam permodalan sawah saya sehingga saya bisa menikmati hasilnya bersama keluarga.',
-                photo: 'yanto.jpg'
+                id: {
+                    name: 'Yanto',
+                    type: 'Petani',
+                    domisili: 'Jawa Barat',
+                    testi: 'Eratani memudahkan dalam permodalan sawah saya sehingga saya bisa menikmati hasilnya bersama keluarga.',
+                    photo: 'yanto.jpg'
+                },
+                en: {
+                    name: 'Yanto',
+                    type: 'Farmer',
+                    domisili: 'West Java',
+                    testi: 'Eratani makes easier capital for my field so that I can enjoy the results with my family.',
+                    photo: 'yanto.jpg'
+                }
             },
             {
-                name: 'Katimin',
-                type: 'Petani',
-                domisili: 'Jawa Tengah',
-                testi: 'Gabung Eratani tidak ribet dan sangat membantu saya dalam hal permodalan melalui teknologi dimana saja dan kapan saja.',
-                photo: 'katimin.jpg'
+                id: {
+                    name: 'Katimin',
+                    type: 'Petani',
+                    domisili: 'Jawa Tengah',
+                    testi: 'Gabung Eratani tidak ribet dan sangat membantu saya dalam hal permodalan melalui teknologi dimana saja dan kapan saja.',
+                    photo: 'katimin.jpg'
+                },
+                en: {
+                    name: 'Katimin',
+                    type: 'Farmer',
+                    domisili: 'Central Java',
+                    testi: 'Joining Eratani is simple and it helps with technology-based funding, anywhere and anytime.',
+                    photo: 'katimin.jpg'
+                }
             },
             {
-                name: 'Nugroho Noto',
-                type: 'Petani',
-                domisili: 'Jawa Timur',
-                testi: 'Eratani memudahkan kita dalam menyediakan saprotan dengan kualitas produksi yang baik.',
-                photo: 'nugroho.jpg'
+                id: {
+                    name: 'Nugroho Noto',
+                    type: 'Petani',
+                    domisili: 'Jawa Timur',
+                    testi: 'Eratani memudahkan kita dalam menyediakan saprotan dengan kualitas produksi yang baik.',
+                    photo: 'nugroho.jpg'
+                },
+                en: {
+                    name: 'Nugroho Noto',
+                    type: 'Farmer',
+                    domisili: 'East Java',
+                    testi: 'Eratani makes it easier for us to provide the agricultural production supplies with high production quality.',
+                    photo: 'nugroho.jpg'
+                }
             },
             {
-                name: 'Pranata',
-                type: 'Gapoktan',
-                domisili: 'Jawa Timur',
-                testi: 'Eratani menjadi partner yang baik dengan membawa perubahan kepada sektor pertanian dengan memanfaatkan teknologi.',
-                photo: 'pranata.jpg'
+                id: {
+                    name: 'Pranata',
+                    type: 'Gapoktan',
+                    domisili: 'Jawa Timur',
+                    testi: 'Eratani menjadi partner yang baik dengan membawa perubahan kepada sektor pertanian dengan memanfaatkan teknologi.',
+                    photo: 'pranata.jpg'
+                },
+                en: {
+                    name: 'Pranata',
+                    type: 'Association of Farmer Groups',
+                    domisili: 'East Java',
+                    testi: 'Eratani makes a great partner at making changes to the agriculture sector by introducing technology.',
+                    photo: 'nugroho.jpg'
+                }
             },
             {
-                name: 'Arif',
-                type: 'Mitra EraKios',
-                domisili: 'Jawa Barat',
-                testi: 'Bergabung dengan EraKios sangat menguntungkan karena memudahkan penyediaan saprotan yang berkualitas sehingga meningkatkan transaksi di toko tani.',
-                photo: 'arif.jpg'
+                id: {
+                    name: 'Arif',
+                    type: 'Mitra EraKios',
+                    domisili: 'Jawa Barat',
+                    testi: 'Bergabung dengan EraKios sangat menguntungkan karena memudahkan penyediaan saprotan yang berkualitas sehingga meningkatkan transaksi di toko tani.',
+                    photo: 'arif.jpg'
+                },
+                en: {
+                    name: 'Arif',
+                    type: 'EraKios Partner',
+                    domisili: 'West Java',
+                    testi: 'It is very benefitting to join EraKios considering the provision of high quality agricultural supplies stocks have been made easy and the amount of transactions at my store has increased.',
+                    photo: 'arif.jpg'
+                }
             }
         ]
     }
     const downloadContent = {
         subtitle: {
             id: 'Ingin menjadi petani sukses?',
-            en: 'Ingin menjadi petani sukses?'
+            en: 'Want to be a successful farmer?'
         },
         title: {
             id: 'Segera Unduh Aplikasi Eratani di Handphone Anda!',
-            en: 'Segera Unduh Aplikasi Eratani di Handphone Anda!'
+            en: 'Download the Eratani Mobile Application on Your Phone Soon!'
         },
         caption: {
             id: (<><em>One-stop solution</em> untuk memenuhi kebutuhan petani Indonesia menuju ekosistem pertanian yang lebih kuat. Unduh untuk mendapatkan bantuan permodalan, saprotan berkualitas baik, hingga pendampingan dari para ahli di bidang pertanian.</>),
-            en: (<><em>One-stop solution</em> untuk memenuhi kebutuhan petani Indonesia menuju ekosistem pertanian yang lebih kuat. Unduh untuk mendapatkan bantuan permodalan, saprotan berkualitas baik, hingga pendampingan dari para ahli di bidang pertanian.</>),
+            en: (<><em>One-stop solution</em> to meet the needs of Indonesian farmers towards a stronger agricultural ecosystem. Download to get funding support, high quality agricultural production supplies, as well as assistance from agriculture experts.</>),
         },
         url: '#'
     }
@@ -432,5 +622,5 @@ export default function HomePage({ mapData }) {
             <Sections.Testimoni { ...testimoniContent } />
             <Sections.Download { ...downloadContent } />
         </>
-    ) 
+    )
 }
