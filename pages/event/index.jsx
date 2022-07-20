@@ -53,7 +53,7 @@ const CardAgenda = ({ id, data }) => (
           <h4 className={styles.place_title}>Kecamatan Cantigi</h4>
           <h4 className={styles.place_desc}>Indramayu, Jawa Barat</h4>
         </div>
-        <Link href={`/event/${id}`}>
+        <Link href={`/event/${data.event_url}`}>
           <button className={styles.button_detail}>Lihat Detail</button>
         </Link>
       </div>

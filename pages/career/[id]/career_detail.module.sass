@@ -129,11 +129,11 @@
 
   .wrapper_content_career
     margin: 0 auto
-    +Flex(row, center, flex-start)
+    +Flex(row, center)
 
     &_first
       min-width: 22%
-      padding: 56px 41px 75px
+      padding: 56px 35px 75px
       background: #fff
       border: 1px solid #E7E7E7
       box-shadow: 0px 1px 8px rgba(112, 112, 112, 0.15), 0px 1px 8px 1px rgba(112, 112, 112, 0.05)
@@ -214,6 +214,7 @@
           box-shadow: 0px 1px 0px rgba(112, 112, 112, 0.15)
 
     &_second
+      min-width: 925px
       width: 78%
       padding: 56px
       background: #fff
@@ -256,6 +257,9 @@
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 768px)
   .container_careerdetail
+    margin: 0
+    padding: 50px 16px 100px
+
     .wrapper_content_career
       +Flex(column)
       &_first
@@ -267,4 +271,5 @@
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
   .container_careerdetail
+    margin: 0
     padding: 50px 16px 100px

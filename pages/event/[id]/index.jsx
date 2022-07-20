@@ -13,10 +13,40 @@ import Link from '../../../assets/vector/link.svg'
 // utils
 import useWindowDimensions from 'hooks/useWindowDimensions'
 
-const EventDetail = props => {
+export async function getServerSideProps({ params }) {
+  const id = params.id
+
+  try {
+    const eventResponse = await (await fetch(`https://compro-api.eratani.co.id/api/events/url/${id}`)).json()
+
+    return {
+      props: {
+        eventDetail: eventResponse.data || null
+      }
+    }
+  } catch (error) {
+    return { eventDetail: null }
+  }
+}
+
+const EventDetail = ({ eventDetail }) => {
   const router = useRouter()
   const { width } = useWindowDimensions();
   const deviceWidth = width > 546 ? (width > 900 ? 'large' : 'medium') : 'small'
+
+  const remapData = {
+    ...eventDetail,
+    event_image: eventDetail?.event_image || '/dummy.png',
+    event_article: eventDetail.event_article
+      .split('</p>')[0]
+      .replace(/(<([^>]+)>)/gi, " ")
+      .replace('&nbsp;', " ")
+      .trim()
+      .replace(/\s+/g, " ") || 'Tidak ada Konten',
+    event_start_day: new Date(eventDetail.event_start).toLocaleDateString('default', { day: 'numeric' }),
+    event_start_month: new Date(eventDetail.event_start).toLocaleDateString('default', { month: 'long' }),
+    event_start_year: new Date(eventDetail.event_start).toLocaleDateString('default', { year: 'numeric' })
+  }
 
   const nav = [
     {
@@ -35,30 +65,36 @@ const EventDetail = props => {
       <div className={styles.eventdetail}>
         {deviceWidth === 'small' ?
           <>
-            <img src='https://statik.tempo.co/data/2020/11/25/id_983211/983211_720.jpg' className={styles.img} alt='alt' />
-            <h2 className={styles.title}>Grand Launching Eratani Mobile-Apps untuk Petani Indonesia</h2>
-            <h4 className={styles.article_date}>Eratani / 12 Mei 2022</h4>
+            <img
+              src={remapData.event_image}
+              className={styles.img}
+              alt='alt'
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null // prevents looping
+                currentTarget.src =
+                  '/dummy.png'
+              }}
+            />
+            <h2 className={styles.title}>{remapData.event_title}</h2>
+            <h4 className={styles.article_date}>{`Eratani / ${remapData.event_start_day} ${remapData.event_start_month} ${remapData.event_start_year}`}</h4>
           </> :
           <>
-            <h2 className={styles.title}>Grand Launching Eratani Mobile-Apps untuk Petani Indonesia</h2>
-            <h4 className={styles.article_date}>Eratani / 12 Mei 2022</h4>
-            <img src='https://statik.tempo.co/data/2020/11/25/id_983211/983211_720.jpg' className={styles.img} alt='alt' />
+            <h2 className={styles.title}>{remapData.event_title}</h2>
+            <h4 className={styles.article_date}>{`Eratani / ${remapData.event_start_day} ${remapData.event_start_month} ${remapData.event_start_year}`}</h4>
+            <img
+              src={remapData.event_image}
+              className={styles.img}
+              alt='alt'
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null // prevents looping
+                currentTarget.src =
+                  '/dummy.png'
+              }}
+            />
           </>
         }
         <h4 className={styles.article}>
-          Halo Sobat Eratani!
-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque elit lorem nunc nibh porttitor posuere lorem vehicula. Vitae natoque tincidunt viverra vulputate morbi aliquet. Tristique urna tristique risus natoque in. Gravida praesent faucibus bibendum nisi, in leo. Pretium at nunc et, ac nullam risus parturient tortor massa. Viverra nunc ipsum etiam imperdiet ultrices amet vivamus elementum mattis. Quis morbi sit varius morbi fusce in purus. Mauris, morbi vestibulum sed enim dignissim tellus vestibulum, in. At a gravida auctor tellus arcu auctor. Imperdiet eget leo amet lectus nibh. Pharetra dis molestie tellus nisl, sit nisi id nisl eget.
-
-          Lectus elit suscipit nullam et, placerat. Massa amet sit ultrices dictumst sapien. A interdum dui, egestas leo, gravida. Sagittis nulla proin id mauris turpis consectetur. Velit vel congue sit volutpat sit. Tincidunt non faucibus urna diam.
-
-          Amet purus in velit lacus, nullam in quam. Scelerisque ipsum hac varius morbi nunc. Quis arcu elit consectetur montes, accumsan. Nulla quis in cras imperdiet lectus. Scelerisque ut posuere nulla fermentum ut ut eu, sit. Varius sed varius sit a. Magna orci vestibulum enim elit dis. Enim a, consectetur gravida risus mattis sagittis dui ultrices. Tincidunt elit vulputate varius sed eu bibendum. Mi, mauris amet vitae urna lorem ut curabitur. Leo morbi elementum mi rhoncus, varius bibendum phasellus tellus.
-
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque elit lorem nunc nibh porttitor posuere lorem vehicula. Vitae natoque tincidunt viverra vulputate morbi aliquet. Tristique urna tristique risus natoque in. Gravida praesent faucibus bibendum nisi, in leo. Pretium at nunc et, ac nullam risus parturient tortor massa. Viverra nunc ipsum etiam imperdiet ultrices amet vivamus elementum mattis. Quis morbi sit varius morbi fusce in purus. Mauris, morbi vestibulum sed enim dignissim tellus vestibulum, in. At a gravida auctor tellus arcu auctor. Imperdiet eget leo amet lectus nibh. Pharetra dis molestie tellus nisl, sit nisi id nisl eget.
-
-          Lectus elit suscipit nullam et, placerat. Massa amet sit ultrices dictumst sapien. A interdum dui, egestas leo, gravida. Sagittis nulla proin id mauris turpis consectetur. Velit vel congue sit volutpat sit. Tincidunt non faucibus urna diam.
-
-          Amet purus in velit lacus, nullam in quam. Scelerisque ipsum hac varius morbi nunc. Quis arcu elit consectetur montes, accumsan. Nulla quis in cras imperdiet lectus. Scelerisque ut posuere nulla fermentum ut ut eu, sit. Varius sed varius sit a. Magna orci vestibulum enim elit dis. Enim a, consectetur gravida risus mattis sagittis dui ultrices. Tincidunt elit vulputate varius sed eu bibendum. Mi, mauris amet vitae urna lorem ut curabitur. Leo morbi elementum mi rhoncus, varius bibendum phasellus tellus.
+          {remapData.event_article}
         </h4>
         <button className={styles.button_daftar_petani}>Daftar sebagai Petani</button>
         <div className={styles.share}>

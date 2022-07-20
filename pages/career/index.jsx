@@ -31,27 +31,27 @@ export async function getServerSideProps(context) {
   }
 }
 
-const CardCareer = ({ id, deviceWidth }) => (
+const CardCareer = ({ deviceWidth, data }) => (
   <div className={`col-xs-12 col-sm-6 col-md-6 col-lg-4 ${styles.reset_box}`}>
     <div className={`${styles.box_career}`}>
       <h4 className={styles.title_job}>
-        Accounting Internal
+        {data.job_title}
       </h4>
       <h4 className={styles.desc_job}>
-        Finance & Accounting
+        {data.job_category}
       </h4>
       <div className={styles.wrapper_career_info} style={{ marginBottom: deviceWidth === 'small' ? '24px' : '35px' }}>
         <div>
           <h4 className={styles.title}>Job Level</h4>
-          <h4 className={styles.desc}>Mid Level</h4>
+          <h4 className={styles.desc}>{data.job_level}</h4>
         </div>
         <div>
           <h4 className={`${styles.title} center-align`}>Tipe</h4>
-          <h4 className={`${styles.desc} center-align`}>Mid Level</h4>
+          <h4 className={`${styles.desc} center-align`}>{data.job_type}</h4>
         </div>
         <div>
           <h4 className={styles.title}>Batas Waktu</h4>
-          <h4 className={styles.desc}>13 Mei 2022</h4>
+          <h4 className={styles.desc}>{`${data.job_day} ${data.job_month} ${data.job_year}`}</h4>
         </div>
       </div>
       <div className={styles.wrapper_career_info} style={{ marginBottom: deviceWidth === 'small' ? '24px' : '25px' }}>
@@ -69,7 +69,7 @@ const CardCareer = ({ id, deviceWidth }) => (
         </div>
       </div>
       {deviceWidth === 'small' && <div className={styles.divider} />}
-      <Link href={`/career/${id}`}>
+      <Link href={`/career/${data.job_url}`}>
         <button className={styles.career_button_detail}>Lihat Detil</button>
       </Link>
     </div>
@@ -78,7 +78,14 @@ const CardCareer = ({ id, deviceWidth }) => (
 
 const Career = ({ careerData }) => {
   const { locale } = useRouter()
-  const [ filter, setFilter ] = useState('semua')
+  // const [ filter, setFilter ] = useState('semua')
+
+  const remapData = careerData.map(res => ({
+    ...res,
+    job_day: new Date(res.job_application_deadline).toLocaleDateString('default', { day: 'numeric' }),
+    job_month: new Date(res.job_application_deadline).toLocaleDateString('default', { month: 'long' }),
+    job_year: new Date(res.job_application_deadline).toLocaleDateString('default', { year: 'numeric' })
+  }))
 
   const filterContent = [
     {
@@ -129,12 +136,12 @@ const Career = ({ careerData }) => {
               <span><i className="fas fa-search"/></span>
               <input type="text" name="" id="" placeholder='Cari pekerjaan disini' />
             </div>
-            <div className={styles.box}>
+            {/* <div className={styles.box}>
               <Filter />
             </div>
             <div className={styles.box}>
               <ImportExport />
-            </div>
+            </div> */}
           </div>
           {/* !nitip masbur */}
           {/* <div className={ `row no-margin middle-xs center-xs ${ styles.filter }` }>
@@ -151,11 +158,11 @@ const Career = ({ careerData }) => {
         </>
       )}
       <div className={styles.wrapper_box_career}>
-        {[1,2,3,4,5,6].map((res, i) =>
-          <CardCareer key={i} id={i} deviceWidth={deviceWidth} />
+        {remapData.map((data, i) =>
+          <CardCareer key={i} deviceWidth={deviceWidth} data={data} />
         )}
       </div>
-      <button className={styles.button_more}>Lihat Lebih Banyak</button>
+      <button className={styles.button_more} style={{ display: careerData.length > 6 ? 'block' : 'none' }}>Lihat Lebih Banyak</button>
     </section>
   )
 }

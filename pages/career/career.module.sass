@@ -79,13 +79,14 @@
 .career
   padding: 72px 100px 100px
   background: transparent
-  margin: 0 auto
+  +Flex($flexDirection: column, $justifyDirection: center, $alignDirection: flex-start)
 
   .title_career
     @include typograph($size: 38px, $weight: "bold")
     color: Define.$green_70
     text-align: center
     margin-bottom: 25px
+    width: 100%
 
   .sub_title
     width: 45vw
@@ -134,7 +135,7 @@
       +Flex(row, center, center)
 
   .wrapper_box_career
-    margin: 0 auto 25px
+    margin: 0 0 25px
     +Flex(row, flex-start, flex-start, wrap)
 
     .reset_box
@@ -149,6 +150,7 @@
       padding: 35px 24px
       margin: 0 auto 40px 0
       width: 95%
+      min-width: 366px
 
       .title_job
         font-size: 24px
