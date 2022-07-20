@@ -14,8 +14,9 @@ const nextConfig = {
     defaultLocale: 'id'
   },
   eslint: {
-    ignoreDuringBuilds: true
-  }
+    ignoreDuringBuilds: true,
+  },
+  optimizeFonts: false
 }
 
 module.exports = nextConfig
