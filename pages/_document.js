@@ -6,6 +6,7 @@ export default function Document() {
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
       </Head>
       <body>
         <Main />
