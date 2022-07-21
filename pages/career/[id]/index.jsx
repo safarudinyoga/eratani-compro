@@ -37,8 +37,6 @@ const CareerDetail = ({ careerDetail }) => {
     job_year: new Date(careerDetail.job_application_deadline).toLocaleDateString('default', { year: 'numeric' })
   }
 
-  console.log(remapData);
-
   return (
     <div className={styles.container_careerdetail}>
       { deviceWidth !== undefined && deviceWidth !== 'small' ?

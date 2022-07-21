@@ -161,8 +161,6 @@ const Career = ({ careerData }) => {
     job_category: filterContent.filter(obj => obj.name === res.job_category).length ? filterContent.filter(obj => obj.name === res.job_category)[0][locale] : res.job_category
   })).slice(0, 6))
 
-  console.log(data);
-
   const { width } = useWindowDimensions();
   const deviceWidth = width > 546 ? (width > 900 ? 'large' : 'medium') : 'small'
 
