@@ -8,11 +8,11 @@ export default function SlickCustom (className, settings) {
 
     const NextArrow = ({ onClick }) => <div className={ `${ styles.slick_arrow } ${ styles.arrow_next } bg-natural-10` }><a onClick={ onClick } className={ `bg-green-60` }><SlickNextVect /></a></div>
     const PrevArrow = ({ onClick }) => <div className={ `${ styles.slick_arrow } ${ styles.arrow_prev } bg-natural-10` }><a onClick={ onClick } className={ `bg-green-60` }><SlickPrevVect /></a></div>
-    
+
     let ret = { ...settings }
 
     if (settings.arrows) {
-        ret = { 
+        ret = {
             ...ret,
             nextArrow: <NextArrow />,
             prevArrow: <PrevArrow />
@@ -20,7 +20,7 @@ export default function SlickCustom (className, settings) {
     }
 
     if (settings.dots) {
-        ret = { 
+        ret = {
             ...ret,
             dotsClass: styles.slick_dots,
             customPaging: i => <a />,
@@ -37,12 +37,12 @@ export default function SlickCustom (className, settings) {
                 } catch (error) { }
                 try {
                     setTimeout(() => {
-                        document.querySelectorAll(`.${ className } .${ styles.slick_dots } .slick-active`)[0].children[0].classList.add(styles.slick_active)
+                        document.querySelectorAll(`.${ className } .${ styles.slick_dots } .slick-active`)[0]?.children[0].classList.add(styles.slick_active)
                     }, 20)
                 } catch (error) { }
             }
         }
-    } 
+    }
 
     return ret
-} 
+}

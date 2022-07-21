@@ -33,7 +33,7 @@ const List = forwardRef((props, ref) => {
     return (
         <li className={ `${ styles.accordion_list } bg-white ${ (show)? styles.active : undefined }` }  style={ { height: height } }>
             <a ref={ titleRef } href='#' className={ `row no-margin between-xs ${ styles.title }` } onClick={ () => setShow(!show) }>
-                <Typograph tag='h5' size='xsm-1 sm-1-md' weight='bold extrabold-sm' color='green-70'>{ props.title }</Typograph>
+                <Typograph tag='h5' size='xsm-1 sm-1-md' weight='bold' color='green-70'>{ props.title }</Typograph>
                 <KarrowDownVect />
             </a>
             <div ref={ contentRef } className={ styles.content }>
@@ -48,7 +48,7 @@ const List = forwardRef((props, ref) => {
 export default function Accordion (props) {
 
     let lists = []
-    
+
     const onListClick = (id) => {
         if (props.toggleOther !== undefined) {
             for (let i = 0; i < lists.length; i++) {
@@ -57,7 +57,7 @@ export default function Accordion (props) {
             }
         }
     }
-    
+
     lists = props.children.map((li, index) => {
         const ref = useRef();
         if (li.type != 'li') return <></>

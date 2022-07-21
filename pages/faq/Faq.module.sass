@@ -12,6 +12,9 @@
         @include Define.media('screen', '<md')
             @include Define.box($width: 100%)
 
+        li[data-title='title']
+            font-weight: 400 !important
+
     .filter
         @include Define.box($position: relative, $width: calc(100% - 160px))
         @include Define.margin($bottom: 56px, $left: auto, $right: auto)
@@ -20,15 +23,29 @@
         @include Define.media('screen', '<sm')
             @include Define.box($width: calc(100% - 86px))
 
-        .filter_cat
+        .scroll_wrapper
             overflow: hidden
-            flex-wrap: nowrap
+            @include Define.margin($left: -12px, $right: -12px, $important: true)
 
             @include Define.media('screen', '<sm')
                 @include Define.margin($left: -4px, $right: -4px, $important: true)
 
+        .filter_cat
+            white-space: nowrap
+
             div
+                @include Define.inlineBlock($align: middle)
+                @include Define.box($width: 20%)
+                @include Define.padding($left: 12px, $right: 12px, $important: true)
+
+                @include Define.media('screen', '<lg')
+                    @include Define.box($width: 25%)
+
+                @include Define.media('screen', '<md')
+                    @include Define.box($width: calc(100% / 3))
+
                 @include Define.media('screen', '<sm')
+                    @include Define.box($width: 50%)
                     @include Define.padding($left: 4px, $right: 4px, $important: true)
 
                 a
@@ -37,6 +54,16 @@
                     @include Define.box($height: 64px, $width: 100%)
                     border: 1px solid map-get(Define.$colors, 'green-100')
                     border-radius: 8px
+                    white-space: normal
+
+                    &.disabled
+                        @extend .text-natural-40
+                        @extend .border-natural-40
+
+                    &.active
+                        @extend .bg-green-60
+                        @extend .text-green-10
+                        @extend .border-green-60
 
                     @include Define.media('screen', '<sm')
                         @include Define.box($height: 48px)
@@ -74,7 +101,3 @@
                     @include Define.margin($bottom: 0)
                     @include Define.box($height: 12px)
 
-        .active
-            @extend .bg-green-60
-            @extend .text-green-10
-            @extend .border-green-60

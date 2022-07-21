@@ -240,7 +240,7 @@ const Solution = ({ title, caption, data }) => {
             <div className={ `row center-xs ${ styles.row }` }>
                 { data.map((solution, index) =>
                     <div className={`col-xs-12 col-sm-6 col-md-5 col-lg-4 align-left ${ styles.column }`} key={ index }>
-                        <SetRatio ax='1' ay='1.26' min='0' className={ styles.wrapper } onMouseEnter={ onSolutionEnter } onMouseLeave={ onSolutionLeave }>
+                        <SetRatio ax='1' ay='1.26' min='500' className={ styles.wrapper } onMouseEnter={ onSolutionEnter } onMouseLeave={ onSolutionLeave }>
                             <img src={ `/solution/${ solution.photo }` } className='image-cover' />
                             <Typograph tag='h4' size='xlg-3' color='green-10' className='__SolutionNode__'>
                                 <span>{ solution.title1[locale] }</span>
@@ -298,9 +298,9 @@ const Maps = ({ title, caption, data }) => {
                         <svg viewBox="0 0 1295 521" fill="none" xmlns="http://www.w3.org/2000/svg">
                             { data.map((map, index) =>
                                 <g onMouseEnter={ onPointEnter } onMouseLeave={ onPointLeave } className={ `${ (map.comingSoon) && styles.coming_soon } ${ styles.dot_point }` } key={ index } data-id={ index }>
-                                    <circle cx={ map.pos.x } cy={ map.pos.y } r="8" className={ styles.shadow }/>
-                                    <circle cx={ map.pos.x } cy={ map.pos.y } r="8" className={ styles.outline }/>
-                                    <circle cx={ map.pos.x } cy={ map.pos.y } r="5" className={ styles.dot }/>
+                                    <circle cx={ map?.pos?.x } cy={ map?.pos?.y } r="8" className={ styles.shadow }/>
+                                    <circle cx={ map?.pos?.x } cy={ map?.pos?.y } r="8" className={ styles.outline }/>
+                                    <circle cx={ map?.pos?.x } cy={ map?.pos?.y } r="5" className={ styles.dot }/>
                                 </g>
                             )}
                         </svg>

@@ -13,11 +13,17 @@
     &.arrow_prev
         @include Define.box($left: -1px)
 
+        svg
+            @include Define.margin($bottom: -2px , $right: 2px)
+
         a
             @include Define.box($left: 0)
 
     &.arrow_next
         @include Define.box($right: -1px)
+
+        svg
+            @include Define.margin($bottom: -2px , $right: -3px)
 
         a
             @include Define.box($right: 0)

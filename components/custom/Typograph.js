@@ -26,6 +26,7 @@ export default function Ellipsis (props) {
     newProps.className += (props.weight) ? weightResp() : ''
     newProps.className += (props.color) ? `text-${ props.color } ` : ''
     newProps.className += (props.align) ? alignResp() : ''
+    newProps.className += (props.disable) ? `disable-pointer-event ` : ''
     newProps.style = { ...props.style }
     
     if (props.maxWidth !== undefined) {
@@ -45,11 +46,12 @@ export default function Ellipsis (props) {
     delete newProps.weight
     delete newProps.maxWidth
     delete newProps.align
+    delete newProps.disable
 
     if (TagName == 'a') {
         delete newProps.href
         return (
-            <Link href={ props.href } locale={ props.locale }><a { ...newProps }>{ props.children }</a></Link>
+            <Link href={ props.href } scroll={true} locale={ props.locale }><a { ...newProps }>{ props.children }</a></Link>
         )
     }
 

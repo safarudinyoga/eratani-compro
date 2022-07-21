@@ -23,7 +23,7 @@ const CareerDetailWebview = ({ router, data }) => (
         <div className={styles.wrapper_job_desc} style={{ marginBottom: '40px' }}>
           <Place />
           <h5 className={`${styles.wrapper_job_desc_text}`}>
-            {data.job_location}
+            {data.job_location || '-'}
           </h5>
         </div>
         <div className={styles.wrapper_job_level}>

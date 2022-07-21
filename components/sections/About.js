@@ -124,8 +124,10 @@ const Team = ({ data }) => {
 
         quoteSliderRef.current.slickGoTo(teamActive)
 
-        if (window.innerWidth >= 1024) {
-            const diff = window.innerWidth - 1357
+        if (window.innerWidth >= 1100) {
+            gsap.to(teamPos, { x: 0, duration: 1, onComplete: () => setLock(0) })
+        } else if (window.innerWidth >= 1024) {
+            const diff = window.innerWidth - 1082
             if (diff < 0) gsap.to(teamPos, { x: teamActive / (data.length - 1) * diff, duration: 1, onComplete: () => setLock(0) })
             else setLock(0)
         } else {
@@ -153,7 +155,7 @@ const Team = ({ data }) => {
                             </div>
                             <Typograph tag='p' size='sm-2' color='green-10' align='justify' fontStyle='italic'>{ team.quote[locale] }</Typograph>
                         </div>
-                        <SetRatio ax='1' ay='2.67' className={ `bg-${ team.bgColor } ${ styles.wrapper } ${ styles.wrapper_mobile }`  } onClick={ () => { (!lock) && setTeamActive(index) } } >
+                        <SetRatio ax='1' ay='2.4' className={ `bg-${ team.bgColor } ${ styles.wrapper } ${ styles.wrapper_mobile }`  } onClick={ () => { (!lock) && setTeamActive(index) } } >
                             <img src={ `/team/${ team.photo }` } />
                         </SetRatio>
                     </div>

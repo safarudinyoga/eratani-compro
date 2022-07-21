@@ -10,17 +10,20 @@ export async function getServerSideProps({ params }) {
         const articleRes = await (await fetch(`https://compro-api.eratani.co.id/api/blogs/category/tips?limit=${ limit }&offset=${ offset }`)).json()
         if (!articleRes) return { notFound: true }
 
-        return { props: { s_tipsData: articleRes.data || [] } }
+        const countRes = await (await fetch(`https://compro-api.eratani.co.id/api/blogs/category/tips/count`)).json()
+        if (!countRes) return { notFound: true }
+
+        return { props: { s_tipsData: articleRes.data || [], s_totalPage: countRes.data || 1 } }
     } catch (error) {
-        return { props: { s_tipsData: [] } }
+        return { props: { s_tipsData: [], s_totalPage: 1 } }
     }    
 }
 
 
-export default function BlogPage({ s_tipsData }) {
+export default function BlogPage({ s_tipsData, s_totalPage }) {
     const { query, locale } = useRouter()
     const { page } = query
-    const totalPage = 3
+    const totalPage = Math.ceil(s_totalPage.count / 6)
     const searchContent = {
         placeholder: {
             id: 'Search Blog post ...',

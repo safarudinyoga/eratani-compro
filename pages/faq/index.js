@@ -4,6 +4,8 @@ import Parse from 'html-react-parser'
 import React, { useState, createRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Slick from "react-slick";
+import gsap from 'gsap'
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
 
 import styles from './Faq.module.sass'
 import Container from '/components/custom/Container';
@@ -12,11 +14,13 @@ import Typograph from '/components/custom/Typograph'
 
 import NextVect from '/assets/vector/paginate-next.svg'
 
+gsap.registerPlugin(ScrollToPlugin)
+
 export default function FaqPage() {
     const { locale } = useRouter()
     const pageTitle = {
         id: 'Pertanyaan',
-        en: 'FAQ'   
+        en: 'FAQ'
     }
     const otherContent = {
         title: {
@@ -32,27 +36,32 @@ export default function FaqPage() {
         {
             name: 'umum',
             id: 'Umum',
-            en: 'Umum'
+            en: 'Umum',
+            disable: false
         },
         {
             name: 'useApp',
             id: 'Penggunaan Aplikasi',
-            en: 'Penggunaan Aplikasi'
+            en: 'Penggunaan Aplikasi',
+            disable: true
         },
         {
             name: 'mitra',
             id: 'Kemitraan',
-            en: 'Kemitraan'
+            en: 'Kemitraan',
+            disable: true
         },
         {
             name: 'karir',
             id: 'Karir',
-            en: 'Karir'
+            en: 'Karir',
+            disable: true
         },
         {
             name: 'other',
             id: 'Lainnya',
-            en: 'Lainnya'
+            en: 'Lainnya',
+            disable: true
         }
     ]
     const faqData = {
@@ -115,7 +124,7 @@ export default function FaqPage() {
                 a: {
                     id: 'Melalui nilai Eratani #SelaluAdaUntukPetani, tentu kesejahteraan para petani menjadi poin utama yang diperhatikan dan diperjuangkan oleh Eratani. Dimana Eratani memberikan solusi atas masalah yang mereka hadapi, solusi terhadap lingkungan, dan juga peduli dengan kesejahteraan mereka. Adapun beberapa keuntungan yang akan didapatkan oleh petani binaan antara lain: akses bantuan permodalan, akses bahan baku dan sarana pertanian, peningkatan pengetahuan terkait teknologi dan proses pertanian, serta bantuan penyaluran hasil panen dengan harga terstandarisasi.',
                     en: 'Melalui nilai Eratani #SelaluAdaUntukPetani, tentu kesejahteraan para petani menjadi poin utama yang diperhatikan dan diperjuangkan oleh Eratani. Dimana Eratani memberikan solusi atas masalah yang mereka hadapi, solusi terhadap lingkungan, dan juga peduli dengan kesejahteraan mereka. Adapun beberapa keuntungan yang akan didapatkan oleh petani binaan antara lain: akses bantuan permodalan, akses bahan baku dan sarana pertanian, peningkatan pengetahuan terkait teknologi dan proses pertanian, serta bantuan penyaluran hasil panen dengan harga terstandarisasi.',
-                }   
+                }
             },
             {
                 q: {
@@ -140,6 +149,17 @@ export default function FaqPage() {
         ]
     }
     const [filter, setFilter] = useState('umum')
+    const scrollWrapperRef = createRef()
+
+    const scrollRight = (event) => {
+        const wrapper = scrollWrapperRef.current
+        gsap.to(wrapper, { duration: 1, ease: 'Power1.easeInOut', scrollTo: { x: wrapper.scrollLeft + wrapper.clientWidth }})
+    }
+
+    const scrollLeft = (event) => {
+        const wrapper = scrollWrapperRef.current
+        gsap.to(wrapper, { duration: 1, ease: 'Power1.easeInOut', scrollTo: { x: wrapper.scrollLeft - wrapper.clientWidth }})
+    }
 
     return (
         <>
@@ -150,22 +170,24 @@ export default function FaqPage() {
             <Container id={ styles.Faq } normalPadding paddingTop='72' paddingBottom='156'>
                 <Typograph tag='h2' size='sm-1 md-1-sm lg-1-md' color='green-70' align='center'>{ otherContent.title[locale] }</Typograph>
                 <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center'>{ otherContent.caption[locale] }</Typograph>
-            
+
                 <div className={ `${ styles.filter }` }>
-                    <a href='#' className={ styles.arrow_left }><NextVect height='20' className='flip-x'/></a>
-                    <div className={ `row between-xs ${ styles.filter_cat }` }>
-                        { filterContent.map((f, index) => 
-                            <div className='col-xs-6 col-sm-4 col-md-3 col-lg' key={ index }>
-                                <Typograph tag='a' href='#' size='xsm-1 sm-2-md' weight='bold' align='center' onClick={ () => setFilter(f.name) } className={ (filter == f.name) ? styles.active : undefined }>{ f[locale] }</Typograph>
-                            </div>
-                        ) }
+                    <a href='#' className={ styles.arrow_left } onClick={ scrollLeft }><NextVect height='20' className='flip-x'/></a>
+                    <div ref={ scrollWrapperRef } className={ styles.scroll_wrapper }>
+                        <div className={ `${ styles.filter_cat }` }>
+                            { filterContent.map((f, index) =>
+                                <div className='col-xs-6 col-sm-4 col-md-3 col-lg' key={ index }>
+                                    <Typograph tag='a' href='#' size='xsm-1 sm-2-md' weight='bold' align='center' disable={ f.disable } onClick={ () => setFilter(f.name) } className={ `${ (f.disable) ? styles.disabled : undefined } ${ (filter == f.name) ? styles.active : undefined }` }>{ f[locale] }</Typograph>
+                                </div>
+                            ) }
+                        </div>
                     </div>
-                    <a href='#' className={ styles.arrow_right }><NextVect height='20' /></a>
+                    <a href='#' className={ styles.arrow_right } onClick={ scrollRight }><NextVect height='20' /></a>
                 </div>
 
                 <div className={ styles.accordion }>
                     <Accordion toggleOther>
-                        { faqData.umum.map((faq, index) => 
+                        { faqData.umum.map((faq, index) =>
                             <li key={ index } title={ faq.q[locale] }>
                                 <Typograph tag='p' size='xsm-2 sm-2-md' align='justify left-sm'>{ faq.a[locale] }</Typograph>
                             </li>
@@ -174,5 +196,5 @@ export default function FaqPage() {
                 </div>
             </Container>
         </>
-    ) 
+    )
 }

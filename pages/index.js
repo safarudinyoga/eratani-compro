@@ -170,18 +170,18 @@ export default function HomePage({ mapData }) {
             }
         ]
     }
-    const mapProvincePosition = {
-        'Aceh': { x: 73, y: 86 },
-        'Sumatera Utara': { x: 118, y: 147 },
-        'Sumatera Barat': { x: 153, y: 220 },
-        'Sumatera Selatan': { x: 241, y: 299 },
-        'Lampung': { x: 288, y: 345 },
-        'Sulawesi Selatan': { x: 713, y: 282 },
-        'Jawa Barat': { x: 366, y: 398 },
-        'Jawa Tengah': { x: 412, y: 409 },
-        'Daerah Istimewa Yogyakarta': { x: 434, y: 436 },
-        'Jawa Timur': { x: 485, y: 422 }
-    }
+    // const mapProvincePosition = {
+    //     'Aceh': { x: 73, y: 86 },
+    //     'Sumatera Utara': { x: 118, y: 147 },
+    //     'Sumatera Barat': { x: 153, y: 220 },
+    //     'Sumatera Selatan': { x: 241, y: 299 },
+    //     'Lampung': { x: 288, y: 345 },
+    //     'Sulawesi Selatan': { x: 713, y: 282 },
+    //     'Jawa Barat': { x: 366, y: 398 },
+    //     'Jawa Tengah': { x: 412, y: 409 },
+    //     'Daerah Istimewa Yogyakarta': { x: 434, y: 436 },
+    //     'Jawa Timur': { x: 485, y: 422 }
+    // }
     const mapsContent = {
         title: {
             id: <>Kami Mendukung Pertumbuhan dan<br />Digitalisasi Pertanian Seluruh Indonesia</>,
@@ -195,7 +195,8 @@ export default function HomePage({ mapData }) {
             return {
                 prov: prov.province,
                 cities: prov.cities.map(city => city.nama.replace(/^(kabupaten|kota|kab)[\.\s]*/gi, "")),
-                pos: (mapProvincePosition[prov.province] === undefined) ? { x: 0, y: 0 } : mapProvincePosition[prov.province],
+                pos: prov.pos,
+                // pos: (mapProvincePosition[prov.province] === undefined) ? { x: 0, y: 0 } : mapProvincePosition[prov.province],
                 comingSoon: prov.coming_soon
             }
         })
@@ -485,7 +486,7 @@ export default function HomePage({ mapData }) {
             },
             {
                 id: 'Toko Tani',
-                en: 'Agricultural Supply Store',
+                en: 'Toko Tani',
                 color: 'green-50'
             },
             {

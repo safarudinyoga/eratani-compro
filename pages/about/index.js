@@ -109,19 +109,16 @@ export default function AboutUsPage() {
             bgColor: 'green-90',
             top: 48
         },
-        {
-            name1: 'Grace Astari',
-            name2: 'Grace Astari',
-            position: 'Chief Business Officer',
-            quote: {
-                en: '“Sebagai pemimpin di Eratani, kami datang dengan sebuah pemikiran yang sama yaitu menjadi bagian dari solusi pada ekosistem pertanian. Kami percaya dalam menjalankan bisnis yang diimbangi dengan memberikan dampak sosial dapat membuat kita bertahan dan berkesinambungan dalam jangka panjang.”',
-                id: '“As a leader in EraTani, we grow with one mindset: being a part of the solution for the agritech value chain. We believe that doing business, along with amplifying social impacts to our partners will make all of us more sustainable in the long run.”',
-            },
-            photo: '4 10.png',
-            quoteSymColor: 'green-40',
-            bgColor: 'green-50',
-            top: 24
-        },
+        // {
+        //     name1: 'Grace Astari',
+        //     name2: 'Grace Astari',
+        //     position: 'Chief Business Officer',
+        //     quote: '“Sebagai pemimpin di Eratani, kami datang dengan sebuah pemikiran yang sama yaitu menjadi bagian dari solusi pada ekosistem pertanian. Kami percaya dalam menjalankan bisnis yang diimbangi dengan memberikan dampak sosial dapat membuat kita bertahan dan berkesinambungan dalam jangka panjang.”',
+        //     photo: '4 10.png',
+        //     quoteSymColor: 'green-40',
+        //     bgColor: 'green-50',
+        //     top: 24
+        // }
     ]
     const culutreContent = {
         title: {
