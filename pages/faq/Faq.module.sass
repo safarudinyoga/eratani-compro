@@ -8,6 +8,8 @@
         @include Define.box($width: calc(100% - 160px))
         @include Define.margin($left: auto, $right: auto)
         max-width: 1132px
+        // display: none
+        opacity: 0
 
         @include Define.media('screen', '<md')
             @include Define.box($width: 100%)
@@ -52,6 +54,7 @@
                     border: 1px solid map-get(Define.$colors, 'green-100')
                     border-radius: 8px
                     white-space: normal
+                    transition: all .5s ease
 
                     &.disabled
                         @extend .text-natural-40

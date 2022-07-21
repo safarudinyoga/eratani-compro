@@ -1,5 +1,6 @@
 import React, { useEffect, useState, createRef } from 'react';
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 import styles from './Join.module.sass'
 import Typograph from '/components/custom/Typograph'
@@ -173,7 +174,7 @@ const FormPetani = ({ nama, usia, hp, hasil, alamat }) => {
 
 export default function DaftarForm() {
     
-    const { query } = useRouter()
+    const { query, locale } = useRouter()
     const type = (Array.isArray(query.type)) ? query.type[0] : null
 
     const daftarTypes = [
@@ -372,44 +373,54 @@ export default function DaftarForm() {
     if (type !== null)
         selectedForm = daftarTypes.findIndex((t) => type.toLowerCase() === t.slugName.toLowerCase())
 
+    const pageTitle = {
+        id: `Gabung`,
+        en: 'Join'   
+    }
+
     return (
-        <section id={ styles.Form } className='bg-white align-left'>
-            <div className='row no-margin'>
-                <div className={ `col-xs ${ styles.form_main }` }>
-                    <div>
-                        <div className={ `align-center ${ styles.eraicon_mobile }` }>
-                            <Eraicon2Vect />
-                        </div>
-                        <Typograph tag='h2' size='sm-1 md-2-sm lg-3-md'>Solusi Pertanian dalam Genggaman Anda!</Typograph>
-                        <Typograph tag='p' size='xsm-1 sm-2-sm sm-1-md' color='natural-50'>Silakan isi formulir di bawah ini untuk bergabung menjadi pembentuk ekosistem pertanian yang kuat.</Typograph>
-                        <div className={ styles.selection }>
-                            <Typograph tag='h6' size='xsm-1 sm-2-md' color='natural-50' weight='light'>Pilih salah satu</Typograph>
-                            <div>
-                                { daftarTypes.map((type, index) => 
-                                    <Typograph key={ index } tag='a' href={ `/join/${ type.slugName }` } replace size='sm-2 md-3-md' weight='semibold' color='green-60' className={ (selectedForm == index) ? styles.active : undefined } >{ type.name }</Typograph>
-                                ) }
+        <>
+            <Head>
+                <title>Eratani - { pageTitle[locale] }</title>
+            </Head>
+            <section id={ styles.Form } className='bg-white align-left'>
+                <div className='row no-margin'>
+                    <div className={ `col-xs ${ styles.form_main }` }>
+                        <div>
+                            <div className={ `align-center ${ styles.eraicon_mobile }` }>
+                                <Eraicon2Vect />
+                            </div>
+                            <Typograph tag='h2' size='sm-1 md-2-sm lg-3-md'>Solusi Pertanian dalam Genggaman Anda!</Typograph>
+                            <Typograph tag='p' size='xsm-1 sm-2-sm sm-1-md' color='natural-50'>Silakan isi formulir di bawah ini untuk bergabung menjadi pembentuk ekosistem pertanian yang kuat.</Typograph>
+                            <div className={ styles.selection }>
+                                <Typograph tag='h6' size='xsm-1 sm-2-md' color='natural-50' weight='light'>Pilih salah satu</Typograph>
+                                <div>
+                                    { daftarTypes.map((type, index) => 
+                                        <Typograph key={ index } tag='a' href={ `/join/${ type.slugName }` } replace size='sm-2 md-3-md' weight='semibold' color='green-60' className={ (selectedForm == index) ? styles.active : undefined } >{ type.name }</Typograph>
+                                    ) }
+                                </div>
+                            </div>
+                            
+                            <div className={ styles.data_input }>
+                                { selectedForm > -1 && <Typograph tag='h6' size='xsm-1 sm-2-md' color='natural-50' weight='light'>Isi Formulir</Typograph> }
+                                <form>
+                                    { daftarTypes.map((type, index) => 
+                                        <div key={ index }>{ (selectedForm == index) && <type.form { ...type.placeholder } /> }</div>
+                                    ) }
+                                </form>
+                            </div>
+                            <div className={ `align-right ${ styles.button }` }>
+                                { selectedForm > -1 && <Button href='#' backgroundColor='green-60' textColor='white'>Kirim&nbsp;&nbsp;&nbsp;&nbsp;<ArrowForwardVect width='16' /></Button> }
                             </div>
                         </div>
-                        
-                        <div className={ styles.data_input }>
-                            { selectedForm > -1 && <Typograph tag='h6' size='xsm-1 sm-2-md' color='natural-50' weight='light'>Isi Formulir</Typograph> }
-                            <form>
-                                { daftarTypes.map((type, index) => 
-                                    <div key={ index }>{ (selectedForm == index) && <type.form { ...type.placeholder } /> }</div>
-                                ) }
-                            </form>
-                        </div>
-                        <div className={ `align-right ${ styles.button }` }>
-                            { selectedForm > -1 && <Button href='#' backgroundColor='green-60' textColor='white'>Kirim&nbsp;&nbsp;&nbsp;&nbsp;<ArrowForwardVect width='16' /></Button> }
+                    </div>
+                    <div className={ `${ styles.eraicon }` }>
+                        <div className='bg-green-60'>
+                            <EraiconVect />
                         </div>
                     </div>
                 </div>
-                <div className={ `${ styles.eraicon }` }>
-                    <div className='bg-green-60'>
-                        <EraiconVect />
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </>
     )
 }

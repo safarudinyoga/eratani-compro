@@ -141,8 +141,8 @@ const Ecosystem = ({ title, data }) => {
         const slideNode = slider.getElementsByClassName(styles.slide_content)
 
         gsap.timeline({ onComplete: () => setLock(0) })
-        .set(slider, { minHeight: slider.clientHeight + 3 })
-        .to(slider, { duration: 1, ease: 'BackEase', scrollTo: { x: (slideNode[slide].clientWidth + 31.5) * (slide + 1) } })
+        .set(slider, { minHeight: slider.clientHeight })
+        .to(slider, { duration: 1.4, ease: 'BackEase', scrollTo: { x: (slideNode[slide].clientWidth + 31.5) * (slide + 1) } })
         .set(slider, { minHeight: 0 })
     }, [slide]) 
 
@@ -158,10 +158,12 @@ const Ecosystem = ({ title, data }) => {
                     <div className={ `${ styles.slide } ${ (index == slide) && styles.slide_active }` } key={ index }>
                         <div className={ styles.slide_content }>
                             <div>
-                                <Typograph tag='h5' size='sm-2 sm-1-md' className={ styles.title }>
-                                    <span className='text-green-50'>{ `${ eco.no }.` }</span>
-                                    <span>{ eco.title[locale] }</span>
-                                </Typograph>
+                                <div className={ styles.titleBlock }>
+                                    <Typograph tag='h5' size='sm-2 sm-1-md' className={ styles.title }>
+                                        <span className='text-green-50'>{ `${ eco.no }.` }</span>
+                                        <span>{ eco.title[locale] }</span>
+                                    </Typograph>
+                                </div>
                                 <SetRatio ax='1.42' ay='1'>
                                     <img src={ `/ecosystem/${ eco.photo }` } width='100%' className='image-cover' />
                                 </SetRatio>
@@ -395,22 +397,33 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
 /* ------------------ Join ------------------ */
 const Join = ({ title, caption, data, daftar }) => {
     const { locale } = useRouter()
-    // const [ formDaftar, setFormDaftar ] = useState(0)
+
+    useEffect(() => {
+        let tl = gsap.timeline({ repeat: -1, repeatDelay: 0 })
+        for (let i = 0; i < data.length; i++) {
+            if (i > 0)
+                tl.to('.__join_type__', { duration: 0.7, ease: 'Power3.easeInOut', top: (-100 * i) + '%' }, '<1.6')
+            if (i == data.length - 1)
+                tl.to('.__join_type__', { duration: 0.9, ease: 'Power3.easeInOut', top: '0%' }, '<1.6')
+        }
+
+        return _ => tl.kill()
+    }, [])
+
     return (
         <Container id={ styles.Join } normalPadding paddingTop='80' paddingBottom='68' className='align-center'>
             <Typograph tag='h2' size='sm-1 lg-3-sm xlg-2-md' color='natural-60'>
                 { title[locale] }&nbsp;
-                <div>
-                    <ul className='align-left __join_ul__'>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <ul className='align-left'>
                         { data.map((j, index) => 
-                            <li key={ index }><Typograph tag='h2' size='sm-1 lg-3-sm xlg-2-md' color={ j.color }>{ j[locale] }</Typograph></li>
+                            <li className='__join_type__' key={ index }><Typograph tag='h2' size='sm-1 lg-3-sm xlg-2-md' color={ j.color }>{ j[locale] }</Typograph></li>
                         ) }
                     </ul>
-                </div>
+                </span>
             </Typograph>
             <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='780'>{ caption[locale] }</Typograph>
             <Button href='/join' xPadding='18' textColor='white' backgroundColor='green-60'>{ daftar[locale] }</Button>
-            {/* { (formDaftar) ? <DaftarForm onClose={ () => setFormDaftar(0) } /> : undefined } */}
         </Container>
     )
 }
