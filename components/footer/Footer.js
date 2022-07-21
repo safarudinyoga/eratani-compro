@@ -20,7 +20,7 @@ export default function Footer () {
         { id: 'KARIR',               en: 'CAREER',                  link: 'career' }
     ]
     const joinNav = [
-        { id: 'PETANI',             en: 'PETANI',                                   link: '#' },
+        { id: 'PETANI',             en: 'FARMERS',                                   link: '#' },
         { id: 'TOKO TANI',          en: 'AGRICULTURAL SUPPLY STORE',                link: '#' },
         { id: 'GAPOKTAN',           en: 'ASSOCIATION OF FARMER GROUPS (GAPOKTAN)',  link: '#' },
         { id: 'POKTAN',             en: 'FARMER GROUP (POKTAN)',                    link: '#' },

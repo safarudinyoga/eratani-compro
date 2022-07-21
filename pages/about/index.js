@@ -99,7 +99,7 @@ export default function AboutUsPage() {
         {
             name1: 'Angles Gani',
             name2: 'Angles Gani',
-            position: 'Chief Plantation Officer',
+            position: 'Chief Service Officer',
             quote: {
                 en: '“When life blesses you financially, don’t raise your standard of living but raise your standard of giving. Salah satu kesamaan antara saya dan visi Eratani adalah sama-sama ingin berdampak bagi sekitar, dalam konteks ini menyejahterakan petani.”',
                 id: '“When life blesses you financially, don’t raise your standard of living but raise your standard of giving. One of the similarities between Eratani’s vision and mine is that we both want to bring an impact to our surroundings, in this case, by prospering the farmers’ lives.”',
