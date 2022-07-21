@@ -1,5 +1,5 @@
 import Parse from 'html-react-parser'
-import React, { useState, createRef, useEffect } from 'react';
+import React, { useState, createRef, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router'
 import Slick from "react-slick";
 import gsap from 'gsap'
@@ -361,6 +361,30 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
     const diliputSlickSettings = SlickNavigationCustom('__SlickDiliput__', slickSettings)
     const [ tab, setTab ] = useState(0)
 
+    const slickMitraRef = useRef()
+    const slickDiliputRef = useRef()
+    const sliderBlockRef = createRef()
+
+    useEffect(() => {
+        if (tab == 0)
+            slickDiliputRef.current.slickPause()
+        else
+            slickMitraRef.current.slickPause()
+
+        const sliders = sliderBlockRef.current.childNodes
+        
+        gsap.to(sliders[tab ? 0 : 1], { opacity: 0, duration: 0.5, onComplete: () => {
+            gsap.set(sliders[tab ? 0 : 1], { display: 'none' })
+            gsap.set(sliders[tab], { display: 'block' })
+            gsap.to(sliders[tab], { opacity: 1, duration: 0.5, onComplete: () => {
+                if (tab == 0)
+                    slickMitraRef.current.slickPlay()
+                else
+                    slickDiliputRef.current.slickPlay()
+            } })
+        } })
+    }, [tab])
+
     return (
         <Container id={ styles.Media } normalPadding backgroundColor='natural-10' paddingTop='40' paddingBottom='68' className='align-center'>
             <div className={ styles.tab_title }>
@@ -368,17 +392,20 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
                 <Typograph tag='h2' size='sm-1 md-2-sm lg-3-md' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 1) && styles.active }` } onClick={ () => setTab(1) }>{ diliputTitle[locale] }</Typograph>
             </div>
             <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='705'>{ caption[locale] }</Typograph>
-            <div className={ styles.content }>
-                { (tab == 0) ? <Slick { ...mitaSlickSettings } className='__SlickMitra__'>
-                        { mitraData.map((mitra, index) => 
-                            <div key={ index }>
-                                <div className={ styles.slick_slide }>
-                                    { (!mitra.image) ? '' : <img src={ `/media/mitra/${ mitra.image }` } alt={ mitra.alt } /> }
+            <div ref={ sliderBlockRef } className={ styles.content }>
+                <div>
+                    <Slick ref={ slickMitraRef } { ...mitaSlickSettings } className='__SlickMitra__'>
+                            { mitraData.map((mitra, index) => 
+                                <div key={ index }>
+                                    <div className={ styles.slick_slide }>
+                                        { (!mitra.image) ? '' : <img src={ `/media/mitra/${ mitra.image }` } alt={ mitra.alt } /> }
+                                    </div>
                                 </div>
-                            </div>
-                        ) }
+                            ) }
                     </Slick>
-                : <Slick { ...diliputSlickSettings } className='__SlickDiliput__'>
+                </div>
+                <div>
+                    <Slick ref={ slickDiliputRef } { ...diliputSlickSettings } className='__SlickDiliput__'>
                         { diliputData.map((diliput, index) => 
                             <div key={ index }>
                                 <div className={ styles.slick_slide }>
@@ -387,7 +414,7 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
                             </div>
                         ) }
                     </Slick>
-                }
+                </div>
             </div>
         </Container>
     )

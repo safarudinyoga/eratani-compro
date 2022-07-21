@@ -25,21 +25,17 @@ export default function SlickCustom (className, settings) {
             dotsClass: styles.slick_dots,
             customPaging: i => <a />,
             onInit: () => {
-                try {
-                    document.querySelectorAll(`.${ className } .${ styles.slick_dots } a`)[0].classList.add(styles.slick_active)
-                } catch (error) { }
+                document.querySelectorAll(`.${ className } .${ styles.slick_dots } a`)[0]?.classList.add(styles.slick_active)
             },
             beforeChange: (current, next) => {
-                if (settings.onBeforeChange !== undefined) settings.onBeforeChange(current, next)
-
-                try {
-                    document.querySelectorAll(`.${ className } .${ styles.slick_dots } .${ styles.slick_active }`)[0].className = ''
-                } catch (error) { }
-                try {
-                    setTimeout(() => {
-                        document.querySelectorAll(`.${ className } .${ styles.slick_dots } .slick-active`)[0].children[0].classList.add(styles.slick_active)
-                    }, 20)
-                } catch (error) { }
+                if (settings.onBeforeChange !== undefined) 
+                    settings.onBeforeChange(current, next)
+                
+                const d =document.querySelectorAll(`.${ className } .${ styles.slick_dots } .${ styles.slick_active }`)[0]
+                if (d !== undefined) 
+                    d.className = ''
+                
+                document.querySelectorAll(`.${ className } .${ styles.slick_dots } .slick-active`)[0]?.children[0]?.classList.add(styles.slick_active)
             }
         }
     } 
