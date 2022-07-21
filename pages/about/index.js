@@ -20,9 +20,7 @@ export default function AboutUsPage() {
                     Eratani sebagai sebuah perusahaan agri-tech yang didirikan oleh anak bangsa sadar akan urgensi dari masalah pertanian yang ada di Indonesia.  Berangkat dari mimpi dan semangat yang besar, Eratani memiliki misi untuk mensejahterakan petani nusantara dengan membangun ekosistem pertanian yang kuat dan mempermudah jalannya proses hulu (pendanaan petani, pengelolaan rantai pasok) hingga proses hilir (distribusi & penyaluran hasil panen) pada ekosistem pertanian.
                 </>,
             en: <>
-                    Indonesia adalah negara agraris yang mayoritas penduduknya bermata pencaharian sebagai petani. Hasil pertanian yang tidak pasti dengan besarnya ketergantungan terhadap alam membuat petani Indonesia mengalami kesulitan dalam permodalan. Hal inilah yang memicu rendahnya angka regenerasi petani muda. Data dari Badan Pusat Statistik menunjukkan bahwa hanya 19,18% pemuda Indonesia yang bekerja di sektor pertanian pada 2021 dan jumlahnya terus menurun bahkan di tengah peningkatan jumlah tenaga kerja di Indonesia.
-                    <br /><br />
-                    Eratani sebagai sebuah perusahaan agri-tech yang didirikan oleh anak bangsa sadar akan urgensi dari masalah pertanian yang ada di Indonesia.  Berangkat dari mimpi dan semangat yang besar, Eratani memiliki misi untuk mensejahterakan petani nusantara dengan membangun ekosistem pertanian yang kuat dan mempermudah jalannya proses hulu (pendanaan petani, pengelolaan rantai pasok) hingga proses hilir (distribusi & penyaluran hasil panen) pada ekosistem pertanian.
+                    Eratani as an agri-tech company founded by the children of the nation has realized the urgency of agriculture problems in Indonesia. Eratani embodies a mission to improve Indonesian farmers’ welfare by building a strong agriculture ecosystem and reinforcing the upstream (funding, supply chain management) to downstream (sales and distribution of agricultural products) processes.
                 </>,
         },
     }
