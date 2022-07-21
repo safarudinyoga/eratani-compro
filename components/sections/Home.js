@@ -25,8 +25,6 @@ import Mc0Png from '/assets/static/mc0.png'
 import Mc1Png from '/assets/static/mc1.png'
 import Mc2Png from '/assets/static/mc2.png'
 
-import DaftarForm from '/components/sections/DaftarForm'
-
 gsap.registerPlugin(ScrollToPlugin)
 gsap.registerPlugin(CustomEase)
 
@@ -361,14 +359,6 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
     const diliputSlickSettings = SlickNavigationCustom('__SlickDiliput__', slickSettings)
     const [ tab, setTab ] = useState(0)
 
-    // if (mitraData.length % 5 != 0)
-    //     for (let i = 0; i < mitraData.length % 5; i++) 
-    //         mitraData.push({image: 0, alt: 'null'})
-
-    // if (diliputData.length % 5 != 0)
-    //     for (let i = 0; i < mitraData.length % 5; i++) 
-    //         diliputData.push({image: 0, alt: 'null'})
-
     return (
         <Container id={ styles.Media } normalPadding backgroundColor='natural-10' paddingTop='40' paddingBottom='68' className='align-center'>
             <div className={ styles.tab_title }>
@@ -405,7 +395,7 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
 /* ------------------ Join ------------------ */
 const Join = ({ title, caption, data, daftar }) => {
     const { locale } = useRouter()
-    const [ formDaftar, setFormDaftar ] = useState(0)
+    // const [ formDaftar, setFormDaftar ] = useState(0)
     return (
         <Container id={ styles.Join } normalPadding paddingTop='80' paddingBottom='68' className='align-center'>
             <Typograph tag='h2' size='sm-1 lg-3-sm xlg-2-md' color='natural-60'>
@@ -419,8 +409,8 @@ const Join = ({ title, caption, data, daftar }) => {
                 </div>
             </Typograph>
             <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='780'>{ caption[locale] }</Typograph>
-            <Button href='#' onClick={ () => setFormDaftar(1) } xPadding='18' textColor='white' backgroundColor='green-60'>{ daftar[locale] }</Button>
-            { (formDaftar) ? <DaftarForm onClose={ () => setFormDaftar(0) } /> : undefined }
+            <Button href='/join' xPadding='18' textColor='white' backgroundColor='green-60'>{ daftar[locale] }</Button>
+            {/* { (formDaftar) ? <DaftarForm onClose={ () => setFormDaftar(0) } /> : undefined } */}
         </Container>
     )
 }

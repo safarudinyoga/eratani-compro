@@ -19,12 +19,12 @@ export default function Footer () {
         { id: 'PERTANYAAN',          en: 'FAQ',                     link: 'faq' },
         { id: 'KARIR',               en: 'CAREER',                  link: 'career' } ]
     const joinNav = [
-        { id: 'PETANI',             en: 'PETANI',                   link: '#' },
-        { id: 'TOKO TANI',          en: 'TOKO TANI',                link: '#' },
-        { id: 'GAPOKTAN',           en: 'GAPOKTAN',                 link: '#' },
-        { id: 'POKTAN',             en: 'POKTAN',                   link: '#' },
-        { id: 'SUPPLIER',           en: 'SUPPLIER',                 link: '#' },
-        { id: 'BUYER',              en: 'BUYER',                    link: '#' } ]
+        { id: 'PETANI',             en: 'PETANI',                   link: 'join/petani' },
+        { id: 'TOKO TANI',          en: 'TOKO TANI',                link: 'join/toko-tani' },
+        { id: 'GAPOKTAN',           en: 'GAPOKTAN',                 link: 'join/gapoktan' },
+        { id: 'POKTAN',             en: 'POKTAN',                   link: 'join/poktan' },
+        { id: 'SUPPLIER',           en: 'SUPPLIER',                 link: 'join/supplier' },
+        { id: 'BUYER',              en: 'BUYER',                    link: 'join/pembeli' } ]
     const otherContent = {
         officeTitle: {
             id: 'KANTOR PUSAT',

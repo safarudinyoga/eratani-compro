@@ -40,9 +40,15 @@ export default function Button (props) {
     delete newProps.href
     delete newProps.target
     delete newProps.disable
+    delete newProps.replace
 
-    return (
-        <Link href={ props.href } scroll={true}><a { ...newProps }>{ props.children }</a></Link>
-    )
+    if (props.replace !== undefined)
+        return (
+            <Link href={ props.href } replace scroll={true}><a { ...newProps }>{ props.children }</a></Link>
+        )
+    else
+        return (
+            <Link href={ props.href } scroll={true}><a { ...newProps }>{ props.children }</a></Link>
+        ) 
 
 }

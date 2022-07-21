@@ -47,12 +47,18 @@ export default function Ellipsis (props) {
     delete newProps.maxWidth
     delete newProps.align
     delete newProps.disable
+    delete newProps.replace
+    delete newProps.href
 
     if (TagName == 'a') {
-        delete newProps.href
-        return (
-            <Link href={ props.href } scroll={true} locale={ props.locale }><a { ...newProps }>{ props.children }</a></Link>
-        )
+        if (props.replace !== undefined)
+            return (
+                <Link href={ props.href } replace scroll={true} locale={ props.locale }><a { ...newProps }>{ props.children }</a></Link>
+            )
+        else
+            return (
+                <Link href={ props.href } scroll={true} locale={ props.locale }><a { ...newProps }>{ props.children }</a></Link>
+            )
     }
 
     return (
