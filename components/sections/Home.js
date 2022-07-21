@@ -240,7 +240,7 @@ const Solution = ({ title, caption, data }) => {
             <div className={ `row center-xs ${ styles.row }` }>
                 { data.map((solution, index) =>
                     <div className={`col-xs-12 col-sm-6 col-md-5 col-lg-4 align-left ${ styles.column }`} key={ index }>
-                        <SetRatio ax='1' ay='1.26' min='0' className={ styles.wrapper } onMouseEnter={ onSolutionEnter } onMouseLeave={ onSolutionLeave }>
+                        <SetRatio ax='1' ay='1.26' min='500' className={ styles.wrapper } onMouseEnter={ onSolutionEnter } onMouseLeave={ onSolutionLeave }>
                             <img src={ `/solution/${ solution.photo }` } className='image-cover' />
                             <Typograph tag='h4' size='xlg-3' color='green-10' className='__SolutionNode__'>
                                 <span>{ solution.title1[locale] }</span>

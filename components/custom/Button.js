@@ -10,6 +10,7 @@ export default function Button (props) {
     newProps.className += (props.textColor) ? `text-${ props.textColor } ` : ''
     newProps.className += (props.borderColor) ? `border-${ props.borderColor } ` : ''
     newProps.className += (props.backgroundColor) ? `bg-${ props.backgroundColor } ` : ''
+    newProps.className += (props.disable) ? `disable-pointer-event ` : ''
     newProps.className += props.className || ''
     newProps.style = { ...props.style }
 
@@ -38,9 +39,10 @@ export default function Button (props) {
     delete newProps.borderWidth
     delete newProps.href
     delete newProps.target
+    delete newProps.disable
 
     return (
-        <Link href={ props.href }><a { ...newProps }>{ props.children }</a></Link>
+        <Link href={ props.href } scroll={true}><a { ...newProps }>{ props.children }</a></Link>
     )
 
 }

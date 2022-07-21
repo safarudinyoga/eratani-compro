@@ -87,15 +87,14 @@
         @include Define.margin($top: 8px, $bottom: 80px)
 
     .container
-        @include Define.margin($left: -4px, $right: -4px)
-
-        @include Define.media('screen', '>=sm')
-            @include Define.margin($left: auto, $right: auto)
-            @include Define.box($width: 686px)
+        @include Define.margin($left: auto, $right: auto)
+        // max-width: 686px
+        max-width: 500px
 
         @include Define.media('screen', '>=md')
-            @include Define.margin($left: auto, $right: auto)
-            @include Define.box($width: 1320px)
+            max-width: none
+            @include Define.box($width: 1045px)
+            // @include Define.box($width: 1320px)
 
     .team
         flex: 1 0 23.5%
@@ -177,7 +176,8 @@
             flex: 1 0 29.5%
 
             @include Define.media('screen', '>=md')
-                flex: 1 0 calc(100% - 825px)
+                // flex: 1 0 calc(100% - 825px)
+                flex: 1 0 calc(100% - 550px)
 
             .wrapper
                 &:not(.wrapper_mobile)
@@ -206,11 +206,13 @@
                         @include Define.box($left: 222px)
 
     .quote_mobile
-        @include Define.margin($top: 16px)
+        max-width: 500px
+        @include Define.margin($left: auto, $right: auto, $top: 16px)
+        @include Define.padding($left: 4px, $right: 4px)
 
         @include Define.media('screen', '>=sm')
-            @include Define.margin($left: auto, $right: auto, $top: 32px)
-            @include Define.box($width: 670px)
+            @include Define.margin($top: 32px)
+            @include Define.padding($left: 12px, $right: 12px)
 
         @include Define.media('screen', '>=md')
             display: none
@@ -271,14 +273,20 @@
         @include Define.media('screen', '<md')
             @include Define.padding($left: 12px, $bottom: 0, $top: 24px)
 
-        h2 span
-            @include Define.box($width: 32px, $height: 8px)
-            @include Define.margin($top: 16px)
-            display: block
+        h2 
+            max-width: 380px
 
-            @include Define.media('screen', '<md')
-                @include Define.box($height: 4px)
-            
+            @include Define.media('screen', '<lg', '>=md')
+                max-width: 320px
+
+            span
+                @include Define.box($width: 32px, $height: 8px)
+                @include Define.margin($top: 16px)
+                display: block
+
+                @include Define.media('screen', '<md')
+                    @include Define.box($height: 4px)
+
         p
             @include Define.margin($top: 40px, $bottom: 56px)
 

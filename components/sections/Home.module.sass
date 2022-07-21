@@ -239,6 +239,14 @@
             white-space: nowrap
             transform-origin: left top
             @extend .solution-hover-transistion
+
+            @include Define.media('screen', '<1440px')
+                @include Define.box($left: 24px)
+                @include Define.padding($right: 24px)
+
+            @include Define.media('screen', '<1340px')
+                font-size: 36px
+                line-height: 50.4px
             
             span
                 @extend .solution-hover-transistion
@@ -253,6 +261,14 @@
             transform-origin: center bottom
             transform: scale(0.5)
             @extend .solution-hover-transistion
+
+            @include Define.media('screen', '<1400px')
+                @include Define.padding($right: 24px, $left: 24px)
+
+            p
+                @include Define.media('screen', '<1340px')
+                    font-size: 14px
+                    line-height: 19.6px
             
             a
                 @include Define.margin($top: 32px)
