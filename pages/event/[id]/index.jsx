@@ -12,6 +12,7 @@ import Link from '../../../assets/vector/link.svg'
 
 // utils
 import useWindowDimensions from 'hooks/useWindowDimensions'
+import { globalText } from 'utils/globalText'
 
 export async function getServerSideProps({ params }) {
   const id = params.id
@@ -21,7 +22,7 @@ export async function getServerSideProps({ params }) {
 
     return {
       props: {
-        eventDetail: eventResponse.data || null
+        eventDetail: eventResponse.data || null,
       }
     }
   } catch (error) {
@@ -58,6 +59,13 @@ const EventDetail = ({ eventDetail }) => {
       name: router.query.id
     }
   ]
+
+  const origin =
+    typeof window !== 'undefined' && window.location.origin
+        ? `${window.location.origin}${router.asPath}`
+        : '';
+
+  console.log(origin);
 
   return (
     <div className={styles.container_eventdetail}>
@@ -98,12 +106,20 @@ const EventDetail = ({ eventDetail }) => {
         </h4>
         <button className={styles.button_daftar_petani}>Daftar sebagai Petani</button>
         <div className={styles.share}>
-          <h5 className='bold c-natural-50'>Bagikan Postingan Ini</h5>
+          <h5 className='bold c-natural-50'>{globalText.share[router.locale]}</h5>
           <div className={styles.wrapper_icon}>
-            <Whatsapp className={styles.icon} />
-            <Fb className={styles.icon} />
-            <Twitter className={styles.icon} />
-            <Link className={styles.icon} />
+            <a href={`https://wa.me?text=${encodeURIComponent(origin)}`} target="_blank" rel="noopener noreferrer">
+              <Whatsapp className={styles.icon} />
+            </a>
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+              <Fb className={styles.icon} />
+            </a>
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+              <Twitter className={styles.icon} />
+            </a>
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+              <Link className={styles.icon} />
+            </a>
           </div>
         </div>
       </div>

@@ -65,7 +65,7 @@ const CardAgenda = ({ data, locale }) => (
         />
       </div>
       <div className={styles.card_desc}>
-        <h5 className='bold left-align c-green-60' style={{ marginBottom: '15px' }}>{data.event_title || ''}</h5>
+        <h5 className={styles.card__tile} style={{ marginBottom: '15px' }}>{data.event_title || ''}</h5>
         <h6 className={styles.desc}>{data.event_article || ''}</h6>
       </div>
       <div className={styles.divider} />
@@ -89,12 +89,13 @@ const Agenda = ({ eventData }) => {
   const [ data, setData ] = useState(eventData.map(res => ({
     ...res,
     event_image: res.event_image || '/dummy.png',
-    event_article: res.event_article
+    event_article: `${res.event_article
       .split('</p>')[0]
       .replace(/(<([^>]+)>)/gi, " ")
       .replace('&nbsp;', " ")
       .trim()
-      .replace(/\s+/g, " "),
+      .replace(/\s+/g, " ")
+      .slice(0, 150)}...`,
     event_start_day: new Date(res.event_start).toLocaleDateString('default', { day: 'numeric' }),
     event_start_month: new Date(res.event_start).toLocaleDateString('default', { month: 'long' }),
     event_start_year: new Date(res.event_start).toLocaleDateString('default', { year: 'numeric' })
@@ -105,12 +106,13 @@ const Agenda = ({ eventData }) => {
     setData(eventData.map(res => ({
       ...res,
       event_image: res.event_image || '/dummy.png',
-      event_article: res.event_article
+      event_article: `${res.event_article
         .split('</p>')[0]
         .replace(/(<([^>]+)>)/gi, " ")
         .replace('&nbsp;', " ")
         .trim()
-        .replace(/\s+/g, " "),
+        .replace(/\s+/g, " ")
+        .slice(0, 150)}...`,
       event_start_day: new Date(res.event_start).toLocaleDateString('default', { day: 'numeric' }),
       event_start_month: new Date(res.event_start).toLocaleDateString('default', { month: 'long' }),
       event_start_year: new Date(res.event_start).toLocaleDateString('default', { year: 'numeric' })

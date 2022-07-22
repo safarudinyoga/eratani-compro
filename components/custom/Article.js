@@ -1,6 +1,7 @@
 import Parse from 'html-react-parser'
 import React, { useState, createRef, useEffect } from 'react';
-import Link from 'next/link' 
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import Typograph from './Typograph'
 
@@ -9,9 +10,12 @@ import WhatsappVect from '/assets/vector/share-wa.svg'
 import FacebookVect from '/assets/vector/share-fb.svg'
 import TwitterVect from '/assets/vector/share-twt.svg'
 import LinkVect from '/assets/vector/share-link.svg'
+import { globalText } from 'utils/globalText';
 
 export default function Container (props) {
     const ButtonRef = props.children[1]
+    const { locale } = useRouter()
+
     return (
         <>
             <div className='row no-margin'>
@@ -24,7 +28,7 @@ export default function Container (props) {
             <article className={ `${ styles.article } ${ props.className || '' }` }>{ props.children[0] }</article>
             { (ButtonRef !== undefined) ? <div className={ `align-center ${ styles.buttonRef }` }>{ ButtonRef }</div> : <></> }
             <div className={ `row middle-xs between-xs no-margin  ${ styles.share }` }>
-                <Typograph tag='h6' size='xsm-1 sm-2-sm' color='natural-50'>Bagikan Postingan Ini</Typograph>
+                <Typograph tag='h6' size='xsm-1 sm-2-sm' color='natural-50'>{globalText.share[locale]}</Typograph>
                 <div className='row no-margin'>
                     <Link href='#'>
                         <a><WhatsappVect /></a>

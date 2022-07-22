@@ -37,28 +37,28 @@ export default function AboutUsPage() {
         },
         visi: {
             id: 'Menjadi platform Agri-Tech no.1 di Indonesia dengan membangun ekosistem pertanian yang kuat dari hulu ke hilir, mulai dari pembiayaan, pengadaan barang, edukasi, sampai distribusi hasil panen dan memberikan kemudahan bagi petani untuk mendapatkan akses dengan dukungan teknologi untuk menyejahterakan kehidupan petani di Indonesia kedepannya.',
-            en: 'Menjadi platform Agri-Tech no.1 di Indonesia dengan membangun ekosistem pertanian yang kuat dari hulu ke hilir, mulai dari pembiayaan, pengadaan barang, edukasi, sampai distribusi hasil panen dan memberikan kemudahan bagi petani untuk mendapatkan akses dengan dukungan teknologi untuk menyejahterakan kehidupan petani di Indonesia kedepannya.',
+            en: 'To be the #1 agri-tech platform in Indonesia by building a strong agriculture ecosystem from upstream to downstream, including the funding, utilities supply, education, and products distribution, and helping the farmers to get easy access via technology support which will improve the farmers’ living standard in the future.',
         },
         misi: [
             {
                 id: 'Membangun dan memajukan ekosistem pertanian dengan digitalisasi dan transparansi di setiap prosesnya.',
-                en: 'Membangun dan memajukan ekosistem pertanian dengan digitalisasi dan transparansi di setiap prosesnya.',
+                en: 'Building and developing a strong agricultural ecosystem through digitalization and transparency in every step.',
             },
             {
                 id: 'Menjadi platform dan mitra bagi petani dalam mendukung segala proses pertanian.',
-                en: 'Menjadi platform dan mitra bagi petani dalam mendukung segala proses pertanian.',
+                en: 'Becoming a platform and a partner for farmers which supports the whole agriculture process.',
             },
             {
                 id: 'Menjadi mitra bagi para kreditor, supplier, dan distributor guna meningkatkan kinerja rantai pasok di dunia pertanian.',
-                en: 'Menjadi mitra bagi para kreditor, supplier, dan distributor guna meningkatkan kinerja rantai pasok di dunia pertanian.',
+                en: 'Becoming a partner for creditors, suppliers, and distributors to improve supply chain management in the field of agriculture.',
             },
             {
                 id: 'Berkolaborasi dengan badan usaha pangan guna meningkatkan ketahanan pangan nasional.',
-                en: 'Berkolaborasi dengan badan usaha pangan guna meningkatkan ketahanan pangan nasional.',
+                en: 'Collaborating with food and beverage-related business entities to improve national food security.',
             },
             {
                 id: 'Memberikan dampak sosial yang positif dan membangun bagi ekosistem pertanian di Indonesia.',
-                en: 'Memberikan dampak sosial yang positif dan membangun bagi ekosistem pertanian di Indonesia.',
+                en: 'Giving positive and constructive social impact on Indonesian agriculture ecosystem.',
             }
         ],
         slides: [
@@ -69,80 +69,90 @@ export default function AboutUsPage() {
             { image: 'IEP05859.jpg', alt: '' }
         ]
     }
-    const teamContent = [
-        {
-            name1: <>Andrew<br />Soeherman</>,
-            name2: 'Andrew Soeherman',
-            position: 'Chief Executive Officer',
-            quote: {
-                en: '“Dengan semangat Ora et Labora, harapan saya Eratani dapat merangkul bukan hanya 100 atau 1.000 petani tapi seluruh petani di Indonesia agar para pahlawan pangan kita dapat menjalani kehidupan yang lebih sejahtera.”',
-                id: '“With the spirit of Ora et Labora, I hope Eratani can embrace not only 100 or 1000 farmers, but all farmers in Indonesia so that our agricultural heroes will be able to live a prosperous life.”',
-            },
-            photo: 'DSCF8724.png',
-            quoteSymColor: 'green-70',
-            bgColor: 'green-60',
-            top: 64
+    const teamContent = {
+        title: {
+            en: 'Our Team',
+            id: 'Tim Kami'
         },
-        {
-            name1: 'Kevin Juan',
-            name2: 'Kevin Juan',
-            position: 'Chief Operating Officer',
-            quote: {
-                en: '“Kami ingin Eratani memberikan ‘impact’ nyata kepada petani serta dapat menunjukkan kepada calon petani genarasi muda bahwa bertani itu merupakan bisnis yang canggih, berprospek, dan juga menghasilkan.”',
-                id: 'We want Eratani to give real ‘impact’ to the farmers as well as to show future farmers of the young generation that farming is a high-technology, prospective, and productive business.”',
-            },
-            photo: 'DSCF8734.png',
-            quoteSymColor: 'green-50',
-            bgColor: 'green-40',
-            top: 0
+        desc: {
+            en: 'Segenap tim kami yang akan berusaha menyejahterakan petani Indonesia, kami adalah EraFamily (EraFam).',
+            id: 'Segenap tim kami yang akan berusaha menyejahterakan petani Indonesia, kami adalah EraFamily (EraFam).'
         },
-        {
-            name1: 'Angles Gani',
-            name2: 'Angles Gani',
-            position: 'Chief Service Officer',
-            quote: {
-                en: '“When life blesses you financially, don’t raise your standard of living but raise your standard of giving. Salah satu kesamaan antara saya dan visi Eratani adalah sama-sama ingin berdampak bagi sekitar, dalam konteks ini menyejahterakan petani.”',
-                id: '“When life blesses you financially, don’t raise your standard of living but raise your standard of giving. One of the similarities between Eratani’s vision and mine is that we both want to bring an impact to our surroundings, in this case, by prospering the farmers’ lives.”',
+        team: [
+            {
+                name1: <>Andrew<br />Soeherman</>,
+                name2: 'Andrew Soeherman',
+                position: 'Chief Executive Officer',
+                quote: {
+                    en: '“Dengan semangat Ora et Labora, harapan saya Eratani dapat merangkul bukan hanya 100 atau 1.000 petani tapi seluruh petani di Indonesia agar para pahlawan pangan kita dapat menjalani kehidupan yang lebih sejahtera.”',
+                    id: '“With the spirit of Ora et Labora, I hope Eratani can embrace not only 100 or 1000 farmers, but all farmers in Indonesia so that our agricultural heroes will be able to live a prosperous life.”',
+                },
+                photo: 'DSCF8724.png',
+                quoteSymColor: 'green-70',
+                bgColor: 'green-60',
+                top: 64
             },
-            photo: 'DSCF8748 (1).png',
-            quoteSymColor: 'green-100',
-            bgColor: 'green-90',
-            top: 48
-        },
-        // {
-        //     name1: 'Grace Astari',
-        //     name2: 'Grace Astari',
-        //     position: 'Chief Business Officer',
-        //     quote: '“Sebagai pemimpin di Eratani, kami datang dengan sebuah pemikiran yang sama yaitu menjadi bagian dari solusi pada ekosistem pertanian. Kami percaya dalam menjalankan bisnis yang diimbangi dengan memberikan dampak sosial dapat membuat kita bertahan dan berkesinambungan dalam jangka panjang.”',
-        //     photo: '4 10.png',
-        //     quoteSymColor: 'green-40',
-        //     bgColor: 'green-50',
-        //     top: 24
-        // }
-    ]
-    const culutreContent = {
+            {
+                name1: 'Kevin Juan',
+                name2: 'Kevin Juan',
+                position: 'Chief Operating Officer',
+                quote: {
+                    en: '“Kami ingin Eratani memberikan ‘impact’ nyata kepada petani serta dapat menunjukkan kepada calon petani genarasi muda bahwa bertani itu merupakan bisnis yang canggih, berprospek, dan juga menghasilkan.”',
+                    id: 'We want Eratani to give real ‘impact’ to the farmers as well as to show future farmers of the young generation that farming is a high-technology, prospective, and productive business.”',
+                },
+                photo: 'DSCF8734.png',
+                quoteSymColor: 'green-50',
+                bgColor: 'green-40',
+                top: 0
+            },
+            {
+                name1: 'Angles Gani',
+                name2: 'Angles Gani',
+                position: 'Chief Service Officer',
+                quote: {
+                    en: '“When life blesses you financially, don’t raise your standard of living but raise your standard of giving. Salah satu kesamaan antara saya dan visi Eratani adalah sama-sama ingin berdampak bagi sekitar, dalam konteks ini menyejahterakan petani.”',
+                    id: '“When life blesses you financially, don’t raise your standard of living but raise your standard of giving. One of the similarities between Eratani’s vision and mine is that we both want to bring an impact to our surroundings, in this case, by prospering the farmers’ lives.”',
+                },
+                photo: 'DSCF8748 (1).png',
+                quoteSymColor: 'green-100',
+                bgColor: 'green-90',
+                top: 48
+            },
+            // {
+            //     name1: 'Grace Astari',
+            //     name2: 'Grace Astari',
+            //     position: 'Chief Business Officer',
+            //     quote: '“Sebagai pemimpin di Eratani, kami datang dengan sebuah pemikiran yang sama yaitu menjadi bagian dari solusi pada ekosistem pertanian. Kami percaya dalam menjalankan bisnis yang diimbangi dengan memberikan dampak sosial dapat membuat kita bertahan dan berkesinambungan dalam jangka panjang.”',
+            //     photo: '4 10.png',
+            //     quoteSymColor: 'green-40',
+            //     bgColor: 'green-50',
+            //     top: 24
+            // }
+        ]
+    }
+    const cultureContent = {
         title: {
             id: 'Lebih Dekat dengan Era-Fam',
-            en: 'Lebih Dekat dengan Era-Fam',
+            en: 'Getting Closer with Era-Fam',
         },
         caption: {
             id: 'Kami selalu menjaga dan menjunjung tinggi nilai-nilai perusahaan demi terciptanya lingkungan kerja yang sinergis dan harmonis.',
-            en: 'Kami selalu menjaga dan menjunjung tinggi nilai-nilai perusahaan demi terciptanya lingkungan kerja yang sinergis dan harmonis.',
+            en: 'We always maintain and embody the company values or the sake of creating a synergistic and harmonious working environment.',
         },
         detail: {
-            id: 'Lihat Detail',
-            en: 'Lihat Detail',
-            url: '#'
+            id: 'Lihat Detil',
+            en: 'See Details',
+            url: 'https://instagram.com/insideratani?igshid=YmMyMTA2M2Y='
         },
         data: [
             {
                 title: {
-                    id: 'Diversity',
+                    id: 'Keragaman',
                     en: 'Diversity',
                 },
                 description: {
                     id: 'Kami berfokus kepada membangun value dan membuat impact. Kami percaya bahwa semua orang di tim kami memiliki hak yang sama dan semangat yang sama untuk mewujudkan visi dan misi Eratani.',
-                    en: 'Kami berfokus kepada membangun value dan membuat impact. Kami percaya bahwa semua orang di tim kami memiliki hak yang sama dan semangat yang sama untuk mewujudkan visi dan misi Eratani.',
+                    en: 'In Eratani, we focus on building value and making an impact. We believe that everyone in our team has the same rights and passion to bring Eratani’s vision and missions into reality.',
                 },
                 photo: 'IMG_2337 1.jpg',
                 numberVect: ({ className }) => (
@@ -153,12 +163,12 @@ export default function AboutUsPage() {
             },
             {
                 title: {
-                    id: 'Trust',
+                    id: 'Kepercayaan',
                     en: 'Trust',
                 },
                 description: {
                     id: 'Kami memberikan kebebasan bagi setiap Era-Fam untuk mengatur dirinya sendiri dalam berkarya karena bekerja bukanlah sebuah tempat, ruangan, atau jadwal melainkan sebuah mindset, passion, dan tanggung jawab. Disini, para Era-Fam bisa mengatur pekerjaan mereka sesuai versi terbaik mereka.',
-                    en: 'Kami memberikan kebebasan bagi setiap Era-Fam untuk mengatur dirinya sendiri dalam berkarya karena bekerja bukanlah sebuah tempat, ruangan, atau jadwal melainkan sebuah mindset, passion, dan tanggung jawab. Disini, para Era-Fam bisa mengatur pekerjaan mereka sesuai versi terbaik mereka.',
+                    en: 'We give the freedom to every Era-Fam to organize themselves during work considering that work is neither a place, space, nor schedule; it is a mindset, passion, and responsibility. Here, the Era-Fam can organize their own works according to their best version.',
                 },
                 photo: 'DSCF8530 1.jpg',
                 numberVect: ({ className }) => (
@@ -169,12 +179,12 @@ export default function AboutUsPage() {
             },
             {
                 title: {
-                    id: 'Impact',
+                    id: 'Berdampak',
                     en: 'Impact',
                 },
                 description: {
                     id: 'Kami para Era-Fam percaya bahwa fokus kepada impact mengalahkan seberapa banyak strategi dan rencana yang sudah dibuat. Bagi kami, ideas are cheap but execution is everything.',
-                    en: 'Kami para Era-Fam percaya bahwa fokus kepada impact mengalahkan seberapa banyak strategi dan rencana yang sudah dibuat. Bagi kami, ideas are cheap but execution is everything.',
+                    en: 'We Era-Fam believe that focusing on impact defeats the amount of strategies and plans made. To us, ideas are cheap but execution is everything.',
                 },
                 photo: 'IMG_1564_EDIT 1.jpg',
                 numberVect: ({ className }) => (
@@ -188,15 +198,15 @@ export default function AboutUsPage() {
     const joinFamContent = {
         title: {
             id: 'Ingin Menjadi Bagian dari Era-Fam?',
-            en: 'Ingin Menjadi Bagian dari Era-Fam?',
+            en: 'Want To Be A Part of Era-Fam?',
         },
         caption: {
             id: 'Mari berkarya bersama kami untuk menciptakan ekosistem pertanian Indonesia yang lebih baik!',
-            en: 'Mari berkarya bersama kami untuk menciptakan ekosistem pertanian Indonesia yang lebih baik!',
+            en: 'Let’s join us to create a better Indonesian agriculture community!',
         },
         lowongan: {
             id: 'Cek Lowongan Di Sini',
-            en: 'Cek Lowongan Di Sini',
+            en: 'Check out recruitment here',
             url: '/career'
         }
     }
@@ -209,7 +219,7 @@ export default function AboutUsPage() {
             <Sections.About { ...aboutContent } />
             <Sections.VisiMisi { ...visiMisiContent } />
             <Sections.Team { ...{ data: teamContent } } />
-            <Sections.Culture { ...culutreContent } />
+            <Sections.Culture { ...cultureContent } />
             <Sections.JoinFam { ...joinFamContent } />
         </>
     )

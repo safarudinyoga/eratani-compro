@@ -20,13 +20,12 @@ export default function Footer () {
         { id: 'KARIR',               en: 'CAREER',                  link: 'career' }
     ]
     const joinNav = [
-        { id: 'PETANI',             en: 'FARMERS',                                   link: '#' },
-        { id: 'TOKO TANI',          en: 'AGRICULTURAL SUPPLY STORE',                link: '#' },
-        { id: 'GAPOKTAN',           en: 'ASSOCIATION OF FARMER GROUPS (GAPOKTAN)',  link: '#' },
-        { id: 'POKTAN',             en: 'FARMER GROUP (POKTAN)',                    link: '#' },
-        { id: 'SUPPLIER',           en: 'SUPPLIER',                                 link: '#' },
-        { id: 'BUYER',              en: 'BUYER',                                    link: '#' }
-    ]
+        { id: 'PETANI',             en: 'FARMERS',                                  link: 'join/petani' },
+        { id: 'TOKO TANI',          en: 'AGRICULTURAL SUPPLY STORE',                link: 'join/toko-tani' },
+        { id: 'GAPOKTAN',           en: 'ASSOCIATION OF FARMER GROUPS (GAPOKTAN)',  link: 'join/gapoktan' },
+        { id: 'POKTAN',             en: 'FARMER GROUP (POKTAN)',                    link: 'join/poktan' },
+        { id: 'SUPPLIER',           en: 'SUPPLIER',                                 link: 'join/supplier' },
+        { id: 'BUYER',              en: 'BUYER',                                    link: 'join/pembeli' } ]
     const otherContent = {
         officeTitle: {
             id: 'KANTOR PUSAT',
@@ -76,10 +75,10 @@ export default function Footer () {
                     <div className='col-xs-6 col-sm-4 col-md-2'>{ footerSub(otherContent.companyTitle[locale], companyNav.map((nav, index) => <Typograph key={ index } tag='a' href={ `/${ nav.link }` } size='xsm-2 sm-2-sm' line='20'>{ nav[locale] }</Typograph>) ) }</div>
                     <div className='col-xs-6 col-sm-4 col-md-2'>{ footerSub(otherContent.joinTitle[locale], joinNav.map((nav, index) => <Typograph key={ index } tag='a' href={ `/${ nav.link }` } size='xsm-2 sm-2-sm' line='20'>{ nav[locale] }</Typograph>) ) }</div>
                     <div className='col-xs-8 col-sm-4 col-md-3 col-lg-2'>{ footerSub(otherContent.medsosTitle[locale], <div className={ `row middle-xs between-xs no-margin ${ styles.social }`  }>
-                            <a href='https://www.instagram.com/erataniindonesia/' target="_blank" className='col-xs' rel="noreferrer"><InstagramVect /></a>
-                            <a href='https://www.linkedin.com/company/eratani/' target="_blank" className='col-xs' rel="noreferrer"><LinkedInVect /></a>
-                            <a href='https://www.youtube.com/channel/UCJVSBg8OVokZooGalKhLUHQ' target="_blank" className='col-xs' rel="noreferrer"><YoutubeVect /></a>
-                            <a href='https://www.facebook.com/profile.php?id=100077791967452' target="_blank" className='col-xs' rel="noreferrer"><FacebookVect /></a>
+                            <a href='https://www.instagram.com/erataniindonesia/' target="_blank" className='col-xs' rel="noopener noreferrer"><InstagramVect /></a>
+                            <a href='https://www.linkedin.com/company/eratani/' target="_blank" className='col-xs' rel="noopener noreferrer"><LinkedInVect /></a>
+                            <a href='https://www.youtube.com/channel/UCJVSBg8OVokZooGalKhLUHQ' target="_blank" className='col-xs' rel="noopener noreferrer"><YoutubeVect /></a>
+                            <a href='https://www.facebook.com/profile.php?id=100077791967452' target="_blank" className='col-xs' rel="noopener noreferrer"><FacebookVect /></a>
                         </div>) }
                     </div>
                 </div>

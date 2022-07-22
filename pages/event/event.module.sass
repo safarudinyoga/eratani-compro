@@ -68,7 +68,12 @@
         object-position: center center
 
       .card_desc
-        padding: 32px 24px 35px
+        padding: 25px 24px 35px
+
+        .card__tile
+          @include typograph($size: 16px, $weight: 800, $lineHeight: 22px)
+          color: Define.$green_60
+          text-align: left
 
         .desc
           font-size: 14px

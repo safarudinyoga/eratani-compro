@@ -1,5 +1,5 @@
 import Parse from 'html-react-parser'
-import React, { useState, createRef, useEffect } from 'react';
+import React, { useState, createRef, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router'
 import Slick from "react-slick";
 import gsap from 'gsap'
@@ -24,8 +24,6 @@ import FindPlaystorePng from '/assets/static/find-playstore.png'
 import Mc0Png from '/assets/static/mc0.png'
 import Mc1Png from '/assets/static/mc1.png'
 import Mc2Png from '/assets/static/mc2.png'
-
-import DaftarForm from '/components/sections/DaftarForm'
 
 gsap.registerPlugin(ScrollToPlugin)
 gsap.registerPlugin(CustomEase)
@@ -53,7 +51,7 @@ const Hero = ({ background, hashtag, caption, download }) => {
                         <div className={ `col-sm-7 col-md-6 ${ styles.title }` }>
                             <Typograph tag='h1' size='xlg-3 xlg-1-sm ulg-1-lg' weight='bold extrabold-sm' color='green-10'>{ hashtag[locale] }</Typograph>
                             <Typograph tag='p' size='xsm-1 sm-2-sm sm-1-lg' color='white'>{ caption[locale] }</Typograph>
-                            <Button href={ download.url } target='_blank' xPadding='18' textColor='white' backgroundColor='green-60'>{ download[locale] }</Button>
+                            <Button href={ download.url } nolinkbutton={true} target='_blank' xPadding='18' textColor='white' backgroundColor='green-60'>{ download[locale] }</Button>
                         </div>
                         <div className={ `col-sm-8 col-md-6 ${ styles.mockup }` }>
                             <svg viewBox="0 0 505 477" fill="none">
@@ -83,7 +81,7 @@ const Hero = ({ background, hashtag, caption, download }) => {
                                     <image id='image2_8151_3455' width='4096' height='2730' xlinkHref={ Mc2Png.src } />
                                 </defs>
                             </svg>
-                            <Button href={ download.url } target='_blank' xPadding='18' textColor='white' backgroundColor='green-60'>{ download[locale] }</Button>
+                            <Button href={ download.url } nolinkbutton={true} target='_blank' xPadding='18' textColor='white' backgroundColor='green-60'>{ download[locale] }</Button>
                         </div>
                     </div>
                 </div>
@@ -143,8 +141,8 @@ const Ecosystem = ({ title, data }) => {
         const slideNode = slider.getElementsByClassName(styles.slide_content)
 
         gsap.timeline({ onComplete: () => setLock(0) })
-        .set(slider, { minHeight: slider.clientHeight + 3 })
-        .to(slider, { duration: 1, ease: 'BackEase', scrollTo: { x: (slideNode[slide].clientWidth + 31.5) * (slide + 1) } })
+        .set(slider, { minHeight: slider.clientHeight })
+        .to(slider, { duration: 1.4, ease: 'BackEase', scrollTo: { x: (slideNode[slide].clientWidth + 31.5) * (slide + 1) } })
         .set(slider, { minHeight: 0 })
     }, [slide])
 
@@ -160,10 +158,12 @@ const Ecosystem = ({ title, data }) => {
                     <div className={ `${ styles.slide } ${ (index == slide) && styles.slide_active }` } key={ index }>
                         <div className={ styles.slide_content }>
                             <div>
-                                <Typograph tag='h5' size='sm-2 sm-1-md' className={ styles.title }>
-                                    <span className='text-green-50'>{ `${ eco.no }.` }</span>
-                                    <span>{ eco.title[locale] }</span>
-                                </Typograph>
+                                <div className={ styles.titleBlock }>
+                                    <Typograph tag='h5' size='sm-2 sm-1-md' className={ styles.title }>
+                                        <span className='text-green-50'>{ `${ eco.no }.` }</span>
+                                        <span>{ eco.title[locale] }</span>
+                                    </Typograph>
+                                </div>
                                 <SetRatio ax='1.42' ay='1'>
                                     <img src={ `/ecosystem/${ eco.photo }` } width='100%' className='image-cover' />
                                 </SetRatio>
@@ -248,7 +248,7 @@ const Solution = ({ title, caption, data }) => {
                             </Typograph>
                             <div className={ `${styles.caption} align-center __SolutionNode__` }>
                                 <Typograph tag='p' size='sm-2' color='green-10' line='23' align='justify'>{ solution.description[locale] }</Typograph>
-                                <Button href={ solution.link.url } target='_blank' xPadding='18' textColor='white' backgroundColor='green-60' >{ solution.link[locale] }</Button>
+                                <Button href={ solution.link.url } nolinkbutton target='_blank' xPadding='18' textColor='white' backgroundColor='green-60' >{ solution.link[locale] }</Button>
                             </div>
                         </SetRatio>
                         <SetRatio ax='1' ay='1.26' min='420' max='485' className={ styles.wrapper_sm } onMouseEnter={ onSolutionEnter } onMouseLeave={ onSolutionLeave }>
@@ -259,7 +259,7 @@ const Solution = ({ title, caption, data }) => {
                                     <Typograph tag='p' size='xsm-1' color='green-10' align='justify'>{ solution.description[locale] }</Typograph>
                                 </div>
                                 <div className='align-center'>
-                                    <Button href={ solution.link.url } target='_blank' xPadding='32' textColor='white' backgroundColor='green-60' >{ solution.link[locale] }</Button>
+                                    <Button href={ solution.link.url } nolinkbutton target='_blank' xPadding='32' textColor='white' backgroundColor='green-60' >{ solution.link[locale] }</Button>
                                 </div>
                             </div>
                         </SetRatio>
@@ -361,13 +361,29 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
     const diliputSlickSettings = SlickNavigationCustom('__SlickDiliput__', slickSettings)
     const [ tab, setTab ] = useState(0)
 
-    // if (mitraData.length % 5 != 0)
-    //     for (let i = 0; i < mitraData.length % 5; i++)
-    //         mitraData.push({image: 0, alt: 'null'})
+    const slickMitraRef = useRef()
+    const slickDiliputRef = useRef()
+    const sliderBlockRef = createRef()
 
-    // if (diliputData.length % 5 != 0)
-    //     for (let i = 0; i < mitraData.length % 5; i++)
-    //         diliputData.push({image: 0, alt: 'null'})
+    useEffect(() => {
+        if (tab == 0)
+            slickDiliputRef.current.slickPause()
+        else
+            slickMitraRef.current.slickPause()
+
+        const sliders = sliderBlockRef.current.childNodes
+
+        gsap.to(sliders[tab ? 0 : 1], { opacity: 0, duration: 0.5, onComplete: () => {
+            gsap.set(sliders[tab ? 0 : 1], { display: 'none' })
+            gsap.set(sliders[tab], { display: 'block' })
+            gsap.to(sliders[tab], { opacity: 1, duration: 0.5, onComplete: () => {
+                if (tab == 0)
+                    slickMitraRef.current?.slickPlay()
+                else
+                    slickDiliputRef.current?.slickPlay()
+            } })
+        } })
+    }, [tab])
 
     return (
         <Container id={ styles.Media } normalPadding backgroundColor='natural-10' paddingTop='40' paddingBottom='68' className='align-center'>
@@ -376,17 +392,20 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
                 <Typograph tag='h2' size='sm-1 md-2-sm lg-3-md' color='natural-40' className={ `__MediaTabNav__ ${ (tab == 1) && styles.active }` } onClick={ () => setTab(1) }>{ diliputTitle[locale] }</Typograph>
             </div>
             <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='705'>{ caption[locale] }</Typograph>
-            <div className={ styles.content }>
-                { (tab == 0) ? <Slick { ...mitaSlickSettings } className='__SlickMitra__'>
-                        { mitraData.map((mitra, index) =>
-                            <div key={ index }>
-                                <div className={ styles.slick_slide }>
-                                    { (!mitra.image) ? '' : <img src={ `/media/mitra/${ mitra.image }` } alt={ mitra.alt } /> }
+            <div ref={ sliderBlockRef } className={ styles.content }>
+                <div>
+                    <Slick ref={ slickMitraRef } { ...mitaSlickSettings } className='__SlickMitra__'>
+                            { mitraData.map((mitra, index) =>
+                                <div key={ index }>
+                                    <div className={ styles.slick_slide }>
+                                        { (!mitra.image) ? '' : <img src={ `/media/mitra/${ mitra.image }` } alt={ mitra.alt } /> }
+                                    </div>
                                 </div>
-                            </div>
-                        ) }
+                            ) }
                     </Slick>
-                : <Slick { ...diliputSlickSettings } className='__SlickDiliput__'>
+                </div>
+                <div>
+                    <Slick ref={ slickDiliputRef } { ...diliputSlickSettings } className='__SlickDiliput__'>
                         { diliputData.map((diliput, index) =>
                             <div key={ index }>
                                 <div className={ styles.slick_slide }>
@@ -395,7 +414,7 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
                             </div>
                         ) }
                     </Slick>
-                }
+                </div>
             </div>
         </Container>
     )
@@ -405,22 +424,33 @@ const Media = ({ mitraTitle, diliputTitle, caption, mitraData, diliputData }) =>
 /* ------------------ Join ------------------ */
 const Join = ({ title, caption, data, daftar }) => {
     const { locale } = useRouter()
-    const [ formDaftar, setFormDaftar ] = useState(0)
+
+    useEffect(() => {
+        let tl = gsap.timeline({ repeat: -1, repeatDelay: 0 })
+        for (let i = 0; i < data.length; i++) {
+            if (i > 0)
+                tl.to('.__join_type__', { duration: 0.7, ease: 'Power3.easeInOut', top: (-100 * i) + '%' }, '<1.6')
+            if (i == data.length - 1)
+                tl.to('.__join_type__', { duration: 0.9, ease: 'Power3.easeInOut', top: '0%' }, '<1.6')
+        }
+
+        return _ => tl.kill()
+    }, [])
+
     return (
         <Container id={ styles.Join } normalPadding paddingTop='80' paddingBottom='68' className='align-center'>
             <Typograph tag='h2' size='sm-1 lg-3-sm xlg-2-md' color='natural-60'>
                 { title[locale] }&nbsp;
-                <div>
-                    <ul className='align-left __join_ul__'>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <ul className='align-left'>
                         { data.map((j, index) =>
-                            <li key={ index }><Typograph tag='h2' size='sm-1 lg-3-sm xlg-2-md' color={ j.color }>{ j[locale] }</Typograph></li>
+                            <li className='__join_type__' key={ index }><Typograph tag='h2' size='sm-1 lg-3-sm xlg-2-md' color={ j.color }>{ j[locale] }</Typograph></li>
                         ) }
                     </ul>
-                </div>
+                </span>
             </Typograph>
             <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='780'>{ caption[locale] }</Typograph>
-            <Button href='#' onClick={ () => setFormDaftar(1) } xPadding='18' textColor='white' backgroundColor='green-60'>{ daftar[locale] }</Button>
-            { (formDaftar) ? <DaftarForm onClose={ () => setFormDaftar(0) } /> : undefined }
+            <Button href='/join' xPadding='18' textColor='white' backgroundColor='green-60'>{ daftar[locale] }</Button>
         </Container>
     )
 }
