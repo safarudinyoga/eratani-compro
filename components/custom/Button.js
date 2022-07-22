@@ -1,5 +1,5 @@
 import styles from './Button.module.sass'
-import Link from 'next/link' 
+import Link from 'next/link'
 
 export default function Button (props) {
     const newProps = { ...props }
@@ -40,9 +40,18 @@ export default function Button (props) {
     delete newProps.href
     delete newProps.target
     delete newProps.disable
+    delete newProps.replace
 
-    return (
-        <Link href={ props.href } scroll={true}><a { ...newProps }>{ props.children }</a></Link>
-    )
-
+    if (props.replace !== undefined)
+        return (
+            <Link href={ props.href } replace scroll={true}><a { ...newProps }>{ props.children }</a></Link>
+        )
+    if (props.nolinkbutton)
+        return (
+            <a href={ props.href } className={newProps.className} style={newProps.style} target="_blank" rel="noopener noreferrer">{ props.children }</a>
+        )
+    else
+        return (
+            <Link href={ props.href } scroll={true}><a { ...newProps }>{ props.children }</a></Link>
+        )
 }

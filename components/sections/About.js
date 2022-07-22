@@ -138,10 +138,10 @@ const Team = ({ data }) => {
 
     return (
         <Container id={ styles.Team } paddingTop='128' paddingBottom='121'>
-            <Typograph tag='h4' color='green-70' size='sm-1 md-1-sm lg-1-md' align='center'>Tim Kami</Typograph>
-            <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='636'>Segenap tim kami yang akan berusaha menyejahterakan petani Indonesia, kami adalah EraFamily (EraFam).</Typograph>
+            <Typograph tag='h4' color='green-70' size='sm-1 md-1-sm lg-1-md' align='center'>{data.title[locale]}</Typograph>
+            <Typograph tag='p' size='xsm-1 sm-1-sm md-3-md' align='center' maxWidth='636'>{data.desc[locale]}</Typograph>
             <div ref={ teamPosRef } className={ `row bottom-xs top-md no-margin ${ styles.container }` }>
-                { data.map((team, index) =>
+                { data.team.map((team, index) =>
                     <div key={ index } className={ `${ styles.team } ${ (teamActive == index) ? styles.isActive : '' }` }>
                         <div className={ `bg-${ team.bgColor } ${ styles.wrapper }`  } onClick={ () => { (!lock) && setTeamActive(index) } } style={ { marginTop: team.top } } >
                             <Typograph tag='h4' size='lg-3' color='green-10' line='34' align='center'>
@@ -163,7 +163,7 @@ const Team = ({ data }) => {
             </div>
             <div className={ styles.quote_mobile }>
                 <Slick ref={ quoteSliderRef } { ...teamQuoteSlickSetting } className='__slickTeamQuote__'>
-                    { data.map((team, index) =>
+                    { data.team.map((team, index) =>
                         <div className={ styles.slide } key={ index }>
                             <Typograph tag='h4' size='sm-2 sm-1-sm'>{ team.name2 }</Typograph>
                             <Typograph tag='h5' size='xsm-2 xsm-1-sm' weight='regular' color='green-60'>{ team.position }</Typograph>
@@ -218,12 +218,12 @@ const Culture = ({ title, caption, detail, data }) => {
                     <Typograph tag='h2' size='sm-1 lg-3-sm xlg-3-lg' color='green-10'>{ title[locale] }<span className='bg-green-10'></span></Typograph>
                     <Typograph tag='p' size='xsm-1 sm-1-sm md-3-lg' color='green-30'>{ caption[locale] }</Typograph>
                     <div className={ styles.detail }>
-                        <Typograph tag='a' href={ detail.url } size='xsm-1 sm-1-sm md-3-lg' color='green-10'>{ detail[locale] }<ArrowForwardVect width='20' /></Typograph>
+                        <Typograph tag='a' href={ detail.url } nolinkbutton size='xsm-1 sm-1-sm md-3-lg' color='green-10'>{ detail[locale] }<ArrowForwardVect width='20' /></Typograph>
                     </div>
                 </div>
             </div>
             <div className={ `${ styles.detail } align-right` }>
-                <Typograph tag='a' href={ detail.url } size='xsm-1 sm-1-sm md-3-lg' color='green-10' className={ styles.detail }>{ detail[locale] }<ArrowForwardVect width='16' /></Typograph>
+                <Typograph tag='a' href={ detail.url } nolinkbutton size='xsm-1 sm-1-sm md-3-lg' color='green-10' className={ styles.detail }>{ detail[locale] }<ArrowForwardVect width='16' /></Typograph>
             </div>
         </Container>
     )

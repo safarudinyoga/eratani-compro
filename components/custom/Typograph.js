@@ -1,4 +1,4 @@
-import Link from 'next/link' 
+import Link from 'next/link'
 
 export default function Ellipsis (props) {
     const TagName = props.tag
@@ -8,7 +8,7 @@ export default function Ellipsis (props) {
         let t = ''
         props.size.split(' ').forEach(element => t += `font-${ element } `)
         return t
-    } 
+    }
 
     const weightResp = () => {
         let t = ''
@@ -28,7 +28,7 @@ export default function Ellipsis (props) {
     newProps.className += (props.align) ? alignResp() : ''
     newProps.className += (props.disable) ? `disable-pointer-event ` : ''
     newProps.style = { ...props.style }
-    
+
     if (props.maxWidth !== undefined) {
         newProps.style.maxWidth = parseInt(props.maxWidth)
         if (props.align == 'center' || props.align == 'justify') newProps.className += 'margin-auto '
@@ -47,12 +47,22 @@ export default function Ellipsis (props) {
     delete newProps.maxWidth
     delete newProps.align
     delete newProps.disable
+    delete newProps.replace
+    delete newProps.href
 
     if (TagName == 'a') {
-        delete newProps.href
-        return (
-            <Link href={ props.href } scroll={true} locale={ props.locale }><a { ...newProps }>{ props.children }</a></Link>
-        )
+        if (props.replace !== undefined)
+            return (
+                <Link href={ props.href } replace scroll={true} locale={ props.locale }><a { ...newProps }>{ props.children }</a></Link>
+            )
+        if (props.nolinkbutton)
+            return (
+                <a href={ props.href } className={newProps.className} style={newProps.style} target="_blank" rel="noopener noreferrer">{ props.children }</a>
+            )
+        else
+            return (
+                <Link href={ props.href } scroll={true} locale={ props.locale }><a { ...newProps }>{ props.children }</a></Link>
+            )
     }
 
     return (

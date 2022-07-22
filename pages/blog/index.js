@@ -55,7 +55,7 @@ export default function BlogPage({ s_articleData, s_tipsData }) {
         },
         tipsTitle: {
             id: 'TIPS PERTANTAN',
-            en: 'TIPS PERTANTAN'
+            en: 'FARMERS TIPS'
         },
         loadMoreTips: {
             id: 'Lihat Tips Lainnya',

@@ -27,7 +27,7 @@ export default function HomePage({ mapData }) {
         download: {
             id: 'Unduh Aplikasi Eratani',
             en: 'Download Eratani Mobile Application',
-            url: '#'
+            url: 'https://play.google.com/store/apps/details?id=eratani.farmer.apps&hl=en&gl=US'
         }
     }
     const ecosystemContent = {
@@ -63,8 +63,8 @@ export default function HomePage({ mapData }) {
             {
                 no: '03',
                 title: {
-                    id: 'Pendapatan Petani Meningkat Lebih dari 20%',
-                    en: 'Pendapatan Petani Meningkat Lebih dari 20%',
+                    id: 'Pendapatan Petani Meningkat Lebih dari 25%',
+                    en: 'More Than 25% Increase of Farmers’ Income',
                 },
                 description: {
                     id: 'Bukan hanya memberikan akses permodalan kepada petani, Eratani juga membantu para petani binaan untuk meningkatkan pendapatan yang didukung dengan pemberian edukasi dan saprotan yang berkualitas tinggi.',
@@ -76,7 +76,7 @@ export default function HomePage({ mapData }) {
                 no: '04',
                 title: {
                     id: 'Telah Memiliki Lebih dari 5.000 Ha Lahan Binaan',
-                    en: 'Telah Memiliki Lebih dari 5.000 Ha Lahan Binaan',
+                    en: 'More Than 5000 Regions of Reach',
                 },
                 description: {
                     id: 'Luas lahan binaan Eratani kini telah mencapai lebih dari 5.000 Ha yang tersebar di pulau Jawa. Eratani akan terus memperluas cakupan lahan binaan hingga ke seluruh Indonesia.',
@@ -88,7 +88,7 @@ export default function HomePage({ mapData }) {
                 no: '05',
                 title: {
                     id: 'Produktivitas Petani Meningkat Lebih dari 20%',
-                    en: 'Memiliki 1.000+ Petani Binaan',
+                    en: 'More Than 20% Increase of Farmers’ Productivity',
                 },
                 description: {
                     id: 'Eratani membantu para petani binaan untuk meningkatkan produktivitas dan hasil panen dengan memberikan pendampingan bersama para ahli di bidang pertanian.',
@@ -101,11 +101,11 @@ export default function HomePage({ mapData }) {
     const solutionContent = {
         title: {
             id: 'Solusi Untuk Lahan Pertanian Anda',
-            en: 'Solusi Untuk Lahan Pertanian Anda'
+            en: 'Solutions To All Your Agricultural Problems'
         },
         caption: {
             id: 'Kami bertekad untuk memenuhi segala kebutuhan pertanian demi meningkatkan kesejahteraan petani di seluruh Indonesia. Bergabung bersama kami dan dapatkan solusi dari setiap masalah pertanian Anda.',
-            en: 'Kami bertekad untuk memenuhi segala kebutuhan pertanian demi meningkatkan kesejahteraan petani di seluruh Indonesia. Bergabung bersama kami dan dapatkan solusi dari setiap masalah pertanian Anda.'
+            en: "We commit to provide all the farming needs to support farmers' productivity for the sake of prospering the lives of local farmers. Join us and get the solutions to all your agricultural problems."
         },
         data: [
             {
@@ -123,8 +123,8 @@ export default function HomePage({ mapData }) {
                 },
                 link: {
                     id: 'Unduh Sekarang',
-                    en: 'Unduh Sekarang',
-                    url: '#'
+                    en: 'Download Now',
+                    url: 'https://play.google.com/store/apps/details?id=eratani.farmer.apps&hl=en&gl=US'
                 },
                 photo: 'Pendampingan 3.jpg'
             },
@@ -144,7 +144,7 @@ export default function HomePage({ mapData }) {
                 link: {
                     id: 'Hubungi Kami',
                     en: 'Hubungi Kami',
-                    url: '#'
+                    url: 'https://wa.me/+6281282518855'
                 },
                 photo: 'DSC04912.jpg'
             },
@@ -164,7 +164,7 @@ export default function HomePage({ mapData }) {
                 link: {
                     id: 'Hubungi Kami',
                     en: 'Hubungi Kami',
-                    url: '#'
+                    url: 'https://wa.me/+6281282518855'
                 },
                 photo: 'Hasil Panen.jpg'
             }
@@ -189,7 +189,7 @@ export default function HomePage({ mapData }) {
         },
         caption: {
             id: 'Eratani telah melayani petani di berbagai wilayah di Indonesia dan akan terus bertambah hingga ke seluruh wilayah di Indonesia.',
-            en: 'Program Eratani sudah tersebar di beberapa wilayah di Indonesia dan akan terus menjalar ke seluruh Indonesia.'
+            en: "Eratani's programs have reached various regions across Indonesia and will keep on expanding to reach the whole nation."
         },
         data: mapData.locations.map.map(prov => {
             return {
@@ -413,15 +413,15 @@ export default function HomePage({ mapData }) {
     const mediaContent = {
         mitraTitle: {
             id: 'Mitra Kami',
-            en: 'Mitra Kami'
+            en: 'Our Partners'
         },
         diliputTitle: {
             id: 'Diliput oleh',
-            en: 'Diliput oleh'
+            en: 'Covered by'
         },
         caption: {
             id: 'Kami bekerja sama dengan mitra dan media terkemuka untuk mewujudkan ekosistem pertanian yang kuat demi mendukung kesejahteraan petani Indonesia.',
-            en: 'Kami bekerja sama dengan mitra dan media terkemuka untuk mewujudkan ekosistem pertanian yang kuat demi mendukung kesejahteraan petani Indonesia.'
+            en: 'We cooperate with reputable partners to build a strong agricultural ecosystem for the sake of improving Indonesian farmers’ well-being.'
         },
         mitraData: [
             {image: '1.png', alt: 'bulog'},
@@ -462,11 +462,11 @@ export default function HomePage({ mapData }) {
         },
         caption: {
             id: <>Daftar sekarang dan nikmati berbagai manfaat dari Eratani, mulai dari bantuan permodalan, penyediaan saprotan, hingga penyaluran gabah dan beras.<br />Mari bersama mewujudkan ekosistem pertanian yang kuat!</>,
-            en: <>Daftar sekarang dan nikmati berbagai manfaat dari Eratani, mulai dari bantuan permodalan, penyediaan saprotan, hingga penyaluran gabah dan beras.<br />Mari bersama mewujudkan ekosistem pertanian yang kuat!</>,
+            en: <>Register now and get all the benefits from Eratani, starting from capital support, provision of agricultural production supplies, to distribution of rice and grain products. Let’s build our agricultural ecosystem together!</>,
         },
         daftar: {
             id: 'Daftar Sekarang',
-            en: 'Daftar Sekarang',
+            en: 'Register Now',
         },
         data: [
             {
@@ -572,7 +572,7 @@ export default function HomePage({ mapData }) {
                     type: 'Association of Farmer Groups',
                     domisili: 'East Java',
                     testi: 'Eratani makes a great partner at making changes to the agriculture sector by introducing technology.',
-                    photo: 'nugroho.jpg'
+                    photo: 'pranata.jpg'
                 }
             },
             {
